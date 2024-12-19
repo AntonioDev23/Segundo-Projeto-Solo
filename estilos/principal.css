@@ -19,8 +19,15 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
+    background-image: url('sua-imagem.jpg'); /* Substitua pelo caminho da sua imagem */
+    height: 100vh; /* O efeito parallax ocupa a tela inteira */
+    background-attachment: fixed; /* Isso cria o efeito parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
 
 .container {
     max-width: 1200px;
@@ -47,8 +54,10 @@ h1, h2, h3 {
 
 .logo {
     color: var(--cor-texto-claro);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Edu AU VIC WA NT Arrows", serif;
 }
+
+
 
 .nav-links {
     list-style: none;
@@ -63,7 +72,7 @@ h1, h2, h3 {
 .nav-links a {
     color: var(--cor-texto-claro);
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.0rem;
     transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza transform e fundo */
     
 }
@@ -72,6 +81,14 @@ h1, h2, h3 {
     background-color: var(--cor-secundaria); /* Muda a cor do fundo */
     transform: translateY(-5px); /* Move o link para cima */
     border-radius: 4px; /* Arredonda as bordas */
+}
+
+.nav-links li {
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza transform e fundo */
+}
+
+.nav-links li:hover {
+    transform: translateY(-5px); /* Move o link para cima */
 }
 
 /* Seção Hero */
@@ -89,6 +106,20 @@ h1, h2, h3 {
 
 .hero h2 {
     font-size: 2.5rem;
+    font-weight: bold;
+    background-color: rgb(240, 150, 24);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.hero p {
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.hero h2 {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Intensifica a sombra */
+    transform: translateY(-5px); /* Eleva o container */
 }
 
 .hero .btn {
@@ -122,36 +153,52 @@ h1, h2, h3 {
 }
 
 .recipe-card {
-    background: var(--cor-fundo);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    overflow: hidden;
-    flex: 1 1 calc(30% - 1rem);
-    max-width: 300px;
-    max-height: 500px;
+    display: flex; /* Flexbox para alinhar os elementos */
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Centraliza os itens no eixo horizontal */
+    justify-content: space-between; /* Espaço uniforme entre os elementos */
+    padding: 1rem; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda para destaque */
+    border-radius: 8px; /* Arredondar bordas */
+    background-color: var(--cor-fundo);
+    overflow: hidden; /* Garante que elementos não 'vazem' do container */
 }
 
 .recipe-card img {
-    width: 100%;
-    border-bottom: 3px solid #8b0000;
+    width: 200px; /* Garante que a imagem ocupe toda a largura disponível */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 4px; /* Arredonda os cantos da imagem */
+    
 }
 
-.recipe-card {
+.recipe-card h3 {
+    margin: 0.5rem 0; /* Espaço ao redor do título */
+    font-size: 1.2rem; /* Tamanho da fonte */
+    text-align: center;
+}
+
+.recipe-card p {
+    margin: 0.5rem 0 1rem; /* Espaço inferior maior para separar do botão */
+    font-size: 1rem; /* Tamanho da fonte */
+    text-align: center;
+    color: #555; /* Cor do texto */
     font-weight: bold;
 }
 
 .recipe-card .btn {
-    margin: 1rem 0;
-    background: #8b0000;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 5px;
+    display: inline-block; /* Faz o link se comportar como botão */
+    text-decoration: none; /* Remove o sublinhado */
+    padding: 0.5rem 1rem; /* Espaçamento interno do botão */
+    background-color: #8b0000; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border-radius: 4px; /* Arredondar bordas */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
 }
 
 .recipe-card .btn:hover {
-    background: #ff6347;
+    background-color: #ff6347; /* Fundo ao passar o mouse */
+    transform: translateY(-3px); /* Elevação ao passar o mouse */
 }
 
 /* Benefícios */

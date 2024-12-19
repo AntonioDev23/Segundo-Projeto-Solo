@@ -1,0 +1,81 @@
+/* Navegação */
+.nav-links {
+    list-style: none;
+    display: flex; /* Ativa Flexbox */
+    justify-content: center; /* Centraliza os links horizontalmente */
+    gap: 1rem; /* Espaço entre os links */
+    padding: 0.5rem 0;
+    background-color: #8b0000;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+    background-color: #ff6347;
+    border-radius: 4px;
+}
+
+/* Página Inicial */
+.welcome {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+
+
+/* Lista de Receitas */
+.recipes-list {
+    display: flex; /* Ativa Flexbox */
+    flex-wrap: wrap; /* Permite quebrar linha se necessário */
+    gap: 1rem; /* Espaço entre os cartões */
+    justify-content: center; /* Centraliza os cartões na página */
+}
+
+.recipe-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 calc(33.333% - 1rem); /* Tamanho flexível para ocupar 3 por linha */
+    max-width: 300px; /* Limita a largura máxima */
+}
+
+.recipe-card h4 {
+    color: #8b0000;
+}
+
+.recipe-card .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #8b0000;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.recipe-card .btn:hover {
+    background-color: #ff6347;
+}
+
+/* Rodapé */
+footer {
+    display: flex; /* Ativa Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 1rem 0;
+    background-color: #8b0000;
+    color: #fff;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}

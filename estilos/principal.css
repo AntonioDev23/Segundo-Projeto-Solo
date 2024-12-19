@@ -105,7 +105,7 @@ h1, h2, h3 {
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     font-weight: bold;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: var(--cor-fundo);
@@ -128,10 +128,13 @@ h1, h2, h3 {
     border-radius: 5px;
     margin-top: 1rem;
     display: inline-block;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza transform e fundo */
 }
 
 .hero .btn:hover {
-    background: #ff6347;
+    background: var(--cor-secundaria);
+    transform: translateY(-5px); /* Move o link para cima */
+    border-radius: 4px; /* Arredonda as bordas */
 }
 
 /* Receitas Populares */
@@ -201,7 +204,7 @@ h1, h2, h3 {
 }
 
 .recipe-card .btn:hover {
-    background-color: #ff6347; /* Fundo ao passar o mouse */
+    background-color: var(--cor-secundaria); /* Fundo ao passar o mouse */
     transform: translateY(-3px); /* Elevação ao passar o mouse */
 }
 

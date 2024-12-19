@@ -7,37 +7,77 @@
     <link rel="stylesheet" href="estilos/principal.css">
 </head>
 <body>
-    <header>
-        <h1></h1>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="">Ínicio</a></li>
-                <li><a href="">Bolo de Chocolate</a></li>
-                <li><a href="">Pizza Caseira</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">Receitas Deliciosas</h1>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li>Início</li>
+                    <li>Receitas Populares</li>
+                    <li>Benefícios</li>
+                    <li>Contato</li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <section class="welcome">
-            <h2>Bem-vindo ao Receitas Deliciosas!</h2>
-            <p>Descubra receitas incríveis para impressionar na cozinha. Escolha uma das opções abaixo e comece a preparar algo delicioso agora mesmo.</p>
+        <section class="hero">
+            <div class="container hero-container">
+                <h2>Descubra receitas deliciosas para todas as ocasiões!</h2>
+                <p>Encontre receitas fáceis, rápidas e irresistíveis para impressionar na cozinha.</p>
+                <a href="#popular" class="btn">Veja as Receitas</a>
         </section>
-        <section  class="recipes-list">
-            <h3>Nossas Receitas</h3>
-            <div class="recipe-card">
-                <h4>Bolo de chocolate</h4>
-                <p>Um bolo irresistível e fácil de fazer.</p>
-                <a href="">Ver Receita</a>
+        <section id="popular" class="popular">
+            <div class="container">
+                <h2>Receitas Populares</h2>
+                <div class="recipe-grid">
+                  <div class="recipe-card">
+                      <img src="" alt="">
+                      <h3>Bolo de Chocolate</h3>
+                      <p>Um clássico irresistível.</p>
+                      <a href=""  class="btn">Ver Receita</a>
+                  </div>
+                  <div>
+                      <img src="" alt="">
+                      <h3>Pizza Caseira</h3>
+                      <p>Perfeita para o jantar.</p>
+                      <a href=""></a>
+                  </div>
+                  <div>
+                      <img src="" alt="">
+                      <h3>Lasanha</h3>
+                      <p>Camadas de sabor.</p>
+                      <a href=""></a>
+                  </div>
+                </div>
             </div>
-            <div class="recipe-card">
-                <h4>Pizza Caseira</h4>
-                <p>Faça sua própria pizza com ingredientes simples.</p>
-                <a href="">Ver Receita</a>
+        </section>
+        <section>
+            <div>
+                <h2>Por que escolher nossas receitas?</h2>
+                <div>
+                    <div>
+                        <h3>Fáceis de Fazer</h3>
+                        <p>Receitas simplificadas para todos os níveis de habilidade.</p>
+                    </div>
+                    <div>
+                        <h3>Variedade</h3>
+                        <p>De pratos rápidos a refeições elaboradas, temos de tudo.</p>
+                    </div>
+                    <div>
+                        <h3>Deliciosas</h3>
+                        <p>Sabor garantido em cada mordida.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Receitas Deliciosas</p>
+
+    <footer id="footer" class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2024 Receitas Deliciosas. Todos os direitos reservados.</p>
+        </div>
     </footer>
 </body>
 </html>

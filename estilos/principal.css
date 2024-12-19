@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+:root {
+    --cor-primaria: #8b0000;
+    --cor-secundaria: #ff6347;
+    --cor-fundo: #f9f9f9;
+    --cor-texto: #333;
+    --cor-texto-claro: #fff;
+}

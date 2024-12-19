@@ -57,6 +57,41 @@ h1, h2, h3 {
     font-family: "Edu AU VIC WA NT Arrows", serif;
 }
 
+/* Estilo da caixa de busca */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto; /* Empurra para o lado direito */
+}
+
+.search-input {
+    padding: 0.5rem;
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 4px var(--cor-primaria);
+}
+
+.search-button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: var(--cor-secundaria);
+}
+
 
 
 .nav-links {
@@ -66,6 +101,7 @@ h1, h2, h3 {
     justify-content: center;
     padding: 0.5rem 0;
     background-color: var(--cor-primaria);
+    margin-left: 30px;
 }
 
 
@@ -138,22 +174,26 @@ h1, h2, h3 {
 }
 
 .recipe-grid {
+    position: relative;
     display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
 }
 
 .recipe-card {
-    display: flex; /* Flexbox para alinhar os elementos */
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    align-items: center; /* Centraliza os itens no eixo horizontal */
-    justify-content: space-between; /* Espaço uniforme entre os elementos */
-    padding: 1rem; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda para destaque */
-    border-radius: 8px; /* Arredondar bordas */
-    background-color: var(--cor-fundo);
-    overflow: hidden; /* Garante que elementos não 'vazem' do container */
+    position: relative;
+    z-index: 1;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+    z-index: 2;
+    transform: scale(1.1); /* Amplia no hover */
+}
+
+.recipe-card:nth-child(2) {
+    margin-top: -50px; /* Sobreposição */
 }
 
 .recipe-card img {

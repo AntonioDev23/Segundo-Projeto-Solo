@@ -3,7 +3,7 @@
 :root {
     --cor-primaria: #8b0000;
     --cor-secundaria: #ff6347;
-    --cor-fundo: #f9f9f9;
+    --cor-fundo: bisque;
     --cor-texto: #333;
     --cor-texto-claro: #fff;
 }
@@ -43,6 +43,11 @@ h1, h2, h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.logo {
+    color: var(--cor-texto-claro);
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .nav-links {
@@ -105,6 +110,10 @@ h1, h2, h3 {
     padding: 2rem 0;
 }
 
+.popular h2 {
+    text-align: center;
+}
+
 .recipe-grid {
     display: flex;
     gap: 1.5rem;
@@ -113,18 +122,23 @@ h1, h2, h3 {
 }
 
 .recipe-card {
-    background: #fff;
+    background: var(--cor-fundo);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     overflow: hidden;
     flex: 1 1 calc(30% - 1rem);
     max-width: 300px;
+    max-height: 500px;
 }
 
 .recipe-card img {
     width: 100%;
     border-bottom: 3px solid #8b0000;
+}
+
+.recipe-card {
+    font-weight: bold;
 }
 
 .recipe-card .btn {
@@ -146,6 +160,10 @@ h1, h2, h3 {
     background: #f4f4f4;
 }
 
+.benefits h2 {
+    text-align: center;
+}
+
 .benefit-list {
     display: flex;
     gap: 1.5rem;
@@ -154,12 +172,13 @@ h1, h2, h3 {
 }
 
 .benefit-item {
-    background: #fff;
+    background: var(--cor-fundo);
     padding: 1rem;
     border-radius: 8px;
     flex: 1 1 calc(30% - 1rem);
     max-width: 300px;
     text-align: center;
+    font-weight: bold;
 }
 
 /* Rodapé */

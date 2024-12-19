@@ -134,6 +134,7 @@ h1, h2, h3 {
     display: table;
     padding: 5px;
     border-radius: 8px;
+    transform: translateY(-15px);
 }
 
 .recipe-grid {

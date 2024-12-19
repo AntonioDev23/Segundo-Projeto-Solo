@@ -120,22 +120,6 @@ h1, h2, h3 {
     transform: translateY(-5px); /* Eleva o container */
 }
 
-.hero .btn {
-    background: #8b0000;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    display: inline-block;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Suaviza transform e fundo */
-}
-
-.hero .btn:hover {
-    background: var(--cor-secundaria);
-    transform: translateY(-5px); /* Move o link para cima */
-    border-radius: 4px; /* Arredonda as bordas */
-}
 
 /* Receitas Populares */
 .popular {
@@ -172,7 +156,7 @@ h1, h2, h3 {
 }
 
 .recipe-card img {
-    width: 200px; /* Garante que a imagem ocupe toda a largura disponível */
+    width: 300px; /* Garante que a imagem ocupe toda a largura disponível */
     height: auto; /* Mantém a proporção da imagem */
     border-radius: 4px; /* Arredonda os cantos da imagem */
     

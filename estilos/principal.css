@@ -194,7 +194,7 @@ h1, h2, h3 {
     align-items: center;
     justify-content: space-between;
     width: 150px;
-    height: 250px; /* Altura fixa para todas as cards */
+    height: 290px; /* Altura fixa para todas as cards */
     text-align: center;
 }
 
@@ -223,16 +223,15 @@ h1, h2, h3 {
 }
 
 .recipe-card .btn {
-    display: block; /* Alinha como um bloco completo */
-    margin: 0 auto; /* Centraliza horizontalmente */
-    text-align: center; /* Garante que o texto fique centralizado */
+    margin-top: auto; /* Empurra o botão para a parte inferior */
+    display: inline-block;
     text-decoration: none;
     padding: 0.5rem 1rem;
     background-color: #8b0000;
     color: #fff;
     border-radius: 4px;
+    text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    width: fit-content; /* Ajusta a largura ao conteúdo */
 }
 
 .recipe-card .btn:hover {

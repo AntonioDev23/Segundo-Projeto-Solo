@@ -6,6 +6,7 @@
     --cor-fundo: bisque;
     --cor-texto: #333;
     --cor-texto-claro: #fff;
+    --cor-fundo-body: blanchedalmond;
 }
 
 * {
@@ -19,12 +20,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-image: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp'); /* Substitua pelo caminho da sua imagem */
-    height: 100vh; /* O efeito parallax ocupa a tela inteira */
-    background-attachment: fixed; /* Isso cria o efeito parallax */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: blanchedalmond;
 }
 
 
@@ -32,7 +28,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 15px;
 }
 
 h1, h2, h3 {
@@ -136,8 +132,12 @@ h1, h2, h3 {
 }
 
 .hero-container {
-    max-width: 600px;
-    margin: auto;
+    text-align: center;
+    padding: 4rem 1rem;
+    background-image: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp'); /* Coloque uma imagem culinária */
+    background-size: cover;
+    background-position: center;
+    color: var(--cor-texto-claro);
 }
 
 .hero h2 {
@@ -174,34 +174,38 @@ h1, h2, h3 {
 }
 
 .recipe-grid {
-    position: relative;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recipe-grid {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .recipe-card {
-    position: relative;
-    z-index: 1;
-    transform: scale(1);
-    transition: transform 0.3s ease;
-}
-
-.recipe-card:hover {
-    z-index: 2;
-    transform: scale(1.1); /* Amplia no hover */
-}
-
-.recipe-card:nth-child(2) {
-    margin-top: -50px; /* Sobreposição */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    height: 250px; /* Altura fixa para todas as cards */
+    text-align: center;
 }
 
 .recipe-card img {
-    width: 300px; /* Garante que a imagem ocupe toda a largura disponível */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 4px; /* Arredonda os cantos da imagem */
-    
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }
+
+
 
 .recipe-card h3 {
     margin: 0.5rem 0; /* Espaço ao redor do título */
@@ -210,22 +214,25 @@ h1, h2, h3 {
 }
 
 .recipe-card p {
-    margin: 0.5rem 0 1rem; /* Espaço inferior maior para separar do botão */
-    font-size: 1rem; /* Tamanho da fonte */
+    margin: 0.5rem 0 1rem;
+    font-size: 1rem;
     text-align: center;
-    color: #555; /* Cor do texto */
+    color: #555;
     font-weight: bold;
+    min-height: 40px; /* Garante espaço fixo para a descrição */
 }
 
 .recipe-card .btn {
-    display: inline-block; /* Faz o link se comportar como botão */
-    text-decoration: none; /* Remove o sublinhado */
-    padding: 0.5rem 1rem; /* Espaçamento interno do botão */
-    background-color: #8b0000; /* Cor de fundo */
-    color: #fff; /* Cor do texto */
-    border-radius: 4px; /* Arredondar bordas */
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+    display: block; /* Alinha como um bloco completo */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    text-align: center; /* Garante que o texto fique centralizado */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #8b0000;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: fit-content; /* Ajusta a largura ao conteúdo */
 }
 
 .recipe-card .btn:hover {

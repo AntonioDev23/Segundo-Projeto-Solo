@@ -188,19 +188,20 @@ h1, h2, h3 {
 
 .recipe-grid {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: space-between; /* Tente usar 'space-between' em vez de 'center' para distribuir melhor os itens */
+    flex-wrap: nowrap; /* Impede a quebra de linha */
 }
 
 .recipe-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  /* Alinha os itens no eixo vertical */
+    justify-content: flex-end;  /* Garante que o botão fique no final do card */
     padding: 1rem;
     border-radius: 10px;
-    
+    height: 100%;  /* Garante que o card ocupe todo o espaço disponível */
+    max-width: 300px;  /* Limita a largura dos cards */
+    min-height: 350px; /* Altura mínima para o card */
 }
 
 .recipe-card img {
@@ -211,6 +212,7 @@ h1, h2, h3 {
     display: block;  /* Remove o comportamento de inline */
     margin-left: auto;  /* Centraliza a imagem horizontalmente */
     margin-right: auto;  /* Centraliza a imagem horizontalmente */
+    
 }
 
 
@@ -227,30 +229,31 @@ h1, h2, h3 {
     text-align: center;
     color: #555;
     font-weight: bold;
-    min-height: 50px;
-    white-space: normal;  /* Permite a quebra de linha do texto */
-    word-wrap: break-word;  /* Quebra palavras longas para a linha seguinte */
-    overflow-wrap: break-word;  /* Compatibilidade entre navegadores */
-    width: 100%;  /* Faz o parágrafo ocupar toda a largura do card */
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    flex-grow: 0;  /* Impede o parágrafo de crescer e afetar o alinhamento do botão */
 }
 
+
 .recipe-card .btn {
-    margin-top: auto; /* Empurra o botão para a parte inferior */
-    display: inline-block;
-    text-decoration: none;
+    margin-top: auto;  /* Empurra o botão para o final */
     padding: 0.5rem 1rem;
     background-color: #8b0000;
     color: #fff;
     border-radius: 4px;
     text-align: center;
+    text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 100%;  /* Faz o botão ocupar toda a largura do card */
-    box-sizing: border-box;  /* Inclui o padding e a borda na largura do botão */
+    width: 150px;  /* Garante que o botão ocupe toda a largura */
+    align-self: center; /* Centraliza o botão horizontalmente */
+    
 }
 
 .recipe-card .btn:hover {
-    background-color: var(--cor-secundaria); /* Fundo ao passar o mouse */
-    transform: translateY(-3px); /* Elevação ao passar o mouse */
+    background-color: var(--cor-secundaria);  /* Fundo ao passar o mouse */
+    transform: translateY(-3px);  /* Elevação ao passar o mouse */
 }
 
 /* Benefícios */

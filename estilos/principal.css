@@ -227,8 +227,11 @@ h1, h2, h3 {
     text-align: center;
     color: #555;
     font-weight: bold;
-    flex-grow: 1;  /* Permite que o parágrafo ocupe o espaço disponível */
-    min-height: 50px; /* Garante uma altura mínima */
+    min-height: 50px;
+    white-space: normal;  /* Permite a quebra de linha do texto */
+    word-wrap: break-word;  /* Quebra palavras longas para a linha seguinte */
+    overflow-wrap: break-word;  /* Compatibilidade entre navegadores */
+    width: 100%;  /* Faz o parágrafo ocupar toda a largura do card */
 }
 
 .recipe-card .btn {
@@ -241,6 +244,8 @@ h1, h2, h3 {
     border-radius: 4px;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;  /* Faz o botão ocupar toda a largura do card */
+    box-sizing: border-box;  /* Inclui o padding e a borda na largura do botão */
 }
 
 .recipe-card .btn:hover {

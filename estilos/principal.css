@@ -138,6 +138,11 @@ h1, h2, h3 {
     background-size: cover;
     background-position: center;
     color: var(--cor-texto-claro);
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;    /* Alinha verticalmente */
+    flex-direction: column; /* Para organizar os filhos verticalmente */
+    
 }
 
 .hero h2 {
@@ -148,6 +153,7 @@ h1, h2, h3 {
     color: var(--cor-primaria);
     padding: 5px;
     border-radius: 5px;
+    flex-basis: 50px;
 }
 
 

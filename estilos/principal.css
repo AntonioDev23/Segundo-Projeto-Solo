@@ -197,18 +197,20 @@ h1, h2, h3 {
 .recipe-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 150px;
-    height: 290px; /* Altura fixa para todas as cards */
-    text-align: center;
+    justify-content: space-between;  /* Alinha os itens no eixo vertical */
+    padding: 1rem;
+    border-radius: 10px;
+    
 }
 
 .recipe-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 100px;  /* Defina o tamanho desejado */
+    height: 100px;  /* Mantenha a altura igual à largura para garantir o formato circular */
+    border-radius: 50%;  /* Faz a imagem ficar redonda */
+    object-fit: cover;  /* Garante que a imagem preencha o espaço sem distorcer */
+    display: block;  /* Remove o comportamento de inline */
+    margin-left: auto;  /* Centraliza a imagem horizontalmente */
+    margin-right: auto;  /* Centraliza a imagem horizontalmente */
 }
 
 
@@ -225,7 +227,8 @@ h1, h2, h3 {
     text-align: center;
     color: #555;
     font-weight: bold;
-    min-height: 40px; /* Garante espaço fixo para a descrição */
+    flex-grow: 1;  /* Permite que o parágrafo ocupe o espaço disponível */
+    min-height: 50px; /* Garante uma altura mínima */
 }
 
 .recipe-card .btn {

@@ -20,7 +20,27 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: blanchedalmond;
+    background: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed; /* Ativa o efeito de parallax */
+}
+
+/* Seções com fundo sólido que sobrepõem o parallax */
+.header,
+.popular,
+.benefits,
+#newsletter,
+.footer {
+    background-color: var(--cor-fundo); /* Ou qualquer cor sólida */
+    position: relative; /* Garante que o fundo sólido sobreponha a imagem */
+}
+
+/* Ajusta a seção hero para integrar o parallax */
+.hero {
+    background: none; /* Remove o fundo da seção para que o parallax do body apareça */
+    padding: 5rem 0;
+    color: var(--cor-texto-claro);
+    text-align: center;
 }
 
 
@@ -136,7 +156,6 @@ h1, h2, h3 {
 .hero-container {
     text-align: center;
     padding: 4rem 1rem;
-    background-image: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp'); /* Coloque uma imagem culinária */
     background-size: cover;
     background-position: center;
     color: var(--cor-texto-claro);
@@ -260,9 +279,12 @@ h1, h2, h3 {
 
 
 /* Benefícios */
-.benefits {
-    padding: 2rem 0;
-    background: #f4f4f4;
+#benefits {
+    background: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp') no-repeat center center fixed; /* Imagem de fundo com parallax */
+    background-size: cover; /* Faz a imagem preencher o fundo */
+    padding: 2rem 0; /* Mantém o espaçamento da seção */
+    color: var(--cor-texto);
+    text-align: center;
 }
 
 .benefits h2 {
@@ -287,11 +309,11 @@ h1, h2, h3 {
 }
 
 #newsletter {
-    padding: 2rem 0;
+    padding-bottom: 2rem;
     background-color: #8b0000;
     color: #fff;
     text-align: center;
-    height: 200px;
+    
 }
 
 #newsletter h2 {

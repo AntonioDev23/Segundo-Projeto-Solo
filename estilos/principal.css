@@ -280,14 +280,22 @@ h1, h2, h3 {
 
 /* Benefícios */
 #benefits {
+    display: flex;
     background: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp') no-repeat center center fixed; /* Imagem de fundo com parallax */
     background-size: cover; /* Faz a imagem preencher o fundo */
     padding: 2rem 0; /* Mantém o espaçamento da seção */
     color: var(--cor-texto);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
 }
 
 .benefits h2 {
+    text-align: center;
+    background-color: var(--cor-fundo);
+    padding: 5px 10px;;
     text-align: center;
 }
 

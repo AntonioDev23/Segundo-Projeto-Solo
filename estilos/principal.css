@@ -283,13 +283,14 @@ h1, h2, h3 {
     display: flex;
     background: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp') no-repeat center center fixed; /* Imagem de fundo com parallax */
     background-size: cover; /* Faz a imagem preencher o fundo */
-    padding: 2rem 0; /* Mantém o espaçamento da seção */
+    padding: 2px 10px; /* Reduzindo o padding */
     color: var(--cor-texto);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60vh;
+    
 }
 
 .benefits h2 {
@@ -297,6 +298,12 @@ h1, h2, h3 {
     background-color: var(--cor-fundo);
     padding: 5px 10px;;
     text-align: center;
+    line-height: 1.2; /* Ajusta o espaçamento vertical entre as linhas do texto */
+    width: fit-content; /* Ajusta o tamanho do h2 ao conteúdo */
+    margin: 0 auto; /* Centraliza o h2 horizontalmente */
+    border-radius: 5px;
+    position: relative;
+    top: -15px; /* Move o título para cima sem afetar os outros elementos */
 }
 
 .benefit-list {
@@ -304,6 +311,7 @@ h1, h2, h3 {
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative; /* Garantir que a posição dos itens não seja afetada pelo título */
 }
 
 .benefit-item {

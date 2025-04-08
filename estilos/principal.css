@@ -44,96 +44,81 @@ body {
     padding: 0 15px;
 }
 
-/* Header Aprimorado */
+/* HEADER ORIGINAL PRESERVADO */
 .header {
+    background: #8b0000; /* Vermelho escuro como no original */
+    color: #fff;
     padding: 1rem 0;
-    box-shadow: var(--sombra);
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
+/* Logo - Preservando sua fonte especial */
 .logo {
+    color: white;
     font-family: "Edu AU VIC WA NT Arrows", serif;
     font-size: 1.8rem;
-    color: var(--cor-texto-claro);
-    background-color: var(--cor-primaria);
-    padding: 0.5rem 1rem;
-    border-radius: var(--borda-arredondada);
     text-decoration: none;
 }
 
-/* Navegação */
+/* Navegação - Estilo original com melhorias de hover */
 .nav-links {
-    display: flex;
-    gap: 1.5rem;
     list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-left: 30px;
+    background-color: #8b0000; /* Fundo vermelho igual ao header */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 .nav-links a {
-    color: var(--cor-texto-claro);
+    color: white;
     text-decoration: none;
-    font-weight: 600;
     padding: 0.5rem 1rem;
-    border-radius: var(--borda-arredondada);
-    background-color: var(--cor-primaria);
     transition: all 0.3s ease;
-    display: inline-block;
 }
 
 .nav-links a:hover {
-    background-color: var(--cor-destaque);
-    transform: translateY(-3px);
-    box-shadow: var(--sombra);
+    background-color: #ff6347; /* Laranja-vermelho do original */
+    transform: translateY(-5px);
+    border-radius: 4px;
 }
 
-.login-btn {
-    background-color: var(--cor-secundaria) !important;
-}
-
-/* Barra de Busca */
+/* Barra de busca - Estilo original mantido */
 .search-form {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    max-width: 400px;
     margin-left: auto;
 }
 
 .search-input {
-    padding: 0.6rem 1rem;
-    border: 2px solid var(--cor-secundaria);
-    border-radius: var(--borda-arredondada) 0 0 var(--borda-arredondada);
-    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ff6347;
+    border-radius: 4px;
     font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.search-input:focus {
-    border-color: var(--cor-primaria);
-    outline: none;
 }
 
 .search-button {
-    background-color: var(--cor-secundaria);
+    background-color: #8b0000;
     color: white;
     border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .search-button:hover {
-    background-color: var(--cor-destaque);
+    background-color: #ff6347;
 }
 
 /* Hero Section */

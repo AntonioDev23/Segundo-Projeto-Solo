@@ -1,19 +1,20 @@
 @charset "UTF-8";
 
-/* principal.css - Versão Consolidada */
 :root {
     --cor-primaria: #8b0000;
     --cor-secundaria: #ff6347;
-    --cor-fundo: rgba(255, 248, 240, 0.9);
+    --cor-fundo: rgba(255, 248, 240, 0.9); /* Fundo semi-transparente */
     --cor-texto: #333;
     --cor-texto-claro: #fff;
-    --borda-arredondada: 6px;
+    --cor-destaque: #ff4500;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --borda-arredondada: 8px;
 }
 
 /* Reset e Estilos Gerais */
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -23,40 +24,58 @@ body {
     color: var(--cor-texto);
     background: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp') no-repeat center center fixed;
     background-size: cover;
+    background-attachment: fixed;
 }
 
-/* Header Original como Você Queria */
+/* Seções com fundo sólido */
+.header,
+.popular,
+.benefits,
+.newsletter,
+.footer {
+    background-color: var(--cor-fundo);
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* HEADER ORIGINAL PRESERVADO */
 .header {
-    background: #8b0000;
+    background: #8b0000; /* Vermelho escuro como no original */
     color: #fff;
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
 }
 
+/* Logo - Preservando sua fonte especial */
 .logo {
+    color: white;
     font-family: "Edu AU VIC WA NT Arrows", serif;
     font-size: 1.8rem;
-    color: white;
     text-decoration: none;
 }
 
+/* Navegação - Estilo original com melhorias de hover */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1rem;
     margin-left: 30px;
-    background-color: #8b0000;
+    background-color: #8b0000; /* Fundo vermelho igual ao header */
     padding: 0.5rem 1rem;
     border-radius: 5px;
 }
@@ -65,21 +84,23 @@ body {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    background-color: #ff6347;
+    background-color: #ff6347; /* Laranja-vermelho do original */
     transform: translateY(-5px);
     border-radius: 4px;
 }
 
-/* Barra de Busca (Sem Transições) */
+/* Barra de busca - Estilo original mantido */
 .search-form {
     display: flex;
     align-items: center;
     margin-left: auto;
 }
 
+/* Caixa de texto - versão estática */
 .search-input {
     padding: 0.7rem 1rem;
     border: 2px solid #ff6347;
@@ -87,14 +108,17 @@ body {
     font-size: 1.1rem;
     width: 250px;
     height: 40px;
-    transition: none;
+    /* Removendo todas as transições: */
+    transition: none !important;
 }
 
 .search-input:focus {
     outline: none;
-    border: 2px solid #ff6347;
+    border: 2px solid #ff6347; /* Mantém a mesma espessura, sem crescimento */
+    /* Sem box-shadow, transform ou outros efeitos */
 }
 
+/* Botão de busca - também estático */
 .search-button {
     background-color: #8b0000;
     color: white;
@@ -104,16 +128,17 @@ body {
     cursor: pointer;
     height: 40px;
     font-size: 1.1rem;
-    transition: none;
+    /* Removendo transições: */
+    transition: none !important;
 }
 
 .search-button:hover {
-    background-color: #ff6347;
+    background-color: #ff6347; /* Cor muda instantaneamente sem animação */
 }
 
-/* Seção Hero Ajustada */
+/* Hero Section */
 .hero {
-    height: 50vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     text-align: center;
@@ -134,7 +159,6 @@ body {
 
 .hero-container {
     width: 100%;
-    padding: 0 15px;
 }
 
 .hero h2 {
@@ -143,26 +167,86 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Seção Popular Ajustada (Mais Próxima do Hero) */
+
+
+/* AJUSTE MÍNIMO PARA ESPAÇAMENTO - NÃO ALTERA NADA MAIS */
+.hero {
+    padding-bottom: 0 !important; /* Remove espaço interno inferior */
+    margin-bottom: -200px !important; /* Puxa a próxima seção para cima */
+}
+
 .popular {
-    background-color: var(--cor-fundo);
-    padding: 1rem 0 3rem;
-    margin-top: -40px; /* Puxa a seção para cima */
+    padding-top: 20px !important; /* Compensa o ajuste */
     position: relative;
+    z-index: 1;
+}
+
+.popular h2 {
+    margin-top: 0;
+}
+
+
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: var(--borda-arredondada);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.cta-button:hover {
+    background-color: var(--cor-destaque);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra);
+}
+
+/* Seção de Receitas Populares */
+.popular {
+    padding: 4rem 0;
 }
 
 .popular h2 {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: var(--cor-primaria);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: var(--cor-fundo);
     padding: 0.5rem 2rem;
     border-radius: var(--borda-arredondada);
-    display: inline-block;
-    position: relative;
-    top: -20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--sombra);
+}
+
+/* Filtros */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filters button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background-color: #eee;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.filters button.active {
+    background-color: var(--cor-primaria);
+    color: white;
 }
 
 /* Grid de Receitas */
@@ -170,16 +254,158 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 0 15px;
+    padding: 1rem 0;
 }
 
-/* ... (mantenha o restante do seu CSS existente para as outras seções) ... */
+.recipe-card {
+    background: white;
+    border-radius: var(--borda-arredondada);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.recipe-meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.recipe-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--borda-arredondada);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--cor-destaque);
+    transform: translateY(-2px);
+}
+
+.fav-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+}
+
+.fav-btn.active, .fav-btn:hover {
+    color: var(--cor-secundaria);
+}
+
+/* Newsletter */
+.newsletter {
+    padding: 3rem 0;
+    text-align: center;
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    padding: 0.8rem;
+    border: none;
+    border-radius: var(--borda-arredondada) 0 0 var(--borda-arredondada);
+    width: 70%;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--cor-secundaria);
+    color: white;
+    border: none;
+    border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--cor-destaque);
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--cor-secundaria);
+}
 
 /* Responsividade */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        gap: 1rem;
     }
     
     .nav-links {
@@ -193,15 +419,27 @@ body {
         margin-top: 1rem;
     }
     
-    .hero {
-        height: 40vh;
-    }
-    
     .hero h2 {
         font-size: 2rem;
     }
     
-    .popular {
-        margin-top: -20px;
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        border-radius: var(--borda-arredondada);
+    }
+    
+    .newsletter-form button {
+        margin-top: 0.5rem;
     }
 }

@@ -100,25 +100,40 @@ body {
     margin-left: auto;
 }
 
+/* Caixa de texto - versão estática */
 .search-input {
-    padding: 0.5rem;
-    border: 1px solid #ff6347;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid #ff6347;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    width: 250px;
+    height: 40px;
+    /* Removendo todas as transições: */
+    transition: none !important;
 }
 
+.search-input:focus {
+    outline: none;
+    border: 2px solid #ff6347; /* Mantém a mesma espessura, sem crescimento */
+    /* Sem box-shadow, transform ou outros efeitos */
+}
+
+/* Botão de busca - também estático */
 .search-button {
     background-color: #8b0000;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.65rem 1.2rem;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    height: 40px;
+    font-size: 1.1rem;
+    /* Removendo transições: */
+    transition: none !important;
 }
 
 .search-button:hover {
-    background-color: #ff6347;
+    background-color: #ff6347; /* Cor muda instantaneamente sem animação */
 }
 
 /* Hero Section */

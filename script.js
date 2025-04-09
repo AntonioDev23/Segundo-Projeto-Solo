@@ -45,6 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.querySelector('.nav-toggle').addEventListener('click', function() {
-    this.classList.toggle('active');
+    // Alterna a classe 'active' no menu
     document.querySelector('.nav').classList.toggle('active');
+    
+    // Animação do hambúrguer para X
+    this.classList.toggle('active');
+    
+    // Altera o ícone
+    if (this.classList.contains('active')) {
+        this.innerHTML = '✕'; // Ícone X quando aberto
+    } else {
+        this.innerHTML = '<span class="hamburger"></span>'; // Volta ao hambúrguer
+    }
 });

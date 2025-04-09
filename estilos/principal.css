@@ -439,14 +439,13 @@ body {
     color: var(--cor-secundaria);
 }
 
-/* ESTILO DO BOTÃO HAMBÚRGUER */
+/* Menu hambúrguer */
 .nav-toggle {
-    display: none; /* Oculta por padrão (só aparece em mobile) */
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 101;
 }
 
 .hamburger {
@@ -469,6 +468,47 @@ body {
 
 .hamburger::before { top: -8px; }
 .hamburger::after { bottom: -8px; }
+
+.nav-toggle.active .hamburger {
+    display: none;
+}
+
+/* Menu mobile */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #8b0000;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav.active {
+        max-height: 500px; /* Altura suficiente para o menu */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links li {
+        padding: 0.5rem 0;
+    }
+
+    .search-mobile {
+        padding: 1rem 0 0;
+        margin-top: 0.5rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+}
 
 /* MOSTRA O BOTÃO EM MOBILE */
 @media (max-width: 768px) {

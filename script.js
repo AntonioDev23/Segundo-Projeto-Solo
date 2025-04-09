@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.querySelector('.nav-toggle').addEventListener('click', function() {
-    const nav = document.querySelector('.nav-links');
-    nav.classList.toggle('active');
     this.classList.toggle('active');
+    document.querySelector('.nav').classList.toggle('active');
 });

@@ -439,13 +439,14 @@ body {
     color: var(--cor-secundaria);
 }
 
-/* ===== MENU HAMBÚRGUER (MOBILE) ===== */
+/* ESTILO DO BOTÃO HAMBÚRGUER */
 .nav-toggle {
-    display: none; /* Oculta em desktop */
+    display: none; /* Oculta por padrão (só aparece em mobile) */
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
+    z-index: 101;
 }
 
 .hamburger {
@@ -466,67 +467,63 @@ body {
     left: 0;
 }
 
-.hamburger::before {
-    top: -8px;
-}
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
 
-.hamburger::after {
-    bottom: -8px;
-}
-
-/* HEADER MOBILE */
+/* MOSTRA O BOTÃO EM MOBILE */
 @media (max-width: 768px) {
-    .header-container {
-        display: grid;
-        grid-template-areas: 
-            "logo hamburger"
-            "busca busca";
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        padding: 1rem;
+    .nav-toggle {
+        display: block; /* Garante que o botão aparece */
+        order: 2; /* Posiciona à direita */
+        margin-left: auto; /* Alinha à direita */
     }
 
     .logo {
-        grid-area: logo;
-        text-align: left;
-        font-size: 1.5rem;
+        order: 1; /* Título à esquerda */
     }
 
-    .nav-toggle {
-        grid-area: hamburger;
-        display: block;
-        justify-self: end;
-    }
+    /* Restante do seu CSS mobile... */
+}
 
-    .search-form.desktop {
-        grid-area: busca;
-        width: 100%;
-        margin-top: 1rem;
-        display: none; /* Escondido inicialmente */
-    }
+@media (max-width: 768px) {
+    /* ... (mantenha o grid do header-container) ... */
 
     .nav {
         position: fixed;
-        top: 70px; /* Ajuste conforme altura do header */
+        top: 70px;
         left: -100%;
         width: 80%;
-        height: calc(100vh - 70px);
         background: #8b0000;
         transition: left 0.3s;
         z-index: 100;
-    }
-
-    .nav.active {
-        left: 0;
+        padding: 15px 0; /* Espaçamento interno reduzido */
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-links {
         flex-direction: column;
-        padding: 2rem;
+        gap: 8px !important; /* Espaçamento reduzido entre itens */
+        padding: 0 20px;
     }
 
-    /* Mostra a busca quando menu aberto */
-    .nav.active ~ .search-form.desktop {
-        display: flex;
+    .nav-links li {
+        padding: 8px 0; /* Reduz o padding vertical */
+    }
+
+    /* Barra de busca DENTRO do menu */
+    .nav-links .search-mobile {
+        padding: 15px 20px 0;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .search-form.mobile {
+        width: 100%;
+    }
+
+    .search-form.mobile .search-input {
+        width: 100%;
+        padding: 10px;
     }
 }

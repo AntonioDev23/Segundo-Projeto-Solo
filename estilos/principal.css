@@ -474,47 +474,59 @@ body {
     bottom: -8px;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* HEADER MOBILE */
 @media (max-width: 768px) {
-    /* Header em mobile */
     .header-container {
-        flex-wrap: wrap;
-        gap: 10px;
+        display: grid;
+        grid-template-areas: 
+            "logo hamburger"
+            "busca busca";
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        padding: 1rem;
     }
 
-    /* Mostra botão hambúrguer */
-    .nav-toggle {
-        display: block;
-        order: 1;
-    }
-
-    /* Logo centralizado */
     .logo {
-        order: 2;
-        flex-grow: 1;
-        text-align: center;
+        grid-area: logo;
+        text-align: left;
+        font-size: 1.5rem;
     }
 
-    /* Esconde o menu original */
-    .nav-links {
-        display: none;
+    .nav-toggle {
+        grid-area: hamburger;
+        display: block;
+        justify-self: end;
+    }
+
+    .search-form.desktop {
+        grid-area: busca;
         width: 100%;
-        order: 4;
+        margin-top: 1rem;
+        display: none; /* Escondido inicialmente */
+    }
+
+    .nav {
+        position: fixed;
+        top: 70px; /* Ajuste conforme altura do header */
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
         background: #8b0000;
-        padding: 10px 0;
+        transition: left 0.3s;
+        z-index: 100;
     }
 
-    /* Menu ativo (quando clica no hambúrguer) */
-    .nav-links.active {
-        display: flex;
+    .nav.active {
+        left: 0;
+    }
+
+    .nav-links {
         flex-direction: column;
-        gap: 10px;
+        padding: 2rem;
     }
 
-    /* Barra de busca em linha separada */
-    .search-form {
-        order: 3;
-        width: 100%;
-        margin-top: 10px;
+    /* Mostra a busca quando menu aberto */
+    .nav.active ~ .search-form.desktop {
+        display: flex;
     }
 }

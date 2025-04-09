@@ -18,6 +18,43 @@
     box-sizing: border-box;
 }
 
+/* Barra de busca DESKTOP (mantenha a original) */
+.search-form.desktop {
+    display: flex; /* Visível apenas no desktop */
+}
+
+/* Barra de busca MOBILE */
+.search-mobile {
+    display: none; /* Oculta por padrão */
+    padding: 10px 15px;
+}
+
+.search-form.mobile {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.search-form.mobile .search-input {
+    width: 100%;
+    padding: 0.8rem;
+}
+
+/* Mostra busca no menu quando aberto */
+.nav-links.active .search-mobile {
+    display: block;
+}
+
+/* Oculta a busca do header em mobile */
+@media (max-width: 768px) {
+    .search-form.desktop {
+        display: none;
+    }
+    
+    .nav-links.active {
+        padding-bottom: 15px; /* Espaço extra para a busca */
+    }
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;

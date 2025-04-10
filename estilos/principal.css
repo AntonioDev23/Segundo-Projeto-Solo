@@ -18,14 +18,14 @@
     box-sizing: border-box;
 }
 
-/* Barra de busca DESKTOP - Mantém visível */
+
+/* 1. CORREÇÃO DA BARRA DE BUSCA (DESKTOP) */
 .search-form.desktop {
     display: flex !important; /* Força a exibição */
     align-items: center;
-    margin-left: auto; /* Alinha à direita */
+    margin-left: auto;
 }
 
-/* Estilo do input e botão (ajuste conforme seu tema) */
 .search-form.desktop .search-input {
     padding: 8px 12px;
     border: 2px solid #ff6347;
@@ -42,35 +42,41 @@
     cursor: pointer;
 }
 
-/* Barra de busca MOBILE */
-.search-mobile {
-    display: none; /* Oculta por padrão */
-    padding: 10px 15px;
-}
-
-.search-form.mobile {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.search-form.mobile .search-input {
-    width: 100%;
-    padding: 0.8rem;
-}
-
-/* Mostra busca no menu quando aberto */
-.nav-links.active .search-mobile {
-    display: block;
-}
-
-/* Oculta a busca do header em mobile */
+/* 2. CORREÇÃO DO MENU HAMBURGUER (MOBILE) */
 @media (max-width: 768px) {
-    .search-form.desktop {
-        display: none;
+    .nav-toggle {
+        display: block;
+        order: 2;
+        margin-left: auto;
     }
-    
-    .nav-links.active {
-        padding-bottom: 15px; /* Espaço extra para a busca */
+
+    .nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        background: #8b0000;
+        transition: left 0.3s;
+        z-index: 100;
+        padding: 15px 0;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+
+    .nav.active {
+        left: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 8px !important;
+        padding: 0 20px;
+    }
+
+    .search-mobile {
+        padding: 15px 20px 0;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
     }
 }
 
@@ -583,5 +589,60 @@ body {
     .search-form.mobile .search-input {
         width: 100%;
         padding: 10px;
+    }
+}
+
+/* Garante que a busca mobile só aparece no menu hambúrguer */
+.search-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .search-form.desktop {
+        display: none; /* Oculta a barra desktop em mobile */
+    }
+    
+    .search-mobile {
+        display: block; /* Mostra a barra mobile quando o menu abre */
+        padding: 15px 20px;
+    }
+}
+
+/* Oculta a barra de busca no desktop */
+.search-form.desktop {
+    display: none;
+}
+
+/* Mostra a barra de busca APENAS no menu mobile aberto */
+.search-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Exibe a busca quando o menu está ativo */
+    .nav.active .search-mobile {
+        display: block;
+        padding: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Estilo da busca mobile */
+    .search-mobile .search-form {
+        width: 100%;
+    }
+    
+    .search-mobile .search-input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid var(--cor-secundaria);
+        border-radius: 6px 0 0 6px;
+    }
+    
+    .search-mobile .search-button {
+        background: var(--cor-primaria);
+        color: white;
+        border: 2px solid var(--cor-secundaria);
+        border-radius: 0 6px 6px 0;
+        padding: 10px 15px;
     }
 }

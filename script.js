@@ -1,39 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Atualiza o ano no footer
+    // Atualiza o ano no footer (mantém seu layout original)
     document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Sistema de favoritos
-    document.querySelectorAll('.fav-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.classList.toggle('active');
-            // Aqui você pode adicionar lógica para salvar no localStorage
+
+    // Menu Hamburguer (funcionalidade completa)
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        // Altera o ícone para "X" quando aberto
+        this.innerHTML = this.classList.contains('active') ? '✕' : '<span class="hamburger"></span>';
+    });
+
+    // Fecha o menu ao clicar em um link (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            navToggle.classList.remove('active');
+            navToggle.innerHTML = '<span class="hamburger"></span>';
         });
     });
-    
-    // Filtro de receitas
-    const filterButtons = document.querySelectorAll('.filters button');
-    const recipeCards = document.querySelectorAll('.recipe-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove a classe active de todos os botões
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Adiciona a classe active apenas no botão clicado
-            button.classList.add('active');
-            
-            const filter = button.dataset.category;
-            
-            recipeCards.forEach(card => {
-                if (filter === 'all' || card.dataset.category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-    
-    // Efeito smooth scroll para links internos
+
+    // Smooth scroll para links internos (sem afetar layout)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -42,19 +31,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-});
-
-document.querySelector('.nav-toggle').addEventListener('click', function() {
-    // Alterna a classe 'active' no menu
-    document.querySelector('.nav').classList.toggle('active');
-    
-    // Animação do hambúrguer para X
-    this.classList.toggle('active');
-    
-    // Altera o ícone
-    if (this.classList.contains('active')) {
-        this.innerHTML = '✕'; // Ícone X quando aberto
-    } else {
-        this.innerHTML = '<span class="hamburger"></span>'; // Volta ao hambúrguer
-    }
 });

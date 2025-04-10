@@ -646,3 +646,43 @@ body {
         padding: 10px 15px;
     }
 }
+
+/* ===== BARRA DE BUSCA DESKTOP ===== */
+.search-form.desktop {
+    display: flex !important;  /* Força exibição no desktop */
+    align-items: center;
+    margin-left: auto;
+}
+
+.search-form.desktop .search-input {
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--cor-secundaria);
+    border-radius: 6px 0 0 6px;
+    width: 250px;
+    height: 40px;
+}
+
+.search-form.desktop .search-button {
+    background: var(--cor-primaria);
+    color: white;
+    border: 2px solid var(--cor-secundaria);
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1.2rem;
+    cursor: pointer;
+    height: 40px;
+}
+
+/* ===== AJUSTES MOBILE ===== */
+@media (max-width: 768px) {
+    /* Oculta a barra desktop em mobile */
+    .search-form.desktop {
+        display: none !important;
+    }
+    
+    /* Garante que a busca mobile só aparece no menu aberto */
+    .nav.active .search-mobile {
+        display: block;
+        padding: 15px 20px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+}

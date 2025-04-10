@@ -15,21 +15,25 @@
         <div class="container header-container">
             <h1 class="logo">ARSN Receitas Deliciosas</h1>
             
-            <!-- Botão hambúrguer (único item no header mobile) -->
+            <!-- Botão hambúrguer (mobile) -->
             <button class="nav-toggle" aria-label="Menu">
                 <span class="hamburger"></span>
             </button>
             
-            <!-- REMOVA a barra de busca desktop aqui -->
+            <!-- Barra de busca DESKTOP (só aparece em telas grandes) -->
+            <form class="search-form desktop">
+                <input type="text" placeholder="Buscar..." class="search-input">
+                <button type="submit" class="search-button">🔍</button>
+            </form>
             
             <nav class="nav">
                 <ul class="nav-links">
                     <li><a href="#popular">Nossas Receitas</a></li>
                     <li><a href="#categories">Categorias</a></li>
                     <li><a href="login.html" class="login-btn">Login</a></li>
-                    <!-- Barra de busca DENTRO do menu (mobile) -->
+                    <!-- Barra de busca MOBILE (só aparece no menu aberto) -->
                     <li class="search-mobile">
-                        <form class="search-form">
+                        <form class="search-form mobile">
                             <input type="text" placeholder="Buscar..." class="search-input">
                             <button type="submit" class="search-button">🔍</button>
                         </form>

@@ -472,7 +472,6 @@ body {
 .nav-toggle.active .hamburger {
     display: none;
 }
-
 /* Menu mobile */
 @media (max-width: 768px) {
     .nav-toggle {

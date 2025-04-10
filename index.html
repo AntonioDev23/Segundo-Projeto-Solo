@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receitas</title>
     <link rel="stylesheet" href="estilos/principal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&display=swap" rel="stylesheet">
 </head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&display=swap" rel="stylesheet">
 <body>
 
     <header class="header">
@@ -20,13 +20,20 @@
             <span class="hamburger"></span>
         </button>
         
+        <!-- Barra de Busca DESKTOP (adicionei esta parte) -->
+        <form class="search-form desktop">
+            <input type="text" placeholder="Buscar..." class="search-input">
+            <button type="submit" class="search-button">🔍</button>
+        </form>
+        
         <nav class="nav">
             <ul class="nav-links">
                 <li><a href="#popular">Nossas Receitas</a></li>
                 <li><a href="#categories">Categorias</a></li>
                 <li><a href="login.html" class="login-btn">Login</a></li>
+                <!-- Barra de Busca MOBILE (mantida do original) -->
                 <li class="search-mobile">
-                    <form class="search-form desktop">
+                    <form class="search-form mobile">
                         <input type="text" placeholder="Buscar..." class="search-input">
                         <button type="submit" class="search-button">🔍</button>
                     </form>
@@ -40,6 +47,7 @@
         <section class="hero">
             <div class="container hero-container">
                 <h2>Descubra Receitas Deliciosas Para Todas as Ocasiões!</h2>
+            </div>
         </section>
 
         <section id="popular" class="popular">
@@ -106,7 +114,7 @@
             </div>
         </section>
         <section id="newsletter" class="newsletter">
-
+            <div class="container">
                 <h2>Assine nossa Newsletter</h2>
                 <p>Receba receitas deliciosas diretamente no seu email!</p>
                 <form class="newsletter-form">
@@ -119,7 +127,7 @@
 
     <footer id="footer" class="footer">
         <div class="container footer-container">
-            <p>&copy; ARSN Receitas Deliciosas. Todos os direitos reservados.</p>
+            <p>&copy; <span id="year"></span> ARSN Receitas Deliciosas. Todos os direitos reservados.</p>
         </div>
     </footer>
 

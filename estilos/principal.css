@@ -376,9 +376,6 @@ body {
     font-weight: 600; /* Peso intermediário (se o bolder for muito forte) */
 }
 
-.recipe-card:hover p {
-    color: #333333; /* Escurece levemente no hover */
-}
 .btn {
     display: inline-block;
     background-color: var(--cor-primaria);

@@ -366,14 +366,19 @@ body {
 }
 
 .recipe-card h3 {
-    margin-top: 15px; /* Espaçamento superior (ajuste conforme necessidade) */
+    color: var(--cor-primaria) !important; /* Mesma cor do header */
+    margin-top: 15px; /* Mantém o espaçamento que já ajustamos */
+    text-align: center; /* Preserva o alinhamento centralizado */
 }
 
 .recipe-card p {
-    margin: 10px 15px 15px; /* Topo | Laterais | Inferior */
-    color: #666; /* Mantém sua cor original */
+    color: #000000; /* Preto puro */
+    font-weight: 600; /* Peso intermediário (se o bolder for muito forte) */
 }
 
+.recipe-card:hover p {
+    color: #333333; /* Escurece levemente no hover */
+}
 .btn {
     display: inline-block;
     background-color: var(--cor-primaria);

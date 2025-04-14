@@ -363,6 +363,21 @@ body {
     padding-top: 1rem;
 }
 
+/* ===== CENTRALIZAR TÍTULO E DESCRIÇÃO DOS CARDS ===== */
+.recipe-card h3, 
+.recipe-card p {
+    text-align: center; /* Centraliza horizontalmente */
+}
+
+.recipe-card h3 {
+    margin-top: 15px; /* Espaçamento superior (ajuste conforme necessidade) */
+}
+
+.recipe-card p {
+    margin: 10px 15px 15px; /* Topo | Laterais | Inferior */
+    color: #666; /* Mantém sua cor original */
+}
+
 .btn {
     display: inline-block;
     background-color: var(--cor-primaria);

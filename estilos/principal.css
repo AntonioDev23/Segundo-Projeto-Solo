@@ -374,16 +374,18 @@ body {
     color: #666; /* Mantém sua cor original */
 }
 
-/* REGRA ORIGINAL (mantenha tudo exceto o border-radius) */
 .btn {
     display: inline-block;
     background-color: var(--cor-primaria);
     color: white;
     padding: 0.6rem 1.2rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.5s ease; /* Transição mais suave (0.5s) */
 }
 
+.btn:hover {
+    background-color: var(--cor-destaque);
+}
 /* REGRA NOVA (adicionada no final do CSS) */
 .recipe-card .btn {
     border-radius: 0 0 var(--borda-arredondada) var(--borda-arredondada);
@@ -392,9 +394,6 @@ body {
     margin: 0;
 }
 
-.btn:hover {
-    background-color: var(--cor-destaque);
-}
 
 .fav-btn {
     background: none;

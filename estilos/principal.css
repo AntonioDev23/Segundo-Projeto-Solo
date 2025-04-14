@@ -329,10 +329,6 @@ body {
     flex-direction: column;
 }
 
-.recipe-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
 
 .recipe-card img {
     width: 100%;
@@ -398,7 +394,6 @@ body {
 
 .btn:hover {
     background-color: var(--cor-destaque);
-    transform: translateY(-2px);
 }
 
 .fav-btn {

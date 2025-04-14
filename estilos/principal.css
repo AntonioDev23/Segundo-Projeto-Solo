@@ -486,8 +486,10 @@ body {
 .newsletter-form {
     display: flex;
     justify-content: center;
+    align-items: center; /* Alinha os itens verticalmente */
     max-width: 500px;
     margin: 0 auto;
+    height: 48px; /* Altura fixa para o container */
 }
 
 .newsletter-form input {
@@ -497,21 +499,33 @@ body {
     width: 70%;
     font-size: 1rem;
     background-color: rgba(255, 255, 255, 0.9);
+    height: 100%;
+    box-sizing: border-box;
+    outline: none; /* Remove a borda preta ao clicar */
+}
+
+/* Opcional: substituir por um estilo personalizado quando selecionado */
+.newsletter-form input:focus {
+    box-shadow: 0 0 0 2px var(--cor-secundaria); /* Exemplo: halo laranja */
 }
 
 .newsletter-form button {
-    padding: 0.9rem 1.8rem;
-    background-color: #895737; /* Marrom médio */
+    padding: 0 1.8rem; /* Removemos o padding vertical */
+    background-color: #895737;
     color: white;
     border: none;
     border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
     cursor: pointer;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+    height: 100%; /* Ocupa toda a altura do container */
+    display: flex;
+    align-items: center; /* Centraliza o texto verticalmente */
+    justify-content: center;
 }
 
 .newsletter-form button:hover {
-    background-color: #A67C52; /* Marrom claro */
+    background-color: #A67C52;
 }
 
 /* ===== FOOTER ===== */

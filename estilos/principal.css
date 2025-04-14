@@ -378,14 +378,22 @@ body {
     color: #666; /* Mantém sua cor original */
 }
 
+/* REGRA ORIGINAL (mantenha tudo exceto o border-radius) */
 .btn {
     display: inline-block;
     background-color: var(--cor-primaria);
     color: white;
     padding: 0.6rem 1.2rem;
-    border-radius: var(--borda-arredondada);
     text-decoration: none;
     transition: all 0.3s ease;
+}
+
+/* REGRA NOVA (adicionada no final do CSS) */
+.recipe-card .btn {
+    border-radius: 0 0 var(--borda-arredondada) var(--borda-arredondada);
+    width: 100%;
+    text-align: center;
+    margin: 0;
 }
 
 .btn:hover {

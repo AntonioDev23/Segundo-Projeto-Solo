@@ -20,11 +20,14 @@
                 <span class="hamburger"></span>
             </button>
             
-            <!-- Barra de busca DESKTOP (só aparece em telas grandes) -->
-            <form class="search-form desktop">
-                <input type="text" placeholder="Buscar..." class="search-input">
-                <button type="submit" class="search-button">🔍</button>
-            </form>
+            <!-- Barra de busca DESKTOP (atualizada com resultados) -->
+            <div class="search-container">
+                <form class="search-form desktop">
+                    <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
+                    <button type="submit" class="search-button">🔍</button>
+                </form>
+            <div class="search-results" id="searchResults"></div>
+        </div>
             
             <nav class="nav">
                 <ul class="nav-links">

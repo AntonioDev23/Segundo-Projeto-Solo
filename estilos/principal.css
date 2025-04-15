@@ -206,6 +206,8 @@ body {
 .search-result-item {
     padding: 12px 16px;
     border-bottom: 1px solid #f0f0f0;
+    display: block !important; /* Força exibição */
+    border: 2px solid red; /* Destaca durante testes */
 }
 
 .search-result-item strong {

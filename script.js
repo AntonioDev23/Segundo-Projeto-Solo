@@ -1,17 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // ===== CÓDIGO EXISTENTE =====
-    // Atualiza o ano no footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+searchInput.addEventListener('input', function() {
+    const termo = this.value.trim().toLowerCase();
+    searchResults.innerHTML = ''; // Limpa resultados anteriores
+    
+    if (termo.length < 1) {
+        searchResults.style.display = 'none';
+        return;
+    }
 
-    // Menu Hamburguer
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
+    // Debug: Mostra no console o que está sendo digitado
+    console.log("Buscando por:", termo);
 
-    navToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        nav.classList.toggle('active');
-        this.innerHTML = this.classList.contains('active') ? '✕' : '<span class="hamburger"></span>';
-    });
+    const resultados = receitasBusca.filter(receita => 
+        receita.nome.toLowerCase().includes(termo)
+    );
+
+    // Debug: Mostra resultados filtrados
+    console.log("Resultados encontrados:", resultados);
+
+    if (resultados.length > 0) {
+        resultados.forEach(receita => {
+            const item = document.createElement('div');
+            item.className = 'search-result-item';
+            item.textContent = receita.nome; // Versão simplificada
+            searchResults.appendChild(item);
+        });
+        searchResults.style.display = 'block';
+    } else {
+        searchResults.innerHTML = '<div class="search-result-item">Nenhum resultado</div>';
+        searchResults.style.display = 'block';
+    }
+});
 
     // Fecha o menu ao clicar em um link
     document.querySelectorAll('.nav-links a').forEach(link => {
@@ -94,4 +112,3 @@ document.addEventListener('DOMContentLoaded', function() {
             searchResults.style.display = 'none';
         }
     });
-});

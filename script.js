@@ -32,12 +32,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== NOVO CÓDIGO: BARRA DE BUSCA =====
-    const receitas = [ // Substitua por seus dados reais!
-        { nome: "Bolo de Chocolate", categoria: "Doces", url: "receita.html?id=1" },
-        { nome: "Pizza Caseira", categoria: "Massas", url: "receita.html?id=2" },
-        { nome: "Lasanha", categoria: "Massas", url: "receita.html?id=3" }
+    const receitasBusca = [
+        // Receitas EXCLUSIVAS para a busca (não estão no grid inicial)
+        { nome: "Pavê de Chocolate", categoria: "Sobremesas", url: "receita-pave.html" },
+        { nome: "Risoto de Cogumelos", categoria: "Italiana", url: "receita-risoto.html" },
+        { nome: "Moqueca de Peixe", categoria: "Nordestina", url: "receita-moqueca.html" },
+        { nome: "Coxinha de Frango", categoria: "Salgados", url: "receita-coxinha.html" },
+        { nome: "Torta Holandesa", categoria: "Sobremesas", url: "receita-torta.html" },
+        
     ];
+    console.log("Receitas disponíveis para busca:", receitasBusca);
 
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');

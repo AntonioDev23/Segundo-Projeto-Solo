@@ -514,6 +514,7 @@ body {
     border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
     cursor: pointer;
     font-weight: bold;
+    font-size: 0.8em;
     transition: background-color 0.3s ease;
     height: 100%; /* Ocupa toda a altura do container */
     display: flex;

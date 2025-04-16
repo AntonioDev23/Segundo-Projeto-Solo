@@ -29,7 +29,40 @@
                         <button type="submit" class="search-button">🔍</button>
                         <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
                     </form>
-                    <!-- Dropdown de filtros e resultados da busca ficam aqui -->
+                    
+                    <!-- ADICIONE ESTA PARTE QUE ESTAVA FALTANDO -->
+                    <div class="filter-dropdown" id="filterDropdown">
+                        <div class="filter-group">
+                            <h4>Tempo</h4>
+                            <select class="filter-select" id="filterTime">
+                                <option value="all">Todos</option>
+                                <option value="30">≤ 30 min</option>
+                                <option value="60">≤ 1h</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Dificuldade</h4>
+                            <div class="filter-options">
+                                <button class="filter-chip" data-difficulty="all">Todos</button>
+                                <button class="filter-chip" data-difficulty="facil">Fácil</button>
+                                <button class="filter-chip" data-difficulty="medio">Médio</button>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Dieta</h4>
+                            <div class="filter-options">
+                                <button class="filter-chip" data-diet="all">Todos</button>
+                                <button class="filter-chip" data-diet="vegano">Vegano</button>
+                                <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIM DA SEÇÃO ADICIONADA -->
+                    
+                    <!-- Resultados da busca (existente) -->
+                    <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
             

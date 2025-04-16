@@ -279,10 +279,13 @@ body {
     width: 280px;
     background: #8b0000;
     z-index: 1000; /* Garante que fique acima de outros elementos */
+    transition: opacity 0.3s;
 }
 
 .filter-dropdown.show {
     display: block; /* Exibe quando tem a classe 'show' */
+    opacity: 1;
+    pointer-events: all;
 }
 
 .filter-group {

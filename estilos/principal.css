@@ -308,8 +308,8 @@ body {
 
 .filter-chip {
     padding: 0.3rem 0.8rem;
-    background-color:#8b0000;
-    color:#eee;
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    color: white;
     border: none;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -318,7 +318,7 @@ body {
 }
 
 .filter-chip.active {
-    background: var(--cor-secundaria);
+    background: #ff6347; /* Destaque laranja (opcional) */
     color: white;
 }
 

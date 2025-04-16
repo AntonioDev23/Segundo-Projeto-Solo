@@ -261,8 +261,9 @@ body {
 /* Estilo do Botão de Filtros */
 .filter-toggle {
     padding: 0.6rem 1rem;
-    background: var(--cor-secundaria);
+    background: #8b0000 !important; /* Força cor do header */
     color: white;
+    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Divisor sutil */
     border: none;
     border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
     cursor: pointer;
@@ -277,7 +278,8 @@ body {
     top: 100%;
     right: 0;
     width: 280px;
-    background: white;
+    background: #8b0000; /* Mesma cor do header */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
     border-radius: 0 0 var(--borda-arredondada) var(--borda-arredondada);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     padding: 1rem;

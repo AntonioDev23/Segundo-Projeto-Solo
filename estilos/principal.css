@@ -271,23 +271,18 @@ body {
     margin-left: 1px; /* Remove gap entre botões */
 }
 
-/* Menu Suspenso de Filtros */
 .filter-dropdown {
-    display: none;
+    display: none; /* Oculta inicialmente */
     position: absolute;
     top: 100%;
     right: 0;
     width: 280px;
-    background: #8b0000; /* Mesma cor do header */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
-    border-radius: 0 0 var(--borda-arredondada) var(--borda-arredondada);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    padding: 1rem;
-    z-index: 1000;
+    background: #8b0000;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
 }
 
 .filter-dropdown.show {
-    display: block;
+    display: block; /* Exibe quando tem a classe 'show' */
 }
 
 .filter-group {

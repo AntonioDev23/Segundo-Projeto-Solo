@@ -99,37 +99,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Controle do Menu de Filtros
+// Controle do Menu de Filtros - VERSÃO CORRIGIDA
 const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 
-// Mostrar/ocultar filtros
-filterToggle.addEventListener('click', () => {
+// Mostrar/ocultar filtros (com prevenção de propagação)
+filterToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Impede que o evento chegue ao document
     filterDropdown.classList.toggle('show');
 });
 
-// Fechar ao clicar fora
+// Fechar ao clicar fora (versão melhorada)
 document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-container')) {
+    const isClickInsideFilter = e.target.closest('.search-container') 
+                             || e.target === filterToggle;
+    
+    if (!isClickInsideFilter) {
         filterDropdown.classList.remove('show');
     }
 });
 
-// Lógica dos Filtros (similar à anterior, mas aplicada junto com a busca)
-function applyFilters() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const timeFilter = document.getElementById('filterTime').value;
-    const difficultyFilter = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty || 'all';
-    const dietFilter = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet || 'all';
-    
-    // Filtra receitas...
-}
-
-// Ativar chips
+// Ativar chips (com fechamento automático)
 document.querySelectorAll('.filter-chip').forEach(chip => {
     chip.addEventListener('click', function() {
         const group = this.closest('.filter-options');
         group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
         this.classList.add('active');
+        filterDropdown.classList.remove('show'); // Fecha após seleção
+        applyFilters(); // Aplica os filtros
     });
 });
+
+// Função de filtragem (ajustada)
+function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const timeFilter = document.getElementById('filterTime').value;
+    const activeDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty || 'all';
+    const activeDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet || 'all';
+    
+    console.log("Filtrando por:", { timeFilter, activeDifficulty, activeDiet });
+    // Sua lógica de filtragem aqui...
+}

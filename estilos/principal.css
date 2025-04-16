@@ -226,6 +226,78 @@ body {
     background: #fff8f0;
 }
 
+/* Estilo do Botão de Filtros */
+.filter-toggle {
+    padding: 0.6rem 1rem;
+    background: var(--cor-secundaria);
+    color: white;
+    border: none;
+    border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 1px; /* Remove gap entre botões */
+}
+
+/* Menu Suspenso de Filtros */
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    background: white;
+    border-radius: 0 0 var(--borda-arredondada) var(--borda-arredondada);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 1rem;
+    z-index: 1000;
+}
+
+.filter-dropdown.show {
+    display: block;
+}
+
+.filter-group {
+    margin-bottom: 1rem;
+}
+
+.filter-group h4 {
+    color: var(--cor-primaria);
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-chip {
+    padding: 0.3rem 0.8rem;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-chip.active {
+    background: var(--cor-secundaria);
+    color: white;
+}
+
+.btn-apply {
+    width: 100%;
+    padding: 0.6rem;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: var(--borda-arredondada);
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
 /* Hero Section */
 .hero {
     height: 70vh;

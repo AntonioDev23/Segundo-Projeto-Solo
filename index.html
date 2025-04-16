@@ -25,8 +25,47 @@
                 <form class="search-form desktop">
                     <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
                     <button type="submit" class="search-button">🔍</button>
+                    
+                    <!-- Novo: Botão de filtros -->
+                    <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
                 </form>
-            <div class="search-results" id="searchResults"></div>
+                
+                <!-- Resultados da busca (existente) -->
+                <div class="search-results" id="searchResults"></div>
+                
+                <!-- Novo: Menu de filtros suspenso -->
+                <div class="filter-dropdown" id="filterDropdown">
+                    <div class="filter-group">
+                        <h4>Tempo</h4>
+                        <select class="filter-select" id="filterTime">
+                            <option value="all">Todos</option>
+                            <option value="30">≤ 30 min</option>
+                            <option value="60">≤ 1h</option>
+                            <option value="120">+ 1h</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Dificuldade</h4>
+                        <div class="filter-options">
+                            <button class="filter-chip" data-difficulty="all">Todos</button>
+                            <button class="filter-chip" data-difficulty="facil">Fácil</button>
+                            <button class="filter-chip" data-difficulty="medio">Médio</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Dieta</h4>
+                        <div class="filter-options">
+                            <button class="filter-chip" data-diet="all">Todos</button>
+                            <button class="filter-chip" data-diet="vegano">Vegano</button>
+                            <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-apply">Aplicar</button>
+                </div>
+            </div>
         </div>
             
             <nav class="nav">

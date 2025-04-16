@@ -117,11 +117,43 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
 }
 
+/* Layout do Header */
 .header-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
+    gap: 20px;
 }
+
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+    .header-container {
+        grid-template-columns: auto 1fr auto;
+    }
+    
+    .search-wrapper {
+        order: 3;
+        grid-column: span 3;
+        margin-top: 10px;
+    }
+    
+    .search-form.desktop {
+        width: 100%;
+    }
+}
+
 
 /* Logo - Preservando sua fonte especial */
 .logo {
@@ -274,7 +306,8 @@ body {
 
 .filter-chip {
     padding: 0.3rem 0.8rem;
-    background: #f0f0f0;
+    background-color:#8b0000;
+    color:#eee;
     border: none;
     border-radius: 20px;
     font-size: 0.8rem;

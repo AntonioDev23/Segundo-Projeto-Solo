@@ -98,3 +98,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Controle do Menu de Filtros
+const filterToggle = document.getElementById('filterToggle');
+const filterDropdown = document.getElementById('filterDropdown');
+
+// Mostrar/ocultar filtros
+filterToggle.addEventListener('click', () => {
+    filterDropdown.classList.toggle('show');
+});
+
+// Fechar ao clicar fora
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container')) {
+        filterDropdown.classList.remove('show');
+    }
+});
+
+// Lógica dos Filtros (similar à anterior, mas aplicada junto com a busca)
+function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const timeFilter = document.getElementById('filterTime').value;
+    const difficultyFilter = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty || 'all';
+    const dietFilter = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet || 'all';
+    
+    // Filtra receitas...
+}
+
+// Ativar chips
+document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', function() {
+        const group = this.closest('.filter-options');
+        group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+    });
+});

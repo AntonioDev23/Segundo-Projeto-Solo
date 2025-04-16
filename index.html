@@ -13,73 +13,32 @@
 
     <header class="header">
         <div class="container header-container">
+            <!-- Logo (à esquerda) -->
             <h1 class="logo">ARSN Receitas Deliciosas</h1>
             
-            <!-- Botão hambúrguer (mobile) -->
+            <!-- Menu Hambúrguer (mobile) -->
             <button class="nav-toggle" aria-label="Menu">
                 <span class="hamburger"></span>
             </button>
             
-            <!-- Barra de busca DESKTOP (atualizada com resultados) -->
-            <div class="search-container">
-                <form class="search-form desktop">
-                    <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
-                    <button type="submit" class="search-button">🔍</button>
-                    
-                    <!-- Novo: Botão de filtros -->
-                    <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
-                </form>
-                
-                <!-- Resultados da busca (existente) -->
-                <div class="search-results" id="searchResults"></div>
-                
-                <!-- Novo: Menu de filtros suspenso -->
-                <div class="filter-dropdown" id="filterDropdown">
-                    <div class="filter-group">
-                        <h4>Tempo</h4>
-                        <select class="filter-select" id="filterTime">
-                            <option value="all">Todos</option>
-                            <option value="30">≤ 30 min</option>
-                            <option value="60">≤ 1h</option>
-                            <option value="120">+ 1h</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Dificuldade</h4>
-                        <div class="filter-options">
-                            <button class="filter-chip" data-difficulty="all">Todos</button>
-                            <button class="filter-chip" data-difficulty="facil">Fácil</button>
-                            <button class="filter-chip" data-difficulty="medio">Médio</button>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Dieta</h4>
-                        <div class="filter-options">
-                            <button class="filter-chip" data-diet="all">Todos</button>
-                            <button class="filter-chip" data-diet="vegano">Vegano</button>
-                            <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
-                        </div>
-                    </div>
-                    
-                    <button class="btn-apply">Aplicar</button>
+            <!-- Barra de Busca + Filtros (centralizada) -->
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <form class="search-form desktop">
+                        <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
+                        <button type="submit" class="search-button">🔍</button>
+                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
+                    </form>
+                    <!-- Dropdown de filtros e resultados da busca ficam aqui -->
                 </div>
             </div>
-        </div>
             
+            <!-- Menu de Navegação (à direita) -->
             <nav class="nav">
                 <ul class="nav-links">
                     <li><a href="#popular">Nossas Receitas</a></li>
                     <li><a href="#categories">Categorias</a></li>
                     <li><a href="login.html" class="login-btn">Login</a></li>
-                    <!-- Barra de busca MOBILE (só aparece no menu aberto) -->
-                    <li class="search-mobile">
-                        <form class="search-form mobile">
-                            <input type="text" placeholder="Buscar..." class="search-input">
-                            <button type="submit" class="search-button">🔍</button>
-                        </form>
-                    </li>
                 </ul>
             </nav>
         </div>

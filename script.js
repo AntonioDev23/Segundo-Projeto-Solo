@@ -1,37 +1,20 @@
-searchInput.addEventListener('input', function() {
-    const termo = this.value.trim().toLowerCase();
-    searchResults.innerHTML = ''; // Limpa resultados anteriores
-    
-    if (termo.length < 1) {
-        searchResults.style.display = 'none';
-        return;
-    }
 
-    // Debug: Mostra no console o que está sendo digitado
-    console.log("Buscando por:", termo);
+document.addEventListener('DOMContentLoaded', function() {
+    // ========== CÓDIGO EXISTENTE (MENU, SCROLL, ETC.) ========== //
+    // Atualiza o ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const resultados = receitasBusca.filter(receita => 
-        receita.nome.toLowerCase().includes(termo)
-    );
+    // Menu Hamburguer
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
 
-    // Debug: Mostra resultados filtrados
-    console.log("Resultados encontrados:", resultados);
+    navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        this.innerHTML = this.classList.contains('active') ? '✕' : '<span class="hamburger"></span>';
+    });
 
-    if (resultados.length > 0) {
-        resultados.forEach(receita => {
-            const item = document.createElement('div');
-            item.className = 'search-result-item';
-            item.textContent = receita.nome; // Versão simplificada
-            searchResults.appendChild(item);
-        });
-        searchResults.style.display = 'block';
-    } else {
-        searchResults.innerHTML = '<div class="search-result-item">Nenhum resultado</div>';
-        searchResults.style.display = 'block';
-    }
-});
-
-    // Fecha o menu ao clicar em um link
+    // Fecha o menu ao clicar em um link (mobile)
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             nav.classList.remove('active');
@@ -40,7 +23,7 @@ searchInput.addEventListener('input', function() {
         });
     });
 
-    // Smooth scroll
+    // Smooth scroll para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -50,23 +33,25 @@ searchInput.addEventListener('input', function() {
         });
     });
 
+    // ========== BARRA DE BUSCA (CÓDIGO ATUALIZADO) ========== //
     const receitasBusca = [
-        // Receitas EXCLUSIVAS para a busca (não estão no grid inicial)
-        { nome: "Pavê de Chocolate", categoria: "Sobremesas", url: "receita-pave.html" },
-        { nome: "Risoto de Cogumelos", categoria: "Italiana", url: "receita-risoto.html" },
-        { nome: "Moqueca de Peixe", categoria: "Nordestina", url: "receita-moqueca.html" },
-        { nome: "Coxinha de Frango", categoria: "Salgados", url: "receita-coxinha.html" },
-        { nome: "Torta Holandesa", categoria: "Sobremesas", url: "receita-torta.html" },
+        // Receitas EXCLUSIVAS para busca
+        { nome: "Pavê de Chocolate", categoria: "Sobremesas", url: "#" },
+        { nome: "Risoto de Cogumelos", categoria: "Italiana", url: "#" },
+        { nome: "Moqueca de Peixe", categoria: "Nordestina", url: "#" },
+        { nome: "Coxinha de Frango", categoria: "Salgados", url: "#" },
+        { nome: "Torta Holandesa", categoria: "Sobremesas", url: "#" },
         
+        // Receitas do grid inicial (opcional)
+        { nome: "Bolo de Chocolate", categoria: "Doces", url: "#" },
+        { nome: "Pizza Caseira", categoria: "Massas", url: "#" }
     ];
-    console.log("Receitas disponíveis para busca:", receitasBusca);
 
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
-    // Mostra/oculta resultados ao digitar
     searchInput.addEventListener('input', function() {
-        const termo = this.value.toLowerCase().trim();
+        const termo = this.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
         searchResults.innerHTML = '';
 
         if (termo.length < 2) {
@@ -74,10 +59,11 @@ searchInput.addEventListener('input', function() {
             return;
         }
 
-        const resultados = receitas.filter(receita => 
-            receita.nome.toLowerCase().includes(termo) || 
-            receita.categoria.toLowerCase().includes(termo)
-        );
+        const resultados = receitasBusca.filter(receita => {
+            const nomeNormalizado = receita.nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const categoriaNormalizada = receita.categoria.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            return nomeNormalizado.includes(termo) || categoriaNormalizada.includes(termo);
+        });
 
         if (resultados.length > 0) {
             resultados.forEach(receita => {
@@ -85,7 +71,7 @@ searchInput.addEventListener('input', function() {
                 item.className = 'search-result-item';
                 item.innerHTML = `
                     <strong>${receita.nome}</strong>
-                    <span>${receita.categoria}</span>
+                    <span class="categoria-busca">${receita.categoria}</span>
                 `;
                 item.addEventListener('click', () => {
                     window.location.href = receita.url;
@@ -99,16 +85,16 @@ searchInput.addEventListener('input', function() {
         }
     });
 
-    // Fecha resultados ao clicar fora
+    // Fecha resultados ao clicar fora ou pressionar ESC
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.search-container')) {
             searchResults.style.display = 'none';
         }
     });
 
-    // Fecha resultados ao pressionar ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             searchResults.style.display = 'none';
         }
     });
+});

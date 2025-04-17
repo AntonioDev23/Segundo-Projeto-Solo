@@ -99,44 +99,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Controle do Menu de Filtros - VERSÃO CORRIGIDA
-const filterToggle = document.getElementById('filterToggle');
-const filterDropdown = document.getElementById('filterDropdown');
+document.addEventListener('DOMContentLoaded', function() {
+    // ===== FUNCIONALIDADES EXISTENTES ===== //
+    // 1. Atualizar ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mostrar/ocultar filtros (com prevenção de propagação)
-filterToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // Impede que o evento chegue ao document
-    filterDropdown.classList.toggle('show');
-});
+    // 2. Menu Hamburguer (mantido igual)
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        this.innerHTML = this.classList.contains('active') ? '✕' : '<span class="hamburger"></span>';
+    });
 
-// Fechar ao clicar fora (versão melhorada)
-document.addEventListener('click', (e) => {
-    const isClickInsideFilter = e.target.closest('.search-container') 
-                             || e.target === filterToggle;
-    
-    if (!isClickInsideFilter) {
+    // ===== NOVO CÓDIGO DOS FILTROS ===== //
+    const filterToggle = document.getElementById('filterToggle');
+    const filterDropdown = document.getElementById('filterDropdown');
+    const applyBtn = document.getElementById('applyFilters');
+
+    // Controle do dropdown
+    filterToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        filterDropdown.classList.toggle('show');
+    });
+
+    // Seleção de chips
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            const group = this.closest('.filter-options');
+            group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Botão "Aplicar"
+    applyBtn.addEventListener('click', () => {
+        applyFilters(); // Sua função de filtragem
         filterDropdown.classList.remove('show');
+    });
+
+    // Fechar ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container') && !e.target.closest('.filter-dropdown')) {
+            filterDropdown.classList.remove('show');
+        }
+    });
+
+    // ===== SUA FUNÇÃO DE FILTRAGEM ===== //
+    function applyFilters() {
+        console.log("Filtrando por:", {
+            tempo: document.getElementById('filterTime').value,
+            dificuldade: document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty,
+            dieta: document.querySelector('.filter-chip[data-diet].active')?.dataset.diet
+        });
+        // ... (sua lógica de filtragem)
     }
 });
-
-// Ativar chips (com fechamento automático)
-document.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', function() {
-        const group = this.closest('.filter-options');
-        group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-        filterDropdown.classList.remove('show'); // Fecha após seleção
-        applyFilters(); // Aplica os filtros
-    });
-});
-
-// Função de filtragem (ajustada)
-function applyFilters() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const timeFilter = document.getElementById('filterTime').value;
-    const activeDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty || 'all';
-    const activeDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet || 'all';
-    
-    console.log("Filtrando por:", { timeFilter, activeDifficulty, activeDiet });
-    // Sua lógica de filtragem aqui...
-}

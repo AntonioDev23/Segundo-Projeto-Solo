@@ -258,77 +258,94 @@ body {
     background: #fff8f0;
 }
 
-/* Estilo do Botão de Filtros */
-.filter-toggle {
-    padding: 0.6rem 1rem;
-    background: #8b0000 !important; /* Força cor do header */
-    color: white;
-    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Divisor sutil */
-    border: none;
-    border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
-    cursor: pointer;
-    font-size: 0.9rem;
-    margin-left: 1px; /* Remove gap entre botões */
-}
-
+/* ESTILO DO DROPDOWN DE FILTROS */
 .filter-dropdown {
-    display: none; /* Oculta inicialmente */
+    display: none;
     position: absolute;
     top: 100%;
     right: 0;
     width: 280px;
-    background: #8b0000;
-    z-index: 1000; /* Garante que fique acima de outros elementos */
-    transition: opacity 0.3s;
+    background: white; /* Fundo branco */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 1rem;
+    z-index: 1000;
 }
 
 .filter-dropdown.show {
-    display: block; /* Exibe quando tem a classe 'show' */
-    opacity: 1;
-    pointer-events: all;
+    display: block;
 }
 
-.filter-group {
-    margin-bottom: 1rem;
-}
-
+/* TÍTULOS DOS GRUPOS */
 .filter-group h4 {
-    color: var(--cor-primaria);
+    color: #8b0000; /* Cor do header */
     margin: 0.5rem 0;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
-.filter-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
+/* BOTÕES DE OPÇÃO (CHIPS) */
 .filter-chip {
-    padding: 0.3rem 0.8rem;
-    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
-    color: white;
+    padding: 0.5rem 1rem;
+    background-color: #8b0000; /* Cor do header */
+    color: white !important; /* Texto branco */
     border: none;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     cursor: pointer;
-    transition: all 0.2s;
+    margin: 0.2rem;
+    transition: all 0.3s;
 }
 
+/* BOTÃO ATIVO/SELECIONADO */
 .filter-chip.active {
-    background: #ff6347; /* Destaque laranja (opcional) */
+    background-color: #ff6347; /* Laranja-vermelho */
+    transform: scale(1.05);
+}
+
+/* SELECT DE TEMPO */
+.filter-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* BOTÃO DE FILTRO TOGGLE */
+.filter-toggle {
+    background: #8b0000;
     color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: all 0.3s;
+}
+
+.filter-toggle:hover {
+    background: #a52a2a;
 }
 
 .btn-apply {
     width: 100%;
-    padding: 0.6rem;
-    background: var(--cor-primaria);
+    padding: 0.7rem;
+    background: #ff6347; /* Laranja-vermelho */
     color: white;
     border: none;
-    border-radius: var(--borda-arredondada);
-    margin-top: 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-apply:hover {
+    background: #e5533d;
+    transform: translateY(-2px);
 }
 
 /* Hero Section */

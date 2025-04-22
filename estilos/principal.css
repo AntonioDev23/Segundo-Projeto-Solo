@@ -120,17 +120,19 @@ body {
 /* Layout do Header */
 .header-container {
     display: grid;
-    grid-template-columns: minmax(auto, 200px) 1fr auto; /* Logo fixo | Busca | Menu */
+    grid-template-areas: 
+        "logo search nav";
+    grid-template-columns: minmax(150px, auto) minmax(300px, 1fr) auto;
     align-items: center;
-    gap: 15px;
-    padding: 0 10px;
+    gap: 20px;
+    padding: 10px 15px;
 }
 
 
 .search-wrapper {
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
+    grid-area: search;
+    min-width: 0; /* Fundamental para responsividade */
+    position: relative;
 }
 
 .search-container {
@@ -163,18 +165,21 @@ body {
 
 /* Logo - Preservando sua fonte especial */
 .logo {
+    grid-area: logo;
     white-space: nowrap;
-    font-size: 1.7rem; /* Reduzi levemente para garantir espaço */
-    padding-right: 10px;
+    font-size: 1.7rem;
+    min-width: 0; /* Permite que o texto seja truncado se necessário */
+    justify-self: start; /* Alinha à esquerda */
 }
+
 
 
 /* Navegação - Estilo original com melhorias de hover */
 /* ===== MENU DE NAVEGAÇÃO ===== */
 .nav {
+    grid-area: nav;
     white-space: nowrap;
-    margin-left: auto; /* Alinha à direita */
-    background-color: transparent; /* Remove fundo se existir */
+    justify-self: end; /* Alinha à direita */
 }
 
 .nav-links {

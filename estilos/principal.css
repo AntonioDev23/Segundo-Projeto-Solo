@@ -175,32 +175,34 @@ body {
 
 
 
-/* ===== MENU DE NAVEGAÇÃO (VERSÃO ORIGINAL) ===== */
+
+/* ===== MENU SIMPLIFICADO ===== */
 .nav-links {
     display: flex;
-    gap: 1rem;
-    background-color: #8b0000; /* Fundo vermelho do header */
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    gap: 1rem; /* Espaço entre itens */
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove bolinhas */
+}
+
+.nav-links li {
+    display: inline-block; /* Remove espaçamento extra */
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
     border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block; /* Permite transform */
 }
 
-.nav-links a:hover {
-    background-color: #ff6347; /* Laranja-vermelho do original */
-    transform: translateY(-5px);
-    color: white !important; /* Garante texto branco */
-}
-
-
+/* Efeito hover igual para TODOS os itens */
+.nav-links a:hover,
 .login-btn:hover {
-    background-color: #e5533d !important;
+    background-color: #ff6347;
+    transform: translateY(-5px);
 }
 
 /* Barra de busca - Estilo original mantido */

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Hero Section (IDÊNTICO ao seu original) */
+/* Hero Section */
 .hero {
     height: 70vh;
     display: flex;
@@ -8,6 +8,8 @@
     text-align: center;
     color: var(--cor-texto-claro);
     position: relative;
+    padding-bottom: 0 !important;
+    margin-bottom: -200px !important;
 }
 
 .hero::before {
@@ -21,16 +23,25 @@
     z-index: -1;
 }
 
-/* Seção Receitas Populares (MESMO código do seu .popular e .recipe-grid) */
+/* Seção Receitas Populares */
 .popular {
     padding: 4rem 0;
+    padding-top: 20px !important;
+}
+
+.popular h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--cor-primaria);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: var(--cor-fundo);
+    padding: 0.5rem 2rem;
+    border-radius: var(--borda-arredondada);
+    box-shadow: var(--sombra);
 }
 
-.recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-/* ... (TODOS os estilos das seções hero, popular, benefits, newsletter) ... */
+/* ... (TODAS as seções: benefits, newsletter, etc.) ... */

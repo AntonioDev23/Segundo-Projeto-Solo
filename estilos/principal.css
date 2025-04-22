@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 :root {
     --cor-primaria: #8b0000;
     --cor-secundaria: #ff6347;
@@ -30,4 +32,15 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+}
+
+/* Seções com fundo sólido */
+.header,
+.popular,
+.benefits,
+.newsletter,
+.footer {
+    background-color: var(--cor-fundo);
+    position: relative;
+    z-index: 1;
 }

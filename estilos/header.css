@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* HEADER ORIGINAL PRESERVADO */
+/* HEADER ORIGINAL */
 .header {
     background: #8b0000;
     color: #fff;
@@ -23,23 +23,36 @@
 /* Logo */
 .logo {
     grid-area: logo;
+    white-space: nowrap;
     font-size: 1.7rem;
+    min-width: 0;
+    justify-self: start;
 }
 
 /* Barra de busca DESKTOP */
 .search-form.desktop {
-    display: flex;
+    display: flex !important;
     align-items: center;
+    margin-left: auto;
 }
 
-.search-input {
-    padding: 0.7rem 1rem;
+.search-form.desktop .search-input {
+    padding: 8px 12px;
     border: 2px solid #ff6347;
-    border-radius: 6px;
-    width: 250px;
+    border-radius: 6px 0 0 6px;
+    width: 200px;
 }
 
-/* Dropdown de filtros (COMPLETO, como no seu código) */
+.search-form.desktop .search-button {
+    background: #8b0000;
+    color: white;
+    border: 2px solid #ff6347;
+    border-radius: 0 6px 6px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* Dropdown de filtros */
 .filter-dropdown {
     display: none;
     position: absolute;
@@ -53,4 +66,4 @@
     z-index: 1000;
 }
 
-/* ... (TODOS os estilos do header, incluindo menus e search mobile) ... */
+/* ... (TODOS os estilos do header, incluindo .nav-links, .search-container, etc.) ... */

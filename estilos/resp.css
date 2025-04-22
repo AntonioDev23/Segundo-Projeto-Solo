@@ -1,10 +1,5 @@
-/* Mobile: Menu Hambúrguer (IGUAL ao seu código) */
+/* Mobile: Menu Hambúrguer */
 @media (max-width: 768px) {
-    .header-container {
-        grid-template-columns: auto 1fr;
-        gap: 10px;
-    }
-
     .nav-toggle {
         display: block;
         order: 2;
@@ -20,7 +15,13 @@
         transition: left 0.3s;
         z-index: 100;
         padding: 15px 0;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
-    /* ... (TODAS as regras mobile do seu CSS original) ... */
+    .nav.active {
+        left: 0;
+    }
+
+    /* ... (TODAS as regras @media do seu código original) ... */
 }

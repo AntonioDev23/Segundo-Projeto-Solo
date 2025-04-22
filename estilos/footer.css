@@ -1,2 +1,36 @@
 @charset "UTF-8";
 
+/* ===== FOOTER ===== */
+.footer {
+    padding: 1.8rem 0;  /* Reduzido de 3rem */
+    background: linear-gradient(135deg, #1A1A1A 0%, #2D2424 100%);
+    color: #D9D9D9;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.85rem;  /* Reduzido de 0.95rem */
+    opacity: 0.8;
+}
+
+.footer a {
+    color: #D9D9D9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--cor-secundaria); /* Laranja-vermelho para contraste */
+}
+
+/* Adicionando ícones sociais (opcional) */
+.footer-social {
+    margin-top: 1.5rem;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+}

@@ -205,6 +205,15 @@ body {
     transform: translateY(-5px);
 }
 
+.nav-links a:hover {
+    animation: pulse 0.5s ease;
+}
+@keyframes pulse {
+    0% { transform: translateY(-5px); }
+    50% { transform: translateY(-5px) scale(1.05); }
+    100% { transform: translateY(-5px); }
+}
+
 /* Barra de busca - Estilo original mantido */
 .search-form {
     display: flex;

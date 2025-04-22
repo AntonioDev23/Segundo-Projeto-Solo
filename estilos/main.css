@@ -26,22 +26,12 @@
 /* Seção Receitas Populares */
 .popular {
     padding: 4rem 0;
-    padding-top: 20px !important;
 }
 
-.popular h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--cor-primaria);
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--cor-fundo);
-    padding: 0.5rem 2rem;
-    border-radius: var(--borda-arredondada);
-    box-shadow: var(--sombra);
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-/* ... (TODAS as seções: benefits, newsletter, etc.) ... */
+/* ... (TODAS as seções: benefits, newsletter, recipe-card, etc.) ... */

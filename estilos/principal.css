@@ -174,31 +174,33 @@ body {
 
 
 
-/* Navegação - Estilo original com melhorias de hover */
-/* ===== MENU DE NAVEGAÇÃO ===== */
-.nav {
-    grid-area: nav;
-    white-space: nowrap;
-    justify-self: end; /* Alinha à direita */
-}
 
+/* ===== MENU DE NAVEGAÇÃO (VERSÃO ORIGINAL) ===== */
 .nav-links {
     display: flex;
-    gap: 15px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    gap: 1rem;
+    background-color: #8b0000; /* Fundo vermelho do header */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
 .nav-links a:hover {
-    color: #ff6347; /* Cor laranja do hover */
+    background-color: #ff6347; /* Laranja-vermelho do original */
+    transform: translateY(-5px);
+    color: white !important; /* Garante texto branco */
+}
+
+
+.login-btn:hover {
+    background-color: #e5533d !important;
 }
 
 /* Barra de busca - Estilo original mantido */

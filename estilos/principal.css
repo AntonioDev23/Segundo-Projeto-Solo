@@ -120,10 +120,10 @@ body {
 /* Layout do Header */
 .header-container {
     display: grid;
-    grid-template-columns: auto 1fr auto; /* Logo | Busca | Menu */
+    grid-template-columns: minmax(auto, 200px) 1fr auto; /* Logo fixo | Busca | Menu */
     align-items: center;
-    gap: 20px;
-    padding: 0 15px;
+    gap: 15px;
+    padding: 0 10px;
 }
 
 
@@ -164,36 +164,36 @@ body {
 /* Logo - Preservando sua fonte especial */
 .logo {
     white-space: nowrap;
-    font-size: 1.8rem;
-    font-family: "Edu AU VIC WA NT Arrows", serif;
-    color: white;
-    margin-right: auto; /* Novo - empurra itens para a direita */
-    
+    font-size: 1.7rem; /* Reduzi levemente para garantir espaço */
+    padding-right: 10px;
 }
 
 
 /* Navegação - Estilo original com melhorias de hover */
+/* ===== MENU DE NAVEGAÇÃO ===== */
+.nav {
+    white-space: nowrap;
+    margin-left: auto; /* Alinha à direita */
+    background-color: transparent; /* Remove fundo se existir */
+}
+
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 1rem;
-    margin-left: 30px;
-    background-color: #8b0000; /* Fundo vermelho igual ao header */
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    background-color: #ff6347; /* Laranja-vermelho do original */
-    transform: translateY(-5px);
-    border-radius: 4px;
+    color: #ff6347; /* Cor laranja do hover */
 }
 
 /* Barra de busca - Estilo original mantido */

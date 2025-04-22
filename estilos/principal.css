@@ -120,10 +120,12 @@ body {
 /* Layout do Header */
 .header-container {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto; /* Logo | Busca | Menu */
     align-items: center;
     gap: 20px;
+    padding: 0 15px;
 }
+
 
 .search-wrapper {
     display: flex;

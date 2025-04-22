@@ -1,1 +1,36 @@
 @charset "UTF-8";
+
+/* Hero/Banner */
+.hero {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+/* Seção Receitas */
+.popular {
+    padding: 4rem 0;
+    background: var(--cor-fundo);
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Seção Benefícios */
+.benefits {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+/* Newsletter */
+.newsletter {
+    padding: 2.5rem 0;
+    background: #5E3023;
+    color: white;
+}

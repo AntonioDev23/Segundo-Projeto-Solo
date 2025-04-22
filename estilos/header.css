@@ -1,1 +1,39 @@
 @charset "UTF-8";
+
+.header {
+    background: var(--cor-primaria);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: grid;
+    grid-template-areas: "logo search nav";
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.7rem;
+    white-space: nowrap;
+}
+
+/* Barra de busca */
+.search-form.desktop {
+    display: flex;
+    align-items: center;
+}
+
+/* Menu de navegação */
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}

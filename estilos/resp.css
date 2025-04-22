@@ -36,3 +36,24 @@
         border-top: 1px solid rgba(255,255,255,0.2);
     }
 }
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+    .header-container {
+        grid-template-columns: auto 1fr; /* Logo | Hambúrguer */
+        gap: 10px;
+    }
+    
+    .search-wrapper {
+        order: 3;
+        grid-column: span 2;
+        margin-top: 10px;
+    }
+    
+    .search-form.desktop {
+        width: 100%;
+    }
+    .logo {
+        font-size: 1.5rem; /* Reduz apenas em mobile */
+    }
+}

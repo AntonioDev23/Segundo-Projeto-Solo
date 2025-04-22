@@ -19,31 +19,6 @@
 }
 
 
-/* 1. CORREÇÃO DA BARRA DE BUSCA (DESKTOP) */
-.search-form.desktop {
-    display: flex !important; /* Força a exibição */
-    align-items: center;
-    margin-left: auto;
-}
-
-.search-form.desktop .search-input {
-    padding: 8px 12px;
-    border: 2px solid #ff6347;
-    border-radius: 6px 0 0 6px;
-    width: 200px;
-}
-
-.search-form.desktop .search-button {
-    background: #8b0000;
-    color: white;
-    border: 2px solid #ff6347;
-    border-radius: 0 6px 6px 0;
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-
-
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;

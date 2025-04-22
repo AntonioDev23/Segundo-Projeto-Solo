@@ -2,48 +2,58 @@
 
 /* HEADER ORIGINAL PRESERVADO */
 .header {
-    background: #8b0000;
+    background: #8b0000; /* Vermelho escuro como no original */
     color: #fff;
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil */
 }
 
+/* Layout do Header */
 .header-container {
     display: grid;
-    grid-template-areas: "logo search nav";
+    grid-template-areas: 
+        "logo search nav";
     grid-template-columns: minmax(150px, auto) minmax(300px, 1fr) auto;
     align-items: center;
     gap: 20px;
     padding: 10px 15px;
 }
 
-/* Logo */
-.logo {
-    grid-area: logo;
-    white-space: nowrap;
-    font-size: 1.7rem;
-    min-width: 0;
-    justify-self: start;
+
+.search-wrapper {
+    grid-area: search;
+    min-width: 0; /* Fundamental para responsividade */
+    position: relative;
 }
 
-/* Barra de busca DESKTOP */
+.search-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* 1. CORREÇÃO DA BARRA DE BUSCA (DESKTOP) */
 .search-form.desktop {
-    display: flex !important;
+    display: flex !important; /* Força a exibição */
     align-items: center;
     margin-left: auto;
 }
 
 .search-form.desktop .search-input {
-    padding: 0.7rem 1rem;
+    padding: 8px 12px;
     border: 2px solid #ff6347;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    width: 250px;
-    height: 40px;
-    transition: none !important;
+    border-radius: 6px 0 0 6px;
+    width: 200px;
 }
 
-/* ... (CONTÉM TODOS os estilos do header, incluindo .nav-links, .filter-dropdown, .search-results, etc.) ... */
+.search-form.desktop .search-button {
+    background: #8b0000;
+    color: white;
+    border: 2px solid #ff6347;
+    border-radius: 0 6px 6px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+}

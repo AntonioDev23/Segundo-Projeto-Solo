@@ -128,9 +128,9 @@ body {
 
 
 .search-wrapper {
-    display: flex;
-    justify-content: center;
+    max-width: 600px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .search-container {
@@ -159,11 +159,14 @@ body {
 
 /* Logo - Preservando sua fonte especial */
 .logo {
-    color: white;
-    font-family: "Edu AU VIC WA NT Arrows", serif;
+    white-space: nowrap;
     font-size: 1.8rem;
-    text-decoration: none;
+    font-family: "Edu AU VIC WA NT Arrows", serif;
+    color: white;
+    margin-right: auto; /* Novo - empurra itens para a direita */
+    
 }
+
 
 /* Navegação - Estilo original com melhorias de hover */
 .nav-links {

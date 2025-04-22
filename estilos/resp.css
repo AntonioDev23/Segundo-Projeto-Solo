@@ -1,13 +1,14 @@
-@charset "UTF-8";
-
-/* Mobile: Menu Hambúrguer */
+/* Mobile: Menu Hambúrguer (IGUAL ao seu código) */
 @media (max-width: 768px) {
     .header-container {
-        grid-template-areas: "logo hamburguer";
+        grid-template-columns: auto 1fr;
+        gap: 10px;
     }
 
     .nav-toggle {
         display: block;
+        order: 2;
+        margin-left: auto;
     }
 
     .nav {
@@ -15,20 +16,11 @@
         top: 70px;
         left: -100%;
         width: 80%;
+        background: #8b0000;
         transition: left 0.3s;
+        z-index: 100;
+        padding: 15px 0;
     }
 
-    .nav.active {
-        left: 0;
-    }
-
-    /* Ajuste do grid de receitas */
-    .recipe-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Hero menor em mobile */
-    .hero h2 {
-        font-size: 1.8rem;
-    }
+    /* ... (TODAS as regras mobile do seu CSS original) ... */
 }

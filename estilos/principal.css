@@ -1,25 +1,29 @@
 @charset "UTF-8";
 
-/* Reset e Variáveis */
 :root {
     --cor-primaria: #8b0000;
     --cor-secundaria: #ff6347;
     --cor-fundo: rgba(255, 248, 240, 0.9);
+    --cor-texto: #333;
+    --cor-texto-claro: #fff;
+    --cor-destaque: #ff4500;
     --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --borda-arredondada: 8px;
 }
 
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--cor-texto);
     background: url('../imagens/274226f0-b401-4106-85bd-98816b221b2c.webp') no-repeat center center fixed;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .container {

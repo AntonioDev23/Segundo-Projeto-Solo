@@ -66,8 +66,12 @@
     grid-area: logo;
     white-space: nowrap;
     font-size: 1.7rem;
-    min-width: 0; /* Permite que o texto seja truncado se necessário */
-    justify-self: start; /* Alinha à esquerda */
+    min-width: 0;
+    justify-self: start;
+    font-family: 'Edu AU VIC WA NT Arrows', cursive;
+    font-weight: 700; /* Peso da fonte que você incluiu (400..700) */
+    /* Adicione fallback fonts caso necessário */
+    font-family: 'Edu AU VIC WA NT Arrows', 'Segoe UI', sans-serif;
 }
 
 

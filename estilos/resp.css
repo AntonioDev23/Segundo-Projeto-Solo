@@ -1,43 +1,37 @@
 
 @charset "UTF-8";
 
-/* ===== HEADER MOBILE ===== */
 @media (max-width: 768px) {
-    /* Novo Layout - Hambúrguer ao lado do título */
+    /* === AJUSTE DO LAYOUT === */
     .header-container {
         display: grid;
         grid-template-areas: "logo hamburguer";
-        grid-template-columns: 1fr auto; /* Título expande, botão fica à direita */
+        grid-template-columns: 1fr auto; /* Título ocupa espaço, hamburguer fica à direita */
         align-items: center;
         padding: 10px 15px;
-        gap: 10px;
     }
 
     .logo {
         grid-area: logo;
+        justify-self: start; /* Alinha à esquerda */
         font-size: 1.5rem;
-        justify-self: start; /* Alinhamento à esquerda */
     }
 
     .nav-toggle {
         grid-area: hamburguer;
         display: block;
-        order: 2;
         margin-left: auto; /* Alinha à direita */
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
+        order: 2;
     }
 
-    /* Menu Dropdown (mantido do seu original) */
+    /* === MENU DROPDOWN (MANTIDO ORIGINAL) === */
     .nav {
         position: fixed;
         top: 70px;
         left: -100%;
         width: 80%;
         background: #8b0000;
-        transition: left 0.3s ease;
+        transition: left 0.3s;
         z-index: 100;
         padding: 15px 0;
         max-height: calc(100vh - 70px);
@@ -48,13 +42,15 @@
         left: 0;
     }
 
-    /* Busca Mobile (mantida do seu original) */
-    .search-mobile {
-        display: none;
-        padding: 15px 20px;
+    .nav-links {
+        flex-direction: column;
+        gap: 8px;
+        padding: 0 20px;
     }
 
-    .nav.active .search-mobile {
-        display: block;
+    .search-mobile {
+        padding: 15px 20px 0;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
     }
 }

@@ -70,9 +70,11 @@
     justify-self: start;
     font-family: 'Edu AU VIC WA NT Arrows', cursive;
     font-weight: 700; /* Peso da fonte que você incluiu (400..700) */
-    /* Adicione fallback fonts caso necessário */
-    font-family: 'Edu AU VIC WA NT Arrows', 'Segoe UI', sans-serif;
+    letter-spacing: 1px; /* Espaçamento entre letras */
+    
 }
+
+
 
 
 

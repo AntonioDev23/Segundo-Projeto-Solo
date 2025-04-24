@@ -1,91 +1,78 @@
 
 @charset "UTF-8";
 
-/* ===== [MOBILE] HEADER ===== */
+/* ===== MENU HAMBÚRGUER MOBILE ===== */
 @media (max-width: 768px) {
+  /* Layout do header */
   .header-container {
-      grid-template-areas: 
-          "logo hamburguer"
-          "search search";
-      grid-template-columns: 1fr auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 10px 15px;
+      height: 70px;
   }
 
-  /* Esconde nav desktop */
+  /* Botão hambúrguer */
+  .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1000;
+  }
+
+  .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: white;
+      transition: all 0.3s ease;
+  }
+
+  /* Menu mobile */
   .nav {
       position: fixed;
-      top: 70px; /* Altura do header */
+      top: 70px;
       left: -100%;
       width: 100%;
       height: calc(100vh - 70px);
       background: #8b0000;
       transition: left 0.3s ease;
-      z-index: 100;
+      z-index: 900;
       overflow-y: auto;
+      padding: 20px;
   }
 
   .nav.active {
       left: 0;
   }
 
-  /* Estilo dos links do menu mobile */
+  /* Links do menu */
   .nav-links {
       display: flex;
       flex-direction: column;
       gap: 15px;
-      padding: 20px;
   }
 
   .nav-links a {
-      padding: 12px;
-      font-size: 1.1rem;
       color: white;
+      font-size: 1.1rem;
+      padding: 10px 0;
   }
 
-  /* Botão Hambúrguer */
-  .nav-toggle {
-      grid-area: hamburguer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 30px;
-      height: 24px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 110;
-      padding: 0;
-  }
-
-  .hamburger {
-      display: block;
-      width: 100%;
-      height: 3px;
-      background: white;
-      transition: all 0.3s ease;
-      position: relative;
-  }
-
-  /* Transforma em "X" quando ativo */
-  .nav-toggle.active .hamburger {
-      transform: rotate(45deg);
-  }
-
-  .nav-toggle.active .hamburger::before {
-      transform: rotate(-90deg) translate(-8px, 0);
-  }
-
-  .nav-toggle.active .hamburger::after {
-      opacity: 0;
-  }
-
-  /* Barra de busca mobile (opcional) */
+  /* Barra de busca mobile (dentro do menu) */
   .search-mobile {
-      padding: 15px 20px;
-      display: none;
+      margin-top: 20px;
   }
 
-  .nav.active .search-mobile {
-      display: block;
+  /* Esconde elementos desktop */
+  .search-form.desktop,
+  .filter-toggle {
+      display: none !important;
   }
 }

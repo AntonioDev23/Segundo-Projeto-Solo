@@ -3,50 +3,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualiza o ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ========== MENU HAMBÚRGUER ========== //
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
     
-    if (navToggle && nav) {
-        // Cria as 3 linhas do ícone hambúrguer
-        navToggle.innerHTML = `
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        `;
-        
-        const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
-        
-        navToggle.addEventListener('click', function() {
-            // Alterna menu
-            this.classList.toggle('active');
-            nav.classList.toggle('active');
-            
-            // Animação do ícone para "X"
-            if (this.classList.contains('active')) {
-                hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                hamburgerLines[1].style.opacity = '0';
-                hamburgerLines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-            } else {
-                hamburgerLines.forEach(line => {
-                    line.style.transform = 'none';
-                    line.style.opacity = '1';
-                });
-            }
-        });
+    // MENU HAMBÚRGUER
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
 
-        // Fecha o menu ao clicar em links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                navToggle.classList.remove('active');
-                hamburgerLines.forEach(line => {
-                    line.style.transform = 'none';
-                    line.style.opacity = '1';
-                });
+if (navToggle && nav) {
+    // Cria os 3 riscos do ícone (caso não existam no HTML)
+    if (!navToggle.querySelector('span')) {
+        navToggle.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+    }
+
+    const spans = navToggle.querySelectorAll('span');
+
+    navToggle.addEventListener('click', () => {
+        // Alterna menu
+        nav.classList.toggle('active');
+        navToggle.classList.toggle('active');
+
+        // Animação do ícone
+        if (nav.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+        } else {
+            spans.forEach(span => {
+                span.style.transform = 'none';
+                span.style.opacity = '1';
+            });
+        }
+    });
+
+    // Fecha o menu ao clicar em links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            navToggle.classList.remove('active');
+            spans.forEach(span => {
+                span.style.transform = 'none';
+                span.style.opacity = '1';
             });
         });
-    }
+    });
+}
+
+// (Mantenha o resto do seu código existente: busca, filtros, etc.)
 
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [

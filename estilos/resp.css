@@ -1,69 +1,79 @@
 
 @media (max-width: 768px) {
+  /* Esconde a barra de pesquisa para desktop (será visível no mobile) */
   .search-form.desktop {
     display: none !important;
   }
 
+  /* Estilização do botão do menu hambúrguer */
   .nav-toggle {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: column; /* Coloca as linhas do hambúrguer uma em cima da outra */
+    justify-content: space-between; /* Espaço entre as linhas */
     width: 30px;
     height: 21px;
     background: transparent;
     border: none;
-    cursor: pointer;
+    cursor: pointer; /* Altera o cursor para "pointer" para indicar clicável */
     padding: 0;
-    z-index: 1000;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
   }
 
+  /* Estilo das linhas do hambúrguer */
   .hamburger-line {
     display: block;
     width: 100%;
     height: 3px;
     background: white;
     margin: 4px 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transição suave para animação */
   }
 
+  /* Menu de navegação (inicialmente escondido) */
   .nav {
     position: fixed;
-    top: 70px;
-    left: -100%;
+    top: 70px; /* Coloca o menu logo abaixo do header */
+    left: -100%; /* Esconde o menu off-screen */
     width: 100%;
-    height: calc(100vh - 70px);
-    background: #8b0000;
-    transition: left 0.3s ease;
-    z-index: 900;
-    overflow-y: auto;
-    padding: 20px;
+    height: calc(100vh - 70px); /* Preenche toda a altura da tela, menos o header */
+    background: #8b0000; /* Cor de fundo vermelha */
+    transition: left 0.3s ease; /* Transição suave ao abrir/fechar */
+    z-index: 900; /* Coloca o menu abaixo do botão hambúrguer */
+    overflow-y: auto; /* Permite rolagem no menu se necessário */
+    padding: 20px; /* Adiciona espaçamento dentro do menu */
   }
 
+  /* Menu de navegação ativo (aberto) */
   .nav.active {
-    left: 0;
+    left: 0; /* Quando ativo, o menu aparece a partir da esquerda */
   }
 
+  /* Estilo da lista de links do menu */
   .nav-links {
-    list-style: none;
+    list-style: none; /* Remove a lista padrão */
     padding: 0;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px 0; /* Remove margens e adiciona uma margem inferior */
   }
 
+  /* Estilo de cada item da lista */
   .nav-links li {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Espaço entre os itens */
   }
 
+  /* Estilo dos links */
   .nav-links a {
     color: #fff;
-    text-decoration: none;
-    font-size: 1.2rem;
+    text-decoration: none; /* Remove o sublinhado */
+    font-size: 1.2rem; /* Aumenta o tamanho da fonte */
   }
 
+  /* Estilo do campo de busca no mobile */
   .search-mobile {
     margin: 20px 0;
-    width: 100%;
+    width: 100%; /* Faz a barra de pesquisa ocupar toda a largura */
   }
 
+  /* Estilo do input da busca no mobile */
   .search-mobile .search-input {
     width: 100%;
     padding: 10px;
@@ -72,62 +82,71 @@
     margin-bottom: 10px;
   }
 
+  /* Estilo da área de resultados de busca */
   .search-results {
     background: #fff;
     border-radius: 4px;
     max-height: 200px;
-    overflow-y: auto;
-    display: none;
-    position: absolute;
-    width: calc(100% - 40px);
-    z-index: 1001;
+    overflow-y: auto; /* Permite rolagem nos resultados */
+    display: none; /* Inicialmente oculto */
+    position: absolute; /* Fixa os resultados dentro do container de busca */
+    width: calc(100% - 40px); /* Ocupa toda a largura menos o padding */
+    z-index: 1001; /* Coloca os resultados acima de outros elementos */
   }
 
+  /* Estilo de cada item nos resultados da busca */
   .search-result-item {
     padding: 10px;
     border-bottom: 1px solid #ccc;
-    cursor: pointer;
+    cursor: pointer; /* Indica que o item é clicável */
   }
 
+  /* Estilo quando o item da busca é hover (quando o mouse passa por cima) */
   .search-result-item:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Muda a cor de fundo ao passar o mouse */
   }
 
+  /* Estilo do dropdown de filtros */
   .filter-dropdown {
     margin-top: 20px;
   }
 
+  /* Estilo das opções de filtro (chips) */
   .filter-options {
     margin-bottom: 15px;
   }
 
+  /* Estilo do título das opções de filtro */
   .filter-options p {
     margin-bottom: 5px;
-    color: #fff;
+    color: #fff; /* Texto branco */
   }
 
+  /* Estilo dos chips de filtro (botões para selecionar filtros) */
   .filter-chip {
     display: inline-block;
     padding: 5px 10px;
     background-color: #fff;
-    color: #8b0000;
+    color: #8b0000; /* Cor de texto vermelha */
     border-radius: 20px;
     margin-right: 10px;
     margin-bottom: 10px;
-    cursor: pointer;
+    cursor: pointer; /* Indica que é clicável */
   }
 
+  /* Estilo para chips de filtro ativos */
   .filter-chip.active {
-    background-color: #ff6347;
-    color: #fff;
+    background-color: #ff6347; /* Cor de fundo quando ativo */
+    color: #fff; /* Texto branco quando ativo */
   }
 
+  /* Estilo do botão de aplicar filtros */
   .apply-button {
     padding: 10px 20px;
-    background-color: #ff6347;
+    background-color: #ff6347; /* Cor de fundo */
     color: #fff;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    cursor: pointer; /* Indica que é clicável */
   }
 }

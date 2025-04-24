@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Restante do código...
-});
+
 
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [

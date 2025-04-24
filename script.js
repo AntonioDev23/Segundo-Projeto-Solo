@@ -1,12 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // ========== GERAL ========== //
     // Atualiza o ano no footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // ========== MENU HAMBÚRGUER ========== //
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');
-    
+
     // Cria os 3 riscos do ícone hambúrguer se não existirem
     if (navToggle && !navToggle.querySelector('span')) {
         navToggle.innerHTML = `
@@ -18,13 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (navToggle && nav) {
         const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
-        
-        navToggle.addEventListener('click', function() {
-            // Alterna menu
+
+        navToggle.addEventListener('click', function () {
             this.classList.toggle('active');
             nav.classList.toggle('active');
-            
-            // Animação do ícone
+
             if (this.classList.contains('active')) {
                 hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
                 hamburgerLines[1].style.opacity = '0';
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Fecha o menu ao clicar em links
+        // Fecha o menu ao clicar nos links
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
@@ -60,12 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
         { nome: "Cuscuz", categoria: "Café da Manhã", url: "#" }
     ];
 
-    // Funciona para busca desktop e mobile
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
     if (searchInput && searchResults) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const termo = this.value.toLowerCase().trim();
             searchResults.innerHTML = '';
 
@@ -74,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const resultados = receitasBusca.filter(receita => 
-                receita.nome.toLowerCase().includes(termo) || 
+            const resultados = receitasBusca.filter(receita =>
+                receita.nome.toLowerCase().includes(termo) ||
                 receita.categoria.toLowerCase().includes(termo)
             );
 
@@ -102,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Fecha resultados ao clicar fora
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.search-container') && !e.target.matches('#searchInput')) {
+            if (!e.target.closest('.search-container') && e.target !== searchInput) {
                 searchResults.style.display = 'none';
             }
         });
@@ -121,21 +119,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Seleção de chips
         document.querySelectorAll('.filter-chip').forEach(chip => {
-            chip.addEventListener('click', function() {
+            chip.addEventListener('click', function () {
                 const group = this.closest('.filter-options');
                 group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
             });
         });
 
-        // Botão "Aplicar"
         if (applyBtn) {
             applyBtn.addEventListener('click', applyFilters);
         }
 
-        // Fechar ao clicar fora
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.filter-dropdown') && !e.target.matches('#filterToggle')) {
+            if (!e.target.closest('.filter-dropdown') && e.target !== filterToggle) {
                 filterDropdown.classList.remove('show');
             }
         });
@@ -145,23 +141,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedTime = document.getElementById('filterTime').value;
         const selectedDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty;
         const selectedDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet;
-        
+
         console.log("Filtros aplicados:", {
             tempo: selectedTime,
             dificuldade: selectedDifficulty,
             dieta: selectedDiet
         });
-        
-        // Aqui você implementaria a filtragem real
+
         filterDropdown.classList.remove('show');
     }
 
     // ========== SCROLL SUAVE ========== //
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+        anchor.addEventListener('click', function (e) {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'

@@ -51,9 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Restante do código...
-
-
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [
         { nome: "Bolo de Chocolate", categoria: "Doces", url: "#" },

@@ -26,8 +26,7 @@
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
-            
-            
+    
             <!-- Barra de Busca + Filtros (centralizada) -->
             <div class="search-wrapper">
                 <div class="search-container">
@@ -36,8 +35,8 @@
                         <button type="submit" class="search-button">🔍</button>
                         <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
                     </form>
-                    
-                    <!-- ADICIONE ESTA PARTE QUE ESTAVA FALTANDO -->
+    
+                    <!-- Filtros Dropdown -->
                     <div class="filter-dropdown" id="filterDropdown">
                         <div class="filter-group">
                             <h4>Tempo</h4>
@@ -47,7 +46,7 @@
                                 <option value="60">≤ 1h</option>
                             </select>
                         </div>
-                        
+    
                         <div class="filter-group">
                             <h4>Dificuldade</h4>
                             <div class="filter-options">
@@ -56,7 +55,7 @@
                                 <button class="filter-chip" data-difficulty="medio">Médio</button>
                             </div>
                         </div>
-                        
+    
                         <div class="filter-group">
                             <h4>Dieta</h4>
                             <div class="filter-options">
@@ -65,16 +64,16 @@
                                 <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
                             </div>
                         </div>
-                        <!-- Novo botão no final -->
+    
                         <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
                     </div>
-                    <!-- FIM DA SEÇÃO ADICIONADA -->
-                    
+                    <!-- Fim dos Filtros Dropdown -->
+    
                     <!-- Resultados da busca (existente) -->
                     <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
-            
+    
             <!-- Menu de Navegação (à direita) -->
             <nav class="nav">
                 <ul class="nav-links">
@@ -85,7 +84,7 @@
             </nav>
         </div>
     </header>
-
+    
     <main>
         <section class="hero">
             <div class="container hero-container">

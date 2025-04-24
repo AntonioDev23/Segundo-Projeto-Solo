@@ -16,61 +16,72 @@
 <body>
 
     <header class="header">
-        <div class="logo">
-          <a href="/">
-            <img src="logo.png" alt="Logo">
-          </a>
+        <div class="container header-container">
+            <!-- Logo (à esquerda) -->
+            <h1 class="logo">ARSN Receitas Deliciosas</h1>
+            
+            <!-- Menu Hambúrguer (mobile) -->
+            <button class="nav-toggle" aria-label="Menu">
+                <span class="hamburger"></span>
+            </button>
+            
+            <!-- Barra de Busca + Filtros (centralizada) -->
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <form class="search-form desktop">
+                        <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
+                        <button type="submit" class="search-button">🔍</button>
+                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
+                    </form>
+                    
+                    <!-- ADICIONE ESTA PARTE QUE ESTAVA FALTANDO -->
+                    <div class="filter-dropdown" id="filterDropdown">
+                        <div class="filter-group">
+                            <h4>Tempo</h4>
+                            <select class="filter-select" id="filterTime">
+                                <option value="all">Todos</option>
+                                <option value="30">≤ 30 min</option>
+                                <option value="60">≤ 1h</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Dificuldade</h4>
+                            <div class="filter-options">
+                                <button class="filter-chip" data-difficulty="all">Todos</button>
+                                <button class="filter-chip" data-difficulty="facil">Fácil</button>
+                                <button class="filter-chip" data-difficulty="medio">Médio</button>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Dieta</h4>
+                            <div class="filter-options">
+                                <button class="filter-chip" data-diet="all">Todos</button>
+                                <button class="filter-chip" data-diet="vegano">Vegano</button>
+                                <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
+                            </div>
+                        </div>
+                        <!-- Novo botão no final -->
+                        <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
+                    </div>
+                    <!-- FIM DA SEÇÃO ADICIONADA -->
+                    
+                    <!-- Resultados da busca (existente) -->
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            
+            <!-- Menu de Navegação (à direita) -->
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#popular">Nossas Receitas</a></li>
+                    <li><a href="#categories">Categorias</a></li>
+                    <li><a href="login.html" class="login-btn">Login</a></li>
+                </ul>
+            </nav>
         </div>
-      
-        <button class="nav-toggle" aria-label="Abrir menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      
-        <nav class="nav">
-          <ul class="nav-links">
-            <li><a href="#categorias">Categorias</a></li>
-            <li><a href="#receitas">Nossas Receitas</a></li>
-            <li><a href="#login">Login</a></li>
-          </ul>
-      
-          <div class="search-mobile search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Buscar receitas...">
-            <div id="searchResults" class="search-results"></div>
-          </div>
-      
-          <div class="filter-dropdown" id="filterDropdown">
-            <div class="filter-options">
-              <label for="filterTime">Tempo:</label>
-              <select id="filterTime">
-                <option value="">Todos</option>
-                <option value="15">Até 15 min</option>
-                <option value="30">Até 30 min</option>
-                <option value="60">Até 1 hora</option>
-              </select>
-            </div>
-      
-            <div class="filter-options">
-              <p>Dificuldade:</p>
-              <div class="filter-chip" data-difficulty="fácil">Fácil</div>
-              <div class="filter-chip" data-difficulty="média">Média</div>
-              <div class="filter-chip" data-difficulty="difícil">Difícil</div>
-            </div>
-      
-            <div class="filter-options">
-              <p>Dieta:</p>
-              <div class="filter-chip" data-diet="vegana">Vegana</div>
-              <div class="filter-chip" data-diet="vegetariana">Vegetariana</div>
-              <div class="filter-chip" data-diet="lowcarb">Low Carb</div>
-            </div>
-      
-            <button id="applyFilters" class="apply-button">Aplicar Filtros</button>
-          </div>
-        </nav>
-      </header>
-      
-      
+    </header>
 
     <main>
         <section class="hero">

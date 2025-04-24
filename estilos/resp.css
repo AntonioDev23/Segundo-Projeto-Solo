@@ -1,15 +1,11 @@
 
 @charset "UTF-8";
 
-/* ===== MENU HAMBÚRGUER MOBILE ===== */
+/* ===== MENU MOBILE ===== */
 @media (max-width: 768px) {
-  /* Layout do header */
-  .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      height: 70px;
+  /* Esconde a busca desktop */
+  .search-form.desktop {
+      display: none !important;
   }
 
   /* Botão hambúrguer */
@@ -52,27 +48,27 @@
       left: 0;
   }
 
-  /* Links do menu */
-  .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-  }
-
-  .nav-links a {
-      color: white;
-      font-size: 1.1rem;
-      padding: 10px 0;
-  }
-
-  /* Barra de busca mobile (dentro do menu) */
+  /* Barra de busca MOBILE (dentro do menu) */
   .search-mobile {
-      margin-top: 20px;
+      margin: 20px 0;
+      width: 100%;
   }
 
-  /* Esconde elementos desktop */
-  .search-form.desktop,
-  .filter-toggle {
-      display: none !important;
+  .search-mobile .search-input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      margin-bottom: 10px;
+  }
+
+  .search-mobile .search-button {
+      width: 100%;
+      padding: 10px;
+      background: #ff6347;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
   }
 }

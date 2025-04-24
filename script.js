@@ -3,66 +3,64 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualiza o ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // ========== MENU HAMBÚRGUER ========== //
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
     
-    // MENU HAMBÚRGUER
-const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.nav');
-
-if (navToggle && nav) {
-    // Cria os 3 riscos do ícone (caso não existam no HTML)
-    if (!navToggle.querySelector('span')) {
+    // Cria os 3 riscos do ícone hambúrguer se não existirem
+    if (navToggle && !navToggle.querySelector('span')) {
         navToggle.innerHTML = `
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
         `;
     }
 
-    const spans = navToggle.querySelectorAll('span');
+    if (navToggle && nav) {
+        const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
+        
+        navToggle.addEventListener('click', function() {
+            // Alterna menu
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+            
+            // Animação do ícone
+            if (this.classList.contains('active')) {
+                hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburgerLines[1].style.opacity = '0';
+                hamburgerLines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                hamburgerLines.forEach(line => {
+                    line.style.transform = 'none';
+                    line.style.opacity = '1';
+                });
+            }
+        });
 
-    navToggle.addEventListener('click', () => {
-        // Alterna menu
-        nav.classList.toggle('active');
-        navToggle.classList.toggle('active');
-
-        // Animação do ícone
-        if (nav.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-        } else {
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            });
-        }
-    });
-
-    // Fecha o menu ao clicar em links
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            navToggle.classList.remove('active');
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
+        // Fecha o menu ao clicar em links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                navToggle.classList.remove('active');
+                hamburgerLines.forEach(line => {
+                    line.style.transform = 'none';
+                    line.style.opacity = '1';
+                });
             });
         });
-    });
-}
-
-// (Mantenha o resto do seu código existente: busca, filtros, etc.)
+    }
 
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [
         { nome: "Bolo de Chocolate", categoria: "Doces", url: "#" },
         { nome: "Pizza Caseira", categoria: "Massas", url: "#" },
         { nome: "Lasanha", categoria: "Massas", url: "#" },
-        { nome: "Escondidinho de Carne Moída", categoria: "Carnes", url: "#" },
+        { nome: "Escondidinho", categoria: "Carnes", url: "#" },
         { nome: "Feijão Tropeiro", categoria: "Tradicional", url: "#" },
         { nome: "Cuscuz", categoria: "Café da Manhã", url: "#" }
     ];
 
+    // Funciona para busca desktop e mobile
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
@@ -91,6 +89,7 @@ if (navToggle && nav) {
                     `;
                     item.addEventListener('click', () => {
                         window.location.href = receita.url;
+                        searchResults.style.display = 'none';
                     });
                     searchResults.appendChild(item);
                 });
@@ -101,15 +100,9 @@ if (navToggle && nav) {
             }
         });
 
-        // Fecha resultados ao clicar fora ou pressionar ESC
+        // Fecha resultados ao clicar fora
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.search-container')) {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+            if (!e.target.closest('.search-container') && !e.target.matches('#searchInput')) {
                 searchResults.style.display = 'none';
             }
         });
@@ -159,7 +152,7 @@ if (navToggle && nav) {
             dieta: selectedDiet
         });
         
-        // Aqui você implementaria a filtragem real das receitas
+        // Aqui você implementaria a filtragem real
         filterDropdown.classList.remove('show');
     }
 
@@ -170,7 +163,8 @@ if (navToggle && nav) {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });

@@ -15,56 +15,61 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">LOGO</div>
+    <header class="header">
+        <div class="logo">
+          <a href="/">
+            <img src="logo.png" alt="Logo">
+          </a>
+        </div>
       
-        <button class="nav-toggle" aria-label="Abrir menu"></button>
+        <button class="nav-toggle" aria-label="Abrir menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       
         <nav class="nav">
-          <!-- Links do menu -->
           <ul class="nav-links">
             <li><a href="#categorias">Categorias</a></li>
             <li><a href="#receitas">Nossas Receitas</a></li>
             <li><a href="#login">Login</a></li>
           </ul>
       
-          <!-- Barra de busca -->
-          <div class="search-mobile">
+          <div class="search-mobile search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="Buscar receitas...">
-            <button class="search-button">Buscar</button>
             <div id="searchResults" class="search-results"></div>
           </div>
       
-          <!-- Filtros -->
-          <div id="filterDropdown" class="filter-dropdown">
+          <div class="filter-dropdown" id="filterDropdown">
             <div class="filter-options">
               <label for="filterTime">Tempo:</label>
               <select id="filterTime">
                 <option value="">Todos</option>
                 <option value="15">Até 15 min</option>
                 <option value="30">Até 30 min</option>
-                <option value="60">Até 1h</option>
+                <option value="60">Até 1 hora</option>
               </select>
             </div>
       
             <div class="filter-options">
-              <label>Dificuldade:</label>
-              <span class="filter-chip" data-difficulty="fácil">Fácil</span>
-              <span class="filter-chip" data-difficulty="média">Média</span>
-              <span class="filter-chip" data-difficulty="difícil">Difícil</span>
+              <p>Dificuldade:</p>
+              <div class="filter-chip" data-difficulty="fácil">Fácil</div>
+              <div class="filter-chip" data-difficulty="média">Média</div>
+              <div class="filter-chip" data-difficulty="difícil">Difícil</div>
             </div>
       
             <div class="filter-options">
-              <label>Dieta:</label>
-              <span class="filter-chip" data-diet="vegana">Vegana</span>
-              <span class="filter-chip" data-diet="vegetariana">Vegetariana</span>
-              <span class="filter-chip" data-diet="sem-gluten">Sem Glúten</span>
+              <p>Dieta:</p>
+              <div class="filter-chip" data-diet="vegana">Vegana</div>
+              <div class="filter-chip" data-diet="vegetariana">Vegetariana</div>
+              <div class="filter-chip" data-diet="lowcarb">Low Carb</div>
             </div>
       
-            <button id="applyFilters">Aplicar Filtros</button>
+            <button id="applyFilters" class="apply-button">Aplicar Filtros</button>
           </div>
         </nav>
       </header>
+      
       
 
     <main>

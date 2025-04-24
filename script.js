@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Cria os 3 riscos do ícone hambúrguer se não existirem
     if (navToggle && !navToggle.querySelector('.hamburger-line')) {
-        navToggle.innerHTML = `
+        navToggle.innerHTML = ` 
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navToggle && nav) {
         const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
         
+        // Adiciona o evento de clique no botão de hambúrguer
         navToggle.addEventListener('click', function() {
-            // Alterna menu
+            console.log('Botão clicado!'); // Log para depuração
             this.classList.toggle('active');
             nav.classList.toggle('active');
             
@@ -49,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Restante do código...
+});
 
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [

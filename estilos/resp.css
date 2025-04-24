@@ -3,85 +3,89 @@
 
 /* ===== [MOBILE] HEADER ===== */
 @media (max-width: 768px) {
-  /* Layout do header */
-  .header {
-    position: relative;
-    height: 70px; /* Altura fixa para alinhar o menu */
-  }
-
   .header-container {
-    display: grid;
-    grid-template-areas: "logo hamburguer";
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 10px 15px;
-    height: 100%;
+      grid-template-areas: 
+          "logo hamburguer"
+          "search search";
+      grid-template-columns: 1fr auto;
+      padding: 10px 15px;
   }
 
-  .logo {
-    grid-area: logo;
-    justify-self: start;
-    font-size: 1.5rem;
-  }
-
-  /* Botão hambúrguer */
-  .nav-toggle {
-    grid-area: hamburguer;
-    display: block;
-    margin-left: auto;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 110; /* Acima do menu */
-  }
-
-  /* Menu dropdown (invisível por padrão) */
+  /* Esconde nav desktop */
   .nav {
-    position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background: #8b0000;
-    transition: left 0.3s ease;
-    z-index: 100;
-    overflow-y: auto;
+      position: fixed;
+      top: 70px; /* Altura do header */
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 70px);
+      background: #8b0000;
+      transition: left 0.3s ease;
+      z-index: 100;
+      overflow-y: auto;
   }
 
   .nav.active {
-    left: 0; /* Mostra ao clicar */
+      left: 0;
   }
 
-  /* Itens do menu (ocultos até ativar) */
+  /* Estilo dos links do menu mobile */
   .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
   }
 
-  .nav.active .nav-links {
-    display: flex; /* Exibe quando menu ativo */
+  .nav-links a {
+      padding: 12px;
+      font-size: 1.1rem;
+      color: white;
   }
 
-  /* Barra de busca mobile (oculta até ativar) */
+  /* Botão Hambúrguer */
+  .nav-toggle {
+      grid-area: hamburguer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 110;
+      padding: 0;
+  }
+
+  .hamburger {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: white;
+      transition: all 0.3s ease;
+      position: relative;
+  }
+
+  /* Transforma em "X" quando ativo */
+  .nav-toggle.active .hamburger {
+      transform: rotate(45deg);
+  }
+
+  .nav-toggle.active .hamburger::before {
+      transform: rotate(-90deg) translate(-8px, 0);
+  }
+
+  .nav-toggle.active .hamburger::after {
+      opacity: 0;
+  }
+
+  /* Barra de busca mobile (opcional) */
   .search-mobile {
-    display: none;
-    padding: 15px 20px 0;
-    margin-top: 10px;
-    border-top: 1px solid rgba(255,255,255,0.2);
+      padding: 15px 20px;
+      display: none;
   }
 
   .nav.active .search-mobile {
-    display: block;
-  }
-}
-
-/* ===== [MOBILE] OCULTAR ELEMENTOS DESKTOP ===== */
-@media (max-width: 768px) {
-  .search-form.desktop {
-    display: none !important;
+      display: block;
   }
 }

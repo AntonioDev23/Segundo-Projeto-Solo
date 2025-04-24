@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // ========== CÓDIGO EXISTENTE (MENU, SCROLL, ETC.) ========== //
     // Atualiza o ano no footer

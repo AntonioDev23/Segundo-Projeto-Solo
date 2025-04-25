@@ -1,21 +1,6 @@
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
-/* Botão hambúrguer só aparece no mobile */
-.nav-toggle {
-  display: none;
-}
 
 @media (max-width: 768px) {
+  /* Exibe o botão do menu hambúrguer no mobile */
   .nav-toggle {
     display: flex;
     flex-direction: column;
@@ -27,23 +12,17 @@
     cursor: pointer;
     z-index: 1000;
     padding: 0;
-    margin-left: auto; /* Joga pro lado direito */
   }
 
+  /* Estilo das linhas do hambúrguer */
   .hamburger-line {
+    display: block;
     width: 100%;
     height: 3px;
-    background-color: #333;
-    border-radius: 2px;
+    background: #000;
+    margin: 4px 0;
+    transition: all 0.3s ease;
   }
-
-  /* Opcional: ajusta centralização da barra de busca se precisar */
-  .search-wrapper {
-    display: none; /* ou ajuste conforme seu layout mobile */
-  }
-}
-
-
 
   /* Menu de navegação (mobile) */
   .nav {
@@ -57,7 +36,6 @@
     z-index: 900;
     overflow-y: auto;
     padding: 20px;
-    display: none;
   }
 
   .nav.active {
@@ -157,4 +135,4 @@
     border-radius: 4px;
     cursor: pointer;
   }
-
+}

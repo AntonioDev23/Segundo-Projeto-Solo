@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Cria os 3 riscos do ícone hambúrguer se não existirem
     if (navToggle && !navToggle.querySelector('.hamburger-line')) {
-        navToggle.innerHTML = ` 
+        navToggle.innerHTML = `
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
         `;
     }
-
+    
     if (navToggle && nav) {
         const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
         

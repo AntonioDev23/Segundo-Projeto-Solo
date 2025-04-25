@@ -1,6 +1,8 @@
 
+.nav-toggle {
+  display: none; /* some no desktop por padrão */
+}
 @media (max-width: 768px) {
-  /* Exibe o botão do menu hambúrguer no mobile */
   .nav-toggle {
     display: flex;
     flex-direction: column;
@@ -14,15 +16,15 @@
     padding: 0;
   }
 
-  /* Estilo das linhas do hambúrguer */
   .hamburger-line {
-    display: block;
-    width: 100%;
     height: 3px;
-    background: #000;
-    margin: 4px 0;
+    background-color: black;
+    width: 100%;
+    border-radius: 2px;
     transition: all 0.3s ease;
   }
+
+
 
   /* Menu de navegação (mobile) */
   .nav {

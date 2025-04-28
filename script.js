@@ -7,35 +7,53 @@ document.addEventListener('DOMContentLoaded', function() {
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 const body = document.body;
+const searchWrapper = document.querySelector('.search-wrapper'); // Seleciona a barra de busca
 
-// Cria overlay dinamicamente
+// Cria overlay
 const overlay = document.createElement('div');
 overlay.className = 'nav-overlay';
 document.body.appendChild(overlay);
 
-navToggle.addEventListener('click', function() {
+// Move a barra de busca e filtros para dentro do menu mobile
+function moveElementsToMenu() {
+  if (window.innerWidth <= 768) {
+    nav.insertBefore(searchWrapper, nav.firstChild); // Insere a busca no topo do menu
+  }
+}
+
+// Abre/fecha menu
+navToggle.addEventListener('click', function(e) {
+  e.stopPropagation(); // Impede propagação do clique
   this.classList.toggle('active');
   nav.classList.toggle('active');
   overlay.classList.toggle('active');
   body.classList.toggle('no-scroll');
+  
+  if (nav.classList.contains('active')) {
+    moveElementsToMenu(); // Reorganiza os elementos quando o menu abre
+  }
 });
 
-// Fechar menu ao clicar no overlay
-overlay.addEventListener('click', () => {
+// Fecha menu ao clicar no overlay ou em links
+overlay.addEventListener('click', closeMenu);
+document.querySelectorAll('.nav-links a, .search-wrapper').forEach(element => {
+  element.addEventListener('click', closeMenu);
+});
+
+function closeMenu() {
   navToggle.classList.remove('active');
   nav.classList.remove('active');
   overlay.classList.remove('active');
   body.classList.remove('no-scroll');
-});
+}
 
-// Fechar ao clicar em links
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navToggle.classList.remove('active');
-    nav.classList.remove('active');
-    overlay.classList.remove('active');
-    body.classList.remove('no-scroll');
-  });
+// Reposiciona elementos ao redimensionar a tela
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    // Retorna a busca para o header no desktop
+    const headerContainer = document.querySelector('.header-container');
+    headerContainer.insertBefore(searchWrapper, nav);
+  }
 });
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [

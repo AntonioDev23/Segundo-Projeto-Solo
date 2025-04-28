@@ -42,6 +42,19 @@
     left: 0; /* Quando a classe 'active' for adicionada, o menu aparece */
   }
 
+  /* Deixa a busca escondida por padrão no mobile */
+.search-wrapper {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Quando o menu está aberto (.active), exibe a busca */
+.nav.active .search-wrapper {
+  display: flex;
+}
+
+
   .nav-links {
     list-style: none;
     padding: 0;

@@ -4,53 +4,74 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // ========== MENU HAMBÚRGUER ========== //
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    
-    // Cria os 3 riscos do ícone hambúrguer se não existirem
-    if (navToggle && !navToggle.querySelector('.hamburger-line')) {
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
+const body = document.body;
+
+// Cria overlay dinamicamente para escurecer o fundo
+const overlay = document.createElement('div');
+overlay.className = 'nav-overlay';
+document.body.appendChild(overlay);
+
+// Verifica se os elementos existem
+if (navToggle && nav) {
+    // Cria as linhas do hambúrguer se não existirem
+    if (!navToggle.querySelector('.hamburger-line')) {
         navToggle.innerHTML = `
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
         `;
     }
-    
-    if (navToggle && nav) {
-        const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
-        
-        // Adiciona o evento de clique no botão de hambúrguer
-        navToggle.addEventListener('click', function() {
-            console.log('Botão clicado!'); // Log para depuração
-            this.classList.toggle('active');
-            nav.classList.toggle('active');
-            
-            // Animação do ícone
-            if (this.classList.contains('active')) {
-                hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                hamburgerLines[1].style.opacity = '0';
-                hamburgerLines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-            } else {
-                hamburgerLines.forEach(line => {
-                    line.style.transform = 'none';
-                    line.style.opacity = '1';
-                });
-            }
-        });
 
-        // Fecha o menu ao clicar em links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                navToggle.classList.remove('active');
-                hamburgerLines.forEach(line => {
-                    line.style.transform = 'none';
-                    line.style.opacity = '1';
-                });
+    const hamburgerLines = navToggle.querySelectorAll('.hamburger-line');
+    
+    navToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.classList.toggle('no-scroll');
+
+        // Animação do hambúrguer para X
+        if (this.classList.contains('active')) {
+            hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            hamburgerLines[1].style.opacity = '0';
+            hamburgerLines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+        } else {
+            hamburgerLines.forEach(line => {
+                line.style.transform = '';
+                line.style.opacity = '';
+            });
+        }
+    });
+
+    // Fechar ao clicar no overlay
+    overlay.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('no-scroll');
+        hamburgerLines.forEach(line => {
+            line.style.transform = '';
+            line.style.opacity = '';
+        });
+    });
+
+    // Fechar ao clicar em links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            navToggle.classList.remove('active');
+            overlay.classList.remove('active');
+            body.classList.remove('no-scroll');
+            hamburgerLines.forEach(line => {
+                line.style.transform = '';
+                line.style.opacity = '';
             });
         });
-    }
-
+    });
+}
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [
         { nome: "Bolo de Chocolate", categoria: "Doces", url: "#" },

@@ -1,6 +1,15 @@
 
 @media (max-width: 768px) {
-  /* Exibe o botão do menu hambúrguer no mobile */
+  /* ========== HEADER MOBILE ========== */
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+  }
+
+  /* ========== MENU HAMBÚRGUER ========== */
   .nav-toggle {
     display: flex;
     flex-direction: column;
@@ -10,142 +19,179 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1001;
     padding: 0;
+    position: relative;
   }
 
   .hamburger-line {
     display: block;
     width: 100%;
     height: 3px;
-    background: #000;
+    background: #fff;
     margin: 4px 0;
-    transition: transform 0.3s ease, opacity 0.3s ease; /* <-- TRANSITION MELHORADA */
-}
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
 
+  /* Transformação em X */
+  .nav-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
-  /* Menu de navegação (mobile) */
+  /* ========== MENU LATERAL ========== */
   .nav {
     position: fixed;
-    top: 70px;
-    left: -100%; /* Menu escondido inicialmente */
-    width: 100%;
-    height: calc(100vh - 70px);
+    top: 0;
+    left: -100%;
+    width: 85%;
+    height: 100vh;
     background: #8b0000;
-    transition: left 0.3s ease;
-    z-index: 900;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+    padding: 80px 25px 25px;
     overflow-y: auto;
-    padding: 20px;
   }
 
   .nav.active {
-    left: 0; /* Quando a classe 'active' for adicionada, o menu aparece */
+    left: 0;
   }
 
-  /* Deixa a busca escondida por padrão no mobile */
-.search-wrapper {
-  display: none;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
+  /* ========== OVERLAY ========== */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
 
-/* Quando o menu está aberto (.active), exibe a busca */
-.nav.active .search-wrapper {
-  display: flex;
-}
+  .nav-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 
+  /* ========== CONTEÚDO DO MENU ========== */
+  /* Barra de busca */
+  .search-wrapper {
+    display: block;
+    margin-bottom: 30px;
+  }
 
+  .search-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.1);
+    color: #fff;
+    border-radius: 6px;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Links de navegação */
   .nav-links {
     list-style: none;
     padding: 0;
-    margin: 0 0 20px;
+    margin: 0 0 30px;
   }
 
   .nav-links li {
     margin-bottom: 15px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.4s ease;
   }
+
+  .nav.active .nav-links li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Animação sequencial dos itens */
+  .nav.active .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+  .nav.active .nav-links li:nth-child(2) { transition-delay: 0.2s; }
+  .nav.active .nav-links li:nth-child(3) { transition-delay: 0.3s; }
 
   .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
-  }
-
-  /* Esconde a barra de pesquisa para desktop */
-  .search-form.desktop {
-    display: none !important;
-  }
-
-  /* Estilo do campo de busca no mobile */
-  .search-mobile {
-    margin: 20px 0;
-    width: 100%;
-  }
-
-  .search-mobile .search-input {
-    width: 100%;
-    padding: 10px;
+    font-size: 1.1rem;
+    display: block;
+    padding: 12px 15px;
     border-radius: 4px;
-    border: none;
-    margin-bottom: 10px;
+    transition: all 0.3s ease;
   }
 
-  .search-results {
-    background: #fff;
-    border-radius: 4px;
-    max-height: 200px;
-    overflow-y: auto;
-    display: none;
-    position: absolute;
-    width: calc(100% - 40px);
-    z-index: 1001;
+  .nav-links a:hover {
+    background: rgba(255,255,255,0.1);
   }
 
-  .search-result-item {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-  }
-
-  .search-result-item:hover {
-    background-color: #f0f0f0;
-  }
-
-  .filter-dropdown {
-    margin-top: 20px;
-  }
-
-  .filter-options {
-    margin-bottom: 15px;
-  }
-
-  .filter-options p {
-    margin-bottom: 5px;
+  /* Botão de login */
+  .login-btn {
+    background: #ff6347;
     color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  /* ========== FILTROS ========== */
+  .filter-dropdown {
+    width: 100%;
+    position: static;
+    box-shadow: none;
+    margin-top: 20px;
+    background: transparent;
+    padding: 0;
+  }
+
+  .filter-group h4 {
+    color: #fff;
+    margin-bottom: 10px;
   }
 
   .filter-chip {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #fff;
+    background: rgba(255,255,255,0.9);
     color: #8b0000;
-    border-radius: 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
   }
 
   .filter-chip.active {
-    background-color: #ff6347;
+    background: #ff6347;
     color: #fff;
   }
 
-  .apply-button {
-    padding: 10px 20px;
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  .btn-apply {
+    width: 100%;
+    margin-top: 20px;
+    background: #ff6347;
+  }
+
+  /* ========== UTILITÁRIOS ========== */
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  /* Esconde elementos do desktop */
+  .search-form.desktop,
+  .header .nav:not(.mobile) {
+    display: none !important;
   }
 }

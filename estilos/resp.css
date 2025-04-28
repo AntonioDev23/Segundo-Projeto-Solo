@@ -124,9 +124,7 @@
   .search-form.desktop {
     display: none !important;
   }
-}
-
-/* Garante que a busca e filtros sejam visíveis no menu */
+  /* Garante que a busca e filtros sejam visíveis no menu */
 .nav .search-wrapper {
   display: block !important;
   width: 100%;
@@ -152,3 +150,5 @@
 .nav-overlay {
   z-index: 998 !important;
 }
+}
+

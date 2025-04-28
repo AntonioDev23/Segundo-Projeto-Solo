@@ -3,43 +3,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualiza o ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ========== MENU HAMBÚRGUER ========== //
+    // Menu Hamburguer
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 const body = document.body;
-const searchWrapper = document.querySelector('.search-wrapper'); // Seleciona a barra de busca
+const searchWrapper = document.querySelector('.search-wrapper');
+const headerContainer = document.querySelector('.header-container');
 
 // Cria overlay
 const overlay = document.createElement('div');
 overlay.className = 'nav-overlay';
 document.body.appendChild(overlay);
 
-// Move a barra de busca e filtros para dentro do menu mobile
-function moveElementsToMenu() {
+// Move elementos para o menu mobile
+function prepareMobileMenu() {
   if (window.innerWidth <= 768) {
-    nav.insertBefore(searchWrapper, nav.firstChild); // Insere a busca no topo do menu
+    // Move a barra de busca e filtros
+    nav.insertBefore(searchWrapper, nav.firstChild);
+    
+    // Garante que os links são clicáveis
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.style.pointerEvents = 'auto';
+    });
   }
 }
 
-// Abre/fecha menu
-navToggle.addEventListener('click', function(e) {
-  e.stopPropagation(); // Impede propagação do clique
-  this.classList.toggle('active');
-  nav.classList.toggle('active');
-  overlay.classList.toggle('active');
-  body.classList.toggle('no-scroll');
-  
-  if (nav.classList.contains('active')) {
-    moveElementsToMenu(); // Reorganiza os elementos quando o menu abre
-  }
-});
-
-// Fecha menu ao clicar no overlay ou em links
-overlay.addEventListener('click', closeMenu);
-document.querySelectorAll('.nav-links a, .search-wrapper').forEach(element => {
-  element.addEventListener('click', closeMenu);
-});
-
+// Fecha menu
 function closeMenu() {
   navToggle.classList.remove('active');
   nav.classList.remove('active');
@@ -47,14 +36,34 @@ function closeMenu() {
   body.classList.remove('no-scroll');
 }
 
-// Reposiciona elementos ao redimensionar a tela
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 768) {
-    // Retorna a busca para o header no desktop
-    const headerContainer = document.querySelector('.header-container');
-    headerContainer.insertBefore(searchWrapper, nav);
+// Eventos
+navToggle.addEventListener('click', function() {
+  this.classList.toggle('active');
+  nav.classList.toggle('active');
+  overlay.classList.toggle('active');
+  body.classList.toggle('no-scroll');
+  
+  if (nav.classList.contains('active')) {
+    prepareMobileMenu();
   }
 });
+
+overlay.addEventListener('click', closeMenu);
+
+// Fecha ao clicar nos links
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+// Restaura elementos no desktop
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    headerContainer.insertBefore(searchWrapper, nav.nextSibling);
+  }
+});
+
+// Prepara o menu ao carregar em mobile
+if (window.innerWidth <= 768) prepareMobileMenu();
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [
         { nome: "Bolo de Chocolate", categoria: "Doces", url: "#" },

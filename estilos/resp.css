@@ -145,4 +145,55 @@
   .nav-overlay {
     z-index: 998 !important;
   }
+
+  /* Correções adicionais */
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav.active {
+    left: 0;
+    display: flex !important;
+  }
+  
+  .search-wrapper {
+    order: 1;
+    width: 90%;
+    margin: 0 auto 20px;
+  }
+  
+  .nav-links {
+    order: 2;
+    width: 100%;
+  }
+  
+  .filter-dropdown {
+    order: 3;
+    width: 90%;
+    margin: 20px auto 0;
+  }
+  
+  /* Garante visibilidade dos elementos */
+  .nav .search-wrapper,
+  .nav .filter-dropdown {
+    display: block !important;
+    opacity: 1 !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+  
+  /* Links clicáveis */
+  .nav-links a {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 1000;
+  }
+
+  
 } /* ⚠️ Apenas UM fechamento aqui */
+
+
+  
+  

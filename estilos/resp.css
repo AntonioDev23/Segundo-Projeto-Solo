@@ -114,6 +114,8 @@
     padding: 12px;
     border-radius: 4px;
     transition: background 0.3s;
+    pointer-events: auto !important; /* Garante que os links são clicáveis */
+    cursor: pointer !important;
   }
 
   .nav-links a:hover {
@@ -124,31 +126,23 @@
   .search-form.desktop {
     display: none !important;
   }
-  /* Garante que a busca e filtros sejam visíveis no menu */
-.nav .search-wrapper {
-  display: block !important;
-  width: 100%;
-  padding: 0 15px;
-  margin-bottom: 20px;
-}
 
-/* Estilo para os filtros no menu mobile */
-.nav .filter-dropdown {
-  background: rgba(0,0,0,0.1);
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 15px;
-}
+  /* ===== ELEMENTOS ESPECÍFICOS DO MENU ===== */
+  .nav .search-wrapper {
+    display: block !important;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 20px;
+  }
 
-/* Melhora a usabilidade dos itens do menu */
-.nav-links a {
-  pointer-events: auto !important; /* Garante que os links são clicáveis */
-  cursor: pointer !important;
-}
+  .nav .filter-dropdown {
+    background: rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+  }
 
-/* Overlay mais responsivo */
-.nav-overlay {
-  z-index: 998 !important;
-}
-}
-
+  .nav-overlay {
+    z-index: 998 !important;
+  }
+} /* ⚠️ Apenas UM fechamento aqui */

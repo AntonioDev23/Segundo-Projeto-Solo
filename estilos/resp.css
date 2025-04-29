@@ -106,17 +106,13 @@
     margin-bottom: 15px;
   }
 
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: block;
-    padding: 12px;
-    border-radius: 4px;
-    transition: background 0.3s;
-    pointer-events: auto !important; /* Garante que os links são clicáveis */
-    cursor: pointer !important;
-  }
+  
+.nav-links a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 10000; /* Garante que os links sejam clicáveis */
+}
 
   .nav-links a:hover {
     background: rgba(255,255,255,0.1);

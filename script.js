@@ -4,66 +4,71 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Menu Hamburguer
-const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.nav');
-const body = document.body;
-const searchWrapper = document.querySelector('.search-wrapper');
-const headerContainer = document.querySelector('.header-container');
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    const body = document.body;
+    const searchWrapper = document.querySelector('.search-wrapper');
+    const headerContainer = document.querySelector('.header-container');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-// Cria overlay
-const overlay = document.createElement('div');
-overlay.className = 'nav-overlay';
-document.body.appendChild(overlay);
+    // Cria overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
 
-// Move elementos para o menu mobile
-function prepareMobileMenu() {
-  if (window.innerWidth <= 768) {
-    // Move a barra de busca e filtros
-    nav.insertBefore(searchWrapper, nav.firstChild);
-    
-    // Garante que os links são clicáveis
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.style.pointerEvents = 'auto';
+    // Move elementos para o menu mobile
+    function prepareMobileMenu() {
+        if (window.innerWidth <= 768) {
+            // Move a barra de busca e filtros
+            nav.insertBefore(searchWrapper, nav.firstChild);
+
+            // Garante que os links são clicáveis
+            navLinks.forEach(link => {
+                link.style.pointerEvents = 'auto';
+            });
+        }
+    }
+
+    // Fecha menu
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('no-scroll');
+    }
+
+    // Eventos
+    navToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.classList.toggle('no-scroll');
+
+        if (nav.classList.contains('active')) {
+            prepareMobileMenu();
+        }
     });
-  }
-}
 
-// Fecha menu
-function closeMenu() {
-  navToggle.classList.remove('active');
-  nav.classList.remove('active');
-  overlay.classList.remove('active');
-  body.classList.remove('no-scroll');
-}
+    overlay.addEventListener('click', closeMenu);
 
-// Eventos
-navToggle.addEventListener('click', function() {
-  this.classList.toggle('active');
-  nav.classList.toggle('active');
-  overlay.classList.toggle('active');
-  body.classList.toggle('no-scroll');
-  
-  if (nav.classList.contains('active')) {
-    prepareMobileMenu();
-  }
-});
+    // Fecha menu ao clicar nos links (e deixa o clique funcionar normalmente)
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Permite a navegação e fecha o menu
+            closeMenu();
+        });
+    });
 
-overlay.addEventListener('click', closeMenu);
+    // Restaura elementos no desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            headerContainer.insertBefore(searchWrapper, nav.nextSibling);
+        }
+    });
 
-// Fecha ao clicar nos links
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
+    // Prepara o menu ao carregar em mobile
+    if (window.innerWidth <= 768) prepareMobileMenu();
 
-// Restaura elementos no desktop
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 768) {
-    headerContainer.insertBefore(searchWrapper, nav.nextSibling);
-  }
-});
-
-// Prepara o menu ao carregar em mobile
-if (window.innerWidth <= 768) prepareMobileMenu();
     // ========== BARRA DE BUSCA ========== //
     const receitasBusca = [
         { nome: "Bolo de Chocolate", categoria: "Doces", url: "#" },
@@ -74,7 +79,6 @@ if (window.innerWidth <= 768) prepareMobileMenu();
         { nome: "Cuscuz", categoria: "Café da Manhã", url: "#" }
     ];
 
-    // Funciona para busca desktop e mobile
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
@@ -88,8 +92,8 @@ if (window.innerWidth <= 768) prepareMobileMenu();
                 return;
             }
 
-            const resultados = receitasBusca.filter(receita => 
-                receita.nome.toLowerCase().includes(termo) || 
+            const resultados = receitasBusca.filter(receita =>
+                receita.nome.toLowerCase().includes(termo) ||
                 receita.categoria.toLowerCase().includes(termo)
             );
 
@@ -159,13 +163,13 @@ if (window.innerWidth <= 768) prepareMobileMenu();
         const selectedTime = document.getElementById('filterTime').value;
         const selectedDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty;
         const selectedDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet;
-        
+
         console.log("Filtros aplicados:", {
             tempo: selectedTime,
             dificuldade: selectedDifficulty,
             dieta: selectedDiet
         });
-        
+
         // Aqui você implementaria a filtragem real
         filterDropdown.classList.remove('show');
     }

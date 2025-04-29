@@ -1,7 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // ========== GERAL ========== //
     // Atualiza o ano no footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 
     // Menu Hamburguer
     const navToggle = document.querySelector('.nav-toggle');
@@ -20,12 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function prepareMobileMenu() {
         if (window.innerWidth <= 768) {
             // Move a barra de busca e filtros
-            nav.insertBefore(searchWrapper, nav.firstChild);
+            if (nav && searchWrapper) {
+                nav.insertBefore(searchWrapper, nav.firstChild);
+            }
 
             // Garante que os links são clicáveis
-            navLinks.forEach(link => {
-                link.style.pointerEvents = 'auto';
-            });
+            if (navLinks) {
+                navLinks.forEach(link => {
+                    link.style.pointerEvents = 'auto';
+                });
+            }
         }
     }
 
@@ -38,30 +45,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Eventos
-    navToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        body.classList.toggle('no-scroll');
+    if (navToggle) {
+        navToggle.addEventListener('click', function () {
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.classList.toggle('no-scroll');
 
-        if (nav.classList.contains('active')) {
-            prepareMobileMenu();
-        }
-    });
+            if (nav.classList.contains('active')) {
+                prepareMobileMenu();
+            }
+        });
+    }
 
-    overlay.addEventListener('click', closeMenu);
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
 
     // Fecha menu ao clicar nos links (e deixa o clique funcionar normalmente)
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Permite a navegação e fecha o menu
-            closeMenu();
+    if (navLinks) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                closeMenu();
+            });
         });
-    });
+    }
 
     // Restaura elementos no desktop
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768 && headerContainer) {
             headerContainer.insertBefore(searchWrapper, nav.nextSibling);
         }
     });
@@ -83,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResults = document.getElementById('searchResults');
 
     if (searchInput && searchResults) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const termo = this.value.toLowerCase().trim();
             searchResults.innerHTML = '';
 
@@ -139,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Seleção de chips
         document.querySelectorAll('.filter-chip').forEach(chip => {
-            chip.addEventListener('click', function() {
+            chip.addEventListener('click', function () {
                 const group = this.closest('.filter-options');
                 group.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
@@ -160,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function applyFilters() {
-        const selectedTime = document.getElementById('filterTime').value;
+        const selectedTime = document.getElementById('filterTime')?.value;
         const selectedDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty;
         const selectedDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet;
 
@@ -176,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ========== SCROLL SUAVE ========== //
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {

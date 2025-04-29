@@ -17,76 +17,73 @@
 
     <header class="header">
         <div class="container header-container">
-          <!-- Esquerda: Logo -->
-          <div class="header-left">
+            <!-- Logo (à esquerda) -->
             <h1 class="logo">ARSN Receitas Deliciosas</h1>
-          </div>
-      
-          <!-- Centro: Barra de Busca -->
-          <div class="search-wrapper">
-            <div class="search-container">
-              <form class="search-form desktop">
-                <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
-                <button type="submit" class="search-button">🔍</button>
-                <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
-              </form>
-      
-              <!-- Filtros Dropdown -->
-              <div class="filter-dropdown" id="filterDropdown">
-                <div class="filter-group">
-                  <h4>Tempo</h4>
-                  <select class="filter-select" id="filterTime">
-                    <option value="all">Todos</option>
-                    <option value="30">≤ 30 min</option>
-                    <option value="60">≤ 1h</option>
-                  </select>
-                </div>
-      
-                <div class="filter-group">
-                  <h4>Dificuldade</h4>
-                  <div class="filter-options">
-                    <button class="filter-chip" data-difficulty="all">Todos</button>
-                    <button class="filter-chip" data-difficulty="facil">Fácil</button>
-                    <button class="filter-chip" data-difficulty="medio">Médio</button>
-                  </div>
-                </div>
-      
-                <div class="filter-group">
-                  <h4>Dieta</h4>
-                  <div class="filter-options">
-                    <button class="filter-chip" data-diet="all">Todos</button>
-                    <button class="filter-chip" data-diet="vegano">Vegano</button>
-                    <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
-                  </div>
-                </div>
-      
-                <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
-              </div>
-      
-              <!-- Resultados -->
-              <div class="search-results" id="searchResults"></div>
-            </div>
-          </div>
-      
-          <!-- Direita: Menu hambúrguer + navegação -->
-          <div class="header-right">
+            
+            <!-- Menu Hambúrguer (mobile) -->
             <button class="nav-toggle" aria-label="Abrir menu">
-              <span class="hamburger-line"></span>
-              <span class="hamburger-line"></span>
-              <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
-      
+    
+            <!-- Barra de Busca + Filtros (centralizada) -->
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <form class="search-form desktop">
+                        <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
+                        <button type="submit" class="search-button">🔍</button>
+                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
+                    </form>
+    
+                    <!-- Filtros Dropdown -->
+                    <div class="filter-dropdown" id="filterDropdown">
+                        <div class="filter-group">
+                            <h4>Tempo</h4>
+                            <select class="filter-select" id="filterTime">
+                                <option value="all">Todos</option>
+                                <option value="30">≤ 30 min</option>
+                                <option value="60">≤ 1h</option>
+                            </select>
+                        </div>
+    
+                        <div class="filter-group">
+                            <h4>Dificuldade</h4>
+                            <div class="filter-options">
+                                <button class="filter-chip" data-difficulty="all">Todos</button>
+                                <button class="filter-chip" data-difficulty="facil">Fácil</button>
+                                <button class="filter-chip" data-difficulty="medio">Médio</button>
+                            </div>
+                        </div>
+    
+                        <div class="filter-group">
+                            <h4>Dieta</h4>
+                            <div class="filter-options">
+                                <button class="filter-chip" data-diet="all">Todos</button>
+                                <button class="filter-chip" data-diet="vegano">Vegano</button>
+                                <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
+                            </div>
+                        </div>
+    
+                        <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
+                    </div>
+                    <!-- Fim dos Filtros Dropdown -->
+    
+                    <!-- Resultados da busca (existente) -->
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+    
+            <!-- Menu de Navegação (à direita) -->
             <nav class="nav">
-              <ul class="nav-links">
-                <li><a href="#popular">Nossas Receitas</a></li>
-                <li><a href="#categories">Categorias</a></li>
-                <li><a href="login.html" class="login-btn">Login</a></li>
-              </ul>
+                <ul class="nav-links">
+                    <li><a href="#popular">Nossas Receitas</a></li>
+                    <li><a href="#categories">Categorias</a></li>
+                    <li><a href="login.html" class="login-btn">Login</a></li>
+                </ul>
             </nav>
-          </div>
         </div>
-      </header>
-      
+    </header>
     
     <main>
         <section class="hero">

@@ -184,6 +184,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Aqui você implementaria a filtragem real
         filterDropdown.classList.remove('show');
+
+        // Resetar filtros após aplicar
+        resetFilters();
+    }
+
+    // Função para resetar filtros
+    function resetFilters() {
+        // Resetar o filtro de tempo para "Todos"
+        document.getElementById('filterTime').value = 'all';
+
+        // Desmarcar todos os filtros de dificuldade
+        document.querySelectorAll('.filter-chip[data-difficulty]').forEach(chip => {
+            chip.classList.remove('active');
+        });
+
+        // Desmarcar todos os filtros de dieta
+        document.querySelectorAll('.filter-chip[data-diet]').forEach(chip => {
+            chip.classList.remove('active');
+        });
     }
 
     // ========== SCROLL SUAVE ========== //

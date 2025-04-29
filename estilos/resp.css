@@ -51,20 +51,46 @@
   }
 
   /* ===== MENU LATERAL ===== */
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* permite quebra de linha se necessário */
+  }
+  
+  .logo {
+    flex: 1 1 100%;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .nav-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  
+  .search-wrapper {
+    flex: 1 1 100%;
+    order: 2;
+    margin-top: 10px;
+  }
+  
   .nav {
     position: fixed;
     top: 0;
-    display: none;
     left: -100%;
     width: 85%;
     height: 100vh;
     background: #8b0000;
-    box-shadow: 2px 0 15px rgba(0,0,0,0.2);
     transition: all 0.4s ease;
     z-index: 999;
     padding: 80px 20px 20px;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
+  
 
   .nav.active {
     display: flex !important;

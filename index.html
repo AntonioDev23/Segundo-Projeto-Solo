@@ -18,9 +18,8 @@
     <header class="header">
         <div class="container header-container">
             <!-- Logo (à esquerda) -->
-            <h1 class="logo mobile-logo">ARSN</h1> <!-- Logo simplificado para o mobile -->
-            <h1 class="logo desktop-logo">ARSN Receitas Deliciosas</h1> <!-- Logo original para o desktop -->
-    
+            <h1 class="logo">ARSN Receitas Deliciosas</h1>
+            
             <!-- Menu Hambúrguer (mobile) -->
             <button class="nav-toggle" aria-label="Abrir menu">
                 <span class="hamburger-line"></span>
@@ -28,21 +27,14 @@
                 <span class="hamburger-line"></span>
             </button>
     
-            <!-- Barra de Busca + Filtros (centralizada) -->
+            <!-- Barra de Busca + Filtros (desktop) -->
             <div class="search-wrapper">
                 <div class="search-container">
                     <form class="search-form desktop">
                         <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
                         <button type="submit" class="search-button">🔍</button>
-                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button> <!-- Filtro com texto -->
+                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
                     </form>
-    
-                    <form class="search-form mobile">
-                        <input type="text" placeholder="Buscar..." class="search-input" id="searchInputMobile">
-                        <button type="submit" class="search-button">🔍</button>
-                        <button type="button" class="filter-toggle" id="filterToggleMobile">☰</button> <!-- Ícone apenas no mobile -->
-                    </form>
-    
                     <!-- Filtros Dropdown -->
                     <div class="filter-dropdown" id="filterDropdown">
                         <div class="filter-group">
@@ -75,13 +67,10 @@
                         <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
                     </div>
                     <!-- Fim dos Filtros Dropdown -->
-    
-                    <!-- Resultados da busca (existente) -->
-                    <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
     
-            <!-- Menu de Navegação (à direita) -->
+            <!-- Menu de Navegação (desktop) -->
             <nav class="nav">
                 <ul class="nav-links">
                     <li><a href="#popular">Nossas Receitas</a></li>

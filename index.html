@@ -18,8 +18,9 @@
     <header class="header">
         <div class="container header-container">
             <!-- Logo (à esquerda) -->
-            <h1 class="logo">ARSN Receitas Deliciosas</h1>
-            
+            <h1 class="logo mobile-logo">ARSN</h1> <!-- Logo simplificado para o mobile -->
+            <h1 class="logo desktop-logo">ARSN Receitas Deliciosas</h1> <!-- Logo original para o desktop -->
+    
             <!-- Menu Hambúrguer (mobile) -->
             <button class="nav-toggle" aria-label="Abrir menu">
                 <span class="hamburger-line"></span>
@@ -33,7 +34,13 @@
                     <form class="search-form desktop">
                         <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
                         <button type="submit" class="search-button">🔍</button>
-                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
+                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button> <!-- Filtro com texto -->
+                    </form>
+    
+                    <form class="search-form mobile">
+                        <input type="text" placeholder="Buscar..." class="search-input" id="searchInputMobile">
+                        <button type="submit" class="search-button">🔍</button>
+                        <button type="button" class="filter-toggle" id="filterToggleMobile">☰</button> <!-- Ícone apenas no mobile -->
                     </form>
     
                     <!-- Filtros Dropdown -->
@@ -84,6 +91,7 @@
             </nav>
         </div>
     </header>
+    
     
     <main>
         <section class="hero">

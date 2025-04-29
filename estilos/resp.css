@@ -40,23 +40,24 @@
   }
 
   /* ===== MENU LATERAL ===== */
-  .nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 85%;
-    height: 100vh;
-    background: #8b0000;
-    box-shadow: 2px 0 15px rgba(0,0,0,0.2);
-    transition: all 0.4s ease;
-    z-index: 999;
-    padding: 80px 20px 20px;
-    overflow-y: auto;
-  }
+.nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 85%;
+  height: 100vh;
+  background: #8b0000;
+  box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  z-index: 999; /* Maior que a overlay */
+  padding: 80px 20px 20px;
+  overflow-y: auto;
+}
 
-  .nav.active {
-    left: 0;
-  }
+.nav.active {
+  left: 0;
+  z-index: 9999; /* Assegura que o menu sobreponha a sobreposição */
+}
 
   /* ===== OVERLAY ===== */
 .nav-overlay {
@@ -71,10 +72,10 @@
   pointer-events: none; /* Bloqueia interações */
   transition: opacity 0.3s ease;
 }
-  .nav-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-  }
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: all; /* Habilita interações quando o menu estiver aberto */
+}
 
   /* ===== CONTEÚDO DO MENU ===== */
   /* Move a barra de busca e filtros para dentro do menu */

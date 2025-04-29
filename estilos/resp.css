@@ -54,6 +54,7 @@
   .nav {
     position: fixed;
     top: 0;
+    display: none;
     left: -100%;
     width: 85%;
     height: 100vh;
@@ -64,10 +65,10 @@
     padding: 80px 20px 20px;
     overflow-y: auto;
   }
-  
 
   .nav.active {
-    left: 0;
+    display: flex !important;
+    left: 0 !important;
     z-index: 9999; /* Assegura que o menu sobreponha a sobreposição */
   }
 

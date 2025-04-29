@@ -16,71 +16,71 @@
 <body>
 
     <header class="header">
-        <div class="container header-container">
-            <!-- Logo (à esquerda) -->
-            <h1 class="logo">ARSN Receitas Deliciosas</h1>
-            
-            <!-- Menu Hambúrguer (mobile) -->
-            <button class="nav-toggle" aria-label="Abrir menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-    
-            <!-- Barra de Busca + Filtros (desktop) -->
-            <div class="search-wrapper">
-                <div class="search-container">
-                    <form class="search-form desktop">
-                        <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
-                        <button type="submit" class="search-button">🔍</button>
-                        <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
-                    </form>
-                    <!-- Filtros Dropdown -->
-                    <div class="filter-dropdown" id="filterDropdown">
-                        <div class="filter-group">
-                            <h4>Tempo</h4>
-                            <select class="filter-select" id="filterTime">
-                                <option value="all">Todos</option>
-                                <option value="30">≤ 30 min</option>
-                                <option value="60">≤ 1h</option>
-                            </select>
-                        </div>
-    
-                        <div class="filter-group">
-                            <h4>Dificuldade</h4>
-                            <div class="filter-options">
-                                <button class="filter-chip" data-difficulty="all">Todos</button>
-                                <button class="filter-chip" data-difficulty="facil">Fácil</button>
-                                <button class="filter-chip" data-difficulty="medio">Médio</button>
-                            </div>
-                        </div>
-    
-                        <div class="filter-group">
-                            <h4>Dieta</h4>
-                            <div class="filter-options">
-                                <button class="filter-chip" data-diet="all">Todos</button>
-                                <button class="filter-chip" data-diet="vegano">Vegano</button>
-                                <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
-                            </div>
-                        </div>
-    
-                        <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
+    <div class="container header-container">
+        <!-- Logo (à esquerda) -->
+        <h1 class="logo">ARSN Receitas Deliciosas</h1>
+        
+        <!-- Menu Hambúrguer (mobile) -->
+        <button class="nav-toggle" aria-label="Abrir menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Barra de Busca + Filtros (desktop) -->
+        <div class="search-wrapper">
+            <div class="search-container">
+                <form class="search-form desktop">
+                    <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
+                    <button type="submit" class="search-button">🔍</button>
+                    <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
+                </form>
+                <!-- Filtros Dropdown -->
+                <div class="filter-dropdown" id="filterDropdown">
+                    <div class="filter-group">
+                        <h4>Tempo</h4>
+                        <select class="filter-select" id="filterTime">
+                            <option value="all">Todos</option>
+                            <option value="30">≤ 30 min</option>
+                            <option value="60">≤ 1h</option>
+                        </select>
                     </div>
-                    <!-- Fim dos Filtros Dropdown -->
+
+                    <div class="filter-group">
+                        <h4>Dificuldade</h4>
+                        <div class="filter-options">
+                            <button class="filter-chip" data-difficulty="all">Todos</button>
+                            <button class="filter-chip" data-difficulty="facil">Fácil</button>
+                            <button class="filter-chip" data-difficulty="medio">Médio</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Dieta</h4>
+                        <div class="filter-options">
+                            <button class="filter-chip" data-diet="all">Todos</button>
+                            <button class="filter-chip" data-diet="vegano">Vegano</button>
+                            <button class="filter-chip" data-diet="lowcarb">Low Carb</button>
+                        </div>
+                    </div>
+
+                    <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
                 </div>
+                <!-- Fim dos Filtros Dropdown -->
             </div>
-    
-            <!-- Menu de Navegação (desktop) -->
-            <nav class="nav">
-                <ul class="nav-links">
-                    <li><a href="#popular">Nossas Receitas</a></li>
-                    <li><a href="#categories">Categorias</a></li>
-                    <li><a href="login.html" class="login-btn">Login</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
-    
+
+        <!-- Menu de Navegação (desktop) -->
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#popular">Nossas Receitas</a></li>
+                <li><a href="#categories">Categorias</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
     
     <main>
         <section class="hero">

@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+:root {
+    --cor-primaria: #8b0000; /* Cor Primária */
+    --cor-secundaria: #ff6347; /* Cor Secundária */
+    --cor-fundo: rgba(255, 248, 240, 0.9); /* Fundo semi-transparente */
+    --cor-texto: #333; /* Cor do texto */
+    --cor-texto-claro: #fff; /* Cor do texto claro */
+    --cor-destaque: #ff4500; /* Cor de destaque */
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    --borda-arredondada: 8px; /* Bordas arredondadas */
+}
+
+
 /* ===== FOOTER ===== */
 .footer {
     padding: 1.8rem 0;  /* Reduzido de 3rem */

@@ -52,6 +52,7 @@
 }
 
 .popular {
+    background-color: var(--cor-fundo);
     padding-top: 20px !important; /* Compensa o ajuste */
     position: relative;
     z-index: 1;

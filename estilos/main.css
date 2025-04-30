@@ -52,7 +52,7 @@
 }
 
 .popular {
-    background-color: var(--cor-fundo);
+    --cor-fundo: #fff8f0; /* Cor sólida semelhante */
     padding-top: 20px !important; /* Compensa o ajuste */
     position: relative;
     z-index: 1;

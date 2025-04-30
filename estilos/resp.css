@@ -22,6 +22,7 @@
     position: relative;
     background-color: #8b0000; /* Cor do header no mobile */
     z-index: 10; /* Garante que o header fique por cima */
+    margin-bottom: -20px;
   }
 
   /* ===== TÍTULO ===== */

@@ -71,6 +71,22 @@ searchInput.addEventListener('input', () => {
   });
 });
 
-// Atualizar o ano no footer
-const yearSpan = document.getElementById('year');
-yearSpan.textContent = new Date().getFullYear();
+document.getElementById("filter-btn").addEventListener("click", function() {
+    const filterOptions = document.getElementById("filter-options");
+    filterOptions.style.display = filterOptions.style.display === "block" ? "none" : "block";
+});
+
+document.getElementById("apply-filters").addEventListener("click", function() {
+    const checkboxes = document.querySelectorAll(".filter-options input[type='checkbox']");
+    
+    // Lógica para aplicar os filtros (você pode modificar de acordo com sua necessidade)
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            console.log(checkbox.id + " está selecionado");
+        }
+    });
+
+    // Após aplicar os filtros, fechar a caixa de opções e resetar os checkboxes
+    document.getElementById("filter-options").style.display = "none";
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+});

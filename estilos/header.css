@@ -56,6 +56,7 @@
 }
 
 .search-form.desktop .search-input {
+    background-color: var(--cor-texto-claro);
     padding: 0.7rem 1rem;
     border: 2px solid var(--cor-secundaria);
     border-radius: 6px 0 0 6px;

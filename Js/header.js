@@ -1,12 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ========== GERAL ========== //
-    // Atualiza o ano no footer
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-
-    // Menu Hamburguer
+    // ========== MENU HAMBÚRGUER ========== //
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');
     const body = document.body;
@@ -22,12 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Move elementos para o menu mobile
     function prepareMobileMenu() {
         if (window.innerWidth <= 768) {
-            // Move a barra de busca e filtros
             if (nav && searchWrapper) {
                 nav.insertBefore(searchWrapper, nav.firstChild);
             }
-
-            // Garante que os links são clicáveis
             if (navLinks) {
                 navLinks.forEach(link => {
                     link.style.pointerEvents = 'auto';
@@ -36,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Fecha menu
     function closeMenu() {
         navToggle.classList.remove('active');
         nav.classList.remove('active');
@@ -44,14 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
         body.classList.remove('no-scroll');
     }
 
-    // Eventos
     if (navToggle) {
         navToggle.addEventListener('click', function () {
             this.classList.toggle('active');
             nav.classList.toggle('active');
             overlay.classList.toggle('active');
             body.classList.toggle('no-scroll');
-
             if (nav.classList.contains('active')) {
                 prepareMobileMenu();
             }
@@ -62,23 +49,18 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.addEventListener('click', closeMenu);
     }
 
-    // Fecha menu ao clicar nos links (e deixa o clique funcionar normalmente)
     if (navLinks) {
         navLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                closeMenu();
-            });
+            link.addEventListener('click', closeMenu);
         });
     }
 
-    // Restaura elementos no desktop
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768 && headerContainer) {
             headerContainer.insertBefore(searchWrapper, nav.nextSibling);
         }
     });
 
-    // Prepara o menu ao carregar em mobile
     if (window.innerWidth <= 768) prepareMobileMenu();
 
     // ========== BARRA DE BUSCA ========== //
@@ -130,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Fecha resultados ao clicar fora
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.search-container') && !e.target.matches('#searchInput')) {
                 searchResults.style.display = 'none';
@@ -138,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ========== FILTROS ========== //
+    // ========== FILTROS NO HEADER ========== //
     const filterToggle = document.getElementById('filterToggle');
     const filterDropdown = document.getElementById('filterDropdown');
     const applyBtn = document.getElementById('applyFilters');
@@ -149,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
             filterDropdown.classList.toggle('show');
         });
 
-        // Seleção de chips
         document.querySelectorAll('.filter-chip').forEach(chip => {
             chip.addEventListener('click', function () {
                 const group = this.closest('.filter-options');
@@ -158,64 +138,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Botão "Aplicar"
         if (applyBtn) {
-            applyBtn.addEventListener('click', applyFilters);
+            applyBtn.addEventListener('click', () => {
+                const selectedTime = document.getElementById('filterTime')?.value;
+                const selectedDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty;
+                const selectedDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet;
+
+                console.log("Filtros aplicados:", {
+                    tempo: selectedTime,
+                    dificuldade: selectedDifficulty,
+                    dieta: selectedDiet
+                });
+
+                filterDropdown.classList.remove('show');
+
+                // Limpa os filtros visuais após aplicar
+                document.querySelectorAll('.filter-chip.active').forEach(chip => chip.classList.remove('active'));
+                document.getElementById('filterTime').value = "";
+            });
         }
 
-        // Fechar ao clicar fora
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.filter-dropdown') && !e.target.matches('#filterToggle')) {
                 filterDropdown.classList.remove('show');
             }
         });
     }
-
-    function applyFilters() {
-        const selectedTime = document.getElementById('filterTime')?.value;
-        const selectedDifficulty = document.querySelector('.filter-chip[data-difficulty].active')?.dataset.difficulty;
-        const selectedDiet = document.querySelector('.filter-chip[data-diet].active')?.dataset.diet;
-
-        console.log("Filtros aplicados:", {
-            tempo: selectedTime,
-            dificuldade: selectedDifficulty,
-            dieta: selectedDiet
-        });
-
-        // Aqui você implementaria a filtragem real
-        filterDropdown.classList.remove('show');
-
-        // Resetar filtros após aplicar
-        resetFilters();
-    }
-
-    // Função para resetar filtros
-    function resetFilters() {
-        // Resetar o filtro de tempo para "Todos"
-        document.getElementById('filterTime').value = 'all';
-
-        // Desmarcar todos os filtros de dificuldade
-        document.querySelectorAll('.filter-chip[data-difficulty]').forEach(chip => {
-            chip.classList.remove('active');
-        });
-
-        // Desmarcar todos os filtros de dieta
-        document.querySelectorAll('.filter-chip[data-diet]').forEach(chip => {
-            chip.classList.remove('active');
-        });
-    }
-
-    // ========== SCROLL SUAVE ========== //
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
 });

@@ -223,45 +223,4 @@
   }
 }
 
-/* Garante layout fixo no desktop */
-@media (min-width: 769px) {
-  .nav {
-      display: flex !important;
-      position: static !important;
-      flex-direction: row !important;
-      background: none !important;
-      width: auto !important;
-      padding: 0 !important;
-  }
 
-  .nav.active {
-      display: flex !important;
-  }
-
-  .nav-toggle {
-      display: none !important;
-  }
-}
-
-/* Menu responsivo apenas no mobile */
-@media (max-width: 768px) {
-  .nav {
-      display: none;
-      flex-direction: column;
-      background: #8b0000;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      padding: 1rem;
-  }
-
-  .nav.active {
-      display: flex;
-  }
-
-  .nav-links {
-      flex-direction: column;
-      width: 100%;
-  }
-}

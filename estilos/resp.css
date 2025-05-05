@@ -89,7 +89,7 @@
     order: 2;
     margin-top: 10px;
   }
-  
+
   .nav {
     position: fixed;
     top: 0;
@@ -103,8 +103,6 @@
     display: none; /* <- Corrigido aqui */
     flex-direction: column;
   }
-  
-  
 
   .nav.active {
     display: flex !important;
@@ -194,7 +192,6 @@
     flex-direction: column;
   }
 
-
   .search-wrapper {
     order: 1;
     width: 90%;
@@ -227,3 +224,4 @@
     z-index: 1000;
   }
 }
+

@@ -10,7 +10,6 @@
   --borda-arredondada: 8px; /* Bordas arredondadas */
 }
 
-
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   /* ===== HEADER ===== */
@@ -20,7 +19,7 @@
     align-items: center;
     padding: 15px;
     position: relative;
-    background-color: var(--cor-primaria); /* Cor do header no mobile */
+    background-color: #8b0000; /* Cor do header no mobile */
     z-index: 10; /* Garante que o header fique por cima */
     margin-bottom: -20px;
   }
@@ -96,7 +95,7 @@
     left: -100%;
     width: 85%;
     height: 100vh;
-    background: var(--cor-primaria);
+    background: #8b0000;
     transition: all 0.4s ease;
     z-index: 999;
     padding: 80px 20px 20px;
@@ -108,7 +107,6 @@
     display: flex !important;
     left: 0 !important;
     z-index: 9999; /* Garante que o menu sobreponha a overlay */
-    flex-direction: column; /* Incluído para garantir layout vertical */
   }
 
   /* ===== OVERLAY ===== */
@@ -124,6 +122,7 @@
     pointer-events: none; /* Bloqueia interações */
     transition: opacity 0.3s ease;
   }
+
   .nav-overlay.active {
     opacity: 1;
     pointer-events: all; /* Habilita interações quando o menu estiver aberto */
@@ -201,6 +200,7 @@
   .nav-links {
     order: 2;
     width: 100%;
+    margin-top: 15px; /* Ajustado para um espaço entre o menu e os links */
   }
 
   .filter-dropdown {
@@ -217,10 +217,23 @@
     visibility: visible !important;
   }
 
+  /* Ajuste de tamanho do menu */
+  .nav-links {
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .nav-links li {
+    margin-bottom: 10px; /* Diminui o espaço entre os links */
+  }
+
   .nav-links a {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    position: relative;
-    z-index: 1000;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+  }
+  
+  .nav-links a:hover {
+    background: rgba(255,255,255,0.2);
   }
 }

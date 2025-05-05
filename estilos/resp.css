@@ -91,27 +91,19 @@
   }
   
   .nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 85%;
-    height: 100vh;
-    background: #8b0000;
-    transition: all 0.4s ease;
-    z-index: 999;
-    padding: 80px 20px 20px;
-    display: none; /* <- Corrigido aqui */
+    display: none;
     flex-direction: column;
-  }
-  
-  
+    background: #8b0000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+}
 
-  .nav.active {
-    display: flex !important;
-    left: 0 !important;
-    z-index: 9999; /* Garante que o menu sobreponha a overlay */
-    flex-direction: column; /* Incluído para garantir layout vertical */
-  }
+.nav.active {
+    display: flex;
+}
 
   /* ===== OVERLAY ===== */
   .nav-overlay {
@@ -151,7 +143,10 @@
     list-style: none;
     padding: 0 15px;
     margin: 0;
+    flex-direction: column;
+    width: 100%;
   }
+
 
   .nav-links li {
     margin-bottom: 15px;
@@ -225,5 +220,48 @@
     cursor: pointer !important;
     position: relative;
     z-index: 1000;
+  }
+}
+
+/* Garante layout fixo no desktop */
+@media (min-width: 769px) {
+  .nav {
+      display: flex !important;
+      position: static !important;
+      flex-direction: row !important;
+      background: none !important;
+      width: auto !important;
+      padding: 0 !important;
+  }
+
+  .nav.active {
+      display: flex !important;
+  }
+
+  .nav-toggle {
+      display: none !important;
+  }
+}
+
+/* Menu responsivo apenas no mobile */
+@media (max-width: 768px) {
+  .nav {
+      display: none;
+      flex-direction: column;
+      background: #8b0000;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+  }
+
+  .nav.active {
+      display: flex;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      width: 100%;
   }
 }

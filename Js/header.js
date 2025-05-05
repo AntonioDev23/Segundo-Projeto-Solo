@@ -42,52 +42,24 @@ filterChips.forEach(chip => {
 
 
 // ===========================
-// 4. FILTRO: APLICAR FILTROS DE CHIPS E TEMPO
+// 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
 // ===========================
 
 // Botão de aplicar filtros
 const applyFiltersBtn = document.getElementById('applyFilters');
 
-// Todos os cards de receitas da tela
-const recipeCards = document.querySelectorAll('.recipe-card');
-
-// Quando o botão for clicado, aplica os filtros
+// Quando o botão for clicado, apenas limpa filtros e fecha o menu
 applyFiltersBtn.addEventListener('click', () => {
-  // Chips de dificuldade selecionados
-  const selectedDifficulties = Array.from(document.querySelectorAll('.filter-chip[data-difficulty].active'))
-    .map(chip => chip.dataset.difficulty);
-
-  // Chips de dieta selecionados
-  const selectedDiets = Array.from(document.querySelectorAll('.filter-chip[data-diet].active'))
-    .map(chip => chip.dataset.diet);
-
-  // Tempo selecionado (dropdown)
-  const selectedTime = document.getElementById('filterTime').value;
-
-  // Para cada receita, verifica se atende os filtros
-  recipeCards.forEach(card => {
-    const difficulty = card.dataset.difficulty;
-    const diet = card.dataset.diet;
-    const time = parseInt(card.dataset.time);
-
-    const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes('all') || selectedDifficulties.includes(difficulty);
-    const matchesDiet = selectedDiets.length === 0 || selectedDiets.includes('all') || selectedDiets.includes(diet);
-    const matchesTime = selectedTime === 'all' ||
-      (selectedTime === '30min' && time <= 30) ||
-      (selectedTime === '60min' && time <= 60);
-
-    // Mostra ou oculta o card com base nos filtros
-    card.style.display = (matchesDifficulty && matchesDiet && matchesTime) ? 'block' : 'none';
-  });
-
-  // Fecha o menu de filtros
-  filterDropdown.classList.remove('show');
-
-  // Limpa a seleção visual dos chips
+  // Limpa visualmente os chips selecionados
   filterChips.forEach(chip => chip.classList.remove('active'));
 
   // Reseta o tempo para "all"
   document.getElementById('filterTime').value = 'all';
+
+  // Fecha o menu de filtros
+  filterDropdown.classList.remove('show');
+
+  // Nenhuma receita será escondida nesta etapa
 });
 
 

@@ -20,7 +20,7 @@
     align-items: center;
     padding: 15px;
     position: relative;
-    background-color: #8b0000; /* Cor do header no mobile */
+    background-color: var(--cor-primaria); /* Cor do header no mobile */
     z-index: 10; /* Garante que o header fique por cima */
     margin-bottom: -20px;
   }
@@ -96,7 +96,7 @@
     left: -100%;
     width: 85%;
     height: 100vh;
-    background: #8b0000;
+    background: var(--cor-primaria);
     transition: all 0.4s ease;
     z-index: 999;
     padding: 80px 20px 20px;
@@ -224,4 +224,3 @@
     z-index: 1000;
   }
 }
-

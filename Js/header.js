@@ -9,8 +9,9 @@ const nav = document.querySelector('.nav');
 // Alterna o menu visível/invisível quando o botão é clicado
 navToggle.addEventListener('click', () => {
   nav.classList.toggle('active');
+  // Alterna a exibição da sobreposição (overlay) junto com o menu
+  document.querySelector('.nav-overlay').classList.toggle('active');
 });
-
 
 // ===========================
 // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
@@ -25,7 +26,6 @@ filterToggle.addEventListener('click', () => {
   filterDropdown.classList.toggle('show');
 });
 
-
 // ===========================
 // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)
 // ===========================
@@ -39,7 +39,6 @@ filterChips.forEach(chip => {
     chip.classList.toggle('active');
   });
 });
-
 
 // ===========================
 // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
@@ -62,7 +61,6 @@ applyFiltersBtn.addEventListener('click', () => {
   // Nenhuma receita será escondida nesta etapa
 });
 
-
 // ===========================
 // 5. BARRA DE BUSCA
 // ===========================
@@ -84,7 +82,6 @@ searchInput.addEventListener('input', () => {
     card.style.display = matchesSearch ? 'block' : 'none';
   });
 });
-
 
 // ===========================
 // 6. MENU DE CHECKBOXES (ALTERNATIVO)

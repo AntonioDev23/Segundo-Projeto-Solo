@@ -100,9 +100,10 @@
     transition: all 0.4s ease;
     z-index: 999;
     padding: 80px 20px 20px;
-    display: flex;
+    display: none; /* <- Corrigido aqui */
     flex-direction: column;
   }
+  
   
 
   .nav.active {

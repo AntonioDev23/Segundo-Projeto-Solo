@@ -89,20 +89,7 @@
     margin-top: 10px;
   }
 
-  .nav {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 85%;
-    height: 20vh;
-    background: var(--cor-secundaria);
-    transition: all 0.4s ease;
-    z-index: 999;
-    padding: 30px 20px 20px;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+  
 
   .nav.active {
     display: flex !important;
@@ -267,5 +254,7 @@
       display: none;
   }
 }
+
+
 
 

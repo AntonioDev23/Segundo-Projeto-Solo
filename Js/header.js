@@ -22,16 +22,31 @@ navOverlay.addEventListener('click', () => {
 });
 
 // ===========================
-// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
+// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
 // ===========================
-
-// Botão que abre o menu de filtros
 const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 
-// Alterna o menu de filtros visível/invisível
-filterToggle.addEventListener('click', () => {
+filterToggle.addEventListener('click', function(e) {
+  e.stopPropagation(); // 🔥 Isso resolve o problema principal!
+  e.preventDefault();
+  
+  // Fecha outros elementos abertos (opcional)
+  mobileMenu.classList.remove('active');
+  navOverlay.classList.remove('active');
+  
+  // Alterna o dropdown
   filterDropdown.classList.toggle('show');
+  
+  // Debug (pode remover depois)
+  console.log('Dropdown status:', filterDropdown.classList.contains('show'));
+});
+
+// Fechar ao clicar fora (atualizado)
+document.addEventListener('click', function(e) {
+  if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
+    filterDropdown.classList.remove('show');
+  }
 });
 
 // ===========================

@@ -1,16 +1,24 @@
 // ===========================
-// 1. MENU HAMBÚRGUER (RESPONSIVO)
+// 1. MENU HAMBÚRGUER (RESPONSIVO) - VERSÃO ATUALIZADA
 // ===========================
-
-// Botão que abre o menu
 const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.nav');
+const mobileMenu = document.getElementById('mobileMenu'); // Nova div que você vai criar
+const navOverlay = document.querySelector('.nav-overlay');
 
-// Alterna o menu visível/invisível quando o botão é clicado
+// Alterna o menu mobile e o overlay
 navToggle.addEventListener('click', () => {
-  nav.classList.toggle('active');
-  // Alterna a exibição da sobreposição (overlay) junto com o menu
-  document.querySelector('.nav-overlay').classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    navOverlay.classList.toggle('active');
+    
+    // Opcional: Animação do ícone hambúrguer para "X"
+    navToggle.classList.toggle('is-active');
+});
+
+// Fechar o menu ao clicar no overlay
+navOverlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    navToggle.classList.remove('is-active');
 });
 
 // ===========================

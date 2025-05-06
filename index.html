@@ -27,6 +27,28 @@
             <span class="hamburger-line"></span>
         </button>
 
+        <!-- Adicione isso DEPOIS do botão do hambúrguer -->
+<div class="mobile-menu" id="mobileMenu">
+    <!-- Links (mesmo conteúdo do nav desktop) -->
+    <nav class="nav-mobile">
+        <ul>
+            <li><a href="#popular">Nossas Receitas</a></li>
+            <li><a href="#categories">Categorias</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Barra de busca + filtros (mesmo conteúdo do desktop) -->
+    <div class="search-wrapper-mobile">
+        <form class="search-form">
+            <input type="text" placeholder="Buscar receitas..." class="search-input">
+            <button type="submit" class="search-button">🔍</button>
+        </form>
+        <!-- Filtros (opcional: pode simplificar para mobile) -->
+        <button type="button" class="filter-toggle-mobile">☰ Filtros</button>
+    </div>
+</div>
+
         <!-- Barra de Busca + Filtros (desktop) -->
         <div class="search-wrapper">
             <div class="search-container">

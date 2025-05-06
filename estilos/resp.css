@@ -242,5 +242,30 @@
   }
 }
 
+/* Esconde o menu mobile inicialmente */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px; /* Ajuste conforme a altura do seu header */
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Mostra o menu quando o hambúrguer é clicado */
+.mobile-menu.active {
+  display: block;
+}
+
+/* Esconde a busca e nav desktop no mobile */
+@media (max-width: 768px) {
+  .search-wrapper,
+  .nav {
+      display: none;
+  }
+}
 
 

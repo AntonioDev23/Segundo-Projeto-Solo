@@ -78,6 +78,49 @@
                 <li><a href="#categories">Categorias</a></li>
                 <li><a href="login.html" class="login-btn">Login</a></li>
             </ul>
+            <!-- Barra de Busca + Filtros (desktop) -->
+        <div class="search-wrapper">
+            <div class="search-container">
+                <form class="search-form desktop">
+                    <input type="text" placeholder="Buscar receitas..." class="search-input" id="searchInput">
+                    <button type="submit" class="search-button">🔍</button>
+                    <button type="button" class="filter-toggle" id="filterToggle">☰ Filtros</button>
+                </form>
+                <!-- Filtros Dropdown -->
+                <div class="filter-dropdown" id="filterDropdown">
+                    <div class="filter-group">
+                        <h4>Tempo</h4>
+                        <select class="filter-select" id="filterTime">
+                            <option value="all">Todos</option>
+                            <option value="30min">≤ 30 min</option>
+                            <option value="60min">≤ 1h</option>
+                        </select>
+                    </div>
+                
+                    <div class="filter-group">
+                        <h4>Dificuldade</h4>
+                        <div class="filter-options">
+                            <button class="filter-chip" data-difficulty="all">Todos</button>
+                            <button class="filter-chip" data-difficulty="fácil">Fácil</button>
+                            <button class="filter-chip" data-difficulty="médio">Médio</button>
+                        </div>
+                    </div>
+                
+                    <div class="filter-group">
+                        <h4>Dieta</h4>
+                        <div class="filter-options">
+                            <button class="filter-chip" data-diet="all">Todos</button>
+                            <button class="filter-chip" data-diet="vegano">Fit</button>
+                            <button class="filter-chip" data-diet="vegetariano">Vegano</button>
+                        </div>
+                    </div>
+                
+                    <button id="applyFilters" class="btn-apply">Aplicar Filtros</button>
+                </div>
+                
+                <!-- Fim dos Filtros Dropdown -->
+            </div>
+        </div>
         </nav>
     </div>
 </header>

@@ -197,12 +197,14 @@
     order: 1;
     width: 90%;
     margin: 0 auto 20px;
+    display: block;
   }
 
   .nav-links {
     order: 2;
     width: 100%;
     margin-top: 15px; /* Ajustado para um espaço entre o menu e os links */
+    display: none;
   }
 
   .filter-dropdown {
@@ -239,3 +241,5 @@
     background: rgba(255,255,255,0.2);
   }
 }
+
+

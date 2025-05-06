@@ -2,11 +2,14 @@
 // 1. MENU HAMBÚRGUER (RESPONSIVO)
 // ===========================
 
+// Botão que abre o menu
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 
+// Alterna o menu visível/invisível quando o botão é clicado
 navToggle.addEventListener('click', () => {
   nav.classList.toggle('active');
+  // Alterna a exibição da sobreposição (overlay) junto com o menu
   document.querySelector('.nav-overlay').classList.toggle('active');
 });
 
@@ -14,9 +17,11 @@ navToggle.addEventListener('click', () => {
 // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
 // ===========================
 
+// Botão que abre o menu de filtros
 const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 
+// Alterna o menu de filtros visível/invisível
 filterToggle.addEventListener('click', () => {
   filterDropdown.classList.toggle('show');
 });
@@ -25,8 +30,10 @@ filterToggle.addEventListener('click', () => {
 // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)
 // ===========================
 
+// Seleciona todos os botões de opção
 const filterChips = document.querySelectorAll('.filter-chip');
 
+// Adiciona ou remove a classe .active ao clicar (para mudar a cor)
 filterChips.forEach(chip => {
   chip.addEventListener('click', () => {
     chip.classList.toggle('active');
@@ -37,27 +44,41 @@ filterChips.forEach(chip => {
 // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
 // ===========================
 
+// Botão de aplicar filtros
 const applyFiltersBtn = document.getElementById('applyFilters');
 
+// Quando o botão for clicado, apenas limpa filtros e fecha o menu
 applyFiltersBtn.addEventListener('click', () => {
+  // Limpa visualmente os chips selecionados
   filterChips.forEach(chip => chip.classList.remove('active'));
+
+  // Reseta o tempo para "all"
   document.getElementById('filterTime').value = 'all';
+
+  // Fecha o menu de filtros
   filterDropdown.classList.remove('show');
+
+  // Nenhuma receita será escondida nesta etapa
 });
 
 // ===========================
 // 5. BARRA DE BUSCA
 // ===========================
 
+// Campo de busca
 const searchInput = document.getElementById('searchInput');
 
+// Evento que dispara ao digitar na barra
 searchInput.addEventListener('input', () => {
-  const searchTerm = searchInput.value.toLowerCase();
+  const searchTerm = searchInput.value.toLowerCase(); // Converte para minúsculas
 
   recipeCards.forEach(card => {
     const title = card.querySelector('h3').textContent.toLowerCase();
     const description = card.querySelector('p').textContent.toLowerCase();
+
     const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+
+    // Mostra ou oculta os cards com base na busca
     card.style.display = matchesSearch ? 'block' : 'none';
   });
 });
@@ -66,12 +87,14 @@ searchInput.addEventListener('input', () => {
 // 6. MENU DE CHECKBOXES (ALTERNATIVO)
 // ===========================
 
-document.getElementById("filter-btn").addEventListener("click", function () {
+// Botão que abre/fecha o menu de checkboxes
+document.getElementById("filter-btn").addEventListener("click", function() {
   const filterOptions = document.getElementById("filter-options");
   filterOptions.style.display = filterOptions.style.display === "block" ? "none" : "block";
 });
 
-document.getElementById("apply-filters").addEventListener("click", function () {
+// Aplica filtros baseados nos checkboxes (aqui só exibe no console)
+document.getElementById("apply-filters").addEventListener("click", function() {
   const checkboxes = document.querySelectorAll(".filter-options input[type='checkbox']");
 
   checkboxes.forEach(checkbox => {
@@ -80,28 +103,7 @@ document.getElementById("apply-filters").addEventListener("click", function () {
     }
   });
 
+  // Fecha o menu e limpa os checkboxes
   document.getElementById("filter-options").style.display = "none";
   checkboxes.forEach(checkbox => checkbox.checked = false);
 });
-
-// ===========================
-// 7. AJUSTE DA BARRA DE BUSCA (MOBILE)
-// ===========================
-
-function moverBuscaParaMobile() {
-  const largura = window.innerWidth;
-  const barraBusca = document.querySelector('.search-wrapper');
-  const menuMobile = document.getElementById('mobileNav');
-  const headerContainer = document.querySelector('.header-container');
-
-  if (!barraBusca || !menuMobile || !headerContainer) return;
-
-  if (largura <= 768 && !menuMobile.contains(barraBusca)) {
-    menuMobile.prepend(barraBusca);
-  } else if (largura > 768 && !headerContainer.contains(barraBusca)) {
-    headerContainer.insertBefore(barraBusca, headerContainer.children[2]);
-  }
-}
-
-window.addEventListener('load', moverBuscaParaMobile);
-window.addEventListener('resize', moverBuscaParaMobile);

@@ -229,22 +229,20 @@
   }
 }
 
-/* Esconde o menu mobile inicialmente */
+/* Substitua tudo relacionado a .nav mobile por: */
 .mobile-menu {
-  display: none;
   position: fixed;
-  top: 80px; /* Ajuste conforme a altura do seu header */
-  left: 0;
-  width: 100%;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  top: 70px; /* Altura do header */
+  left: -100%;
+  width: 85%;
+  background: var(--cor-secundaria);
+  transition: all 0.4s;
   z-index: 1000;
+  padding: 20px;
 }
 
-/* Mostra o menu quando o hambúrguer é clicado */
 .mobile-menu.active {
-  display: block;
+  left: 0;
 }
 
 /* Esconde a busca e nav desktop no mobile */

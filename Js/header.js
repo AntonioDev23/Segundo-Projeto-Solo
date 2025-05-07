@@ -49,6 +49,8 @@ document.addEventListener('click', function(e) {
   }
 });
 
+
+
 // ===========================
 // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)
 // ===========================

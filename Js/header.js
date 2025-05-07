@@ -1,3 +1,6 @@
+// Espera todo o HTML da página carregar antes de executar o código JS
+document.addEventListener('DOMContentLoaded', function () {
+  
 // ===========================
 // 1. MENU HAMBÚRGUER (RESPONSIVO) - VERSÃO ATUALIZADA
 // ===========================
@@ -131,4 +134,6 @@ document.getElementById("apply-filters").addEventListener("click", function() {
   // Fecha o menu e limpa os checkboxes
   document.getElementById("filter-options").style.display = "none";
   checkboxes.forEach(checkbox => checkbox.checked = false);
+});
+
 });

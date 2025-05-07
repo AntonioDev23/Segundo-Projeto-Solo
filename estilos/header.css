@@ -215,20 +215,20 @@
 /* ESTILO DO DROPDOWN DE FILTROS */
 .filter-dropdown {
     display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 280px;
-    background: white; /* Fundo branco */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: absolute; /* Ou relative, dependendo do layout */
+    top: 100%; /* Abaixo do botão */
+    right: 0;  /* Ou ajuste conforme seu layout */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
     padding: 1rem;
-    z-index: 1000;
-}
-
-.filter-dropdown.show {
+    border-radius: 8px;
+  }
+  
+  .filter-dropdown.show {
     display: block;
-}
+  }
+  
 
 /* TÍTULOS DOS GRUPOS */
 .filter-group h4 {

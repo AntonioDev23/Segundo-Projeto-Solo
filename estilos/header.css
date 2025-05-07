@@ -214,11 +214,12 @@
 
 /* ESTILO DO DROPDOWN DE FILTROS */
 .filter-dropdown {
-    display: none;
+    display: block !important; /* Forçar visibilidade */
     position: absolute;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 3px solid red !important; /* Para visualização */
     z-index: 1001;
     width: 280px;
     opacity: 0;

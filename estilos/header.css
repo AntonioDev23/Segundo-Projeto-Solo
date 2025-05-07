@@ -342,13 +342,3 @@
     display: none;
 }
 
-/* Desativa temporariamente o menu hambúrguer */
-.nav-toggle, .mobile-menu, .nav-overlay {
-  display: none !important;
-}
-
-/* Garante que o filtro fique visível */
-#filterDropdown.show {
-    display: block !important;
-    border: 3px solid red !important; /* Para visualização */
-  }

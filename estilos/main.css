@@ -80,101 +80,60 @@
     box-shadow: var(--sombra);
 }
 
-/* ESTILO DO DROPDOWN DE FILTROS */
-.filter-dropdown {
-    display: flex;
-    position: absolute;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border: 3px solid red !important; /* Para visualização */
-    z-index: 1001;
-    width: 280px;
-    opacity: 0;
-    transform: scale(0.95);
-    transform-origin: top right;
-    transition: all 0.2s ease;
-    pointer-events: auto;
-}
-
-.filter-dropdown.show {
-    display: block;
-    opacity: 1;
-    transform: scale(1);
-}
+/* CONTAINER DO TÍTULO + FILTRO */
+.popular .container {
+    position: relative; /* Para posicionamento absoluto dos filhos */
+    padding-top: 20px; /* Espaço acima do título */
+  }
   
-
-/* TÍTULOS DOS GRUPOS */
-.filter-group h4 {
-    color: #8b0000; /* Cor do header */
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-/* BOTÕES DE OPÇÃO (CHIPS) */
-.filter-chip {
-    padding: 0.5rem 1rem;
-    background-color: #8b0000; /* Cor do header */
-    color: white !important; /* Texto branco */
-    border: none;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    cursor: pointer;
-    margin: 0.2rem;
-    transition: all 0.3s;
-}
-
-/* BOTÃO ATIVO/SELECIONADO */
-.filter-chip.active {
-    background-color: #ff6347; /* Laranja-vermelho */
-    transform: scale(1.05);
-}
-
-/* SELECT DE TEMPO */
-.filter-select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background: white;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-/* BOTÃO DE FILTRO TOGGLE */
-.filter-toggle {
+  /* TÍTULO "RECEITAS POPULARES" */
+  .popular h2 {
+    text-align: center;
+    margin-bottom: 30px; /* Espaço abaixo do título */
+  }
+  
+  /* BOTÃO DE FILTRO */
+  .filter-toggle {
+    display: block; /* Faz ocupar a linha toda */
+    width: fit-content; /* Largura conforme conteúdo */
+    margin: 0 auto 20px; /* Centraliza e adiciona espaço abaixo */
+    padding: 8px 20px;
     background: #8b0000;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 0.5rem;
     transition: all 0.3s;
-}
-
-.filter-toggle:hover {
-    background: #a52a2a;
-}
-
-.btn-apply {
-    width: 100%;
-    padding: 0.7rem;
-    background: #ff6347; /* Laranja-vermelho */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: all 0.3s;
-}
-
-.btn-apply:hover {
-    background: #e5533d;
-    transform: translateY(-2px);
-}
+  }
+  
+  /* DROPDOWN DE FILTROS */
+  .filter-dropdown {
+    display: none;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto; /* Centraliza */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+  
+  .filter-dropdown.show {
+    display: block;
+  }
+  
+  /* LAYOUT DOS FILTROS */
+  .filter-group {
+    margin-bottom: 15px;
+  }
+  
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
 
 /* Seção de Receitas Populares */
 .popular {

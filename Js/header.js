@@ -25,33 +25,46 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===========================
-  // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
-  // ===========================
-  const filterToggle = document.getElementById('filterToggle');
-  const filterDropdown = document.getElementById('filterDropdown');
+// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO FINAL
+// ===========================
+const filterToggle = document.getElementById('filterToggle');
+const filterDropdown = document.getElementById('filterDropdown');
 
-  // Verifica se o botão de filtro e o dropdown existem
-  if (filterToggle && filterDropdown) {
-    // Ao clicar no botão de filtro, alterna a visibilidade do dropdown
+if (filterToggle && filterDropdown) {
     filterToggle.addEventListener('click', function(e) {
-      e.stopPropagation(); // Impede que o clique se propague e feche o dropdown imediatamente
-      e.preventDefault();
-
-      // Alterna o dropdown (abre/fecha)
-      filterDropdown.classList.toggle('show');
-      
-      // Debug (pode remover depois)
-      console.log('Dropdown status:', filterDropdown.classList.contains('show'));
+        e.stopImmediatePropagation(); // Alterado para stopImmediatePropagation
+        e.preventDefault();
+        
+        // Fecha o menu mobile se estiver aberto
+        mobileMenu.classList.remove('active');
+        navOverlay.classList.remove('active');
+        navToggle.classList.remove('is-active');
+        
+        // Alterna o dropdown
+        filterDropdown.classList.toggle('show');
+        
+        // Posiciona corretamente
+        positionDropdown();
     });
 
-    // Fechar o dropdown ao clicar fora dele
+    // Fechar ao clicar fora (versão robusta)
     document.addEventListener('click', function(e) {
-      // Fecha o dropdown se o clique for fora do filtro
-      if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
-        filterDropdown.classList.remove('show');
-      }
+      if (!filterDropdown.contains(e.target)) {
+            filterDropdown.classList.remove('show');
+        }
     });
-  }
+
+    // Reposiciona em redimensionamento
+    window.addEventListener('resize', positionDropdown);
+    
+    function positionDropdown() {
+        if (filterDropdown.classList.contains('show')) {
+            const rect = filterToggle.getBoundingClientRect();
+            filterDropdown.style.top = `${rect.bottom + window.scrollY}px`;
+            filterDropdown.style.left = `${rect.left}px`;
+        }
+    }
+}
 
   // ===========================
   // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)

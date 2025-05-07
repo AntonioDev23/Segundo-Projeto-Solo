@@ -1,140 +1,111 @@
 // Espera todo o HTML da página carregar antes de executar o código JS
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
   // ===========================
-  // 1. MENU HAMBÚRGUER (RESPONSIVO) - VERSÃO ATUALIZADA
+  // 1. MENU HAMBÚRGUER (RESPONSIVO)
   // ===========================
   const navToggle = document.querySelector('.nav-toggle');
-  const mobileMenu = document.getElementById('mobileMenu'); // Nova div que você vai criar
+  const mobileMenu = document.getElementById('mobileMenu');
   const navOverlay = document.querySelector('.nav-overlay');
 
-  // Alterna o menu mobile e o overlay
-  navToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    navOverlay.classList.toggle('active');
-    
-    // Opcional: Animação do ícone hambúrguer para "X"
-    navToggle.classList.toggle('is-active');
-  });
+  if (navToggle && mobileMenu && navOverlay) {
+    navToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      mobileMenu.classList.toggle('active');
+      navOverlay.classList.toggle('active');
+      this.classList.toggle('is-active');
+    });
 
-  // Fechar o menu ao clicar no overlay
-  navOverlay.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    navOverlay.classList.remove('active');
-    navToggle.classList.remove('is-active');
-  });
+    navOverlay.addEventListener('click', function() {
+      mobileMenu.classList.remove('active');
+      navOverlay.classList.remove('active');
+      navToggle.classList.remove('is-active');
+    });
+  }
 
   // ===========================
-// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO FINAL
-// ===========================
-const filterToggle = document.getElementById('filterToggle');
-const filterDropdown = document.getElementById('filterDropdown');
+  // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
+  // ===========================
+  const filterToggle = document.getElementById('filterToggle');
+  const filterDropdown = document.getElementById('filterDropdown');
 
-if (filterToggle && filterDropdown) {
-    // Controle principal
+  if (filterToggle && filterDropdown) {
     filterToggle.addEventListener('click', function(e) {
-        e.stopImmediatePropagation();
-        e.preventDefault();
-        
-        // Fecha outros menus
-        document.querySelectorAll('.mobile-menu.active, .nav-overlay.active').forEach(el => {
-            el.classList.remove('active');
-        });
-        
-        // Alterna o dropdown com timeout para garantir renderização
-        setTimeout(() => {
-            filterDropdown.classList.toggle('show');
-            console.log('Dropdown status:', filterDropdown.classList.contains('show'));
-            
-            // Posicionamento dinâmico
-            const rect = filterToggle.getBoundingClientRect();
-            filterDropdown.style.top = `${rect.bottom + window.scrollY + 5}px`;
-            filterDropdown.style.left = `${rect.left}px`;
-        }, 10);
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      
+      // Fecha o menu mobile se estiver aberto
+      if (mobileMenu) mobileMenu.classList.remove('active');
+      if (navOverlay) navOverlay.classList.remove('active');
+      
+      // Alterna o dropdown
+      filterDropdown.classList.toggle('show');
+      
+      // Posicionamento garantido
+      filterDropdown.style.display = 'block';
+      filterDropdown.style.position = 'absolute';
+      filterDropdown.style.top = '100%';
+      filterDropdown.style.right = '0';
+      filterDropdown.style.zIndex = '9999';
     });
 
-    // Fechar ao clicar fora (versão ultra-resistente)
     document.addEventListener('click', function(e) {
-        if (!filterDropdown.contains(e.target) && 
-            e.target !== filterToggle && 
-            !filterToggle.contains(e.target)) {
-            filterDropdown.classList.remove('show');
-        }
+      if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
+        filterDropdown.classList.remove('show');
+      }
     });
-}
+  }
 
   // ===========================
-  // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)
+  // 3. FILTRO: CHIPS DE SELEÇÃO
   // ===========================
   const filterChips = document.querySelectorAll('.filter-chip');
-
-  // Adiciona ou remove a classe .active ao clicar (para mudar a cor)
   filterChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('active');
+    chip.addEventListener('click', function() {
+      this.classList.toggle('active');
     });
   });
 
   // ===========================
-  // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
+  // 4. FILTRO: APLICAR FILTROS
   // ===========================
   const applyFiltersBtn = document.getElementById('applyFilters');
-
-  // Quando o botão for clicado, apenas limpa filtros e fecha o menu
-  applyFiltersBtn.addEventListener('click', () => {
-    // Limpa visualmente os chips selecionados
-    filterChips.forEach(chip => chip.classList.remove('active'));
-
-    // Reseta o tempo para "all"
-    document.getElementById('filterTime').value = 'all';
-
-    // Fecha o menu de filtros
-    filterDropdown.classList.remove('show');
-
-    // Nenhuma receita será escondida nesta etapa
-  });
+  if (applyFiltersBtn) {
+    applyFiltersBtn.addEventListener('click', function() {
+      filterChips.forEach(chip => chip.classList.remove('active'));
+      document.getElementById('filterTime').value = 'all';
+      if (filterDropdown) filterDropdown.classList.remove('show');
+    });
+  }
 
   // ===========================
   // 5. BARRA DE BUSCA
   // ===========================
   const searchInput = document.getElementById('searchInput');
-
-  // Evento que dispara ao digitar na barra
-  searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.toLowerCase(); // Converte para minúsculas
-
-    recipeCards.forEach(card => {
-      const title = card.querySelector('h3').textContent.toLowerCase();
-      const description = card.querySelector('p').textContent.toLowerCase();
-
-      const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-
-      // Mostra ou oculta os cards com base na busca
-      card.style.display = matchesSearch ? 'block' : 'none';
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const recipeCards = document.querySelectorAll('.recipe-card'); // Adicione esta linha
+      
+      recipeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        card.style.display = (title.includes(searchTerm)) || 
+                            (description.includes(searchTerm)) ? 'block' : 'none';
+      });
     });
-  });
+  }
 
   // ===========================
-  // 6. MENU DE CHECKBOXES (ALTERNATIVO)
+  // 6. MENU DE CHECKBOXES (OPCIONAL)
   // ===========================
-  document.getElementById("filter-btn").addEventListener("click", function() {
-    const filterOptions = document.getElementById("filter-options");
-    filterOptions.style.display = filterOptions.style.display === "block" ? "none" : "block";
-  });
-
-  // Aplica filtros baseados nos checkboxes (aqui só exibe no console)
-  document.getElementById("apply-filters").addEventListener("click", function() {
-    const checkboxes = document.querySelectorAll(".filter-options input[type='checkbox']");
-
-    checkboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        console.log(checkbox.id + " está selecionado");
-      }
+  const filterBtn = document.getElementById('filter-btn');
+  const filterOptions = document.getElementById('filter-options');
+  
+  if (filterBtn && filterOptions) {
+    filterBtn.addEventListener('click', function() {
+      filterOptions.style.display = 
+        filterOptions.style.display === 'block' ? 'none' : 'block';
     });
-
-    // Fecha o menu e limpa os checkboxes
-    document.getElementById("filter-options").style.display = "none";
-    checkboxes.forEach(checkbox => checkbox.checked = false);
-  });
-
+  }
 });

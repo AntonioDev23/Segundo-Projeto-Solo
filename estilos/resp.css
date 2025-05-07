@@ -250,11 +250,4 @@
   pointer-events: auto; /* ✅ Já está dentro do menu ativo */
 }
 
-@media (max-width: 768px) {
-  .filter-dropdown {
-      width: 90vw;
-      left: 5vw !important;
-      right: auto !important;
-  }
-}
 

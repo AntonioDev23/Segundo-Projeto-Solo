@@ -31,39 +31,36 @@ const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 
 if (filterToggle && filterDropdown) {
+    // Controle principal
     filterToggle.addEventListener('click', function(e) {
-        e.stopImmediatePropagation(); // Alterado para stopImmediatePropagation
+        e.stopImmediatePropagation();
         e.preventDefault();
         
-        // Fecha o menu mobile se estiver aberto
-        mobileMenu.classList.remove('active');
-        navOverlay.classList.remove('active');
-        navToggle.classList.remove('is-active');
+        // Fecha outros menus
+        document.querySelectorAll('.mobile-menu.active, .nav-overlay.active').forEach(el => {
+            el.classList.remove('active');
+        });
         
-        // Alterna o dropdown
-        filterDropdown.classList.toggle('show');
-        
-        // Posiciona corretamente
-        positionDropdown();
+        // Alterna o dropdown com timeout para garantir renderização
+        setTimeout(() => {
+            filterDropdown.classList.toggle('show');
+            console.log('Dropdown status:', filterDropdown.classList.contains('show'));
+            
+            // Posicionamento dinâmico
+            const rect = filterToggle.getBoundingClientRect();
+            filterDropdown.style.top = `${rect.bottom + window.scrollY + 5}px`;
+            filterDropdown.style.left = `${rect.left}px`;
+        }, 10);
     });
 
-    // Fechar ao clicar fora (versão robusta)
+    // Fechar ao clicar fora (versão ultra-resistente)
     document.addEventListener('click', function(e) {
-      if (!filterDropdown.contains(e.target)) {
+        if (!filterDropdown.contains(e.target) && 
+            e.target !== filterToggle && 
+            !filterToggle.contains(e.target)) {
             filterDropdown.classList.remove('show');
         }
     });
-
-    // Reposiciona em redimensionamento
-    window.addEventListener('resize', positionDropdown);
-    
-    function positionDropdown() {
-        if (filterDropdown.classList.contains('show')) {
-            const rect = filterToggle.getBoundingClientRect();
-            filterDropdown.style.top = `${rect.bottom + window.scrollY}px`;
-            filterDropdown.style.left = `${rect.left}px`;
-        }
-    }
 }
 
   // ===========================

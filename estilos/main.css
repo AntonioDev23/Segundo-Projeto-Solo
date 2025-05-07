@@ -82,7 +82,7 @@
 
 /* ESTILO DO DROPDOWN DE FILTROS */
 .filter-dropdown {
-    display: block !important; /* Forçar visibilidade */
+    display: flex;
     position: absolute;
     background: white;
     border-radius: 8px;

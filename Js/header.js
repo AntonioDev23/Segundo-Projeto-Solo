@@ -30,28 +30,28 @@ document.addEventListener('DOMContentLoaded', function () {
   const filterToggle = document.getElementById('filterToggle');
   const filterDropdown = document.getElementById('filterDropdown');
 
-  // Ao clicar no botão de filtro, alterna a visibilidade do dropdown
-  filterToggle.addEventListener('click', function(e) {
-    e.stopPropagation(); // Impede que o clique se propague e feche o dropdown imediatamente
-    e.preventDefault();
-    
-    // Fecha outros elementos abertos (opcional)
-    mobileMenu.classList.remove('active');
-    navOverlay.classList.remove('active');
-    
-    // Alterna o dropdown
-    filterDropdown.classList.toggle('show');
-    
-    // Debug (pode remover depois)
-    console.log('Dropdown status:', filterDropdown.classList.contains('show'));
-  });
+  // Verifica se o botão de filtro e o dropdown existem
+  if (filterToggle && filterDropdown) {
+    // Ao clicar no botão de filtro, alterna a visibilidade do dropdown
+    filterToggle.addEventListener('click', function(e) {
+      e.stopPropagation(); // Impede que o clique se propague e feche o dropdown imediatamente
+      e.preventDefault();
 
-  // Fechar o dropdown ao clicar fora dele
-  document.addEventListener('click', function(e) {
-    if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
-      filterDropdown.classList.remove('show');
-    }
-  });
+      // Alterna o dropdown (abre/fecha)
+      filterDropdown.classList.toggle('show');
+      
+      // Debug (pode remover depois)
+      console.log('Dropdown status:', filterDropdown.classList.contains('show'));
+    });
+
+    // Fechar o dropdown ao clicar fora dele
+    document.addEventListener('click', function(e) {
+      // Fecha o dropdown se o clique for fora do filtro
+      if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
+        filterDropdown.classList.remove('show');
+      }
+    });
+  }
 
   // ===========================
   // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)

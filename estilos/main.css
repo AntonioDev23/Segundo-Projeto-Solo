@@ -92,19 +92,45 @@
     margin-bottom: 30px; /* Espaço abaixo do título */
   }
   
-  /* BOTÃO DE FILTRO */
-  .filter-toggle {
-    display: block; /* Faz ocupar a linha toda */
-    width: fit-content; /* Largura conforme conteúdo */
-    margin: 0 auto 20px; /* Centraliza e adiciona espaço abaixo */
+  /* BOTÃO DE FILTRO - VERSÃO REFINADA */
+.filter-toggle {
+    display: block;
+    width: fit-content;
+    margin: -20px auto 20px; /* Unifiquei o margin */
     padding: 8px 20px;
     background: #8b0000;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Curva de animação mais natural */
+    font-weight: 600; /* Texto um pouco mais forte */
   }
+  
+  .filter-toggle:hover {
+    background: #a52a2a;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25); /* Sombra mais suave */
+    transform: translateY(-2px); /* Efeito de levitação sutil */
+  }
+  
+  .filter-toggle:active {
+    transform: translateY(0); /* Feedback ao clicar */
+    box-shadow: 0 2px 4px rgba(139, 0, 0, 0.3); /* Sombra mais próxima */
+  }
+
+  .filter-toggle::after {
+    content: "↓";
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .filter-toggle.active::after {
+    transform: rotate(180deg);
+  }
+
+  
+  
   
   /* DROPDOWN DE FILTROS */
   .filter-dropdown {

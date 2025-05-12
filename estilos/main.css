@@ -116,6 +116,7 @@
   .filter-toggle:active {
     transform: translateY(0); /* Feedback ao clicar */
     box-shadow: 0 2px 4px rgba(139, 0, 0, 0.3); /* Sombra mais próxima */
+    background: #ff4500 !important;
   }
 
   .filter-toggle::after {
@@ -151,10 +152,12 @@
     z-index: 1000;
   /* Mantenha seus estilos de cor/tamanho existentes */
 }
-  }
   
   .filter-dropdown.show {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
   }
   
   /* LAYOUT DOS FILTROS */

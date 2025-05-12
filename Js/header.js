@@ -1,6 +1,8 @@
 
 // Espera todo o HTML da página carregar antes de executar o código JS
 document.addEventListener('DOMContentLoaded', function () {
+const filterChips = document.querySelectorAll('.filter-chip');
+const recipeCards = document.querySelectorAll('.recipe-card');
 
   // ===========================
   // 1. MENU HAMBÚRGUER (RESPONSIVO) - VERSÃO ATUALIZADA

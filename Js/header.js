@@ -26,52 +26,38 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===========================
-// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO ATUALIZADA
+// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO DEFINITIVA
 // ===========================
-// CONTROLE DO FILTRO - VERSÃO 100% FUNCIONAL
-document.addEventListener('DOMContentLoaded', function() {
-  const filterToggle = document.getElementById('filterToggle');
-  const filterDropdown = document.getElementById('filterDropdown');
+const filterToggle = document.getElementById('filterToggle');
+const filterDropdown = document.getElementById('filterDropdown');
 
-  if (filterToggle && filterDropdown) {
-    // Controle principal
-    filterToggle.addEventListener('click', function(e) {
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      
-      // Debug visual imediato
-      filterDropdown.style.border = '2px solid red'; // Remove depois
-      
-      // Fecha outros menus
-      document.querySelector('.mobile-menu')?.classList.remove('active');
-      
-      // Alterna visibilidade
-      if (filterDropdown.style.display === 'block') {
-        filterDropdown.style.display = 'none';
-      } else {
-        // Posicionamento absoluto
-        const rect = filterToggle.getBoundingClientRect();
-        filterDropdown.style.display = 'block';
-        filterDropdown.style.position = 'absolute';
-        filterDropdown.style.top = `${rect.bottom}px`;
-        filterDropdown.style.left = `${rect.left}px`;
-        filterDropdown.style.zIndex = '9999';
-      }
-    });
+if (filterToggle && filterDropdown) {
+  // Controle principal
+  filterToggle.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    
+    // Alterna entre mostrar/esconder
+    if (filterDropdown.style.display === 'block') {
+      filterDropdown.style.display = 'none';
+    } else {
+      // Posiciona abaixo do botão
+      const rect = this.getBoundingClientRect();
+      filterDropdown.style.display = 'block';
+      filterDropdown.style.position = 'absolute';
+      filterDropdown.style.top = `${rect.bottom}px`;
+      filterDropdown.style.left = `${rect.left}px`;
+      filterDropdown.style.zIndex = '9999';
+    }
+  });
 
-    // Fechar ao clicar fora (super robusto)
-    document.addEventListener('click', function(e) {
-      if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
-        filterDropdown.style.display = 'none';
-      }
-    });
-  } else {
-    console.error('Elementos não encontrados:', {
-      toggle: filterToggle,
-      dropdown: filterDropdown
-    });
-  }
-});
+  // Fechar ao clicar fora (versão simplificada)
+  document.addEventListener('click', function(e) {
+    if (!filterDropdown.contains(e.target) {
+      filterDropdown.style.display = 'none';
+    }
+  });
+}
 
   // ===========================
   // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)

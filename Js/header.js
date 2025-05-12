@@ -28,68 +28,66 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===========================
 // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO ATUALIZADA
 // ===========================
-// No início do seu código, adicione:
-if (!filterToggle || !filterDropdown) {
-  console.error('Elementos do filtro não encontrados!');
-  return;
-}
-
-
-
+// ===========================
+// 2. FILTRO: CONTROLE COMPLETO
+// ===========================
 const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 
 if (filterToggle && filterDropdown) {
-  // Controle do dropdown
+  // Controle de abertura/fechamento
   filterToggle.addEventListener('click', function(e) {
     e.stopImmediatePropagation();
     e.preventDefault();
-    
-    // Fecha o menu mobile se estiver aberto
+
+    // Fecha outros menus abertos
     document.querySelector('.mobile-menu')?.classList.remove('active');
     document.querySelector('.nav-overlay')?.classList.remove('active');
-    
+
     // Alterna visibilidade com animação
     if (filterDropdown.classList.contains('show')) {
       filterDropdown.style.opacity = '0';
-      setTimeout(() => filterDropdown.classList.remove('show'), 300);
+      setTimeout(() => {
+        filterDropdown.classList.remove('show');
+        this.classList.remove('active');
+      }, 300);
     } else {
-      filterDropdown.classList.add('show');
-      setTimeout(() => filterDropdown.style.opacity = '1', 10);
-      
       // Posicionamento dinâmico
-      const rect = filterToggle.getBoundingClientRect();
+      const rect = this.getBoundingClientRect();
       filterDropdown.style.top = `${rect.bottom + window.scrollY}px`;
       filterDropdown.style.left = `${rect.left}px`;
+      
+      filterDropdown.classList.add('show');
+      setTimeout(() => filterDropdown.style.opacity = '1', 10);
+      this.classList.add('active');
     }
-    
-    // Ativa/desativa classe do botão
-    this.classList.toggle('active');
   });
 
-  // Fechar ao clicar fora
+  // Fechar ao clicar fora (com verificação robusta)
   document.addEventListener('click', function(e) {
-  // Verifica se o clique foi fora do dropdown E fora do botão
-  if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
-    filterDropdown.style.opacity = '0';
-    setTimeout(() => {
-      filterDropdown.classList.remove('show');
-      filterToggle.classList.remove('active');
-    }, 300);
-  }
-});
-}
-  // ===========================
-  // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)
-  // ===========================
-  const filterChips = document.querySelectorAll('.filter-chip');
-
-  // Adiciona ou remove a classe .active ao clicar (para mudar a cor)
-  filterChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('active');
-    });
+    const clickedOutside = !filterDropdown.contains(e.target) && 
+                         !filterToggle.contains(e.target);
+    
+    if (clickedOutside && filterDropdown.classList.contains('show')) {
+      filterDropdown.style.opacity = '0';
+      setTimeout(() => {
+        filterDropdown.classList.remove('show');
+        filterToggle.classList.remove('active');
+      }, 300);
+    }
   });
+
+  // Fechar ao pressionar ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && filterDropdown.classList.contains('show')) {
+      filterDropdown.style.opacity = '0';
+      setTimeout(() => {
+        filterDropdown.classList.remove('show');
+        filterToggle.classList.remove('active');
+      }, 300);
+    }
+  });
+}
 
   // ===========================
   // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)

@@ -25,48 +25,50 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===========================
-// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO FINAL
+// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO ATUALIZADA
 // ===========================
-document.addEventListener('DOMContentLoaded', function() {
-  const filterToggle = document.getElementById('filterToggle');
-  const filterDropdown = document.getElementById('filterDropdown');
-  
-  if (filterToggle && filterDropdown) {
-    // Controle principal do filtro
-    filterToggle.addEventListener('click', function(e) {
-      e.stopImmediatePropagation();
-      e.preventDefault();
+const filterToggle = document.getElementById('filterToggle');
+const filterDropdown = document.getElementById('filterDropdown');
+
+if (filterToggle && filterDropdown) {
+  // Controle do dropdown
+  filterToggle.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    
+    // Fecha o menu mobile se estiver aberto
+    document.querySelector('.mobile-menu')?.classList.remove('active');
+    document.querySelector('.nav-overlay')?.classList.remove('active');
+    
+    // Alterna visibilidade com animação
+    if (filterDropdown.classList.contains('show')) {
+      filterDropdown.style.opacity = '0';
+      setTimeout(() => filterDropdown.classList.remove('show'), 300);
+    } else {
+      filterDropdown.classList.add('show');
+      setTimeout(() => filterDropdown.style.opacity = '1', 10);
       
-      console.log('Botão de filtro clicado!'); // Debug
-      
-      // Força a abertura (ignora qualquer estado anterior)
-      filterDropdown.style.display = 'block';
-      filterDropdown.style.position = 'absolute';
-      filterDropdown.style.top = '100%';
-      filterDropdown.style.right = '0';
-      filterDropdown.style.zIndex = '9999';
-    });
+      // Posicionamento dinâmico
+      const rect = filterToggle.getBoundingClientRect();
+      filterDropdown.style.top = `${rect.bottom + window.scrollY}px`;
+      filterDropdown.style.left = `${rect.left}px`;
+    }
+    
+    // Ativa/desativa classe do botão
+    this.classList.toggle('active');
+  });
 
-    // Fechar ao clicar fora (versão supervisora)
-    document.addEventListener('click', function(e) {
-      if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
-        filterDropdown.style.display = 'none';
-      }
-    });
-  }
-
-  // ============ MENU HAMBÚRGUER ============
-  const navToggle = document.querySelector('.nav-toggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  
-  if (navToggle && mobileMenu) {
-    navToggle.addEventListener('click', function(e) {
-      e.stopImmediatePropagation();
-      mobileMenu.classList.toggle('active');
-    });
-  }
-});
-
+  // Fechar ao clicar fora
+  document.addEventListener('click', function(e) {
+    if (!filterDropdown.contains(e.target) {
+      filterDropdown.style.opacity = '0';
+      setTimeout(() => {
+        filterDropdown.classList.remove('show');
+        filterToggle.classList.remove('active');
+      }, 300);
+    }
+  });
+}
   // ===========================
   // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)
   // ===========================

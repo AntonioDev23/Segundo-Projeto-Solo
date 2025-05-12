@@ -25,39 +25,31 @@ document.addEventListener('DOMContentLoaded', function () {
     navToggle.classList.remove('is-active');
   });
 
+    // ===========================
+  // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
   // ===========================
-// 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO DEFINITIVA
-// ===========================
-const filterToggle = document.getElementById('filterToggle');
-const filterDropdown = document.getElementById('filterDropdown');
+  const filterToggle = document.getElementById('filterToggle');
+  const filterDropdown = document.getElementById('filterDropdown');
 
-if (filterToggle && filterDropdown) {
-  // Controle principal
-  filterToggle.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
-    e.preventDefault();
-    
-    // Alterna entre mostrar/esconder
-    if (filterDropdown.style.display === 'block') {
-      filterDropdown.style.display = 'none';
-    } else {
-      // Posiciona abaixo do botão
-      const rect = this.getBoundingClientRect();
-      filterDropdown.style.display = 'block';
-      filterDropdown.style.position = 'absolute';
-      filterDropdown.style.top = `${rect.bottom}px`;
-      filterDropdown.style.left = `${rect.left}px`;
-      filterDropdown.style.zIndex = '9999';
-    }
-  });
+  if (filterToggle && filterDropdown) {
+    filterToggle.addEventListener('click', function (e) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
 
-  // Fechar ao clicar fora (versão simplificada)
-  document.addEventListener('click', function(e) {
-    if (!filterDropdown.contains(e.target) {
-      filterDropdown.style.display = 'none';
-    }
-  });
-}
+      // Alterna a classe .show (usa CSS pra animar e exibir)
+      filterDropdown.classList.toggle('show');
+      filterToggle.classList.toggle('active'); // Se quiser estilizar o botão
+    });
+
+    // Fecha o dropdown se clicar fora dele e do botão
+    document.addEventListener('click', function (e) {
+      if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
+        filterDropdown.classList.remove('show');
+        filterToggle.classList.remove('active');
+      }
+    });
+  }
+
 
   // ===========================
   // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)

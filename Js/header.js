@@ -1,3 +1,4 @@
+
 // Espera todo o HTML da página carregar antes de executar o código JS
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -27,6 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===========================
 // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO ATUALIZADA
 // ===========================
+// No início do seu código, adicione:
+if (!filterToggle || !filterDropdown) {
+  console.error('Elementos do filtro não encontrados!');
+  return;
+}
+
+
+
 const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 
@@ -60,14 +69,15 @@ if (filterToggle && filterDropdown) {
 
   // Fechar ao clicar fora
   document.addEventListener('click', function(e) {
-    if (!filterDropdown.contains(e.target) {
-      filterDropdown.style.opacity = '0';
-      setTimeout(() => {
-        filterDropdown.classList.remove('show');
-        filterToggle.classList.remove('active');
-      }, 300);
-    }
-  });
+  // Verifica se o clique foi fora do dropdown E fora do botão
+  if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
+    filterDropdown.style.opacity = '0';
+    setTimeout(() => {
+      filterDropdown.classList.remove('show');
+      filterToggle.classList.remove('active');
+    }, 300);
+  }
+});
 }
   // ===========================
   // 3. FILTRO: CHIPS DE SELEÇÃO (DIFICULDADE E DIETA)

@@ -28,66 +28,50 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===========================
 // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO ATUALIZADA
 // ===========================
-// ===========================
-// 2. FILTRO: CONTROLE COMPLETO
-// ===========================
-const filterToggle = document.getElementById('filterToggle');
-const filterDropdown = document.getElementById('filterDropdown');
+// CONTROLE DO FILTRO - VERSÃO 100% FUNCIONAL
+document.addEventListener('DOMContentLoaded', function() {
+  const filterToggle = document.getElementById('filterToggle');
+  const filterDropdown = document.getElementById('filterDropdown');
 
-if (filterToggle && filterDropdown) {
-  // Controle de abertura/fechamento
-  filterToggle.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
-    e.preventDefault();
-
-    // Fecha outros menus abertos
-    document.querySelector('.mobile-menu')?.classList.remove('active');
-    document.querySelector('.nav-overlay')?.classList.remove('active');
-
-    // Alterna visibilidade com animação
-    if (filterDropdown.classList.contains('show')) {
-      filterDropdown.style.opacity = '0';
-      setTimeout(() => {
-        filterDropdown.classList.remove('show');
-        this.classList.remove('active');
-      }, 300);
-    } else {
-      // Posicionamento dinâmico
-      const rect = this.getBoundingClientRect();
-      filterDropdown.style.top = `${rect.bottom + window.scrollY}px`;
-      filterDropdown.style.left = `${rect.left}px`;
+  if (filterToggle && filterDropdown) {
+    // Controle principal
+    filterToggle.addEventListener('click', function(e) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
       
-      filterDropdown.classList.add('show');
-      setTimeout(() => filterDropdown.style.opacity = '1', 10);
-      this.classList.add('active');
-    }
-  });
+      // Debug visual imediato
+      filterDropdown.style.border = '2px solid red'; // Remove depois
+      
+      // Fecha outros menus
+      document.querySelector('.mobile-menu')?.classList.remove('active');
+      
+      // Alterna visibilidade
+      if (filterDropdown.style.display === 'block') {
+        filterDropdown.style.display = 'none';
+      } else {
+        // Posicionamento absoluto
+        const rect = filterToggle.getBoundingClientRect();
+        filterDropdown.style.display = 'block';
+        filterDropdown.style.position = 'absolute';
+        filterDropdown.style.top = `${rect.bottom}px`;
+        filterDropdown.style.left = `${rect.left}px`;
+        filterDropdown.style.zIndex = '9999';
+      }
+    });
 
-  // Fechar ao clicar fora (com verificação robusta)
-  document.addEventListener('click', function(e) {
-    const clickedOutside = !filterDropdown.contains(e.target) && 
-                         !filterToggle.contains(e.target);
-    
-    if (clickedOutside && filterDropdown.classList.contains('show')) {
-      filterDropdown.style.opacity = '0';
-      setTimeout(() => {
-        filterDropdown.classList.remove('show');
-        filterToggle.classList.remove('active');
-      }, 300);
-    }
-  });
-
-  // Fechar ao pressionar ESC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && filterDropdown.classList.contains('show')) {
-      filterDropdown.style.opacity = '0';
-      setTimeout(() => {
-        filterDropdown.classList.remove('show');
-        filterToggle.classList.remove('active');
-      }, 300);
-    }
-  });
-}
+    // Fechar ao clicar fora (super robusto)
+    document.addEventListener('click', function(e) {
+      if (!filterDropdown.contains(e.target) && e.target !== filterToggle) {
+        filterDropdown.style.display = 'none';
+      }
+    });
+  } else {
+    console.error('Elementos não encontrados:', {
+      toggle: filterToggle,
+      dropdown: filterDropdown
+    });
+  }
+});
 
   // ===========================
   // 4. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)

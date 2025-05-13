@@ -27,12 +27,13 @@ const recipeCards = document.querySelectorAll('.recipe-card');
     navToggle.classList.remove('is-active');
   });
 
-    // ===========================
-// 2 FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
-// ===========================
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
   const filterToggle = document.getElementById('filterToggle');
   const filterDropdown = document.getElementById('filterDropdown');
+
+  // Verifica se os elementos estão sendo encontrados corretamente
+  console.log('filterToggle:', filterToggle);
+  console.log('filterDropdown:', filterDropdown);
 
   // Verifica se o botão de filtro e o dropdown existem
   if (filterToggle && filterDropdown) {
@@ -41,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
       e.stopImmediatePropagation();
       e.preventDefault();
 
+      console.log('Botão de filtro clicado!');
+      
       // Alterna a classe .show para mostrar ou ocultar o dropdown
       filterDropdown.classList.toggle('show');
       filterToggle.classList.toggle('active'); // Se quiser estilizar o botão
@@ -50,10 +53,14 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (e) {
       // Verifica se o clique foi fora do dropdown e do botão
       if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
+        console.log('Clique fora do filtro, fechando...');
+
         filterDropdown.classList.remove('show');
         filterToggle.classList.remove('active');
       }
     });
+  } else {
+    console.log('Elementos não encontrados!');
   }
 
   // ===========================
@@ -61,9 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===========================
   const applyFiltersBtn = document.getElementById('applyFilters');
 
-  // Quando o botão for clicado, limpa os filtros visualmente
   if (applyFiltersBtn) {
     applyFiltersBtn.addEventListener('click', () => {
+      console.log('Aplicando filtros...');
+      
       // Limpa visualmente os chips selecionados
       const filterChips = document.querySelectorAll('.filter-chip');
       filterChips.forEach(chip => chip.classList.remove('active'));
@@ -81,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===========================
   const searchInput = document.getElementById('searchInput');
 
-  // Evento que dispara ao digitar na barra
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       const searchTerm = searchInput.value.toLowerCase(); // Converte para minúsculas
+      console.log('Buscando por:', searchTerm);
 
       // Filtra as receitas
       const recipeCards = document.querySelectorAll('.recipe-card');
@@ -100,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
 
 
 

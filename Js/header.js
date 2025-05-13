@@ -64,7 +64,7 @@ const recipeCards = document.querySelectorAll('.recipe-card');
   }
 
   // ===========================
-  //  FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
+  // 2 FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
   // ===========================
   const applyFiltersBtn = document.getElementById('applyFilters');
 

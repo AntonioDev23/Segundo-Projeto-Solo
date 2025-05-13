@@ -132,33 +132,29 @@
 
   
   /* DROPDOWN DE FILTROS */
-  .filter-dropdown {
-    display: none;
-    width: 90%;
-    max-width: 500px;
-    margin: 0 auto; /* Centraliza */
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    position: absolute;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: 
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        visibility 0.3s;
-    visibility: hidden;
-    z-index: 1000;
-  /* Mantenha seus estilos de cor/tamanho existentes */
+.filter-dropdown {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto; /* Centraliza */
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: absolute;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 1000;
 }
-  
-  .filter-dropdown.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-  }
+
+/* Mantenha a transição suave quando o filtro for mostrado */
+.filter-dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
   
   /* LAYOUT DOS FILTROS */
   .filter-group {

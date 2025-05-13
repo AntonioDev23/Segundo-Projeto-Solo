@@ -28,29 +28,80 @@ const recipeCards = document.querySelectorAll('.recipe-card');
   });
 
     // ===========================
-  // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
-  // ===========================
+// 2 FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
+// ===========================
+document.addEventListener('DOMContentLoaded', function () {
   const filterToggle = document.getElementById('filterToggle');
   const filterDropdown = document.getElementById('filterDropdown');
 
+  // Verifica se o botão de filtro e o dropdown existem
   if (filterToggle && filterDropdown) {
+    // Adiciona o evento de clique no botão de filtro
     filterToggle.addEventListener('click', function (e) {
       e.stopImmediatePropagation();
       e.preventDefault();
 
-      // Alterna a classe .show (usa CSS pra animar e exibir)
+      // Alterna a classe .show para mostrar ou ocultar o dropdown
       filterDropdown.classList.toggle('show');
       filterToggle.classList.toggle('active'); // Se quiser estilizar o botão
     });
 
-    // Fecha o dropdown se clicar fora dele e do botão
+    // Fecha o dropdown se clicar fora dele e do botão de filtro
     document.addEventListener('click', function (e) {
+      // Verifica se o clique foi fora do dropdown e do botão
       if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
         filterDropdown.classList.remove('show');
         filterToggle.classList.remove('active');
       }
     });
   }
+
+  // ===========================
+  //  FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
+  // ===========================
+  const applyFiltersBtn = document.getElementById('applyFilters');
+
+  // Quando o botão for clicado, limpa os filtros visualmente
+  if (applyFiltersBtn) {
+    applyFiltersBtn.addEventListener('click', () => {
+      // Limpa visualmente os chips selecionados
+      const filterChips = document.querySelectorAll('.filter-chip');
+      filterChips.forEach(chip => chip.classList.remove('active'));
+
+      // Reseta o tempo para "all"
+      document.getElementById('filterTime').value = 'all';
+
+      // Fecha o menu de filtros
+      filterDropdown.classList.remove('show');
+    });
+  }
+
+  // ===========================
+  //  FILTRO: BARRA DE BUSCA
+  // ===========================
+  const searchInput = document.getElementById('searchInput');
+
+  // Evento que dispara ao digitar na barra
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase(); // Converte para minúsculas
+
+      // Filtra as receitas
+      const recipeCards = document.querySelectorAll('.recipe-card');
+      recipeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+
+        const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+
+        // Mostra ou oculta os cards com base na busca
+        card.style.display = matchesSearch ? 'block' : 'none';
+      });
+    });
+  }
+});
+
+
 
 
   // ===========================

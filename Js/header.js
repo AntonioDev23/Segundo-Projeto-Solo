@@ -63,8 +63,47 @@ const recipeCards = document.querySelectorAll('.recipe-card');
     console.log('Elementos não encontrados!');
   }
 
+  
   // ===========================
-  // 2 FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
+  // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN - VERSÃO CORRIGIDA
+  // ===========================
+  document.addEventListener('DOMContentLoaded', function () {
+  const filterToggle = document.getElementById('filterToggle');
+  const filterDropdown = document.getElementById('filterDropdown');
+  
+  // Verifica se os elementos estão sendo encontrados corretamente
+  console.log('filterToggle:', filterToggle);
+  console.log('filterDropdown:', filterDropdown);
+
+  if (filterToggle && filterDropdown) {
+    // Adiciona o evento de clique no botão de filtro
+    filterToggle.addEventListener('click', function (e) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      
+      // Log para verificar se o clique foi registrado
+      console.log('Botão de filtro clicado!');
+      
+      // Alterna a classe .show para mostrar ou ocultar o dropdown
+      filterDropdown.classList.toggle('show');
+      filterToggle.classList.toggle('active'); // Se quiser estilizar o botão
+    });
+
+    // Fecha o dropdown se clicar fora dele e do botão de filtro
+    document.addEventListener('click', function (e) {
+      if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
+        console.log('Clique fora do filtro, fechando...');
+        
+        filterDropdown.classList.remove('show');
+        filterToggle.classList.remove('active');
+      }
+    });
+  } else {
+    console.log('Não foi possível encontrar os elementos!');
+  }
+
+  // ===========================
+  //  FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
   // ===========================
   const applyFiltersBtn = document.getElementById('applyFilters');
 

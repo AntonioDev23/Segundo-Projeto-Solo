@@ -228,6 +228,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 
@@ -310,6 +311,27 @@
 
 .fav-btn.active, .fav-btn:hover {
     color: var(--cor-secundaria);
+}
+
+.tooltip {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+}
+
+.recipe-card:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== NOVA EDIÇÃO DA SEÇÃO BENEFITS ===== */

@@ -38,19 +38,19 @@ function carregarNovasReceitas() {
       {
           nome: 'Torta de Maçã',
           descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
-          imagem: 'imagens/torta-de-maca.webp',
+          imagem: 'imagens/Torta de maçã.png',
           link: '#'
       },
       {
           nome: 'Bife à Parmegiana',
           descricao: 'Uma deliciosa combinação de carne empanada e molho de tomate.',
-          imagem: '',
+          imagem: 'imagens/Bife a parmegiana.png',
           link: '#'
       },
       {
           nome: 'Salada de Frutas',
           descricao: 'Uma opção fresca e saudável para qualquer momento.',
-          imagem: 'imagens/salada-frutas.webp',
+          imagem: 'imagens/Salada de frutas.png',
           link: '#'
       }
   ];

@@ -334,6 +334,18 @@
   transform: translateY(0);
 }
 
+/* Estilização do título "Outras Receitas Deliciosas" */
+#outras-receitas {
+    text-align: center;         
+    font-size: 2rem;            
+    color: #333;                
+    margin-top: 40px;           
+    margin-bottom: 20px;        
+    font-weight: bold;          
+}
+
+
+
 /* ===== NOVA EDIÇÃO DA SEÇÃO BENEFITS ===== */
 .benefits {
     padding: 4rem 0;

@@ -44,7 +44,7 @@ function carregarNovasReceitas() {
       {
           nome: 'Bife à Parmegiana',
           descricao: 'Uma deliciosa combinação de carne empanada e molho de tomate.',
-          imagem: 'imagens/bife-parmegiana.webp',
+          imagem: '',
           link: '#'
       },
       {

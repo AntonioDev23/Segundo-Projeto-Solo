@@ -56,49 +56,49 @@ function carregarNovasReceitas() {
     {
         nome: 'Escondidinho de Carne Seca',
         descricao: 'Purê de mandioca com carne seca desfiada e queijo gratinado.',
-        imagem: 'imagens/escondidinho-carne-seca.webp',
+        imagem: 'imagens/Carne seca.png',
         link: '#'
     },
     {
         nome: 'Panqueca de Frango',
         descricao: 'Panquecas recheadas com frango desfiado e molho de tomate.',
-        imagem: 'imagens/panqueca-frango.webp',
+        imagem: 'imagens/Panqueca de frango.png',
         link: '#'
     },
     {
         nome: 'Strogonoff de Frango',
         descricao: 'Frango cremoso com champignon e batata palha.',
-        imagem: 'imagens/strogonoff-frango.webp',
+        imagem: 'imagens/Strogonoff de frango.png',
         link: '#'
     },
     {
         nome: 'Lasanha à Bolonhesa',
         descricao: 'Camadas de massa, carne moída e molho branco.',
-        imagem: 'imagens/lasanha-bolonhesa.webp',
+        imagem: 'imagens/Lasanha bolonhesa.png',
         link: '#'
     },
     {
         nome: 'Feijoada',
         descricao: 'Prato típico brasileiro com feijão preto e carnes variadas.',
-        imagem: 'imagens/feijoada.webp',
+        imagem: 'imagens/Feijoada.png',
         link: '#'
     },
     {
         nome: 'Bolo de Cenoura',
         descricao: 'Bolo fofinho com cobertura de chocolate.',
-        imagem: 'imagens/bolo-cenoura.webp',
+        imagem: 'imagens/Bolo de cenoura.png',
         link: '#'
     },
     {
         nome: 'Macarrão à Carbonara',
         descricao: 'Massa italiana com bacon, ovos e queijo.',
-        imagem: 'imagens/macarrao-carbonara.webp',
+        imagem: 'imagens/Macarrao cabonara.png',
         link: '#'
     },
     {
         nome: 'Quiche de Queijo e Alho-Poró',
         descricao: 'Torta salgada com recheio cremoso e massa crocante.',
-        imagem: 'imagens/quiche-queijo-alho.webp',
+        imagem: 'imagens/Quiche queijo alho.png',
         link: '#'
     },
     {

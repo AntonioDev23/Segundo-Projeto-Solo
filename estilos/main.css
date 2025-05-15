@@ -286,17 +286,11 @@
     padding: 0.6rem 1.2rem;
     text-decoration: none;
     transition: background-color 0.5s ease; /* Transição mais suave (0.5s) */
-    border: 2px solid #colorDoBackground; /* borda igual ao fundo */
-    transition: border-color 0.3s ease;
+    
 }
 
 .btn:hover {
     background-color: var(--cor-destaque);
-}
-
-.btn:hover, .btn:focus {
-  border-color: #corDestaque; /* mudar cor da borda ao passar mouse ou focar */
-  outline: none;
 }
 
 

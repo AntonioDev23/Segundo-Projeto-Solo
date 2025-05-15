@@ -92,7 +92,7 @@ function carregarNovasReceitas() {
     {
         nome: 'Macarrão à Carbonara',
         descricao: 'Massa italiana com bacon, ovos e queijo.',
-        imagem: 'imagens/Macarrao cabonara.png',
+        imagem: 'imagens/Macarrao carbonara.png',
         link: '#'
     },
     {
@@ -104,7 +104,7 @@ function carregarNovasReceitas() {
     {
         nome: 'Moqueca de Peixe',
         descricao: 'Prato típico brasileiro com peixe, pimentões e leite de coco.',
-        imagem: 'imagens/moqueca-peixe.webp',
+        imagem: 'imagens/Moqueca de peixe.png',
         link: '#'
     }
 ];

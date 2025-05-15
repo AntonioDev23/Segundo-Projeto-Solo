@@ -44,13 +44,13 @@ function carregarNovasReceitas() {
     {
         nome: 'Bife à Parmegiana',
         descricao: 'Uma deliciosa combinação de carne empanada e molho de tomate.',
-        imagem: 'imagens/bife-parmegiana.webp',
+        imagem: 'imagens/Bife a parmegiana.png',
         link: '#'
     },
     {
         nome: 'Salada de Frutas',
         descricao: 'Uma opção fresca e saudável para qualquer momento.',
-        imagem: 'imagens/salada-frutas.webp',
+        imagem: 'imagens/Salada de frutas.png',
         link: '#'
     },
     {

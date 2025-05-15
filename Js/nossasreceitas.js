@@ -38,61 +38,73 @@ function carregarNovasReceitas() {
     {
         nome: 'Torta de Maçã',
         descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
-        imagem: 'imagens/torta-de-maca.webp',
+        imagem: 'imagens/Torta de maçã.png',
         link: '#'
     },
     {
         nome: 'Bife à Parmegiana',
-        descricao: 'Carne empanada coberta com molho de tomate e queijo.',
+        descricao: 'Uma deliciosa combinação de carne empanada e molho de tomate.',
         imagem: 'imagens/bife-parmegiana.webp',
         link: '#'
     },
     {
         nome: 'Salada de Frutas',
-        descricao: 'Refrescante, saudável e perfeita para dias quentes.',
+        descricao: 'Uma opção fresca e saudável para qualquer momento.',
         imagem: 'imagens/salada-frutas.webp',
         link: '#'
     },
     {
         nome: 'Escondidinho de Carne Seca',
-        descricao: 'Purê de mandioca com carne seca desfiada e gratinada.',
-        imagem: 'imagens/escondidinho-carne.webp',
+        descricao: 'Purê de mandioca com carne seca desfiada e queijo gratinado.',
+        imagem: 'imagens/escondidinho-carne-seca.webp',
         link: '#'
     },
     {
-        nome: 'Lasanha à Bolonhesa',
-        descricao: 'Camadas de massa, molho e muito queijo.',
-        imagem: 'imagens/lasanha-bolonhesa.webp',
-        link: '#'
-    },
-    {
-        nome: 'Frango Xadrez',
-        descricao: 'Prato oriental com frango, pimentões e molho agridoce.',
-        imagem: 'imagens/frango-xadrez.webp',
-        link: '#'
-    },
-    {
-        nome: 'Feijoada',
-        descricao: 'Prato brasileiro com feijão preto e carnes variadas.',
-        imagem: 'imagens/feijoada.webp',
-        link: '#'
-    },
-    {
-        nome: 'Panqueca de Carne',
-        descricao: 'Panquecas recheadas com carne moída e molho.',
-        imagem: 'imagens/panqueca-carne.webp',
+        nome: 'Panqueca de Frango',
+        descricao: 'Panquecas recheadas com frango desfiado e molho de tomate.',
+        imagem: 'imagens/panqueca-frango.webp',
         link: '#'
     },
     {
         nome: 'Strogonoff de Frango',
-        descricao: 'Clássico com creme de leite e batata palha.',
+        descricao: 'Frango cremoso com champignon e batata palha.',
         imagem: 'imagens/strogonoff-frango.webp',
         link: '#'
     },
     {
-        nome: 'Brigadeiro Gourmet',
-        descricao: 'Docinho tradicional com chocolate de verdade.',
-        imagem: 'imagens/brigadeiro-gourmet.webp',
+        nome: 'Lasanha à Bolonhesa',
+        descricao: 'Camadas de massa, carne moída e molho branco.',
+        imagem: 'imagens/lasanha-bolonhesa.webp',
+        link: '#'
+    },
+    {
+        nome: 'Feijoada',
+        descricao: 'Prato típico brasileiro com feijão preto e carnes variadas.',
+        imagem: 'imagens/feijoada.webp',
+        link: '#'
+    },
+    {
+        nome: 'Bolo de Cenoura',
+        descricao: 'Bolo fofinho com cobertura de chocolate.',
+        imagem: 'imagens/bolo-cenoura.webp',
+        link: '#'
+    },
+    {
+        nome: 'Macarrão à Carbonara',
+        descricao: 'Massa italiana com bacon, ovos e queijo.',
+        imagem: 'imagens/macarrao-carbonara.webp',
+        link: '#'
+    },
+    {
+        nome: 'Quiche de Queijo e Alho-Poró',
+        descricao: 'Torta salgada com recheio cremoso e massa crocante.',
+        imagem: 'imagens/quiche-queijo-alho.webp',
+        link: '#'
+    },
+    {
+        nome: 'Moqueca de Peixe',
+        descricao: 'Prato típico brasileiro com peixe, pimentões e leite de coco.',
+        imagem: 'imagens/moqueca-peixe.webp',
         link: '#'
     }
 ];

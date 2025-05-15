@@ -334,15 +334,24 @@
   transform: translateY(0);
 }
 
-/* Estilização do título "Outras Receitas Deliciosas" */
-#outras-receitas {
-    text-align: center;         
-    font-size: 2rem;            
-    color: #333;                
-    margin-top: 40px;           
-    margin-bottom: 20px;        
-    font-weight: bold;          
+#nossas-receitas h2 {
+    display: inline-block;       /* Faz o fundo ficar só no tamanho do texto */
+    background-color: #ffffff60; /* Fundo transparente */
+    color: white;                /* Cor do texto */
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 40px auto 20px auto; /* Espaçamento em cima e embaixo */
+    padding: 0 10px;             /* Espaço interno horizontal */
+    border-radius: 5px;          /* Bordas arredondadas */
+    text-align: center;          /* Centraliza o texto dentro do h2 */
 }
+
+/* E para centralizar o h2 no container pai */
+#nossas-receitas {
+    text-align: center;          /* Centraliza elementos inline */
+}
+
+
 
 
 

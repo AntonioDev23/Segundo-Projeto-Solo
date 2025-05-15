@@ -119,7 +119,7 @@
                         <img src="imagens/0709fc0e-f780-463e-a717-67baad445ffc.webp" alt="Bolo de Chocolate">
                         <h3>Bolo de Chocolate</h3>
                         <p>Um clássico Irresistível.</p>
-                        <a href="" class="btn">Ver Receita</a>
+                        <button class="btn ver-receita" data-id="bolo-chocolate">Ver Receita</button>
                     </div>
                     <div class="recipe-card">
                         <div class="tooltip">Massa fininha e crocante, molho caseiro e muito queijo derretido. A pizza perfeita pra uma noite especial!</div>
@@ -189,15 +189,25 @@
             </section>
         </section>
     </main>
-
+            <!-- Novas receitas vão ser inseridas aqui via JavaScript -->
     <section id="nossas-receitas" style="display: none;">
         <div class="container">
             <h2 id="outras-receitas">Outras Receitas Deliciosas</h2>
             <div class="recipe-grid" id="novas-receitas-grid">
-            <!-- Novas receitas vão ser inseridas aqui via JavaScript -->
             </div>
         </div>
     </section>
+
+        <!-- Página de Receita Individual (inicialmente oculta) -->
+    <section id="pagina-receita" style="display: none;">
+        <div class="container">
+            <button id="voltar-btn" class="btn">← Voltar</button>
+            <h2 id="titulo-receita"></h2>
+            <img id="imagem-receita" src="" alt="">
+            <p id="descricao-receita"></p>
+        </div>
+    </section>
+
 
 
     <footer id="footer" class="footer">

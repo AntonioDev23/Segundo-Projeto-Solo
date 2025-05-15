@@ -3,17 +3,17 @@ const receitasPrincipais = {
     'bolo-chocolate': {
         titulo: 'Bolo de Chocolate',
         descricao: 'Massa fofinha coberta com generosa calda quente de chocolate meio amargo.',
-        imagem: 'imagens/0709fc0e-f780-463e-a717-67baad445ffc.webp'
+        imagem: 'imagens/Bolo de chocolate 2.webp'
     },
     'pizza-caseira': {
         titulo: 'Pizza Caseira',
         descricao: 'Massa fininha e crocante, molho caseiro e muito queijo derretido.',
-        imagem: 'imagens/c62965f4-2dd2-43ac-878b-ee1bb7265caa.webp'
+        imagem: 'imagens/Pizza caseira.webp'
     },
     'lasanha': {
         titulo: 'Lasanha',
         descricao: 'Camadas generosas de massa, carne moída temperada e muito queijo gratinado.',
-        imagem: 'imagens/29065d85-8438-4131-a633-ef1c4eb246af.webp'
+        imagem: 'imagens/Lasanha.webp'
     },
     'escondidinho': {
         titulo: 'Escondidinho de Carne Moída',

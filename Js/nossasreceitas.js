@@ -35,25 +35,68 @@ navLinks.forEach(link => {
 // Função que cria e exibe as novas receitas na seção "nossas-receitas"
 function carregarNovasReceitas() {
   const novasReceitas = [
-      {
-          nome: 'Torta de Maçã',
-          descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
-          imagem: 'imagens/Torta de maçã.png',
-          link: '#'
-      },
-      {
-          nome: 'Bife à Parmegiana',
-          descricao: 'Uma deliciosa combinação de carne empanada e molho de tomate.',
-          imagem: 'imagens/Bife a parmegiana.png',
-          link: '#'
-      },
-      {
-          nome: 'Salada de Frutas',
-          descricao: 'Uma opção fresca e saudável para qualquer momento.',
-          imagem: 'imagens/Salada de frutas.png',
-          link: '#'
-      }
-  ];
+    {
+        nome: 'Torta de Maçã',
+        descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
+        imagem: 'imagens/torta-de-maca.webp',
+        link: '#'
+    },
+    {
+        nome: 'Bife à Parmegiana',
+        descricao: 'Carne empanada coberta com molho de tomate e queijo.',
+        imagem: 'imagens/bife-parmegiana.webp',
+        link: '#'
+    },
+    {
+        nome: 'Salada de Frutas',
+        descricao: 'Refrescante, saudável e perfeita para dias quentes.',
+        imagem: 'imagens/salada-frutas.webp',
+        link: '#'
+    },
+    {
+        nome: 'Escondidinho de Carne Seca',
+        descricao: 'Purê de mandioca com carne seca desfiada e gratinada.',
+        imagem: 'imagens/escondidinho-carne.webp',
+        link: '#'
+    },
+    {
+        nome: 'Lasanha à Bolonhesa',
+        descricao: 'Camadas de massa, molho e muito queijo.',
+        imagem: 'imagens/lasanha-bolonhesa.webp',
+        link: '#'
+    },
+    {
+        nome: 'Frango Xadrez',
+        descricao: 'Prato oriental com frango, pimentões e molho agridoce.',
+        imagem: 'imagens/frango-xadrez.webp',
+        link: '#'
+    },
+    {
+        nome: 'Feijoada',
+        descricao: 'Prato brasileiro com feijão preto e carnes variadas.',
+        imagem: 'imagens/feijoada.webp',
+        link: '#'
+    },
+    {
+        nome: 'Panqueca de Carne',
+        descricao: 'Panquecas recheadas com carne moída e molho.',
+        imagem: 'imagens/panqueca-carne.webp',
+        link: '#'
+    },
+    {
+        nome: 'Strogonoff de Frango',
+        descricao: 'Clássico com creme de leite e batata palha.',
+        imagem: 'imagens/strogonoff-frango.webp',
+        link: '#'
+    },
+    {
+        nome: 'Brigadeiro Gourmet',
+        descricao: 'Docinho tradicional com chocolate de verdade.',
+        imagem: 'imagens/brigadeiro-gourmet.webp',
+        link: '#'
+    }
+];
+
 
   const grid = document.getElementById('novas-receitas-grid');
   grid.innerHTML = ''; // Limpa o conteúdo antes de inserir

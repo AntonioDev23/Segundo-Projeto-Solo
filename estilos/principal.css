@@ -44,7 +44,7 @@ body {
 
 /* Classe adicionada via JS quando estiver em "Nossas Receitas" */
 .fundo.fundo-escurecido {
-  filter: blur(5px);
+  filter: blur(12px);
 }
 
 

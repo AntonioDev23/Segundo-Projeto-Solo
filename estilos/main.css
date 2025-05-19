@@ -264,8 +264,13 @@
 /* ===== CENTRALIZAR TÍTULO E DESCRIÇÃO DOS CARDS ===== */
 .recipe-card h3, 
 .recipe-card p {
-    text-align: center; /* Centraliza horizontalmente */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita a 3 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 
 .recipe-card h3 {
     color: var(--cor-primaria) !important; /* Mesma cor do header */
@@ -337,6 +342,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 
 #nossas-receitas h2 {
     display: inline-block;       /* Faz o fundo ficar só no tamanho do texto */

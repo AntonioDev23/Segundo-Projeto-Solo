@@ -19,11 +19,13 @@ navLinks.forEach(link => {
     if (targetSection) targetSection.style.display = 'block';
 
     // Fundo desfocado para todas as seções, exceto a inicial
-    if (targetId === 'pagina-inicial') {
-      document.body.classList.remove('fundo-escurecido');
+    if (targetId === 'nossas-receitas') {
+      document.querySelector('.fundo').classList.add('fundo-escurecido');
+      carregarNovasReceitas();
     } else {
-      document.body.classList.add('fundo-escurecido');
-    }
+      document.querySelector('.fundo').classList.remove('fundo-escurecido');
+}
+
 
     // Carrega receitas só quando for nessa seção
     if (targetId === 'nossas-receitas') {

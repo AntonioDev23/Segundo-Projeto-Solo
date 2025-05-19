@@ -28,6 +28,26 @@ body {
     background-attachment: fixed;
 }
 
+/* Fundo desfocável */
+.fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('sua-imagem.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Fica atrás de tudo */
+  transition: filter 0.3s ease;
+}
+
+/* Classe adicionada via JS quando estiver em "Nossas Receitas" */
+.fundo.fundo-escurecido {
+  filter: blur(5px);
+}
+
+
 /* Seções com fundo sólido */
 .header,
 .popular,

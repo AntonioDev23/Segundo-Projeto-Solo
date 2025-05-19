@@ -26,12 +26,12 @@ navLinks.forEach(link => {
     }
 
     // Escurece ou clareia o fundo conforme a seção
-    if (targetId === 'nossas-receitas') {
-      document.body.classList.add('fundo-escurecido');
-      carregarNovasReceitas();
-    } else {
+    if (targetId === 'pagina-inicial') {
       document.body.classList.remove('fundo-escurecido');
-    }
+    } else {
+      document.body.classList.add('fundo-escurecido');
+}
+
 
   });
 });

@@ -4,37 +4,34 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 navLinks.forEach(link => {
   link.addEventListener('click', function(event) {
-    event.preventDefault(); // Previne o comportamento padrão do link (não muda a URL)
+    event.preventDefault();
 
-    const targetId = this.getAttribute('data-id'); // Pega o id da seção para mostrar
-    
-    // Lista todas as seções que queremos controlar
+    const targetId = this.getAttribute('data-id');
+
     const sectionsToToggle = ['pagina-inicial', 'nossas-receitas'];
 
-    // Esconde todas as seções
     sectionsToToggle.forEach(id => {
       const section = document.getElementById(id);
-      if (section) {
-        section.style.display = 'none';
-      }
+      if (section) section.style.display = 'none';
     });
 
-    // Exibe somente a seção clicada
     const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      targetSection.style.display = 'block';
-    }
+    if (targetSection) targetSection.style.display = 'block';
 
-    // Escurece ou clareia o fundo conforme a seção
+    // Fundo desfocado para todas as seções, exceto a inicial
     if (targetId === 'pagina-inicial') {
       document.body.classList.remove('fundo-escurecido');
     } else {
       document.body.classList.add('fundo-escurecido');
-}
+    }
 
-
+    // Carrega receitas só quando for nessa seção
+    if (targetId === 'nossas-receitas') {
+      carregarNovasReceitas();
+    }
   });
 });
+
 
 
 

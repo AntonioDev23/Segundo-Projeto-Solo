@@ -228,8 +228,10 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Adicione esta linha */
     position: relative;
 }
+
 
 
 .recipe-card img {
@@ -264,12 +266,14 @@
 /* ===== CENTRALIZAR TÍTULO E DESCRIÇÃO DOS CARDS ===== */
 .recipe-card h3, 
 .recipe-card p {
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limita a 3 linhas */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* limita a 3 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0; /* para evitar espaçamento extra */
 }
+
 
 
 .recipe-card h3 {

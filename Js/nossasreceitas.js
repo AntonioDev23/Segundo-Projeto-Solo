@@ -25,12 +25,18 @@ navLinks.forEach(link => {
       targetSection.style.display = 'block';
     }
 
-    // Se a seção "nossas-receitas" for mostrada, também chama a função para carregar as receitas (caso queira)
-    if(targetId === 'nossas-receitas'){
+    // Escurece ou clareia o fundo conforme a seção
+    if (targetId === 'nossas-receitas') {
+      document.body.classList.add('fundo-escurecido');
       carregarNovasReceitas();
+    } else {
+      document.body.classList.remove('fundo-escurecido');
     }
+
   });
 });
+
+
 
 // Função que cria e exibe as novas receitas na seção "nossas-receitas"
 function carregarNovasReceitas() {

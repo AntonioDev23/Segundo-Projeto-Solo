@@ -143,7 +143,6 @@ const receitasPrincipais = {
     }
 };
 
-
 // Ao clicar em "Ver Receita"
 document.querySelectorAll('.ver-receita').forEach(botao => {
     botao.addEventListener('click', function () {
@@ -151,11 +150,23 @@ document.querySelectorAll('.ver-receita').forEach(botao => {
         const receita = receitasPrincipais[id];
 
         if (receita) {
-            // Preenche conteúdo
+            // Preenche título, descrição e imagem
             document.getElementById('titulo-receita').textContent = receita.titulo;
             document.getElementById('descricao-receita').textContent = receita.descricao;
             document.getElementById('imagem-receita').src = receita.imagem;
             document.getElementById('imagem-receita').alt = receita.titulo;
+
+            // Preenche ingredientes
+            const ingredientesEl = document.getElementById('ingredientes-receita');
+            ingredientesEl.innerHTML = receita.ingredientes
+                .map(ingrediente => `<li>${ingrediente}</li>`)
+                .join('');
+
+            // Preenche modo de preparo
+            const preparoEl = document.getElementById('preparo-receita');
+            preparoEl.innerHTML = receita.preparo
+                .map(passo => `<li>${passo}</li>`)
+                .join('');
 
             // Oculta a página principal
             document.querySelector('main').style.display = 'none';
@@ -208,6 +219,16 @@ document.querySelectorAll('.ver-receita').forEach(botao => {
             descricao.style.fontSize = '1.1rem';
             descricao.style.color = '#666';
             descricao.style.lineHeight = '1.6';
+
+            // Estilo para ingredientes e preparo
+            ingredientesEl.style.textAlign = 'left';
+            ingredientesEl.style.marginBottom = '30px';
+            ingredientesEl.style.fontSize = '1rem';
+            ingredientesEl.style.color = '#444';
+
+            preparoEl.style.textAlign = 'left';
+            preparoEl.style.fontSize = '1rem';
+            preparoEl.style.color = '#444';
         }
     });
 });

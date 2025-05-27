@@ -35,7 +35,7 @@ function carregarNovasReceitas() {
       descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
       imagem: 'imagens/Torta de maçã.png',
       link: '#',
-      tempo: '1h 20min'
+      tempo: '50min'
     },
     {
       nome: 'Bife à Parmegiana',

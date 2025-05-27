@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Para transição suave: iniciar fora da tela
       menu.style.transform = 'translateX(100%)';
-      menu.style.transition = 'transform 0.8s ease';
+      menu.style.transition = 'transform 0.3s ease';
 
       categorias.forEach(cat => {
         const item = document.createElement('div');
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fechar.addEventListener('click', () => {
         // animação para fechar
         menu.style.transform = 'translateX(100%)';
-        setTimeout(() => menu.remove(), 800);
+        setTimeout(() => menu.remove(), 300);
       });
 
       menu.appendChild(fechar);

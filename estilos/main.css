@@ -239,6 +239,14 @@
     padding-top: 1rem;
 }
 
+.recipe-time {
+  font-size: 0.75rem;
+  color: #666; /* cinza claro */
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+
+
 
 /* ===== CENTRALIZAR TÍTULO E DESCRIÇÃO DOS CARDS ===== */
 .recipe-card h3, 

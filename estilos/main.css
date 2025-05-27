@@ -239,6 +239,7 @@
     padding-top: 1rem;
 }
 
+
 /* ===== CENTRALIZAR TÍTULO E DESCRIÇÃO DOS CARDS ===== */
 .recipe-card h3, 
 .recipe-card p {
@@ -248,8 +249,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0; /* para evitar espaçamento extra */
+    text-align: center;
 }
-
 
 
 .recipe-card h3 {

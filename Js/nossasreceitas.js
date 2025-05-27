@@ -35,7 +35,7 @@ function carregarNovasReceitas() {
       descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
       imagem: 'imagens/Torta de maçã.png',
       link: '#',
-      tempo: '50min'
+      tempo: '40min'
     },
     {
       nome: 'Bife à Parmegiana',
@@ -56,7 +56,7 @@ function carregarNovasReceitas() {
       descricao: 'Purê de mandioca com carne seca desfiada e queijo gratinado.',
       imagem: 'imagens/Carne seca.png',
       link: '#',
-      tempo: '1h 10min'
+      tempo: '1h'
     },
     {
       nome: 'Panqueca de Frango',

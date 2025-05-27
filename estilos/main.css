@@ -212,6 +212,17 @@
     color: white;
 }
 
+.filters button:hover {
+    background-color: #ddd;
+}
+
+.filters button.active {
+    background-color: var(--cor-primaria);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+
 /* Grid de Receitas */
 .recipe-grid {
     display: grid;

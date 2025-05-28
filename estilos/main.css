@@ -246,6 +246,15 @@
   font-weight: normal;
 }
 
+.stars-visual {
+  color: gold;
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 6px;
+  user-select: none;
+}
+
+
 
 
 /* ===== CENTRALIZAR TÍTULO E DESCRIÇÃO DOS CARDS ===== */

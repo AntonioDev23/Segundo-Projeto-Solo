@@ -243,6 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Estrelas
+    const divEstrelas = document.getElementById('avaliacao');
+    divEstrelas.innerHTML = ''; // limpa antes
+    const notaSalva = localStorage.getItem(`nota-${id}`) || 0;
+
+    criarEstrelas(divEstrelas, Number(notaSalva), (novaNota) => {
+      localStorage.setItem(`nota-${id}`, novaNota);
+    });
+  });
+
+
   // Botão de voltar
   document.getElementById('voltar-btn').addEventListener('click', function () {
     document.getElementById('pagina-receita').style.display = 'none';

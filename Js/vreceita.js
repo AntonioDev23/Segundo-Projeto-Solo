@@ -148,6 +148,28 @@ const receitasPrincipais = {
 document.addEventListener('DOMContentLoaded', () => {
   const corPrimaria = getComputedStyle(document.documentElement).getPropertyValue('--cor-primaria').trim();
 
+  // Função para criar estrelas de avaliação
+  function criarEstrelas(container, notaAtual, callback) {
+    container.innerHTML = ''; // limpa estrelas antigas
+    const totalEstrelas = 5;
+
+    for (let i = 1; i <= totalEstrelas; i++) {
+      const estrela = document.createElement('span');
+      estrela.classList.add('estrela');
+      estrela.style.fontSize = '30px';
+      estrela.style.cursor = 'pointer';
+      estrela.style.color = i <= notaAtual ? '#FFD700' : '#ccc'; // amarelo para selecionada, cinza para não selecionada
+      estrela.innerHTML = '★'; // caractere estrela
+
+      estrela.addEventListener('click', () => {
+        callback(i);
+        criarEstrelas(container, i, callback); // atualiza estrelas para nova nota
+      });
+
+      container.appendChild(estrela);
+    }
+  }
+
   // Ao clicar em "Ver Receita"
   document.querySelectorAll('.ver-receita').forEach(botao => {
     botao.addEventListener('click', function () {
@@ -180,12 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const secaoReceita = document.getElementById('pagina-receita');
         secaoReceita.style.display = 'block';
 
-        // Estilo da seção
+        // Estilos (você já tem isso, mantive só aqui para contexto)
         secaoReceita.style.backgroundColor = '#fffbe9';
         secaoReceita.style.padding = '40px 20px';
         secaoReceita.style.minHeight = '100vh';
 
-        // Container
         const container = secaoReceita.querySelector('.container');
         container.style.maxWidth = '800px';
         container.style.margin = '0 auto';
@@ -195,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.backgroundColor = '#ffffff';
         container.style.textAlign = 'center';
 
-        // Botão de voltar
+        // Botão voltar
         const voltarBtn = document.getElementById('voltar-btn');
         voltarBtn.style.backgroundColor = corPrimaria;
         voltarBtn.style.color = 'white';
@@ -225,34 +246,30 @@ document.addEventListener('DOMContentLoaded', () => {
         descricao.style.color = '#666';
         descricao.style.lineHeight = '1.6';
 
-        // Estilo para ingredientes e preparo (listas)
+        // Estilo para listas
         ingredientesEl.style.textAlign = 'left';
         ingredientesEl.style.marginBottom = '30px';
         ingredientesEl.style.fontSize = '1rem';
-        ingredientesEl.style.color = '#000'; // texto preto
+        ingredientesEl.style.color = '#000';
 
         preparoEl.style.textAlign = 'left';
         preparoEl.style.fontSize = '1rem';
-        preparoEl.style.color = '#000'; // texto preto
+        preparoEl.style.color = '#000';
 
-        // Aplica cor primária nos títulos h3 (Ingredientes e Modo de Preparo)
         secaoReceita.querySelectorAll('h3').forEach(h3 => {
           h3.style.color = corPrimaria;
+        });
+
+        // === AQUI INTEGRAMOS AS ESTRELAS ===
+        const divEstrelas = document.getElementById('avaliacao');
+        const notaSalva = localStorage.getItem(`nota-${id}`) || 0;
+
+        criarEstrelas(divEstrelas, Number(notaSalva), (novaNota) => {
+          localStorage.setItem(`nota-${id}`, novaNota);
         });
       }
     });
   });
-
-  // Estrelas
-    const divEstrelas = document.getElementById('avaliacao');
-    divEstrelas.innerHTML = ''; // limpa antes
-    const notaSalva = localStorage.getItem(`nota-${id}`) || 0;
-
-    criarEstrelas(divEstrelas, Number(notaSalva), (novaNota) => {
-      localStorage.setItem(`nota-${id}`, novaNota);
-    });
-  });
-
 
   // Botão de voltar
   document.getElementById('voltar-btn').addEventListener('click', function () {

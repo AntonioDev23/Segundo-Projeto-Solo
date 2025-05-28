@@ -1,4 +1,3 @@
-
 // Seleciona todos os links do menu com a classe 'nav-link'
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -26,25 +25,26 @@ navLinks.forEach(link => {
   });
 });
 
-// Função que cria as estrelas e lida com o clique
-function criarEstrelas(container, notaInicial = 0, callback) {
-  container.innerHTML = ''; // Limpa qualquer conteúdo anterior
+// Função que cria estrelas (modo visual ou interativo)
+function criarEstrelas(container, nota = 5, callback = null, interativo = false) {
+  container.innerHTML = ''; // Limpa o container
 
   for (let i = 1; i <= 5; i++) {
     const estrela = document.createElement('span');
     estrela.innerHTML = '★';
-    estrela.style.cursor = 'pointer';
     estrela.style.fontSize = '24px';
-    estrela.style.color = i <= notaInicial ? '#FFD700' : '#ccc';
+    estrela.style.color = i <= nota ? '#FFD700' : '#ccc';
 
-    estrela.addEventListener('click', () => {
-      const estrelas = container.querySelectorAll('span');
-      estrelas.forEach((el, index) => {
-        el.style.color = index < i ? '#FFD700' : '#ccc';
+    if (interativo) {
+      estrela.style.cursor = 'pointer';
+      estrela.addEventListener('click', () => {
+        const estrelas = container.querySelectorAll('span');
+        estrelas.forEach((el, index) => {
+          el.style.color = index < i ? '#FFD700' : '#ccc';
+        });
+        if (callback) callback(i);
       });
-
-      if (callback) callback(i);
-    });
+    }
 
     container.appendChild(estrela);
   }
@@ -149,23 +149,20 @@ function carregarNovasReceitas() {
     const idEstrelas = `avaliacao-${receita.nome.replace(/\s+/g, '-').toLowerCase()}`;
 
     recipeCard.innerHTML = `
-    <div class="tooltip">${receita.descricao}</div>
-    <img src="${receita.imagem}" alt="${receita.nome}">
-    <div class="avaliacao-estrelas" id="${idEstrelas}"></div>
-    <h3>${receita.nome} <small style="font-size: 0.7em; color: gray; font-weight: normal;">⏱️ ${receita.tempo}</small></h3>
-    <p>${receita.descricao}</p>
-    <a href="${receita.link}" class="btn">Ver Receita</a>
-  `;
-
+      <div class="tooltip">${receita.descricao}</div>
+      <img src="${receita.imagem}" alt="${receita.nome}">
+      <div class="avaliacao-estrelas" id="${idEstrelas}"></div>
+      <h3>${receita.nome} <small style="font-size: 0.7em; color: gray; font-weight: normal;">⏱️ ${receita.tempo}</small></h3>
+      <p>${receita.descricao}</p>
+      <a href="${receita.link}" class="btn">Ver Receita</a>
+    `;
 
     grid.appendChild(recipeCard);
 
     const divEstrelas = recipeCard.querySelector(`#${idEstrelas}`);
     divEstrelas.classList.add('stars-visual');
-    const notaSalva = localStorage.getItem(`nota-${idEstrelas}`) || 0;
 
-    criarEstrelas(divEstrelas, Number(notaSalva), (novaNota) => {
-      localStorage.setItem(`nota-${idEstrelas}`, novaNota);
-    });
+    // Mostra 5 estrelas por padrão, SEM interação
+    criarEstrelas(divEstrelas, 5, null, false);
   });
 }

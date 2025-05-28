@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= totalEstrelas; i++) {
       const estrela = document.createElement('span');
       estrela.classList.add('estrela');
-      estrela.style.fontSize = '30px';
+      estrela.style.fontSize = '55px';
       estrela.style.cursor = 'pointer';
       estrela.style.color = i <= notaAtual ? '#FFD700' : '#ccc'; // amarelo para selecionada, cinza para não selecionada
       estrela.innerHTML = '★'; // caractere estrela

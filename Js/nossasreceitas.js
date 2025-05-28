@@ -31,7 +31,7 @@ function criarEstrelas(container, nota = 5, callback = null, interativo = false)
 
   for (let i = 1; i <= 5; i++) {
     const estrela = document.createElement('span');
-    estrela.innerHTML = '★';
+    estrela.innerHTML = i <= nota ? '★' : '☆';
     estrela.style.fontSize = '24px';
     estrela.style.color = i <= nota ? '#FFD700' : '#ccc';
 
@@ -40,6 +40,7 @@ function criarEstrelas(container, nota = 5, callback = null, interativo = false)
       estrela.addEventListener('click', () => {
         const estrelas = container.querySelectorAll('span');
         estrelas.forEach((el, index) => {
+          el.innerHTML = index < i ? '★' : '☆';
           el.style.color = index < i ? '#FFD700' : '#ccc';
         });
         if (callback) callback(i);
@@ -58,84 +59,96 @@ function carregarNovasReceitas() {
       descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
       imagem: 'imagens/Torta de maçã.png',
       link: '#',
-      tempo: '40min'
+      tempo: '40min',
+      nota: 4
     },
     {
       nome: 'Bife à Parmegiana',
       descricao: 'Uma deliciosa combinação de carne empanada e molho de tomate.',
       imagem: 'imagens/Bife a parmegiana.png',
       link: '#',
-      tempo: '1h'
+      tempo: '1h',
+      nota: 5
     },
     {
       nome: 'Salada de Frutas',
       descricao: 'Uma opção fresca e saudável para qualquer momento.',
       imagem: 'imagens/Salada de frutas.png',
       link: '#',
-      tempo: '15min'
+      tempo: '15min',
+      nota: 4
     },
     {
       nome: 'Escondidinho de Carne Seca',
       descricao: 'Purê de mandioca com carne seca desfiada e queijo gratinado.',
       imagem: 'imagens/Carne seca.png',
       link: '#',
-      tempo: '1h'
+      tempo: '1h',
+      nota: 4
     },
     {
       nome: 'Panqueca de Frango',
       descricao: 'Panquecas recheadas com frango desfiado e molho de tomate.',
       imagem: 'imagens/Panqueca de frango.png',
       link: '#',
-      tempo: '45min'
+      tempo: '45min',
+      nota: 4
     },
     {
       nome: 'Strogonoff de Frango',
       descricao: 'Frango cremoso com champignon e batata palha.',
       imagem: 'imagens/Strogonoff de frango.png',
       link: '#',
-      tempo: '40min'
+      tempo: '40min',
+      nota: 5
     },
     {
       nome: 'Lasanha à Bolonhesa',
       descricao: 'Camadas de massa, carne moída e molho branco.',
       imagem: 'imagens/Lasanha bolonhesa.png',
       link: '#',
-      tempo: '1h 15min'
+      tempo: '1h 15min',
+      nota: 5
     },
     {
       nome: 'Feijoada',
       descricao: 'Prato típico brasileiro com feijão preto e carnes variadas.',
       imagem: 'imagens/Feijoada.png',
       link: '#',
-      tempo: '2h'
+      tempo: '2h',
+      nota: 5
     },
     {
       nome: 'Bolo de Cenoura',
       descricao: 'Bolo fofinho com cobertura de chocolate.',
       imagem: 'imagens/Bolo de cenoura.png',
       link: '#',
-      tempo: '50min'
+      tempo: '50min',
+      nota: 5
     },
     {
       nome: 'Macarrão à Carbonara',
       descricao: 'Massa italiana com bacon, ovos e queijo.',
       imagem: 'imagens/Macarrao carbonara.png',
       link: '#',
-      tempo: '25min'
+      tempo: '25min',
+      nota: 5
     },
     {
       nome: 'Quiche de Queijo e Alho-Poró',
       descricao: 'Torta salgada com recheio cremoso e massa crocante.',
       imagem: 'imagens/Quiche queijo alho.png',
       link: '#',
-      tempo: '1h'
+      tempo: '1h',
+      nota: 4
     },
     {
       nome: 'Moqueca de Peixe',
       descricao: 'Prato típico brasileiro com peixe, pimentões e leite de coco.',
       imagem: 'imagens/Moqueca de peixe.png',
       link: '#',
-      tempo: '1h'
+      tempo: '1h',
+      nota: 5
     }
   ];
 
@@ -162,7 +175,7 @@ function carregarNovasReceitas() {
     const divEstrelas = recipeCard.querySelector(`#${idEstrelas}`);
     divEstrelas.classList.add('stars-visual');
 
-    // Mostra 5 estrelas por padrão, SEM interação
-    criarEstrelas(divEstrelas, 5, null, false);
+    // Estrelas visuais conforme a nota definida
+    criarEstrelas(divEstrelas, receita.nota, null, false);
   });
 }

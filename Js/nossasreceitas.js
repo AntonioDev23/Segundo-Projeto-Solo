@@ -31,17 +31,21 @@ function criarEstrelas(container, nota = 5, callback = null, interativo = false)
 
   for (let i = 1; i <= 5; i++) {
     const estrela = document.createElement('span');
-    estrela.innerHTML = i <= nota ? '★' : '☆';
+    if (i <= nota) {
+      estrela.innerHTML = '★';  // estrela cheia
+    } else {
+      estrela.innerHTML = '☆';  // estrela vazia
+    }
     estrela.style.fontSize = '24px';
-    estrela.style.color = i <= nota ? '#FFD700' : '#ccc';
+    estrela.style.color = '#FFD700'; // cor gold para ambas
 
     if (interativo) {
       estrela.style.cursor = 'pointer';
       estrela.addEventListener('click', () => {
         const estrelas = container.querySelectorAll('span');
         estrelas.forEach((el, index) => {
-          el.innerHTML = index < i ? '★' : '☆';
           el.style.color = index < i ? '#FFD700' : '#ccc';
+          el.innerHTML = index < i ? '★' : '☆';
         });
         if (callback) callback(i);
       });
@@ -60,7 +64,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Torta de maçã.png',
       link: '#',
       tempo: '40min',
-      nota: 4
+      avaliacao: 4
     },
     {
       nome: 'Bife à Parmegiana',
@@ -68,7 +72,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Bife a parmegiana.png',
       link: '#',
       tempo: '1h',
-      nota: 5
+      avaliacao: 4
     },
     {
       nome: 'Salada de Frutas',
@@ -76,7 +80,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Salada de frutas.png',
       link: '#',
       tempo: '15min',
-      nota: 4
+      avaliacao: 4
     },
     {
       nome: 'Escondidinho de Carne Seca',
@@ -84,7 +88,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Carne seca.png',
       link: '#',
       tempo: '1h',
-      nota: 4
+      avaliacao: 5
     },
     {
       nome: 'Panqueca de Frango',
@@ -92,7 +96,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Panqueca de frango.png',
       link: '#',
       tempo: '45min',
-      nota: 4
+      avaliacao: 4
     },
     {
       nome: 'Strogonoff de Frango',
@@ -100,7 +104,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Strogonoff de frango.png',
       link: '#',
       tempo: '40min',
-      nota: 5
+      avaliacao: 5
     },
     {
       nome: 'Lasanha à Bolonhesa',
@@ -108,7 +112,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Lasanha bolonhesa.png',
       link: '#',
       tempo: '1h 15min',
-      nota: 5
+      avaliacao: 5
     },
     {
       nome: 'Feijoada',
@@ -116,7 +120,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Feijoada.png',
       link: '#',
       tempo: '2h',
-      nota: 5
+      avaliacao: 4
     },
     {
       nome: 'Bolo de Cenoura',
@@ -124,7 +128,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Bolo de cenoura.png',
       link: '#',
       tempo: '50min',
-      nota: 5
+      avaliacao: 5
     },
     {
       nome: 'Macarrão à Carbonara',
@@ -132,7 +136,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Macarrao carbonara.png',
       link: '#',
       tempo: '25min',
-      nota: 5
+      avaliacao: 4
     },
     {
       nome: 'Quiche de Queijo e Alho-Poró',
@@ -140,7 +144,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Quiche queijo alho.png',
       link: '#',
       tempo: '1h',
-      nota: 4
+      avaliacao: 5
     },
     {
       nome: 'Moqueca de Peixe',
@@ -148,7 +152,7 @@ function carregarNovasReceitas() {
       imagem: 'imagens/Moqueca de peixe.png',
       link: '#',
       tempo: '1h',
-      nota: 5
+      avaliacao: 5
     }
   ];
 
@@ -175,7 +179,7 @@ function carregarNovasReceitas() {
     const divEstrelas = recipeCard.querySelector(`#${idEstrelas}`);
     divEstrelas.classList.add('stars-visual');
 
-    // Estrelas visuais conforme a nota definida
-    criarEstrelas(divEstrelas, receita.nota, null, false);
+    // Mostra a avaliação correta (4, 5, etc) sem interação
+    criarEstrelas(divEstrelas, receita.avaliacao, null, false);
   });
 }

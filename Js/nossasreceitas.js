@@ -161,6 +161,7 @@ function carregarNovasReceitas() {
     grid.appendChild(recipeCard);
 
     const divEstrelas = recipeCard.querySelector(`#${idEstrelas}`);
+    divEstrelas.classList.add('stars-visual');
     const notaSalva = localStorage.getItem(`nota-${idEstrelas}`) || 0;
 
     criarEstrelas(divEstrelas, Number(notaSalva), (novaNota) => {

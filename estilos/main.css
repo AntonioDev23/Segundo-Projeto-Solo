@@ -250,8 +250,8 @@
   color: gold;
   text-align: center;
   font-size: 1.8em;
-  margin-bottom: 6px;
   user-select: none;
+  line-height: 1;
 }
 
 

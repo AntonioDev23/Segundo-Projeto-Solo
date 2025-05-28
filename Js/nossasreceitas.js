@@ -149,13 +149,14 @@ function carregarNovasReceitas() {
     const idEstrelas = `avaliacao-${receita.nome.replace(/\s+/g, '-').toLowerCase()}`;
 
     recipeCard.innerHTML = `
-      <div class="tooltip">${receita.descricao}</div>
-      <img src="${receita.imagem}" alt="${receita.nome}">
-      <h3>${receita.nome} <small style="font-size: 0.7em; color: gray; font-weight: normal;">⏱️ ${receita.tempo}</small></h3>
-      <p>${receita.descricao}</p>
-      <div class="avaliacao-estrelas" id="${idEstrelas}"></div>
-      <a href="${receita.link}" class="btn">Ver Receita</a>
-    `;
+    <div class="tooltip">${receita.descricao}</div>
+    <img src="${receita.imagem}" alt="${receita.nome}">
+    <div class="avaliacao-estrelas" id="${idEstrelas}"></div>
+    <h3>${receita.nome} <small style="font-size: 0.7em; color: gray; font-weight: normal;">⏱️ ${receita.tempo}</small></h3>
+    <p>${receita.descricao}</p>
+    <a href="${receita.link}" class="btn">Ver Receita</a>
+  `;
+
 
     grid.appendChild(recipeCard);
 

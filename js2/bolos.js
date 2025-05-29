@@ -1,4 +1,4 @@
-const receitasBolos = {
+export const receitasBolos = {
   'bolo-chocolate': {
     titulo: 'Bolo de Chocolate',
     descricao: 'Massa fofinha coberta com generosa calda quente de chocolate meio amargo.',
@@ -207,3 +207,4 @@ const receitasBolos = {
     ]
   }
 };
+

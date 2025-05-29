@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.id = 'menu-categorias';
       menu.style.position = 'fixed';
       menu.style.top = '0';
-      menu.style.right = '0';  // posição à direita
+      menu.style.right = '0';
       menu.style.height = '100%';
       menu.style.width = '260px';
       menu.style.backgroundColor = '#fff';
@@ -83,6 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
           item.firstElementChild.style.boxShadow = 'none';
         });
 
+        item.addEventListener('click', async () => {
+          // Fecha o menu com animação
+          menu.style.transform = 'translateX(100%)';
+          setTimeout(() => menu.remove(), 300);
+
+          // Importa e chama o módulo conforme categoria clicada
+          if (cat.nome === 'Bolos') {
+            const bolosModule = await import('../js2/bolos.js');
+            bolosModule.mostrarBolos();
+          }
+
+          // Você pode adicionar aqui os imports e chamadas para outras categorias
+          // Exemplo:
+          // if (cat.nome === 'Massas') {
+          //   const massasModule = await import('../js2/massas.js');
+          //   massasModule.mostrarMassas();
+          // }
+        });
+
         menu.appendChild(item);
       });
 
@@ -91,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fechar.textContent = '×';
       fechar.style.position = 'absolute';
       fechar.style.top = '10px';
-      fechar.style.left = '15px';  // lado esquerdo do menu que está na direita
+      fechar.style.left = '15px';
       fechar.style.fontSize = '28px';
       fechar.style.background = 'none';
       fechar.style.border = 'none';
@@ -114,5 +133,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-

@@ -1,5 +1,3 @@
-import { receitasBolos } from './bolos.js';  // Importa as receitas de bolos
-
 document.addEventListener('DOMContentLoaded', () => {
   const linkCategorias = document.querySelectorAll('.categories-btn');
 
@@ -7,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
 
-      // Se o menu já estiver aberto, não abre outro
       if (document.getElementById('menu-categorias')) return;
 
       const categorias = [
@@ -23,38 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
         { nome: "Fitness", emoji: "💪" }
       ];
 
-      // Cria o container do menu
       const menu = document.createElement('div');
       menu.id = 'menu-categorias';
-      Object.assign(menu.style, {
-        position: 'fixed',
-        top: '0',
-        right: '0',
-        height: '100%',
-        width: '260px',
-        backgroundColor: '#fff',
-        boxShadow: '-2px 0 10px rgba(0,0,0,0.2)',
-        padding: '30px 10px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '25px',
-        zIndex: '9999',
-        overflowY: 'auto',
-        transform: 'translateX(100%)',
-        transition: 'transform 0.3s ease'
-      });
+      menu.style.position = 'fixed';
+      menu.style.top = '0';
+      menu.style.right = '0';  // posição à direita
+      menu.style.height = '100%';
+      menu.style.width = '260px';
+      menu.style.backgroundColor = '#fff';
+      menu.style.boxShadow = '-2px 0 10px rgba(0, 0, 0, 0.2)';
+      menu.style.padding = '30px 10px';
+      menu.style.display = 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.alignItems = 'center';
+      menu.style.gap = '25px';
+      menu.style.zIndex = '9999';
+      menu.style.overflowY = 'auto';
 
-      // Para cada categoria cria o item no menu
+      // Para transição suave: iniciar fora da tela
+      menu.style.transform = 'translateX(100%)';
+      menu.style.transition = 'transform 0.3s ease';
+
       categorias.forEach(cat => {
         const item = document.createElement('div');
-        Object.assign(item.style, {
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease'
-        });
+        item.style.display = 'flex';
+        item.style.flexDirection = 'column';
+        item.style.alignItems = 'center';
+        item.style.cursor = 'pointer';
+        item.style.transition = 'all 0.3s ease';
 
         item.innerHTML = `
           <div style="
@@ -77,48 +70,36 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         item.addEventListener('mouseover', () => {
-          const emojiDiv = item.firstElementChild;
-          emojiDiv.style.backgroundColor = '#ff6b00';
-          emojiDiv.style.color = '#fff';
-          emojiDiv.style.transform = 'scale(1.1)';
-          emojiDiv.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+          item.firstElementChild.style.backgroundColor = '#ff6b00';
+          item.firstElementChild.style.color = '#fff';
+          item.firstElementChild.style.transform = 'scale(1.1)';
+          item.firstElementChild.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
         });
 
         item.addEventListener('mouseout', () => {
-          const emojiDiv = item.firstElementChild;
-          emojiDiv.style.backgroundColor = '#f3f3f3';
-          emojiDiv.style.color = '#000';
-          emojiDiv.style.transform = 'scale(1)';
-          emojiDiv.style.boxShadow = 'none';
-        });
-
-        // Quando clicar numa categoria, verifica se é "Bolos"
-        item.addEventListener('click', () => {
-          if (cat.nome === 'Bolos') {
-            mostrarReceitasBolos(receitasBolos, menu);
-          } else {
-            alert(`Categoria "${cat.nome}" ainda não implementada.`);
-          }
+          item.firstElementChild.style.backgroundColor = '#f3f3f3';
+          item.firstElementChild.style.color = '#000';
+          item.firstElementChild.style.transform = 'scale(1)';
+          item.firstElementChild.style.boxShadow = 'none';
         });
 
         menu.appendChild(item);
       });
 
-      // Botão para fechar o menu
+      // Botão de fechar
       const fechar = document.createElement('button');
       fechar.textContent = '×';
-      Object.assign(fechar.style, {
-        position: 'absolute',
-        top: '10px',
-        left: '15px',
-        fontSize: '28px',
-        background: 'none',
-        border: 'none',
-        cursor: 'pointer',
-        color: '#ff6b00'
-      });
+      fechar.style.position = 'absolute';
+      fechar.style.top = '10px';
+      fechar.style.left = '15px';  // lado esquerdo do menu que está na direita
+      fechar.style.fontSize = '28px';
+      fechar.style.background = 'none';
+      fechar.style.border = 'none';
+      fechar.style.cursor = 'pointer';
+      fechar.style.color = '#ff6b00';
 
       fechar.addEventListener('click', () => {
+        // animação para fechar
         menu.style.transform = 'translateX(100%)';
         setTimeout(() => menu.remove(), 300);
       });
@@ -126,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.appendChild(fechar);
       document.body.appendChild(menu);
 
-      // Animação para abrir o menu
+      // animação para abrir (depois de appendChild)
       requestAnimationFrame(() => {
         menu.style.transform = 'translateX(0)';
       });
@@ -134,44 +115,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Função que mostra as receitas de bolos dentro do menu (ou em outro lugar que quiser)
-function mostrarReceitasBolos(receitas, menu) {
-  // Primeiro limpa receitas antigas, se houver
-  const receitasContainerAntigo = document.getElementById('receitas-bolos-container');
-  if (receitasContainerAntigo) {
-    receitasContainerAntigo.remove();
-  }
 
-  // Cria um container para as receitas
-  const container = document.createElement('div');
-  container.id = 'receitas-bolos-container';
-  container.style.marginTop = '20px';
-  container.style.width = '100%';
-  container.style.maxHeight = '300px';
-  container.style.overflowY = 'auto';
-  container.style.borderTop = '1px solid #ccc';
-  container.style.paddingTop = '15px';
-
-  // Adiciona um título
-  const titulo = document.createElement('h3');
-  titulo.textContent = 'Receitas de Bolos';
-  titulo.style.textAlign = 'center';
-  titulo.style.color = '#ff6b00';
-  container.appendChild(titulo);
-
-  // Lista as receitas (assumindo que receitas é um array de objetos com nome e descrição)
-  receitas.forEach(receita => {
-    const receitaItem = document.createElement('div');
-    receitaItem.style.padding = '8px 10px';
-    receitaItem.style.borderBottom = '1px solid #eee';
-
-    receitaItem.innerHTML = `
-      <strong>${receita.nome}</strong><br>
-      <small>${receita.descricao || ''}</small>
-    `;
-
-    container.appendChild(receitaItem);
-  });
-
-  menu.appendChild(container);
-}

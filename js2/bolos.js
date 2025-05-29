@@ -208,14 +208,7 @@ export const receitasBolos = {
   }
 };
 
-export function listarBolos() {
-  for (const chave in receitasBolos) {
-    if (receitasBolos.hasOwnProperty(chave)) {
-      console.log(receitasBolos[chave].titulo);
-    }
-  }
-}
-
+// Função para mostrar detalhes de um bolo pelo nome (chave)
 export function mostrarDetalhes(nomeBolo) {
   const bolo = receitasBolos[nomeBolo];
   if (bolo) {
@@ -226,4 +219,87 @@ export function mostrarDetalhes(nomeBolo) {
   } else {
     console.log('Bolo não encontrado!');
   }
+}
+
+// Função principal que mostra uma interface simples no corpo da página
+export function mostrarBolos() {
+  // Remove interface antiga, se existir
+  const containerAntigo = document.getElementById('bolos-container');
+  if (containerAntigo) containerAntigo.remove();
+
+  // Cria um container para mostrar os bolos
+  const container = document.createElement('div');
+  container.id = 'bolos-container';
+  container.style.position = 'fixed';
+  container.style.top = '50px';
+  container.style.left = '50%';
+  container.style.transform = 'translateX(-50%)';
+  container.style.width = '300px';
+  container.style.backgroundColor = '#fff';
+  container.style.border = '2px solid #ff6b00';
+  container.style.borderRadius = '8px';
+  container.style.padding = '20px';
+  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+  container.style.zIndex = '10000';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = 'Receitas de Bolos';
+  titulo.style.color = '#ff6b00';
+  titulo.style.textAlign = 'center';
+  container.appendChild(titulo);
+
+  // Lista os bolos e cria um botão para ver detalhes
+  for (const chave in receitasBolos) {
+    if (receitasBolos.hasOwnProperty(chave)) {
+      const bolo = receitasBolos[chave];
+
+      const boloDiv = document.createElement('div');
+      boloDiv.style.marginBottom = '15px';
+
+      const nomeBolo = document.createElement('strong');
+      nomeBolo.textContent = bolo.titulo;
+      boloDiv.appendChild(nomeBolo);
+
+      const btnDetalhes = document.createElement('button');
+      btnDetalhes.textContent = 'Detalhes';
+      btnDetalhes.style.marginLeft = '10px';
+      btnDetalhes.style.cursor = 'pointer';
+      btnDetalhes.style.backgroundColor = '#ff6b00';
+      btnDetalhes.style.color = '#fff';
+      btnDetalhes.style.border = 'none';
+      btnDetalhes.style.borderRadius = '4px';
+      btnDetalhes.style.padding = '2px 8px';
+
+      btnDetalhes.addEventListener('click', () => {
+        alert(
+          `Título: ${bolo.titulo}\n` +
+          `Descrição: ${bolo.descricao}\n` +
+          `Ingredientes: ${bolo.ingredientes.join(', ')}\n` +
+          `Preparo: ${bolo.preparo.join(' | ')}`
+        );
+      });
+
+      boloDiv.appendChild(btnDetalhes);
+      container.appendChild(boloDiv);
+    }
+  }
+
+  // Botão para fechar o container
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '15px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '8px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.backgroundColor = '#ccc';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '4px';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
+
+  document.body.appendChild(container);
 }

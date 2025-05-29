@@ -393,7 +393,7 @@
 }
 
 .benefit-item {
-    background: white;
+    background: rgba(46, 44, 44, 0.603);
     padding: 2rem;
     border-radius: var(--borda-arredondada);
     box-shadow: var(--sombra);
@@ -433,14 +433,15 @@
 
 /* Frente do card */
 .card-front {
-    background: white;
-    color: var(--cor-primaria);
+    background: linear-gradient(135deg, #fff4f0 0%, #ffd6c2 100%);
+    color: var(--cor-primaria); /* vermelho escuro */
+    
 }
 
 /* Verso do card */
 .card-back {
-    background: var(--cor-secundaria);
-    color: white;
+    background: linear-gradient(135deg, #8b0000 0%, #ff4500 100%);
+    color: var(--cor-texto-claro); /* branco */
     transform: rotateY(180deg);
     font-size: 1.5rem;
     line-height: 1.5;

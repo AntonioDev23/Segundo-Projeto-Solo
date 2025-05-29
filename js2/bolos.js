@@ -208,3 +208,22 @@ export const receitasBolos = {
   }
 };
 
+export function listarBolos() {
+  for (const chave in receitasBolos) {
+    if (receitasBolos.hasOwnProperty(chave)) {
+      console.log(receitasBolos[chave].titulo);
+    }
+  }
+}
+
+export function mostrarDetalhes(nomeBolo) {
+  const bolo = receitasBolos[nomeBolo];
+  if (bolo) {
+    console.log('Título:', bolo.titulo);
+    console.log('Descrição:', bolo.descricao);
+    console.log('Ingredientes:', bolo.ingredientes.join(', '));
+    console.log('Preparo:', bolo.preparo.join(' | '));
+  } else {
+    console.log('Bolo não encontrado!');
+  }
+}

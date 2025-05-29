@@ -212,14 +212,12 @@ export const receitasBolos = {
 export function mostrarDetalhes(nomeBolo) {
   const bolo = receitasBolos[nomeBolo];
   if (bolo) {
-    alert(
-      `Título: ${bolo.titulo}\n` +
-      `Descrição: ${bolo.descricao}\n` +
-      `Ingredientes: ${bolo.ingredientes.join(', ')}\n` +
-      `Preparo: ${bolo.preparo.join(' | ')}`
-    );
+    console.log('Título:', bolo.titulo);
+    console.log('Descrição:', bolo.descricao);
+    console.log('Ingredientes:', bolo.ingredientes.join(', '));
+    console.log('Preparo:', bolo.preparo.join(' | '));
   } else {
-    alert('Bolo não encontrado!');
+    console.log('Bolo não encontrado!');
   }
 }
 
@@ -236,36 +234,20 @@ export function mostrarBolos() {
   container.style.top = '50px';
   container.style.left = '50%';
   container.style.transform = 'translateX(-50%)';
-  container.style.width = '320px';
+  container.style.width = '500px';  // Aumentado de 300px para 500px
+  container.style.maxHeight = '70vh';  // Limita a altura para 70% da viewport
+  container.style.overflowY = 'auto'; // Permite rolagem vertical
   container.style.backgroundColor = '#fff';
   container.style.border = '2px solid #ff6b00';
   container.style.borderRadius = '8px';
-  container.style.padding = '20px 20px 40px 20px';
+  container.style.padding = '20px';
   container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
   container.style.zIndex = '10000';
-
-  // Botão fechar (X) no canto superior direito
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = '×';
-  btnFechar.style.position = 'absolute';
-  btnFechar.style.top = '10px';
-  btnFechar.style.right = '15px';
-  btnFechar.style.fontSize = '24px';
-  btnFechar.style.background = 'none';
-  btnFechar.style.border = 'none';
-  btnFechar.style.cursor = 'pointer';
-  btnFechar.style.color = '#ff6b00';
-  btnFechar.title = 'Fechar';
-  btnFechar.addEventListener('click', () => {
-    container.remove();
-  });
-  container.appendChild(btnFechar);
 
   const titulo = document.createElement('h2');
   titulo.textContent = 'Receitas de Bolos';
   titulo.style.color = '#ff6b00';
   titulo.style.textAlign = 'center';
-  titulo.style.marginBottom = '20px';
   container.appendChild(titulo);
 
   // Lista os bolos e cria um botão para ver detalhes
@@ -285,22 +267,45 @@ export function mostrarBolos() {
 
       const btnDetalhes = document.createElement('button');
       btnDetalhes.textContent = 'Detalhes';
+      btnDetalhes.style.marginLeft = '10px';
       btnDetalhes.style.cursor = 'pointer';
       btnDetalhes.style.backgroundColor = '#ff6b00';
       btnDetalhes.style.color = '#fff';
       btnDetalhes.style.border = 'none';
       btnDetalhes.style.borderRadius = '4px';
-      btnDetalhes.style.padding = '4px 12px';
-      btnDetalhes.style.fontSize = '14px';
+      btnDetalhes.style.padding = '6px 12px';  // Botão maior e mais confortável
 
       btnDetalhes.addEventListener('click', () => {
-        mostrarDetalhes(chave);
+        alert(
+          `Título: ${bolo.titulo}\n` +
+          `Descrição: ${bolo.descricao}\n` +
+          `Ingredientes: ${bolo.ingredientes.join(', ')}\n` +
+          `Preparo: ${bolo.preparo.join(' | ')}`
+        );
       });
 
       boloDiv.appendChild(btnDetalhes);
       container.appendChild(boloDiv);
     }
   }
+
+  // Botão para fechar o container
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '15px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.backgroundColor = '#ccc';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '4px';
+  btnFechar.style.fontWeight = 'bold';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
 
   document.body.appendChild(container);
 }

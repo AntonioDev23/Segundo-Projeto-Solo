@@ -94,8 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bolosModule.mostrarBolos();
           }
 
-          // Você pode adicionar aqui os imports e chamadas para outras categorias
-          // Exemplo:
+          // Exemplo para outras categorias (adicione conforme precisar)
           // if (cat.nome === 'Massas') {
           //   const massasModule = await import('../js2/massas.js');
           //   massasModule.mostrarMassas();

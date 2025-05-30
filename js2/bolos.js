@@ -2,7 +2,7 @@ export const receitasBolos = {
   'bolo-chocolate': {
     titulo: 'Bolo de Chocolate',
     descricao: 'Massa fofinha coberta com generosa calda quente de chocolate meio amargo.',
-    imagem: 'imagens/Bolo-de-chocolate.webp',
+    imagem: 'imagens/bolo-de-chocolate.webp',
     ingredientes: [
       '2 xícaras de farinha de trigo',
       '1 xícara de açúcar',

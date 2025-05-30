@@ -345,6 +345,21 @@ export function mostrarBolos() {
       boloDiv.style.justifyContent = 'space-between';
       boloDiv.style.alignItems = 'center';
       boloDiv.style.lineHeight = '1.2';
+      boloDiv.style.padding = '8px 12px';          // Espaçamento interno
+      boloDiv.style.border = '1.5px solid #ff6b00'; // Borda laranja
+      boloDiv.style.borderRadius = '8px';          // Bordas arredondadas
+      boloDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+      boloDiv.style.cursor = 'pointer';
+
+      // Efeito hover na linha toda (leve deslocamento para cima + sombra)
+      boloDiv.addEventListener('mouseenter', () => {
+        boloDiv.style.transform = 'translateY(-5px)';
+        boloDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
+      });
+      boloDiv.addEventListener('mouseleave', () => {
+        boloDiv.style.transform = 'translateY(0)';
+        boloDiv.style.boxShadow = 'none';
+      });
 
       const nomeBolo = document.createElement('strong');
       nomeBolo.textContent = bolo.titulo;
@@ -363,7 +378,7 @@ export function mostrarBolos() {
       btnDetalhes.style.padding = '6px 12px';
       btnDetalhes.style.transition = 'background-color 0.3s ease';
 
-      // Só muda a cor de fundo no hover, texto continua branco
+      // Muda cor de fundo do botão no hover
       btnDetalhes.addEventListener('mouseenter', () => {
         btnDetalhes.style.backgroundColor = '#8b0000';
       });

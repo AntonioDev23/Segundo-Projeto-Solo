@@ -229,7 +229,7 @@ function criarModalDetalhes(bolo) {
   // Título centralizado
   const titulo = document.createElement('h2');
   titulo.textContent = bolo.titulo;
-  titulo.style.color = '#ff6b00';
+  titulo.style.color = '#8b0000';
   titulo.style.marginBottom = '20px';
   titulo.style.textAlign = 'center'; // centralizar
   modal.appendChild(titulo);

@@ -208,35 +208,101 @@ export const receitasBolos = {
   }
 };
 
-// Função para mostrar detalhes de um bolo pelo nome (chave)
-export function mostrarDetalhes(nomeBolo) {
-  const bolo = receitasBolos[nomeBolo];
-  if (bolo) {
-    console.log('Título:', bolo.titulo);
-    console.log('Descrição:', bolo.descricao);
-    console.log('Ingredientes:', bolo.ingredientes.join(', '));
-    console.log('Preparo:', bolo.preparo.join(' | '));
-  } else {
-    console.log('Bolo não encontrado!');
-  }
+// Função para mostrar detalhes de um bolo com estilo visual
+function criarModalDetalhes(bolo) {
+  // Remove modal anterior, se existir
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
+
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = bolo.titulo;
+  titulo.style.color = '#ff6b00';
+  titulo.style.marginBottom = '10px';
+  modal.appendChild(titulo);
+
+  const descricao = document.createElement('p');
+  descricao.textContent = bolo.descricao;
+  descricao.style.marginBottom = '15px';
+  modal.appendChild(descricao);
+
+  const ingredientes = document.createElement('ul');
+  ingredientes.style.marginBottom = '15px';
+  ingredientes.style.paddingLeft = '20px';
+  bolo.ingredientes.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ingredientes.appendChild(li);
+  });
+  modal.appendChild(ingredientes);
+
+  const preparo = document.createElement('ol');
+  preparo.style.paddingLeft = '20px';
+  bolo.preparo.forEach(passo => {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    preparo.appendChild(li);
+  });
+  modal.appendChild(preparo);
+
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.backgroundColor = '#ff6b00';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '5px';
+  btnFechar.style.fontWeight = 'bold';
+  btnFechar.style.cursor = 'pointer';
+
+  btnFechar.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  modal.appendChild(btnFechar);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
 }
 
-// Função principal que mostra uma interface simples no corpo da página
+// Função principal para exibir a lista de bolos
 export function mostrarBolos() {
-  // Remove interface antiga, se existir
+  // Remove interface antiga
   const containerAntigo = document.getElementById('bolos-container');
   if (containerAntigo) containerAntigo.remove();
 
-  // Cria um container para mostrar os bolos
   const container = document.createElement('div');
   container.id = 'bolos-container';
   container.style.position = 'fixed';
   container.style.top = '50px';
   container.style.left = '50%';
   container.style.transform = 'translateX(-50%)';
-  container.style.width = '500px';  // Aumentado de 300px para 500px
-  container.style.maxHeight = '70vh';  // Limita a altura para 70% da viewport
-  container.style.overflowY = 'auto'; // Permite rolagem vertical
+  container.style.width = '500px';
+  container.style.maxHeight = '70vh';
+  container.style.overflowY = 'auto';
   container.style.backgroundColor = '#fff';
   container.style.border = '2px solid #ff6b00';
   container.style.borderRadius = '8px';
@@ -250,7 +316,6 @@ export function mostrarBolos() {
   titulo.style.textAlign = 'center';
   container.appendChild(titulo);
 
-  // Lista os bolos e cria um botão para ver detalhes
   for (const chave in receitasBolos) {
     if (receitasBolos.hasOwnProperty(chave)) {
       const bolo = receitasBolos[chave];
@@ -273,15 +338,10 @@ export function mostrarBolos() {
       btnDetalhes.style.color = '#fff';
       btnDetalhes.style.border = 'none';
       btnDetalhes.style.borderRadius = '4px';
-      btnDetalhes.style.padding = '6px 12px';  // Botão maior e mais confortável
+      btnDetalhes.style.padding = '6px 12px';
 
       btnDetalhes.addEventListener('click', () => {
-        alert(
-          `Título: ${bolo.titulo}\n` +
-          `Descrição: ${bolo.descricao}\n` +
-          `Ingredientes: ${bolo.ingredientes.join(', ')}\n` +
-          `Preparo: ${bolo.preparo.join(' | ')}`
-        );
+        criarModalDetalhes(bolo);
       });
 
       boloDiv.appendChild(btnDetalhes);
@@ -289,7 +349,6 @@ export function mostrarBolos() {
     }
   }
 
-  // Botão para fechar o container
   const btnFechar = document.createElement('button');
   btnFechar.textContent = 'Fechar';
   btnFechar.style.marginTop = '15px';
@@ -306,6 +365,5 @@ export function mostrarBolos() {
   });
 
   container.appendChild(btnFechar);
-
   document.body.appendChild(container);
 }

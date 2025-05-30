@@ -355,7 +355,8 @@ export function mostrarBolos() {
   btnFechar.style.width = '100%';
   btnFechar.style.padding = '10px';
   btnFechar.style.cursor = 'pointer';
-  btnFechar.style.backgroundColor = '#ccc';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
   btnFechar.style.border = 'none';
   btnFechar.style.borderRadius = '4px';
   btnFechar.style.fontWeight = 'bold';

@@ -198,7 +198,6 @@ export const receitasBolos = {
   }
 };
 
-// Função para mostrar detalhes de um bolo com estilo visual
 function criarModalDetalhes(bolo) {
   // Remove modal anterior, se existir
   const modalAntigo = document.getElementById('modal-detalhes');
@@ -227,30 +226,37 @@ function criarModalDetalhes(bolo) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
+  // Título centralizado
   const titulo = document.createElement('h2');
   titulo.textContent = bolo.titulo;
   titulo.style.color = '#ff6b00';
-  titulo.style.marginBottom = '10px';
+  titulo.style.marginBottom = '20px';
+  titulo.style.textAlign = 'center'; // centralizar
   modal.appendChild(titulo);
 
-  // Aqui vem a imagem do bolo
+  // Imagem do bolo (caso tenha a propriedade 'imagem' no objeto bolo)
   if (bolo.imagem) {
-    const imagem = document.createElement('img');
-    imagem.src = bolo.imagem;
-    imagem.alt = `Imagem do bolo: ${bolo.titulo}`;
-    imagem.style.width = '100%';
-    imagem.style.borderRadius = '8px';
-    imagem.style.marginBottom = '15px';
-    modal.appendChild(imagem);
+    const img = document.createElement('img');
+    img.src = bolo.imagem;
+    img.alt = bolo.titulo;
+    img.style.display = 'block';
+    img.style.margin = '0 auto 20px'; // centralizar + espaçamento embaixo
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '8px';
+    modal.appendChild(img);
   }
 
-  const descricao = document.createElement('p');
-  descricao.textContent = bolo.descricao;
-  descricao.style.marginBottom = '15px';
-  modal.appendChild(descricao);
+  // Título "Receita" antes da lista de ingredientes
+    const receitaTitulo = document.createElement('h3');
+    receitaTitulo.textContent = 'Receita';
+    receitaTitulo.style.color = '#8b0000';          // cor pedida
+    receitaTitulo.style.marginBottom = '10px';
+    receitaTitulo.style.textAlign = 'center';       // centralizar
+    modal.appendChild(receitaTitulo);
 
+  // Lista de ingredientes
   const ingredientes = document.createElement('ul');
-  ingredientes.style.marginBottom = '15px';
+  ingredientes.style.marginBottom = '20px';
   ingredientes.style.paddingLeft = '20px';
   bolo.ingredientes.forEach(item => {
     const li = document.createElement('li');
@@ -259,6 +265,15 @@ function criarModalDetalhes(bolo) {
   });
   modal.appendChild(ingredientes);
 
+  // Título "Modo de preparo" antes da lista de preparo
+const preparoTitulo = document.createElement('h3');
+preparoTitulo.textContent = 'Modo de preparo';
+preparoTitulo.style.color = '#8b0000';           
+preparoTitulo.style.marginBottom = '10px';
+preparoTitulo.style.textAlign = 'center';        
+modal.appendChild(preparoTitulo);
+
+  // Lista de preparo
   const preparo = document.createElement('ol');
   preparo.style.paddingLeft = '20px';
   bolo.preparo.forEach(passo => {
@@ -268,12 +283,13 @@ function criarModalDetalhes(bolo) {
   });
   modal.appendChild(preparo);
 
+  // Botão fechar
   const btnFechar = document.createElement('button');
   btnFechar.textContent = 'Fechar';
   btnFechar.style.marginTop = '20px';
   btnFechar.style.width = '100%';
   btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#ff6b00';
+  btnFechar.style.backgroundColor = '#8b0000';
   btnFechar.style.color = '#fff';
   btnFechar.style.border = 'none';
   btnFechar.style.borderRadius = '5px';
@@ -288,6 +304,8 @@ function criarModalDetalhes(bolo) {
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
+
+
 
 // Função principal para exibir a lista de bolos
 export function mostrarBolos() {

@@ -344,9 +344,12 @@ export function mostrarBolos() {
       boloDiv.style.display = 'flex';
       boloDiv.style.justifyContent = 'space-between';
       boloDiv.style.alignItems = 'center';
+      boloDiv.style.lineHeight = '1.2';
 
       const nomeBolo = document.createElement('strong');
       nomeBolo.textContent = bolo.titulo;
+      nomeBolo.style.display = 'inline-block';
+      nomeBolo.style.verticalAlign = 'middle';
       boloDiv.appendChild(nomeBolo);
 
       const btnDetalhes = document.createElement('button');
@@ -358,6 +361,15 @@ export function mostrarBolos() {
       btnDetalhes.style.border = 'none';
       btnDetalhes.style.borderRadius = '4px';
       btnDetalhes.style.padding = '6px 12px';
+      btnDetalhes.style.transition = 'background-color 0.3s ease';
+
+      // Só muda a cor de fundo no hover, texto continua branco
+      btnDetalhes.addEventListener('mouseenter', () => {
+        btnDetalhes.style.backgroundColor = '#8b0000';
+      });
+      btnDetalhes.addEventListener('mouseleave', () => {
+        btnDetalhes.style.backgroundColor = '#ff6b00';
+      });
 
       btnDetalhes.addEventListener('click', () => {
         criarModalDetalhes(bolo);

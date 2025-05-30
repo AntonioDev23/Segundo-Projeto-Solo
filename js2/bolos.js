@@ -350,7 +350,7 @@ export function mostrarBolos() {
       boloDiv.appendChild(nomeBolo);
 
       const btnDetalhes = document.createElement('button');
-      btnDetalhes.textContent = 'Detalhes';
+      btnDetalhes.textContent = 'Receita';
       btnDetalhes.style.marginLeft = '10px';
       btnDetalhes.style.cursor = 'pointer';
       btnDetalhes.style.backgroundColor = '#ff6b00';

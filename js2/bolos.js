@@ -1,7 +1,6 @@
 export const receitasBolos = {
   'bolo-chocolate': {
     titulo: 'Bolo de Chocolate',
-    descricao: 'Massa fofinha coberta com generosa calda quente de chocolate meio amargo.',
     imagem: 'imagens/bolo-de-chocolate.webp',
     ingredientes: [
       '2 xícaras de farinha de trigo',
@@ -23,7 +22,6 @@ export const receitasBolos = {
 
   'bolo-cenoura': {
     titulo: 'Bolo de Cenoura',
-    descricao: 'Tradicional, fofinho e com cobertura de chocolate.',
     imagem: 'imagens/bolo-cenoura.webp',
     ingredientes: [
       '3 cenouras médias picadas',
@@ -44,7 +42,6 @@ export const receitasBolos = {
 
   'bolo-fuba': {
     titulo: 'Bolo de Fubá Cremoso',
-    descricao: 'Cremoso por dentro e douradinho por fora.',
     imagem: 'imagens/bolo-fuba.jpg',
     ingredientes: [
       '3 ovos',
@@ -66,7 +63,6 @@ export const receitasBolos = {
 
   'bolo-laranja': {
     titulo: 'Bolo de Laranja',
-    descricao: 'Sabor cítrico e massa leve com suco natural.',
     imagem: 'imagens/bolo-laranja.webp',
     ingredientes: [
       '2 xícaras de farinha de trigo',
@@ -86,7 +82,6 @@ export const receitasBolos = {
 
   'bolo-milho': {
     titulo: 'Bolo de Milho Verde',
-    descricao: 'Delicioso e úmido, feito com milho fresco.',
     imagem: 'imagens/bolo-milho.jpg',
     ingredientes: [
       '2 xícaras de milho verde',
@@ -106,7 +101,6 @@ export const receitasBolos = {
 
   'bolo-banana': {
     titulo: 'Bolo de Banana Caramelada',
-    descricao: 'Bananas caramelizadas por cima da massa fofinha.',
     imagem: 'imagens/bolo-banana.jpg',
     ingredientes: [
       '4 bananas maduras',
@@ -127,7 +121,6 @@ export const receitasBolos = {
 
   'bolo-maracuja': {
     titulo: 'Bolo de Maracujá',
-    descricao: 'Doce com toque ácido da fruta, cobertura cremosa.',
     imagem: 'imagens/bolo-maracuja.jpg',
     ingredientes: [
       '3 ovos',
@@ -146,7 +139,6 @@ export const receitasBolos = {
 
   'bolo-coco': {
     titulo: 'Bolo Gelado de Coco',
-    descricao: 'Fofo, molhadinho e servido gelado com coco ralado.',
     imagem: 'imagens/bolo-coco.jpg',
     ingredientes: [
       '3 ovos',
@@ -166,7 +158,6 @@ export const receitasBolos = {
 
   'bolo-nutella': {
     titulo: 'Bolo de Nutella',
-    descricao: 'Recheado e coberto com creme de Nutella e avelã.',
     imagem: 'imagens/bolo-nutella.jpg',
     ingredientes: [
       '3 ovos',
@@ -186,7 +177,6 @@ export const receitasBolos = {
 
   'bolo-red-velvet': {
     titulo: 'Red Velvet',
-    descricao: 'Massa avermelhada com recheio cremoso de cream cheese.',
     imagem: 'imagens/red-velvet.jpg',
     ingredientes: [
       '2 xícaras de farinha',
@@ -242,6 +232,17 @@ function criarModalDetalhes(bolo) {
   titulo.style.color = '#ff6b00';
   titulo.style.marginBottom = '10px';
   modal.appendChild(titulo);
+
+  // Aqui vem a imagem do bolo
+  if (bolo.imagem) {
+    const imagem = document.createElement('img');
+    imagem.src = bolo.imagem;
+    imagem.alt = `Imagem do bolo: ${bolo.titulo}`;
+    imagem.style.width = '100%';
+    imagem.style.borderRadius = '8px';
+    imagem.style.marginBottom = '15px';
+    modal.appendChild(imagem);
+  }
 
   const descricao = document.createElement('p');
   descricao.textContent = bolo.descricao;

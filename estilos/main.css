@@ -452,6 +452,11 @@
     line-height: 1.5;
     overflow-y: auto; /* caso a descrição fique maior */
     text-align: left;
+    scrollbar-width: none;
+}
+
+.card-back::-webkit-scrollbar {
+  display: none; /* Chrome, Edge e Safari */
 }
 
 /* Flip ativo */

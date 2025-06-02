@@ -365,6 +365,7 @@
     padding: 4rem 0;
     background-color: var(--cor-fundo);
     text-align: center;
+    overflow-x: hidden;
 }
 
 .benefits h2 {
@@ -390,9 +391,9 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     padding: 0 1rem;
-    max-width: 100vw;
+    max-width: 100%; /* troca 100vw por 100% para evitar overflow */
     box-sizing: border-box;
-    overflow-x: hidden; 
+    overflow-x: hidden; /* evita overflow horizontal interno */
 }
 
 .benefit-item {

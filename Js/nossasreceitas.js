@@ -10,17 +10,23 @@ navLinks.forEach(link => {
 
     sectionsToToggle.forEach(id => {
       const section = document.getElementById(id);
-      if (section) section.style.display = 'none';
+      if (section) {
+        section.style.display = 'none';
+        section.style.filter = 'none'; // Remove blur ao esconder seção
+      }
     });
 
     const targetSection = document.getElementById(targetId);
-    if (targetSection) targetSection.style.display = 'block';
+    if (targetSection) {
+      targetSection.style.display = 'block';
+    }
 
     if (targetId === 'nossas-receitas') {
-      document.querySelector('.fundo').classList.add('fundo-escurecido');
+      document.body.style.filter = 'blur(5px)';
+      if (targetSection) targetSection.style.filter = 'none'; // Remove blur da seção ativa
       carregarNovasReceitas();
     } else {
-      document.querySelector('.fundo').classList.remove('fundo-escurecido');
+      document.body.style.filter = 'none';
     }
   });
 });

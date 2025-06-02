@@ -245,3 +245,110 @@ const receitasMassas = {
     link: '#'
   }
 };
+
+
+export function mostrarMassas() {
+  // Remove interface antiga
+  const containerAntigo = document.getElementById('massas-container');
+  if (containerAntigo) containerAntigo.remove();
+
+  const container = document.createElement('div');
+  container.id = 'massas-container';
+  container.style.position = 'fixed';
+  container.style.top = '50px';
+  container.style.right = '20px';
+  container.style.left = 'auto';
+  container.style.transform = 'none';
+  container.style.width = '500px';
+  container.style.maxHeight = '70vh';
+  container.style.overflowY = 'auto';
+  container.style.backgroundColor = '#fff';
+  container.style.border = '2px solid #ff6b00';
+  container.style.borderRadius = '8px';
+  container.style.padding = '20px';
+  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+  container.style.zIndex = '10000';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = 'Receitas de Massas';
+  titulo.style.color = '#ff6b00';
+  titulo.style.textAlign = 'center';
+  container.appendChild(titulo);
+
+  for (const chave in receitasMassas) {
+    if (receitasMassas.hasOwnProperty(chave)) {
+      const massa = receitasMassas[chave];
+
+      const massaDiv = document.createElement('div');
+      massaDiv.style.marginBottom = '15px';
+      massaDiv.style.display = 'flex';
+      massaDiv.style.justifyContent = 'space-between';
+      massaDiv.style.alignItems = 'center';
+      massaDiv.style.lineHeight = '1.2';
+      massaDiv.style.padding = '8px 12px';
+      massaDiv.style.border = '1.5px solid #ff6b00';
+      massaDiv.style.borderRadius = '8px';
+      massaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+      massaDiv.style.cursor = 'pointer';
+
+      massaDiv.addEventListener('mouseenter', () => {
+        massaDiv.style.transform = 'translateY(-5px)';
+        massaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
+      });
+      massaDiv.addEventListener('mouseleave', () => {
+        massaDiv.style.transform = 'translateY(0)';
+        massaDiv.style.boxShadow = 'none';
+      });
+
+      const nomeMassa = document.createElement('strong');
+      nomeMassa.textContent = massa.titulo;
+      nomeMassa.style.display = 'inline-block';
+      nomeMassa.style.verticalAlign = 'middle';
+      massaDiv.appendChild(nomeMassa);
+
+      const btnDetalhes = document.createElement('button');
+      btnDetalhes.textContent = 'Receita';
+      btnDetalhes.style.marginLeft = '10px';
+      btnDetalhes.style.cursor = 'pointer';
+      btnDetalhes.style.backgroundColor = '#ff6b00';
+      btnDetalhes.style.color = '#fff';
+      btnDetalhes.style.border = 'none';
+      btnDetalhes.style.borderRadius = '4px';
+      btnDetalhes.style.padding = '6px 12px';
+      btnDetalhes.style.transition = 'background-color 0.3s ease';
+
+      btnDetalhes.addEventListener('mouseenter', () => {
+        btnDetalhes.style.backgroundColor = '#8b0000';
+      });
+      btnDetalhes.addEventListener('mouseleave', () => {
+        btnDetalhes.style.backgroundColor = '#ff6b00';
+      });
+
+      btnDetalhes.addEventListener('click', () => {
+        criarModalDetalhes(massa);
+      });
+
+      massaDiv.appendChild(btnDetalhes);
+      container.appendChild(massaDiv);
+    }
+  }
+
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '15px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '4px';
+  btnFechar.style.fontWeight = 'bold';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
+  document.body.appendChild(container);
+}

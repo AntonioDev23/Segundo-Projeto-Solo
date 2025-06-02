@@ -139,7 +139,7 @@ export const receitasBolos = {
 
   'bolo-coco': {
     titulo: 'Bolo Gelado de Coco',
-    imagem: 'imagens/bolo-coco.jpg',
+    imagem: 'imagens/bolo-de-coco.png',
     ingredientes: [
       '3 ovos',
       '1 xícara de leite',
@@ -158,7 +158,7 @@ export const receitasBolos = {
 
   'bolo-nutella': {
     titulo: 'Bolo de Nutella',
-    imagem: 'imagens/bolo-nutella.jpg',
+    imagem: 'imagens/bolo-de-nutella.png',
     ingredientes: [
       '3 ovos',
       '1 xícara de açúcar',
@@ -177,7 +177,7 @@ export const receitasBolos = {
 
   'bolo-red-velvet': {
     titulo: 'Red Velvet',
-    imagem: 'imagens/red-velvet.jpg',
+    imagem: 'imagens/bolo-red-velvet.png',
     ingredientes: [
       '2 xícaras de farinha',
       '1 xícara de açúcar',
@@ -225,6 +225,16 @@ function criarModalDetalhes(bolo) {
   modal.style.overflowY = 'auto';
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
+
+  // Estrelas de avaliação
+    const estrelas = document.createElement('div');
+    estrelas.textContent = '★★★★☆'; // Pode vir de bolo.estrelas futuramente
+    estrelas.style.textAlign = 'center';
+    estrelas.style.fontSize = '20px';
+    estrelas.style.marginBottom = '15px';
+    estrelas.style.color = 'gold'; // ⭐ cor dourada
+    modal.appendChild(estrelas);
+
 
   // Título centralizado
   const titulo = document.createElement('h2');

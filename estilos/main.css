@@ -397,7 +397,7 @@
 }
 
 .benefit-item {
-    background: rgba(46, 44, 44, 0.603);
+    background: #47464654;
     padding: 2rem;
     border-radius: var(--borda-arredondada);
     box-shadow: var(--sombra);
@@ -406,10 +406,17 @@
     overflow: hidden;
     box-sizing: border-box;
     cursor: pointer;
-    perspective: 1000px;  
     position: relative;
-    transition: none; /* remove qualquer transição */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+/* Efeito ao passar o mouse */
+.benefit-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+
 
 
 /* Container front e back */

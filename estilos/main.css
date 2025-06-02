@@ -401,6 +401,8 @@
     border-radius: var(--borda-arredondada);
     box-shadow: var(--sombra);
     max-width: 100%;
+    height: 280px;
+    overflow: hidden; /* impede overflow interno */
     box-sizing: border-box;
     cursor: pointer;
     perspective: 1000px;  
@@ -418,11 +420,9 @@
 
 /* Container front e back */
 .benefit-item > div {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
-    min-height: 280px;
-    height: auto;
     backface-visibility: hidden;
     border-radius: var(--borda-arredondada);
     transition: transform 0.6s ease;
@@ -430,8 +430,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem; /* espaço interno melhorado */
+    padding: 1rem;
+    overflow: hidden; /* impede que algo transborde dentro */
 }
+
 
 .icon {
     font-size: 3rem; /* maior pra dar destaque */
@@ -448,18 +450,12 @@
 /* Verso do card */
 .card-back {
   background: linear-gradient(135deg, #8b0000 0%, #ff4500 100%);
-  color: var(--cor-texto-claro); /* branco */
+  color: var(--cor-texto-claro);
   transform: rotateY(180deg);
   font-size: 1.5rem;
   line-height: 1.5;
+  overflow: hidden; /* <- impede rolagem definitiva */
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  box-sizing: border-box;
-  overflow: visible;
 }
 
 

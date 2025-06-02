@@ -228,11 +228,11 @@ function criarModalDetalhes(bolo) {
 
   // Estrelas de avaliação
     const estrelas = document.createElement('div');
-    estrelas.textContent = '★★★★☆'; // Pode vir de bolo.estrelas futuramente
+    estrelas.textContent = '★★★★★'; // Pode vir de bolo.estrelas futuramente
     estrelas.style.textAlign = 'center';
-    estrelas.style.fontSize = '20px';
+    estrelas.style.fontSize = '40px';
     estrelas.style.marginBottom = '15px';
-    estrelas.style.color = 'gold'; // ⭐ cor dourada
+    estrelas.style.color = 'gold'; 
     modal.appendChild(estrelas);
 
 

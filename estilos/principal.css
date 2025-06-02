@@ -26,6 +26,7 @@ body {
     background: url('../imagens/Capa.webp') no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 /* Fundo desfocável */

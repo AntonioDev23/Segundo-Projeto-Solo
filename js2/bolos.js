@@ -327,7 +327,8 @@ export function mostrarBolos() {
   container.id = 'bolos-container';
   container.style.position = 'fixed';
   container.style.top = '50px';
-  container.style.left = '200px'; 
+  container.style.right = '20px'; 
+  container.style.left = 'auto';
   container.style.transform = 'none';
   container.style.width = '500px';
   container.style.maxHeight = '70vh';

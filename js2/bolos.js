@@ -22,7 +22,7 @@ export const receitasBolos = {
 
   'bolo-cenoura': {
     titulo: 'Bolo de Cenoura',
-    imagem: 'imagens/bolo-cenoura.webp',
+    imagem: 'imagens/Bolo de cenoura.png',
     ingredientes: [
       '3 cenouras médias picadas',
       '3 ovos',
@@ -42,7 +42,7 @@ export const receitasBolos = {
 
   'bolo-fuba': {
     titulo: 'Bolo de Fubá Cremoso',
-    imagem: 'imagens/bolo-fuba.jpg',
+    imagem: 'imagens/bolo-de-fuba.png',
     ingredientes: [
       '3 ovos',
       '2 xícaras de leite',
@@ -63,7 +63,7 @@ export const receitasBolos = {
 
   'bolo-laranja': {
     titulo: 'Bolo de Laranja',
-    imagem: 'imagens/bolo-laranja.webp',
+    imagem: 'imagens/bolo-de-laranja.png',
     ingredientes: [
       '2 xícaras de farinha de trigo',
       '1 1/2 xícara de açúcar',
@@ -82,7 +82,7 @@ export const receitasBolos = {
 
   'bolo-milho': {
     titulo: 'Bolo de Milho Verde',
-    imagem: 'imagens/bolo-milho.jpg',
+    imagem: 'imagens/bolo-de-milho.png',
     ingredientes: [
       '2 xícaras de milho verde',
       '1 xícara de leite',
@@ -101,7 +101,7 @@ export const receitasBolos = {
 
   'bolo-banana': {
     titulo: 'Bolo de Banana Caramelada',
-    imagem: 'imagens/bolo-banana.jpg',
+    imagem: 'imagens/bolo-de-banana.png',
     ingredientes: [
       '4 bananas maduras',
       '2 ovos',
@@ -121,7 +121,7 @@ export const receitasBolos = {
 
   'bolo-maracuja': {
     titulo: 'Bolo de Maracujá',
-    imagem: 'imagens/bolo-maracuja.jpg',
+    imagem: 'imagens/bolo-de-maracuja.png',
     ingredientes: [
       '3 ovos',
       '1 xícara de suco de maracujá',

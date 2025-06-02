@@ -391,30 +391,24 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     padding: 0 1rem;
-    max-width: 100%; /* troca 100vw por 100% para evitar overflow */
+    max-width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden; /* evita overflow horizontal interno */
+    overflow-x: hidden;
 }
 
 .benefit-item {
-  background: rgba(46, 44, 44, 0.603);
-  padding: 2rem;
-  border-radius: var(--borda-arredondada);
-  box-shadow: var(--sombra);
-  max-width: 100%;
-  height: 260px;
-  overflow: hidden;
-  box-sizing: border-box;
-  cursor: pointer;
-  perspective: 1000px;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito hover para dar feedback visual */
-.benefit-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    background: rgba(46, 44, 44, 0.603);
+    padding: 2rem;
+    border-radius: var(--borda-arredondada);
+    box-shadow: var(--sombra);
+    max-width: 100%;
+    height: 230px;
+    overflow: hidden;
+    box-sizing: border-box;
+    cursor: pointer;
+    perspective: 1000px;  
+    position: relative;
+    transition: none; /* remove qualquer transição */
 }
 
 

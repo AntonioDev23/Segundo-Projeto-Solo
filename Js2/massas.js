@@ -399,6 +399,19 @@ function criarModalDetalhesMassas(massa) {
   titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
+// Imagem da massa (caso tenha a propriedade 'imagem' no objeto massa)
+if (massa.imagem) {
+  const img = document.createElement('img');
+  img.src = massa.imagem;
+  img.alt = massa.titulo;
+  img.style.display = 'block';
+  img.style.margin = '0 auto 20px'; // centralizar + espaçamento embaixo
+  img.style.maxWidth = '100%';
+  img.style.borderRadius = '8px';
+  modal.appendChild(img);
+}
+
+  
   // Título "Receita"
   const receitaTitulo = document.createElement('h3');
   receitaTitulo.textContent = 'Receita';

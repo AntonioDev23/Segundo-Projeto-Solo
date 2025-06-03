@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       if (document.getElementById('login-overlay')) return;
       mostrarFormularioLogin();
+      document.body.classList.add('fundo-escurecido');  // adiciona desfoque
     });
   });
 
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fechar-login').addEventListener('click', (e) => {
       e.preventDefault();
       overlay.remove();
+      document.body.classList.remove('fundo-escurecido'); // remove desfoque ao fechar
     });
 
     document.getElementById('cadastro-link').addEventListener('click', (e) => {
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fechar-login').addEventListener('click', (e) => {
       e.preventDefault();
       overlay.remove();
+      document.body.classList.remove('fundo-escurecido'); // remove desfoque ao fechar
     });
 
     document.getElementById('voltar-login').addEventListener('click', (e) => {

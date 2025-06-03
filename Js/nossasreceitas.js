@@ -33,7 +33,7 @@ navLinks.forEach(link => {
         overlayBlur.style.left = '0';
         overlayBlur.style.width = '100%';
         overlayBlur.style.height = '100%';
-        overlayBlur.style.backdropFilter = 'blur(6px)';
+        overlayBlur.style.backdropFilter = 'blur(15px)';
         overlayBlur.style.zIndex = '1';
         overlayBlur.style.pointerEvents = 'none'; // deixa click passar
         document.body.appendChild(overlayBlur);

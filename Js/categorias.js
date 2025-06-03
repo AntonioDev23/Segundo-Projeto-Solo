@@ -95,9 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           if (cat.nome === 'Massas') {
-            const massasModule = await import(' ../js2/massas.js');
+            const massasModule = await import('../js2/massas.js');
             massasModule.mostrarMassas();
           }
+
 
 
           

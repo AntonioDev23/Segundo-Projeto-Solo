@@ -356,3 +356,112 @@ export function mostrarMassas() {
 }
 
 
+function criarModalDetalhesMassas(massa) {
+  // Se já existir algum modal aberto, remove
+  const modalExistente = document.getElementById('modal-massa');
+  if (modalExistente) modalExistente.remove();
+
+  // Cria a camada de fundo escuro
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-massa';
+  Object.assign(overlay.style, {
+    position: 'fixed',
+    top: '0', left: '0', right: '0', bottom: '0',
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 20000,
+  });
+
+  // Cria a caixa do modal
+  const modal = document.createElement('div');
+  Object.assign(modal.style, {
+    backgroundColor: '#fff',
+    borderRadius: '10px',
+    padding: '20px',
+    width: '400px',
+    maxHeight: '80vh',
+    overflowY: 'auto',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+  });
+
+  // Título
+  const titulo = document.createElement('h2');
+  titulo.textContent = massa.titulo;
+  titulo.style.color = '#ff6b00';
+  titulo.style.marginBottom = '10px';
+  modal.appendChild(titulo);
+
+  // Imagem
+  if (massa.imagem) {
+    const img = document.createElement('img');
+    img.src = massa.imagem;
+    img.alt = massa.titulo;
+    img.style.width = '100%';
+    img.style.borderRadius = '8px';
+    img.style.marginBottom = '10px';
+    modal.appendChild(img);
+  }
+
+  // Descrição
+  if (massa.descricao) {
+    const desc = document.createElement('p');
+    desc.textContent = massa.descricao;
+    desc.style.marginBottom = '10px';
+    modal.appendChild(desc);
+  }
+
+  // Ingredientes (se tiver)
+  if (massa.ingredientes) {
+    const ingTitulo = document.createElement('h3');
+    ingTitulo.textContent = 'Ingredientes';
+    ingTitulo.style.marginBottom = '5px';
+    modal.appendChild(ingTitulo);
+
+    const ulIngredientes = document.createElement('ul');
+    massa.ingredientes.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      ulIngredientes.appendChild(li);
+    });
+    modal.appendChild(ulIngredientes);
+  }
+
+  // Modo de preparo (se tiver)
+  if (massa.preparo) {
+    const prepTitulo = document.createElement('h3');
+    prepTitulo.textContent = 'Modo de preparo';
+    prepTitulo.style.marginTop = '15px';
+    prepTitulo.style.marginBottom = '5px';
+    modal.appendChild(prepTitulo);
+
+    const preparo = document.createElement('p');
+    preparo.textContent = massa.preparo;
+    modal.appendChild(preparo);
+  }
+
+  // Botão fechar
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  Object.assign(btnFechar.style, {
+    marginTop: '20px',
+    padding: '10px 20px',
+    backgroundColor: '#8b0000',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+  });
+
+  btnFechar.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  modal.appendChild(btnFechar);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}
+
+

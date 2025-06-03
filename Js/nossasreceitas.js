@@ -1,5 +1,7 @@
 const navLinks = document.querySelectorAll('.nav-link');
 
+let overlayBlur = null;
+
 navLinks.forEach(link => {
   link.addEventListener('click', function(event) {
     event.preventDefault();
@@ -19,43 +21,49 @@ navLinks.forEach(link => {
       targetSection.style.display = 'block';
     }
 
-    const html = document.documentElement; // <html>
-    const body = document.body;
     const receitas = document.getElementById('nossas-receitas');
     const footer = document.querySelector('footer');
 
     if (targetId === 'nossas-receitas') {
-      // Aplica blur no html e body
-      html.style.filter = 'blur(5px)';
-      body.style.filter = 'blur(5px)';
+      // Criar overlay blur se não existir
+      if (!overlayBlur) {
+        overlayBlur = document.createElement('div');
+        overlayBlur.style.position = 'fixed';
+        overlayBlur.style.top = '0';
+        overlayBlur.style.left = '0';
+        overlayBlur.style.width = '100%';
+        overlayBlur.style.height = '100%';
+        overlayBlur.style.backdropFilter = 'blur(6px)';
+        overlayBlur.style.zIndex = '1';
+        overlayBlur.style.pointerEvents = 'none'; // deixa click passar
+        document.body.appendChild(overlayBlur);
+      }
 
-      // Remove blur das receitas e footer para ficar nítido
+      // Colocar as receitas e footer acima do overlay
       if (receitas) {
-        receitas.style.filter = 'none';
         receitas.style.position = 'relative';
-        receitas.style.zIndex = '10';
+        receitas.style.zIndex = '2';
       }
 
       if (footer) {
-        footer.style.filter = 'none';
         footer.style.position = 'relative';
-        footer.style.zIndex = '10';
+        footer.style.zIndex = '2';
       }
 
       carregarNovasReceitas();
+
     } else {
-      // Remove todos os filtros para voltar ao normal
-      html.style.filter = 'none';
-      body.style.filter = 'none';
+      // Remover overlay blur se existir
+      if (overlayBlur) {
+        overlayBlur.remove();
+        overlayBlur = null;
+      }
 
       if (receitas) {
-        receitas.style.filter = 'none';
         receitas.style.position = '';
         receitas.style.zIndex = '';
       }
-
       if (footer) {
-        footer.style.filter = 'none';
         footer.style.position = '';
         footer.style.zIndex = '';
       }
@@ -63,7 +71,6 @@ navLinks.forEach(link => {
   });
 });
 
-// Função criarEstrelas (igual antes)
 function criarEstrelas(container, nota = 5, callback = null, interativo = false) {
   container.innerHTML = '';
 
@@ -88,7 +95,6 @@ function criarEstrelas(container, nota = 5, callback = null, interativo = false)
   }
 }
 
-// Função carregarNovasReceitas (igual antes)
 function carregarNovasReceitas() {
   const novasReceitas = [
     {

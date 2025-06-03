@@ -1,8 +1,7 @@
-// Seleciona todos os links do menu com a classe 'nav-link'
 const navLinks = document.querySelectorAll('.nav-link');
 
 navLinks.forEach(link => {
-  link.addEventListener('click', function (event) {
+  link.addEventListener('click', function(event) {
     event.preventDefault();
 
     const targetId = this.getAttribute('data-id');
@@ -12,7 +11,6 @@ navLinks.forEach(link => {
       const section = document.getElementById(id);
       if (section) {
         section.style.display = 'none';
-        section.style.filter = 'none'; // Remove blur ao esconder seção
       }
     });
 
@@ -21,29 +19,45 @@ navLinks.forEach(link => {
       targetSection.style.display = 'block';
     }
 
+    const body = document.body;
+    const footer = document.querySelector('footer');
+
     if (targetId === 'nossas-receitas') {
-      document.body.style.filter = 'blur(5px)';
-      if (targetSection) targetSection.style.filter = 'none'; // Remove blur da seção ativa
+      // Aplica blur no body (que engloba todo conteúdo menos o footer)
+      body.style.filter = 'blur(5px)';
+      // Remove blur do footer para que fique nítido
+      if (footer) {
+        footer.style.filter = 'none';
+        footer.style.position = 'relative'; // para garantir que fique em cima do blur
+        footer.style.zIndex = '10';
+      }
+      // Deixa a seção 'nossas-receitas' em foco, sem blur (removendo filtro)
+      targetSection.style.filter = 'none';
+      targetSection.style.position = 'relative';
+      targetSection.style.zIndex = '15';
+
       carregarNovasReceitas();
     } else {
-      document.body.style.filter = 'none';
+      // Remove todos os filtros para voltar ao normal
+      body.style.filter = 'none';
+      if (footer) {
+        footer.style.filter = 'none';
+        footer.style.position = '';
+        footer.style.zIndex = '';
+      }
     }
   });
 });
 
-// Função que cria estrelas (modo visual ou interativo)
+// Função criarEstrelas (igual antes)
 function criarEstrelas(container, nota = 5, callback = null, interativo = false) {
-  container.innerHTML = ''; // Limpa o container
+  container.innerHTML = '';
 
   for (let i = 1; i <= 5; i++) {
     const estrela = document.createElement('span');
-    if (i <= nota) {
-      estrela.innerHTML = '★';  // estrela cheia
-    } else {
-      estrela.innerHTML = '☆';  // estrela vazia
-    }
+    estrela.innerHTML = i <= nota ? '★' : '☆';
     estrela.style.fontSize = '24px';
-    estrela.style.color = '#FFD700'; // cor gold para ambas
+    estrela.style.color = '#FFD700';
 
     if (interativo) {
       estrela.style.cursor = 'pointer';
@@ -56,12 +70,11 @@ function criarEstrelas(container, nota = 5, callback = null, interativo = false)
         if (callback) callback(i);
       });
     }
-
     container.appendChild(estrela);
   }
 }
 
-// Função que cria e exibe as novas receitas na seção "nossas-receitas"
+// Função carregarNovasReceitas (igual antes)
 function carregarNovasReceitas() {
   const novasReceitas = [
     {
@@ -163,7 +176,7 @@ function carregarNovasReceitas() {
   ];
 
   const grid = document.getElementById('novas-receitas-grid');
-  grid.innerHTML = ''; // Limpa o conteúdo antes de inserir
+  grid.innerHTML = '';
 
   novasReceitas.forEach(receita => {
     const recipeCard = document.createElement('div');
@@ -185,7 +198,6 @@ function carregarNovasReceitas() {
     const divEstrelas = recipeCard.querySelector(`#${idEstrelas}`);
     divEstrelas.classList.add('stars-visual');
 
-    // Mostra a avaliação correta (4, 5, etc) sem interação
     criarEstrelas(divEstrelas, receita.avaliacao, null, false);
   });
 }

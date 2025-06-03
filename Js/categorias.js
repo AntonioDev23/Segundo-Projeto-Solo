@@ -94,11 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
             bolosModule.mostrarBolos();
           }
 
-          // Exemplo para outras categorias (adicione conforme precisar)
-          // if (cat.nome === 'Massas') {
-          //   const massasModule = await import('../js2/massas.js');
-          //   massasModule.mostrarMassas();
-          // }
+          if (cat.nome === 'Massas') {
+            const massasModule = await import(' ../js2/massas.js');
+            massasModule.mostrarMassas();
+          }
+
+
+          
         });
 
         menu.appendChild(item);

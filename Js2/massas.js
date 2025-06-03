@@ -247,6 +247,7 @@ const receitasMassas = {
 };
 
 
+// Função principal para exibir a lista de massas
 export function mostrarMassas() {
   // Remove interface antiga
   const containerAntigo = document.getElementById('massas-container');
@@ -324,8 +325,9 @@ export function mostrarMassas() {
         btnDetalhes.style.backgroundColor = '#ff6b00';
       });
 
+      // Aqui a única diferença: chamar o modal de massas igual o modal de bolos
       btnDetalhes.addEventListener('click', () => {
-        criarModalDetalhes(massa);
+        criarModalDetalhesMassas(massa);
       });
 
       massaDiv.appendChild(btnDetalhes);
@@ -351,74 +353,4 @@ export function mostrarMassas() {
 
   container.appendChild(btnFechar);
   document.body.appendChild(container);
-}
-
-
-export function criarModalDetalhes(receita) {
-  // Remove modal antigo se existir
-  const modalAntigo = document.getElementById('modal-receita');
-  if (modalAntigo) modalAntigo.remove();
-
-  const modal = document.createElement('div');
-  modal.id = 'modal-receita';
-  modal.style.position = 'fixed';
-  modal.style.top = '50%';
-  modal.style.left = '50%';
-  modal.style.transform = 'translate(-50%, -50%)';
-  modal.style.backgroundColor = '#fff';
-  modal.style.border = '2px solid #ff6b00';
-  modal.style.borderRadius = '10px';
-  modal.style.padding = '20px';
-  modal.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.5)';
-  modal.style.zIndex = '10001';
-  modal.style.width = '400px';
-  modal.style.maxHeight = '80vh';
-  modal.style.overflowY = 'auto';
-
-  const titulo = document.createElement('h2');
-  titulo.textContent = receita.titulo;
-  titulo.style.color = '#ff6b00';
-  titulo.style.marginBottom = '10px';
-  modal.appendChild(titulo);
-
-  const subtituloIngredientes = document.createElement('h3');
-  subtituloIngredientes.textContent = 'Ingredientes';
-  subtituloIngredientes.style.color = '#ff6b00';
-  modal.appendChild(subtituloIngredientes);
-
-  const listaIngredientes = document.createElement('ul');
-  receita.ingredientes.forEach(ingrediente => {
-    const item = document.createElement('li');
-    item.textContent = ingrediente;
-    listaIngredientes.appendChild(item);
-  });
-  modal.appendChild(listaIngredientes);
-
-  const subtituloPreparo = document.createElement('h3');
-  subtituloPreparo.textContent = 'Modo de Preparo';
-  subtituloPreparo.style.color = '#ff6b00';
-  subtituloPreparo.style.marginTop = '10px';
-  modal.appendChild(subtituloPreparo);
-
-  const preparo = document.createElement('p');
-  preparo.textContent = receita.preparo;
-  modal.appendChild(preparo);
-
-  const botaoFechar = document.createElement('button');
-  botaoFechar.textContent = 'Fechar';
-  botaoFechar.style.marginTop = '20px';
-  botaoFechar.style.padding = '10px 20px';
-  botaoFechar.style.backgroundColor = '#8b0000';
-  botaoFechar.style.color = '#fff';
-  botaoFechar.style.border = 'none';
-  botaoFechar.style.borderRadius = '5px';
-  botaoFechar.style.cursor = 'pointer';
-  botaoFechar.style.fontWeight = 'bold';
-
-  botaoFechar.addEventListener('click', () => {
-    modal.remove();
-  });
-
-  modal.appendChild(botaoFechar);
-  document.body.appendChild(modal);
 }

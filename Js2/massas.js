@@ -134,7 +134,7 @@ const receitasMassas = {
   'nhoque-de-batata': {
     titulo: 'Nhoque de Batata',
     descricao: 'Deliciosos nhoques macios de batata com molho de tomate.',
-    imagem: 'imagens/Nhoque de batata.webp',
+    imagem: 'imagens/nhoque-batata.png',
     ingredientes: [
       '1kg de batata',
       '1 ovo',
@@ -223,7 +223,7 @@ const receitasMassas = {
   'talharim-com-camarao': {
     titulo: 'Talharim com Camarão',
     descricao: 'Talharim ao molho cremoso com camarões suculentos.',
-    imagem: 'imagens/talharim-com-camarao',
+    imagem: 'imagens/talharim-com-camarao.png',
     ingredientes: [
       '250g de talharim',
       '300g de camarões limpos',

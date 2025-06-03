@@ -198,8 +198,8 @@ export const receitasBolos = {
   }
 };
 
-function criarModalDetalhes(bolo) {
- 
+function criarModalDetalhesMassas(massa) {
+  // Remove modal antigo se existir
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
 
@@ -226,67 +226,66 @@ function criarModalDetalhes(bolo) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
-  // Estrelas de avaliação
-    const estrelas = document.createElement('div');
-    estrelas.textContent = '★★★★★'; // Pode vir de bolo.estrelas futuramente
-    estrelas.style.textAlign = 'center';
-    estrelas.style.fontSize = '40px';
-    estrelas.style.marginBottom = '15px';
-    estrelas.style.color = 'gold'; 
-    modal.appendChild(estrelas);
-
+  // Estrelas (igual bolos, pode personalizar depois)
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★'; 
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold';
+  modal.appendChild(estrelas);
 
   // Título centralizado
   const titulo = document.createElement('h2');
-  titulo.textContent = bolo.titulo;
+  titulo.textContent = massa.titulo;
   titulo.style.color = '#8b0000';
   titulo.style.marginBottom = '20px';
-  titulo.style.textAlign = 'center'; // centralizar
+  titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
-  // Imagem do bolo (caso tenha a propriedade 'imagem' no objeto bolo)
-  if (bolo.imagem) {
+  // Imagem, se houver
+  if (massa.imagem) {
     const img = document.createElement('img');
-    img.src = bolo.imagem;
-    img.alt = bolo.titulo;
+    img.src = massa.imagem;
+    img.alt = massa.titulo;
     img.style.display = 'block';
-    img.style.margin = '0 auto 20px'; // centralizar + espaçamento embaixo
+    img.style.margin = '0 auto 20px';
     img.style.maxWidth = '100%';
     img.style.borderRadius = '8px';
     modal.appendChild(img);
   }
 
-  // Título "Receita" antes da lista de ingredientes
-    const receitaTitulo = document.createElement('h3');
-    receitaTitulo.textContent = 'Receita';
-    receitaTitulo.style.color = '#8b0000';          // cor pedida
-    receitaTitulo.style.marginBottom = '10px';
-    receitaTitulo.style.textAlign = 'center';       // centralizar
-    modal.appendChild(receitaTitulo);
+  // Título "Receita"
+  const receitaTitulo = document.createElement('h3');
+  receitaTitulo.textContent = 'Receita';
+  receitaTitulo.style.color = '#8b0000';
+  receitaTitulo.style.marginBottom = '10px';
+  receitaTitulo.style.textAlign = 'center';
+  modal.appendChild(receitaTitulo);
 
   // Lista de ingredientes
   const ingredientes = document.createElement('ul');
   ingredientes.style.marginBottom = '20px';
   ingredientes.style.paddingLeft = '20px';
-  bolo.ingredientes.forEach(item => {
+  massa.ingredientes.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item;
     ingredientes.appendChild(li);
   });
   modal.appendChild(ingredientes);
 
-  // Título "Modo de preparo" antes da lista de preparo
-const preparoTitulo = document.createElement('h3');
-preparoTitulo.textContent = 'Modo de preparo';
-preparoTitulo.style.color = '#8b0000';           
-preparoTitulo.style.marginBottom = '10px';
-preparoTitulo.style.textAlign = 'center';        
-modal.appendChild(preparoTitulo);
+  // Título "Modo de preparo"
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de preparo';
+  preparoTitulo.style.color = '#8b0000';
+  preparoTitulo.style.marginBottom = '10px';
+  preparoTitulo.style.textAlign = 'center';
+  modal.appendChild(preparoTitulo);
 
   // Lista de preparo
   const preparo = document.createElement('ol');
   preparo.style.paddingLeft = '20px';
-  bolo.preparo.forEach(passo => {
+  massa.preparo.forEach(passo => {
     const li = document.createElement('li');
     li.textContent = passo;
     preparo.appendChild(li);
@@ -313,115 +312,4 @@ modal.appendChild(preparoTitulo);
   modal.appendChild(btnFechar);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
-}
-
-
-
-// Função principal para exibir a lista de bolos
-export function mostrarBolos() {
-  // Remove interface antiga
-  const containerAntigo = document.getElementById('bolos-container');
-  if (containerAntigo) containerAntigo.remove();
-
-  const container = document.createElement('div');
-  container.id = 'bolos-container';
-  container.style.position = 'fixed';
-  container.style.top = '50px';
-  container.style.right = '20px'; 
-  container.style.left = 'auto';
-  container.style.transform = 'none';
-  container.style.width = '500px';
-  container.style.maxHeight = '70vh';
-  container.style.overflowY = 'auto';
-  container.style.backgroundColor = '#fff';
-  container.style.border = '2px solid #ff6b00';
-  container.style.borderRadius = '8px';
-  container.style.padding = '20px';
-  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
-  container.style.zIndex = '10000';
-
-  const titulo = document.createElement('h2');
-  titulo.textContent = 'Receitas de Bolos';
-  titulo.style.color = '#ff6b00';
-  titulo.style.textAlign = 'center';
-  container.appendChild(titulo);
-
-  for (const chave in receitasBolos) {
-    if (receitasBolos.hasOwnProperty(chave)) {
-      const bolo = receitasBolos[chave];
-
-      const boloDiv = document.createElement('div');
-      boloDiv.style.marginBottom = '15px';
-      boloDiv.style.display = 'flex';
-      boloDiv.style.justifyContent = 'space-between';
-      boloDiv.style.alignItems = 'center';
-      boloDiv.style.lineHeight = '1.2';
-      boloDiv.style.padding = '8px 12px';          // Espaçamento interno
-      boloDiv.style.border = '1.5px solid #ff6b00'; // Borda laranja
-      boloDiv.style.borderRadius = '8px';          // Bordas arredondadas
-      boloDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
-      boloDiv.style.cursor = 'pointer';
-
-      // Efeito hover na linha toda (leve deslocamento para cima + sombra)
-      boloDiv.addEventListener('mouseenter', () => {
-        boloDiv.style.transform = 'translateY(-5px)';
-        boloDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
-      });
-      boloDiv.addEventListener('mouseleave', () => {
-        boloDiv.style.transform = 'translateY(0)';
-        boloDiv.style.boxShadow = 'none';
-      });
-
-      const nomeBolo = document.createElement('strong');
-      nomeBolo.textContent = bolo.titulo;
-      nomeBolo.style.display = 'inline-block';
-      nomeBolo.style.verticalAlign = 'middle';
-      boloDiv.appendChild(nomeBolo);
-
-      const btnDetalhes = document.createElement('button');
-      btnDetalhes.textContent = 'Receita';
-      btnDetalhes.style.marginLeft = '10px';
-      btnDetalhes.style.cursor = 'pointer';
-      btnDetalhes.style.backgroundColor = '#ff6b00';
-      btnDetalhes.style.color = '#fff';
-      btnDetalhes.style.border = 'none';
-      btnDetalhes.style.borderRadius = '4px';
-      btnDetalhes.style.padding = '6px 12px';
-      btnDetalhes.style.transition = 'background-color 0.3s ease';
-
-      // Muda cor de fundo do botão no hover
-      btnDetalhes.addEventListener('mouseenter', () => {
-        btnDetalhes.style.backgroundColor = '#8b0000';
-      });
-      btnDetalhes.addEventListener('mouseleave', () => {
-        btnDetalhes.style.backgroundColor = '#ff6b00';
-      });
-
-      btnDetalhes.addEventListener('click', () => {
-        criarModalDetalhes(bolo);
-      });
-
-      boloDiv.appendChild(btnDetalhes);
-      container.appendChild(boloDiv);
-    }
-  }
-
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '15px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.cursor = 'pointer';
-  btnFechar.style.backgroundColor = '#8b0000';
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '4px';
-  btnFechar.style.fontWeight = 'bold';
-
-  btnFechar.addEventListener('click', () => {
-    container.remove();
-  });
-
-  container.appendChild(btnFechar);
-  document.body.appendChild(container);
 }

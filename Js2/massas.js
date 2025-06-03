@@ -357,103 +357,98 @@ export function mostrarMassas() {
 
 
 function criarModalDetalhesMassas(massa) {
-  // Se já existir algum modal aberto, remove
-  const modalExistente = document.getElementById('modal-massa');
-  if (modalExistente) modalExistente.remove();
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
 
-  // Cria a camada de fundo escuro
   const overlay = document.createElement('div');
-  overlay.id = 'modal-massa';
-  Object.assign(overlay.style, {
-    position: 'fixed',
-    top: '0', left: '0', right: '0', bottom: '0',
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 20000,
-  });
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
 
-  // Cria a caixa do modal
   const modal = document.createElement('div');
-  Object.assign(modal.style, {
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    padding: '20px',
-    width: '400px',
-    maxHeight: '80vh',
-    overflowY: 'auto',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-  });
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
 
-  // Título
+  // Estrelas (pode ajustar depois para massa.estrelas)
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★';
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold'; 
+  modal.appendChild(estrelas);
+
+  // Título centralizado
   const titulo = document.createElement('h2');
   titulo.textContent = massa.titulo;
-  titulo.style.color = '#ff6b00';
-  titulo.style.marginBottom = '10px';
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
+  titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
-  // Imagem
-  if (massa.imagem) {
-    const img = document.createElement('img');
-    img.src = massa.imagem;
-    img.alt = massa.titulo;
-    img.style.width = '100%';
-    img.style.borderRadius = '8px';
-    img.style.marginBottom = '10px';
-    modal.appendChild(img);
-  }
+  // Título "Receita"
+  const receitaTitulo = document.createElement('h3');
+  receitaTitulo.textContent = 'Receita';
+  receitaTitulo.style.color = '#8b0000';
+  receitaTitulo.style.marginBottom = '10px';
+  receitaTitulo.style.textAlign = 'center';
+  modal.appendChild(receitaTitulo);
 
-  // Descrição
-  if (massa.descricao) {
-    const desc = document.createElement('p');
-    desc.textContent = massa.descricao;
-    desc.style.marginBottom = '10px';
-    modal.appendChild(desc);
-  }
+  // Lista de ingredientes
+  const ingredientes = document.createElement('ul');
+  ingredientes.style.marginBottom = '20px';
+  ingredientes.style.paddingLeft = '20px';
+  massa.ingredientes.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ingredientes.appendChild(li);
+  });
+  modal.appendChild(ingredientes);
 
-  // Ingredientes (se tiver)
-  if (massa.ingredientes) {
-    const ingTitulo = document.createElement('h3');
-    ingTitulo.textContent = 'Ingredientes';
-    ingTitulo.style.marginBottom = '5px';
-    modal.appendChild(ingTitulo);
+  // Título "Modo de preparo"
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de preparo';
+  preparoTitulo.style.color = '#8b0000';
+  preparoTitulo.style.marginBottom = '10px';
+  preparoTitulo.style.textAlign = 'center';
+  modal.appendChild(preparoTitulo);
 
-    const ulIngredientes = document.createElement('ul');
-    massa.ingredientes.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      ulIngredientes.appendChild(li);
-    });
-    modal.appendChild(ulIngredientes);
-  }
-
-  // Modo de preparo (se tiver)
-  if (massa.preparo) {
-    const prepTitulo = document.createElement('h3');
-    prepTitulo.textContent = 'Modo de preparo';
-    prepTitulo.style.marginTop = '15px';
-    prepTitulo.style.marginBottom = '5px';
-    modal.appendChild(prepTitulo);
-
-    const preparo = document.createElement('p');
-    preparo.textContent = massa.preparo;
-    modal.appendChild(preparo);
-  }
+  // Lista de preparo
+  const preparo = document.createElement('ol');
+  preparo.style.paddingLeft = '20px';
+  massa.preparo.forEach(passo => {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    preparo.appendChild(li);
+  });
+  modal.appendChild(preparo);
 
   // Botão fechar
   const btnFechar = document.createElement('button');
   btnFechar.textContent = 'Fechar';
-  Object.assign(btnFechar.style, {
-    marginTop: '20px',
-    padding: '10px 20px',
-    backgroundColor: '#8b0000',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-  });
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '5px';
+  btnFechar.style.fontWeight = 'bold';
+  btnFechar.style.cursor = 'pointer';
 
   btnFechar.addEventListener('click', () => {
     overlay.remove();
@@ -463,5 +458,3 @@ function criarModalDetalhesMassas(massa) {
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
-
-

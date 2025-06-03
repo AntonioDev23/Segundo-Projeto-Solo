@@ -252,13 +252,12 @@ export function mostrarMassas() {
   const containerAntigo = document.getElementById('massas-container');
   if (containerAntigo) containerAntigo.remove();
 
+  // Cria o container principal
   const container = document.createElement('div');
   container.id = 'massas-container';
   container.style.position = 'fixed';
   container.style.top = '50px';
   container.style.right = '20px';
-  container.style.left = 'auto';
-  container.style.transform = 'none';
   container.style.width = '500px';
   container.style.maxHeight = '70vh';
   container.style.overflowY = 'auto';
@@ -269,58 +268,94 @@ export function mostrarMassas() {
   container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
   container.style.zIndex = '10000';
 
+  // Título do container
   const titulo = document.createElement('h2');
   titulo.textContent = 'Receitas de Massas';
-  titulo.style.marginTop = '0';
+  titulo.style.marginBottom = '20px';
   titulo.style.color = '#ff6b00';
-  titulo.style.textAlign = 'center';
-
   container.appendChild(titulo);
 
+  // Itera sobre as receitas para criar o conteúdo
   for (const key in receitasMassas) {
     const receita = receitasMassas[key];
 
-    const card = document.createElement('div');
-    card.style.borderBottom = '1px solid #ddd';
-    card.style.paddingBottom = '15px';
-    card.style.marginBottom = '15px';
+    const receitaDiv = document.createElement('div');
+    receitaDiv.style.borderBottom = '1px solid #ddd';
+    receitaDiv.style.paddingBottom = '15px';
+    receitaDiv.style.marginBottom = '15px';
 
+    // Imagem
     const img = document.createElement('img');
     img.src = receita.imagem;
     img.alt = receita.titulo;
     img.style.width = '100%';
     img.style.borderRadius = '6px';
     img.style.objectFit = 'cover';
-    img.style.maxHeight = '200px';
+    receitaDiv.appendChild(img);
 
-    const tituloReceita = document.createElement('h3');
-    tituloReceita.textContent = receita.titulo;
-    tituloReceita.style.margin = '10px 0 5px 0';
-    tituloReceita.style.color = '#333';
+    // Título da receita
+    const h3 = document.createElement('h3');
+    h3.textContent = receita.titulo;
+    h3.style.marginTop = '10px';
+    h3.style.color = '#333';
+    receitaDiv.appendChild(h3);
 
-    const descricao = document.createElement('p');
-    descricao.textContent = receita.descricao;
-    descricao.style.fontSize = '14px';
-    descricao.style.color = '#666';
+    // Descrição
+    const desc = document.createElement('p');
+    desc.textContent = receita.descricao;
+    desc.style.fontStyle = 'italic';
+    desc.style.color = '#666';
+    receitaDiv.appendChild(desc);
 
-    const tempo = document.createElement('p');
-    tempo.textContent = `Tempo de preparo: ${receita.tempo}`;
-    tempo.style.fontSize = '13px';
-    tempo.style.color = '#999';
-    tempo.style.fontStyle = 'italic';
+    // Ingredientes (lista)
+    const ingTitle = document.createElement('strong');
+    ingTitle.textContent = 'Ingredientes:';
+    receitaDiv.appendChild(ingTitle);
 
-    const avaliacao = document.createElement('p');
-    avaliacao.textContent = `Avaliação: ${'⭐'.repeat(receita.avaliacao)}`;
-    avaliacao.style.fontSize = '14px';
-    avaliacao.style.color = '#ff6b00';
+    const ulIngredientes = document.createElement('ul');
+    ulIngredientes.style.marginTop = '5px';
+    ulIngredientes.style.marginBottom = '10px';
+    receita.ingredientes.forEach(ingrediente => {
+      const li = document.createElement('li');
+      li.textContent = ingrediente;
+      ulIngredientes.appendChild(li);
+    });
+    receitaDiv.appendChild(ulIngredientes);
 
-    card.appendChild(img);
-    card.appendChild(tituloReceita);
-    card.appendChild(descricao);
-    card.appendChild(tempo);
-    card.appendChild(avaliacao);
+    // Preparo (lista numerada)
+    const prepTitle = document.createElement('strong');
+    prepTitle.textContent = 'Modo de preparo:';
+    receitaDiv.appendChild(prepTitle);
 
-    container.appendChild(card);
+    const olPreparo = document.createElement('ol');
+    olPreparo.style.marginTop = '5px';
+    olPreparo.style.marginBottom = '10px';
+    receita.preparo.forEach(passo => {
+      const li = document.createElement('li');
+      li.textContent = passo;
+      olPreparo.appendChild(li);
+    });
+    receitaDiv.appendChild(olPreparo);
+
+    // Tempo e avaliação
+    const info = document.createElement('p');
+    info.textContent = `Tempo: ${receita.tempo} | Avaliação: ${receita.avaliacao} ⭐`;
+    info.style.fontWeight = 'bold';
+    receitaDiv.appendChild(info);
+
+    // Link para mais detalhes (se houver)
+    if (receita.link) {
+      const a = document.createElement('a');
+      a.href = receita.link;
+      a.textContent = 'Ver mais';
+      a.target = '_blank';
+      a.style.display = 'inline-block';
+      a.style.marginTop = '10px';
+      a.style.color = '#ff6b00';
+      receitaDiv.appendChild(a);
+    }
+
+    container.appendChild(receitaDiv);
   }
 
   document.body.appendChild(container);

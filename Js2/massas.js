@@ -156,7 +156,7 @@ const receitasMassas = {
   'ravioli-de-queijo': {
     titulo: 'Ravioli de Queijo',
     descricao: 'Massa recheada com queijo cremoso, servido com molho manteiga e sálvia.',
-    imagem: 'imagens/Ravioli de queijo.webp',
+    imagem: 'imagens/ravioli-queijo.png',
     ingredientes: [
       '300g de massa fresca para ravioli',
       '200g de queijo ricota',
@@ -179,7 +179,7 @@ const receitasMassas = {
   'fettuccine-ao-molho-branco': {
     titulo: 'Fettuccine ao Molho Branco',
     descricao: 'Massa fettuccine cremosa com molho branco e queijo parmesão.',
-    imagem: 'imagens/Fettuccine ao molho branco.webp',
+    imagem: 'imagens/fettucine.png',
     ingredientes: [
       '250g de fettuccine',
       '2 colheres de manteiga',
@@ -202,7 +202,7 @@ const receitasMassas = {
   'espaguete-ao-alho-e-oleo': {
     titulo: 'Espaguete ao Alho e Óleo',
     descricao: 'Simples e saboroso espaguete com alho dourado e azeite.',
-    imagem: 'imagens/Espaguete ao alho e oleo.webp',
+    imagem: 'imagens/espaguette-alho-oleo.png',
     ingredientes: [
       '250g de espaguete',
       '4 dentes de alho fatiados',
@@ -223,7 +223,7 @@ const receitasMassas = {
   'talharim-com-camarao': {
     titulo: 'Talharim com Camarão',
     descricao: 'Talharim ao molho cremoso com camarões suculentos.',
-    imagem: 'imagens/Talharim com camarao.webp',
+    imagem: 'imagens/talharim-com-camarao',
     ingredientes: [
       '250g de talharim',
       '300g de camarões limpos',

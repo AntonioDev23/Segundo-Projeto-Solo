@@ -271,84 +271,57 @@ export function mostrarMassas() {
 
   const titulo = document.createElement('h2');
   titulo.textContent = 'Receitas de Massas';
+  titulo.style.marginTop = '0';
   titulo.style.color = '#ff6b00';
   titulo.style.textAlign = 'center';
+
   container.appendChild(titulo);
 
-  for (const chave in receitasMassas) {
-    if (receitasMassas.hasOwnProperty(chave)) {
-      const massa = receitasMassas[chave];
+  for (const key in receitasMassas) {
+    const receita = receitasMassas[key];
 
-      const massaDiv = document.createElement('div');
-      massaDiv.style.marginBottom = '15px';
-      massaDiv.style.display = 'flex';
-      massaDiv.style.justifyContent = 'space-between';
-      massaDiv.style.alignItems = 'center';
-      massaDiv.style.lineHeight = '1.2';
-      massaDiv.style.padding = '8px 12px';
-      massaDiv.style.border = '1.5px solid #ff6b00';
-      massaDiv.style.borderRadius = '8px';
-      massaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
-      massaDiv.style.cursor = 'pointer';
+    const card = document.createElement('div');
+    card.style.borderBottom = '1px solid #ddd';
+    card.style.paddingBottom = '15px';
+    card.style.marginBottom = '15px';
 
-      massaDiv.addEventListener('mouseenter', () => {
-        massaDiv.style.transform = 'translateY(-5px)';
-        massaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
-      });
-      massaDiv.addEventListener('mouseleave', () => {
-        massaDiv.style.transform = 'translateY(0)';
-        massaDiv.style.boxShadow = 'none';
-      });
+    const img = document.createElement('img');
+    img.src = receita.imagem;
+    img.alt = receita.titulo;
+    img.style.width = '100%';
+    img.style.borderRadius = '6px';
+    img.style.objectFit = 'cover';
+    img.style.maxHeight = '200px';
 
-      const nomeMassa = document.createElement('strong');
-      nomeMassa.textContent = massa.titulo;
-      nomeMassa.style.display = 'inline-block';
-      nomeMassa.style.verticalAlign = 'middle';
-      massaDiv.appendChild(nomeMassa);
+    const tituloReceita = document.createElement('h3');
+    tituloReceita.textContent = receita.titulo;
+    tituloReceita.style.margin = '10px 0 5px 0';
+    tituloReceita.style.color = '#333';
 
-      const btnDetalhes = document.createElement('button');
-      btnDetalhes.textContent = 'Receita';
-      btnDetalhes.style.marginLeft = '10px';
-      btnDetalhes.style.cursor = 'pointer';
-      btnDetalhes.style.backgroundColor = '#ff6b00';
-      btnDetalhes.style.color = '#fff';
-      btnDetalhes.style.border = 'none';
-      btnDetalhes.style.borderRadius = '4px';
-      btnDetalhes.style.padding = '6px 12px';
-      btnDetalhes.style.transition = 'background-color 0.3s ease';
+    const descricao = document.createElement('p');
+    descricao.textContent = receita.descricao;
+    descricao.style.fontSize = '14px';
+    descricao.style.color = '#666';
 
-      btnDetalhes.addEventListener('mouseenter', () => {
-        btnDetalhes.style.backgroundColor = '#8b0000';
-      });
-      btnDetalhes.addEventListener('mouseleave', () => {
-        btnDetalhes.style.backgroundColor = '#ff6b00';
-      });
+    const tempo = document.createElement('p');
+    tempo.textContent = `Tempo de preparo: ${receita.tempo}`;
+    tempo.style.fontSize = '13px';
+    tempo.style.color = '#999';
+    tempo.style.fontStyle = 'italic';
 
-      btnDetalhes.addEventListener('click', () => {
-        criarModalDetalhes(massa);
-      });
+    const avaliacao = document.createElement('p');
+    avaliacao.textContent = `Avaliação: ${'⭐'.repeat(receita.avaliacao)}`;
+    avaliacao.style.fontSize = '14px';
+    avaliacao.style.color = '#ff6b00';
 
-      massaDiv.appendChild(btnDetalhes);
-      container.appendChild(massaDiv);
-    }
+    card.appendChild(img);
+    card.appendChild(tituloReceita);
+    card.appendChild(descricao);
+    card.appendChild(tempo);
+    card.appendChild(avaliacao);
+
+    container.appendChild(card);
   }
 
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '15px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.cursor = 'pointer';
-  btnFechar.style.backgroundColor = '#8b0000';
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '4px';
-  btnFechar.style.fontWeight = 'bold';
-
-  btnFechar.addEventListener('click', () => {
-    container.remove();
-  });
-
-  container.appendChild(btnFechar);
   document.body.appendChild(container);
 }

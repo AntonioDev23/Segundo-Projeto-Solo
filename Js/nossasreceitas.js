@@ -19,27 +19,41 @@ navLinks.forEach(link => {
       targetSection.style.display = 'block';
     }
 
+    const html = document.documentElement; // <html>
     const body = document.body;
+    const receitas = document.getElementById('nossas-receitas');
     const footer = document.querySelector('footer');
 
     if (targetId === 'nossas-receitas') {
-      // Aplica blur no body (que engloba todo conteúdo menos o footer)
+      // Aplica blur no html e body
+      html.style.filter = 'blur(5px)';
       body.style.filter = 'blur(5px)';
-      // Remove blur do footer para que fique nítido
+
+      // Remove blur das receitas e footer para ficar nítido
+      if (receitas) {
+        receitas.style.filter = 'none';
+        receitas.style.position = 'relative';
+        receitas.style.zIndex = '10';
+      }
+
       if (footer) {
         footer.style.filter = 'none';
-        footer.style.position = 'relative'; // para garantir que fique em cima do blur
+        footer.style.position = 'relative';
         footer.style.zIndex = '10';
       }
-      // Deixa a seção 'nossas-receitas' em foco, sem blur (removendo filtro)
-      targetSection.style.filter = 'none';
-      targetSection.style.position = 'relative';
-      targetSection.style.zIndex = '15';
 
       carregarNovasReceitas();
     } else {
       // Remove todos os filtros para voltar ao normal
+      html.style.filter = 'none';
       body.style.filter = 'none';
+
+      if (receitas) {
+        receitas.style.filter = 'none';
+        receitas.style.position = '';
+        receitas.style.zIndex = '';
+      }
+
       if (footer) {
         footer.style.filter = 'none';
         footer.style.position = '';

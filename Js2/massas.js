@@ -252,12 +252,13 @@ export function mostrarMassas() {
   const containerAntigo = document.getElementById('massas-container');
   if (containerAntigo) containerAntigo.remove();
 
-  // Cria o container principal
   const container = document.createElement('div');
   container.id = 'massas-container';
   container.style.position = 'fixed';
   container.style.top = '50px';
-  container.style.right = '20px';
+  container.style.right = '20px'; 
+  container.style.left = 'auto';
+  container.style.transform = 'none';
   container.style.width = '500px';
   container.style.maxHeight = '70vh';
   container.style.overflowY = 'auto';
@@ -268,95 +269,156 @@ export function mostrarMassas() {
   container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
   container.style.zIndex = '10000';
 
-  // Título do container
   const titulo = document.createElement('h2');
   titulo.textContent = 'Receitas de Massas';
-  titulo.style.marginBottom = '20px';
   titulo.style.color = '#ff6b00';
+  titulo.style.textAlign = 'center';
   container.appendChild(titulo);
 
-  // Itera sobre as receitas para criar o conteúdo
-  for (const key in receitasMassas) {
-    const receita = receitasMassas[key];
+  for (const chave in receitasMassas) {
+    if (receitasMassas.hasOwnProperty(chave)) {
+      const massa = receitasMassas[chave];
 
-    const receitaDiv = document.createElement('div');
-    receitaDiv.style.borderBottom = '1px solid #ddd';
-    receitaDiv.style.paddingBottom = '15px';
-    receitaDiv.style.marginBottom = '15px';
+      const massaDiv = document.createElement('div');
+      massaDiv.style.marginBottom = '15px';
+      massaDiv.style.display = 'flex';
+      massaDiv.style.justifyContent = 'space-between';
+      massaDiv.style.alignItems = 'center';
+      massaDiv.style.lineHeight = '1.2';
+      massaDiv.style.padding = '8px 12px';
+      massaDiv.style.border = '1.5px solid #ff6b00';
+      massaDiv.style.borderRadius = '8px';
+      massaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+      massaDiv.style.cursor = 'pointer';
 
-    // Imagem
-    const img = document.createElement('img');
-    img.src = receita.imagem;
-    img.alt = receita.titulo;
-    img.style.width = '100%';
-    img.style.borderRadius = '6px';
-    img.style.objectFit = 'cover';
-    receitaDiv.appendChild(img);
+      massaDiv.addEventListener('mouseenter', () => {
+        massaDiv.style.transform = 'translateY(-5px)';
+        massaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
+      });
+      massaDiv.addEventListener('mouseleave', () => {
+        massaDiv.style.transform = 'translateY(0)';
+        massaDiv.style.boxShadow = 'none';
+      });
 
-    // Título da receita
-    const h3 = document.createElement('h3');
-    h3.textContent = receita.titulo;
-    h3.style.marginTop = '10px';
-    h3.style.color = '#333';
-    receitaDiv.appendChild(h3);
+      const nomeMassa = document.createElement('strong');
+      nomeMassa.textContent = massa.titulo;
+      nomeMassa.style.display = 'inline-block';
+      nomeMassa.style.verticalAlign = 'middle';
+      massaDiv.appendChild(nomeMassa);
 
-    // Descrição
-    const desc = document.createElement('p');
-    desc.textContent = receita.descricao;
-    desc.style.fontStyle = 'italic';
-    desc.style.color = '#666';
-    receitaDiv.appendChild(desc);
+      const btnDetalhes = document.createElement('button');
+      btnDetalhes.textContent = 'Receita';
+      btnDetalhes.style.marginLeft = '10px';
+      btnDetalhes.style.cursor = 'pointer';
+      btnDetalhes.style.backgroundColor = '#ff6b00';
+      btnDetalhes.style.color = '#fff';
+      btnDetalhes.style.border = 'none';
+      btnDetalhes.style.borderRadius = '4px';
+      btnDetalhes.style.padding = '6px 12px';
+      btnDetalhes.style.transition = 'background-color 0.3s ease';
 
-    // Ingredientes (lista)
-    const ingTitle = document.createElement('strong');
-    ingTitle.textContent = 'Ingredientes:';
-    receitaDiv.appendChild(ingTitle);
+      btnDetalhes.addEventListener('mouseenter', () => {
+        btnDetalhes.style.backgroundColor = '#8b0000';
+      });
+      btnDetalhes.addEventListener('mouseleave', () => {
+        btnDetalhes.style.backgroundColor = '#ff6b00';
+      });
 
-    const ulIngredientes = document.createElement('ul');
-    ulIngredientes.style.marginTop = '5px';
-    ulIngredientes.style.marginBottom = '10px';
-    receita.ingredientes.forEach(ingrediente => {
-      const li = document.createElement('li');
-      li.textContent = ingrediente;
-      ulIngredientes.appendChild(li);
-    });
-    receitaDiv.appendChild(ulIngredientes);
+      btnDetalhes.addEventListener('click', () => {
+        criarModalDetalhes(massa);
+      });
 
-    // Preparo (lista numerada)
-    const prepTitle = document.createElement('strong');
-    prepTitle.textContent = 'Modo de preparo:';
-    receitaDiv.appendChild(prepTitle);
-
-    const olPreparo = document.createElement('ol');
-    olPreparo.style.marginTop = '5px';
-    olPreparo.style.marginBottom = '10px';
-    receita.preparo.forEach(passo => {
-      const li = document.createElement('li');
-      li.textContent = passo;
-      olPreparo.appendChild(li);
-    });
-    receitaDiv.appendChild(olPreparo);
-
-    // Tempo e avaliação
-    const info = document.createElement('p');
-    info.textContent = `Tempo: ${receita.tempo} | Avaliação: ${receita.avaliacao} ⭐`;
-    info.style.fontWeight = 'bold';
-    receitaDiv.appendChild(info);
-
-    // Link para mais detalhes (se houver)
-    if (receita.link) {
-      const a = document.createElement('a');
-      a.href = receita.link;
-      a.textContent = 'Ver mais';
-      a.target = '_blank';
-      a.style.display = 'inline-block';
-      a.style.marginTop = '10px';
-      a.style.color = '#ff6b00';
-      receitaDiv.appendChild(a);
+      massaDiv.appendChild(btnDetalhes);
+      container.appendChild(massaDiv);
     }
-
-    container.appendChild(receitaDiv);
   }
 
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '15px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '4px';
+  btnFechar.style.fontWeight = 'bold';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
   document.body.appendChild(container);
+}
+
+
+export function criarModalDetalhes(receita) {
+  // Remove modal antigo se existir
+  const modalAntigo = document.getElementById('modal-receita');
+  if (modalAntigo) modalAntigo.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'modal-receita';
+  modal.style.position = 'fixed';
+  modal.style.top = '50%';
+  modal.style.left = '50%';
+  modal.style.transform = 'translate(-50%, -50%)';
+  modal.style.backgroundColor = '#fff';
+  modal.style.border = '2px solid #ff6b00';
+  modal.style.borderRadius = '10px';
+  modal.style.padding = '20px';
+  modal.style.boxShadow = '0 0 15px rgba(0, 0, 0, 0.5)';
+  modal.style.zIndex = '10001';
+  modal.style.width = '400px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = receita.titulo;
+  titulo.style.color = '#ff6b00';
+  titulo.style.marginBottom = '10px';
+  modal.appendChild(titulo);
+
+  const subtituloIngredientes = document.createElement('h3');
+  subtituloIngredientes.textContent = 'Ingredientes';
+  subtituloIngredientes.style.color = '#ff6b00';
+  modal.appendChild(subtituloIngredientes);
+
+  const listaIngredientes = document.createElement('ul');
+  receita.ingredientes.forEach(ingrediente => {
+    const item = document.createElement('li');
+    item.textContent = ingrediente;
+    listaIngredientes.appendChild(item);
+  });
+  modal.appendChild(listaIngredientes);
+
+  const subtituloPreparo = document.createElement('h3');
+  subtituloPreparo.textContent = 'Modo de Preparo';
+  subtituloPreparo.style.color = '#ff6b00';
+  subtituloPreparo.style.marginTop = '10px';
+  modal.appendChild(subtituloPreparo);
+
+  const preparo = document.createElement('p');
+  preparo.textContent = receita.preparo;
+  modal.appendChild(preparo);
+
+  const botaoFechar = document.createElement('button');
+  botaoFechar.textContent = 'Fechar';
+  botaoFechar.style.marginTop = '20px';
+  botaoFechar.style.padding = '10px 20px';
+  botaoFechar.style.backgroundColor = '#8b0000';
+  botaoFechar.style.color = '#fff';
+  botaoFechar.style.border = 'none';
+  botaoFechar.style.borderRadius = '5px';
+  botaoFechar.style.cursor = 'pointer';
+  botaoFechar.style.fontWeight = 'bold';
+
+  botaoFechar.addEventListener('click', () => {
+    modal.remove();
+  });
+
+  modal.appendChild(botaoFechar);
+  document.body.appendChild(modal);
 }

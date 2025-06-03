@@ -199,7 +199,7 @@ export const receitasBolos = {
 };
 
 function criarModalDetalhes(bolo) {
-  // Remove modal anterior, se existir
+ 
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
 

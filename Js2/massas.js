@@ -29,7 +29,7 @@ const receitasMassas = {
   'lasanha': {
     titulo: 'Lasanha',
     descricao: 'Camadas generosas de massa, carne moída temperada e muito queijo gratinado.',
-    imagem: 'imagens/Lasanha.webp',
+    imagem: 'imagens/Lasanha 2.webp',
     ingredientes: [
       '500g de massa para lasanha',
       '500g de carne moída',
@@ -131,7 +131,6 @@ const receitasMassas = {
     link: '#'
   },
 
-  // Agora os 5 criados por mim:
   'nhoque-de-batata': {
     titulo: 'Nhoque de Batata',
     descricao: 'Deliciosos nhoques macios de batata com molho de tomate.',

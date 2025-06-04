@@ -278,7 +278,7 @@ export function mostrarSobremesas() {
 
 
 // Detalhes da receita de sobremesa
-export function criarModalDetalhesSobremesas(sobremesa) {
+function criarModalDetalhesSobremesas(sobremesa) {
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
 
@@ -305,9 +305,9 @@ export function criarModalDetalhesSobremesas(sobremesa) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
-  // Estrelas decorativas
+  // Estrelas (padrão, ou ajuste depois)
   const estrelas = document.createElement('div');
-  estrelas.textContent = '★★★★★'; // Pode adaptar se quiser personalizar
+  estrelas.textContent = '★★★★★';
   estrelas.style.textAlign = 'center';
   estrelas.style.fontSize = '40px';
   estrelas.style.marginBottom = '15px';
@@ -317,12 +317,12 @@ export function criarModalDetalhesSobremesas(sobremesa) {
   // Título da sobremesa
   const titulo = document.createElement('h2');
   titulo.textContent = sobremesa.titulo;
-  titulo.style.color = '#ff6b00';
+  titulo.style.color = '#8b0000';
   titulo.style.marginBottom = '20px';
   titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
-  // Imagem da sobremesa
+  // Imagem da sobremesa (se existir)
   if (sobremesa.imagem) {
     const img = document.createElement('img');
     img.src = sobremesa.imagem;
@@ -337,7 +337,7 @@ export function criarModalDetalhesSobremesas(sobremesa) {
   // Título "Receita"
   const receitaTitulo = document.createElement('h3');
   receitaTitulo.textContent = 'Receita';
-  receitaTitulo.style.color = '#ff6b00';
+  receitaTitulo.style.color = '#8b0000';
   receitaTitulo.style.marginBottom = '10px';
   receitaTitulo.style.textAlign = 'center';
   modal.appendChild(receitaTitulo);
@@ -356,7 +356,7 @@ export function criarModalDetalhesSobremesas(sobremesa) {
   // Título "Modo de preparo"
   const preparoTitulo = document.createElement('h3');
   preparoTitulo.textContent = 'Modo de preparo';
-  preparoTitulo.style.color = '#ff6b00';
+  preparoTitulo.style.color = '#8b0000';
   preparoTitulo.style.marginBottom = '10px';
   preparoTitulo.style.textAlign = 'center';
   modal.appendChild(preparoTitulo);
@@ -377,7 +377,7 @@ export function criarModalDetalhesSobremesas(sobremesa) {
   btnFechar.style.marginTop = '20px';
   btnFechar.style.width = '100%';
   btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#ff6b00';
+  btnFechar.style.backgroundColor = '#8b0000';
   btnFechar.style.color = '#fff';
   btnFechar.style.border = 'none';
   btnFechar.style.borderRadius = '5px';

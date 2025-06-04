@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
             bebidasModule.mostrarBebidas();
           }
 
+          if (cat.nome === 'Cafés') {
+            const cafesModule = await import('../js2/cafes.js');
+            cafesModule.mostrarCafes();
+          }
 
-
-
-
-
-
+          
           
         });
 

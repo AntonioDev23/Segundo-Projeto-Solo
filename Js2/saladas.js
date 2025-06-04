@@ -114,21 +114,25 @@ export const receitasSaladas = {
     ]
   },
 
-  saladaAlfaceTomate: {
-    titulo: 'Salada Simples de Alface e Tomate',
-    descricao: 'Salada fresca e leve para acompanhar qualquer prato.',
-    imagem: 'imagens/salada-alface-tomate.jpg',
+  saladaCobb: {   
+    titulo: 'Salada Cobb',
+    descricao: 'Salada clássica americana com alface, frango grelhado, bacon, ovos, abacate e queijo azul.',
+    imagem: 'imagens/salada-cobb.jpg',
     ingredientes: [
-      '1 pé de alface',
-      '2 tomates fatiados',
-      '1 cebola fatiada',
-      'Azeite, vinagre, sal e pimenta a gosto'
+      '2 xícaras de alface americana picada',
+      '150g de peito de frango grelhado e fatiado',
+      '4 fatias de bacon crocante',
+      '2 ovos cozidos e fatiados',
+      '1 abacate cortado em cubos',
+      '100g de queijo azul esfarelado',
+      'Tomate cereja a gosto',
+      'Molho vinagrete ou molho de sua preferência'
     ],
     preparo: [
-      'Lave e rasgue a alface.',
-      'Misture com os tomates e a cebola.',
-      'Tempere com azeite, vinagre, sal e pimenta.',
-      'Sirva fresca.'
+      'Em uma tigela grande, disponha a alface picada.',
+      'Adicione o frango grelhado, bacon, ovos, abacate e tomate cereja.',
+      'Polvilhe o queijo azul por cima.',
+      'Regue com o molho vinagrete antes de servir.'
     ]
   },
 

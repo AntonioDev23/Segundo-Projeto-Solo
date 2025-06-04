@@ -64,28 +64,36 @@ const receitasCarnes = {
       'Salpique queijo coalho por cima e leve ao forno para gratinar.'
     ]
   },
-  // ... aqui você adiciona mais 7 carnes que vou criar para você abaixo
+  
 };
 
-// Vamos criar 7 receitas extras de carnes vermelhas (nome, descrição, imagem, ingredientes, preparo):
 
-receitasCarnes.frangoAssado = {
-  titulo: 'Frango Assado com Ervas',
-  descricao: 'Frango temperado com ervas finas e assado até ficar dourado.',
-  imagem: 'imagens/frango-assado.jpg',
+receitasCarnes.fileMignon = {
+  titulo: 'Filé Mignon ao Molho Madeira',
+  descricao: 'Medalhões de filé mignon com molho madeira, suculento e delicioso.',
+  imagem: 'imagens/file-mignon.jpg', 
   ingredientes: [
-    '1 frango inteiro',
-    'Sal e pimenta a gosto',
-    '2 dentes de alho picados',
-    'Ervas finas (alecrim, tomilho, manjericão)',
-    'Azeite'
+    '500g de filé mignon cortado em medalhões',
+    '2 colheres de sopa de manteiga',
+    '1 cebola pequena picada',
+    '1 dente de alho picado',
+    '200ml de vinho Madeira',
+    '200ml de caldo de carne',
+    'Sal e pimenta-do-reino a gosto',
+    'Salsinha picada para decorar'
   ],
   preparo: [
-    'Tempere o frango com sal, pimenta, alho e ervas.',
-    'Regue com azeite e deixe marinar por 1 hora.',
-    'Asse em forno pré-aquecido a 200°C por 1 hora ou até dourar.'
+    'Tempere os medalhões com sal e pimenta.',
+    'Em uma frigideira, derreta a manteiga e sele os medalhões até dourar.',
+    'Retire os medalhões e reserve.',
+    'Na mesma frigideira, refogue a cebola e o alho até ficarem macios.',
+    'Adicione o vinho Madeira e deixe reduzir pela metade.',
+    'Junte o caldo de carne e cozinhe até o molho engrossar.',
+    'Volte os medalhões para a frigideira e aqueça no molho por alguns minutos.',
+    'Finalize com salsinha picada e sirva.'
   ]
 };
+
 
 receitasCarnes.picanhaGrelhada = {
   titulo: 'Picanha Grelhada',
@@ -313,4 +321,120 @@ export function mostrarCarnes() {
 
   container.appendChild(btnFechar);
   document.body.appendChild(container);
+}
+
+// Detalhes da receita de carnes
+export function criarModalDetalhesCarnes(carne) {
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
+
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
+
+  // Estrelas (você pode ajustar carne.estrelas depois)
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★';
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold'; 
+  modal.appendChild(estrelas);
+
+  // Título centralizado
+  const titulo = document.createElement('h2');
+  titulo.textContent = carne.titulo;
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
+  titulo.style.textAlign = 'center';
+  modal.appendChild(titulo);
+
+  // Imagem da carne (se tiver a propriedade 'imagem')
+  if (carne.imagem) {
+    const img = document.createElement('img');
+    img.src = carne.imagem;
+    img.alt = carne.titulo;
+    img.style.display = 'block';
+    img.style.margin = '0 auto 20px';
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '8px';
+    modal.appendChild(img);
+  }
+
+  // Título "Receita"
+  const receitaTitulo = document.createElement('h3');
+  receitaTitulo.textContent = 'Receita';
+  receitaTitulo.style.color = '#8b0000';
+  receitaTitulo.style.marginBottom = '10px';
+  receitaTitulo.style.textAlign = 'center';
+  modal.appendChild(receitaTitulo);
+
+  // Lista de ingredientes
+  const ingredientes = document.createElement('ul');
+  ingredientes.style.marginBottom = '20px';
+  ingredientes.style.paddingLeft = '20px';
+  carne.ingredientes.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ingredientes.appendChild(li);
+  });
+  modal.appendChild(ingredientes);
+
+  // Título "Modo de preparo"
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de preparo';
+  preparoTitulo.style.color = '#8b0000';
+  preparoTitulo.style.marginBottom = '10px';
+  preparoTitulo.style.textAlign = 'center';
+  modal.appendChild(preparoTitulo);
+
+  // Lista de preparo
+  const preparo = document.createElement('ol');
+  preparo.style.paddingLeft = '20px';
+  carne.preparo.forEach(passo => {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    preparo.appendChild(li);
+  });
+  modal.appendChild(preparo);
+
+  // Botão fechar
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '5px';
+  btnFechar.style.fontWeight = 'bold';
+  btnFechar.style.cursor = 'pointer';
+
+  btnFechar.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  modal.appendChild(btnFechar);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
 }

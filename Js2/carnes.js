@@ -193,25 +193,25 @@ receitasCarnes.bifeAncho = {
   ]
 };
 
-receitasCarnes.picadinho = {
-  titulo: 'Picadinho de Carne',
-  descricao: 'Carne cortada em cubos pequenos, cozida com temperos e legumes.',
-  imagem: 'imagens/picadinho.jpg',
+receitasCarnes.wagyu = {
+  titulo: 'Bife Wagyu Grelhado',
+  descricao: 'Corte nobre de wagyu grelhado no ponto certo, com sal e pimenta.',
+  imagem: 'imagens/wagyu.jpg', 
   ingredientes: [
-    '500g de carne cortada em cubos',
-    '1 cebola picada',
-    '2 dentes de alho picados',
-    '2 tomates picados',
-    '1 cenoura em cubos',
-    'Sal, pimenta e cheiro-verde a gosto'
+    '1 bife de wagyu (300g a 400g)',
+    'Sal grosso a gosto',
+    'Pimenta-do-reino moída na hora',
+    'Manteiga (opcional)'
   ],
   preparo: [
-    'Refogue a cebola e o alho até dourar.',
-    'Acrescente a carne e cozinhe até dourar.',
-    'Adicione os tomates e a cenoura, tempere e cozinhe até amaciar.',
-    'Finalize com cheiro-verde.'
+    'Retire o bife da geladeira 30 minutos antes para atingir a temperatura ambiente.',
+    'Tempere com sal e pimenta dos dois lados.',
+    'Grelhe em frigideira bem quente por cerca de 2 minutos de cada lado para ponto médio.',
+    'Se quiser, adicione manteiga no final para dar sabor.',
+    'Deixe descansar 3 minutos antes de servir.'
   ]
 };
+
 
 
 // Função principal para exibir a lista de carnes

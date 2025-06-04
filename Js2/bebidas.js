@@ -148,7 +148,6 @@ export const bebidas = [
 ];
 
 
-// Função para mostrar as bebidas
 export function mostrarBebidas() {
   const containerAntigo = document.getElementById('bebidas-container');
   if (containerAntigo) containerAntigo.remove();
@@ -162,7 +161,7 @@ export function mostrarBebidas() {
   container.style.maxHeight = '70vh';
   container.style.overflowY = 'auto';
   container.style.backgroundColor = '#fff';
-  container.style.border = '2px solid #007bff'; // cor azul para diferenciar
+  container.style.border = '2px solid #ff6b00';  // borda laranja
   container.style.borderRadius = '8px';
   container.style.padding = '20px';
   container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
@@ -170,7 +169,7 @@ export function mostrarBebidas() {
 
   const titulo = document.createElement('h2');
   titulo.textContent = 'Receitas de Bebidas';
-  titulo.style.color = '#007bff';
+  titulo.style.color = '#ff6b00'; // título laranja
   titulo.style.textAlign = 'center';
   container.appendChild(titulo);
 
@@ -182,14 +181,14 @@ export function mostrarBebidas() {
     bebidaDiv.style.alignItems = 'center';
     bebidaDiv.style.lineHeight = '1.2';
     bebidaDiv.style.padding = '8px 12px';
-    bebidaDiv.style.border = '1.5px solid #007bff';
+    bebidaDiv.style.border = '1.5px solid #ff6b00'; // borda laranja
     bebidaDiv.style.borderRadius = '8px';
     bebidaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
     bebidaDiv.style.cursor = 'pointer';
 
     bebidaDiv.addEventListener('mouseenter', () => {
       bebidaDiv.style.transform = 'translateY(-5px)';
-      bebidaDiv.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.4)';
+      bebidaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)'; // sombra laranja
     });
     bebidaDiv.addEventListener('mouseleave', () => {
       bebidaDiv.style.transform = 'translateY(0)';
@@ -204,7 +203,7 @@ export function mostrarBebidas() {
     btnDetalhes.textContent = 'Receita';
     btnDetalhes.style.marginLeft = '10px';
     btnDetalhes.style.cursor = 'pointer';
-    btnDetalhes.style.backgroundColor = '#007bff';
+    btnDetalhes.style.backgroundColor = '#ff6b00'; // botão laranja
     btnDetalhes.style.color = '#fff';
     btnDetalhes.style.border = 'none';
     btnDetalhes.style.borderRadius = '4px';
@@ -212,10 +211,10 @@ export function mostrarBebidas() {
     btnDetalhes.style.transition = 'background-color 0.3s ease';
 
     btnDetalhes.addEventListener('mouseenter', () => {
-      btnDetalhes.style.backgroundColor = '#004085';
+      btnDetalhes.style.backgroundColor = '#8b0000'; // vinho escuro
     });
     btnDetalhes.addEventListener('mouseleave', () => {
-      btnDetalhes.style.backgroundColor = '#007bff';
+      btnDetalhes.style.backgroundColor = '#ff6b00';
     });
 
     btnDetalhes.addEventListener('click', () => {
@@ -231,7 +230,7 @@ export function mostrarBebidas() {
   btnFechar.style.marginTop = '20px';
   btnFechar.style.width = '100%';
   btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#004085';
+  btnFechar.style.backgroundColor = '#8b0000'; // vinho escuro
   btnFechar.style.color = '#fff';
   btnFechar.style.border = 'none';
   btnFechar.style.borderRadius = '5px';
@@ -245,6 +244,109 @@ export function mostrarBebidas() {
   container.appendChild(btnFechar);
 
   document.body.appendChild(container);
+}
+
+
+
+
+// Detalhes da receita de bebida
+function criarModalDetalhesBebidas(bebida) {
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
+
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
+
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★';
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold';
+  modal.appendChild(estrelas);
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = bebida.titulo;
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
+  titulo.style.textAlign = 'center';
+  modal.appendChild(titulo);
+
+  const img = document.createElement('img');
+  img.src = bebida.imagem;
+  img.alt = bebida.titulo;
+  img.style.width = '100%';
+  img.style.borderRadius = '8px';
+  img.style.marginBottom = '20px';
+  modal.appendChild(img);
+
+  const ingredientesTitulo = document.createElement('h3');
+  ingredientesTitulo.textContent = 'Ingredientes:';
+  ingredientesTitulo.style.color = '#ff6b00';
+  modal.appendChild(ingredientesTitulo);
+
+  const listaIngredientes = document.createElement('ul');
+  for (const ingrediente of bebida.ingredientes) {
+    const li = document.createElement('li');
+    li.textContent = ingrediente;
+    listaIngredientes.appendChild(li);
+  }
+  modal.appendChild(listaIngredientes);
+
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de Preparo:';
+  preparoTitulo.style.color = '#ff6b00';
+  preparoTitulo.style.marginTop = '20px';
+  modal.appendChild(preparoTitulo);
+
+  const listaPreparo = document.createElement('ol');
+  for (const passo of bebida.preparo) {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    listaPreparo.appendChild(li);
+  }
+  modal.appendChild(listaPreparo);
+
+  const btnFecharModal = document.createElement('button');
+  btnFecharModal.textContent = 'Fechar';
+  btnFecharModal.style.marginTop = '20px';
+  btnFecharModal.style.padding = '10px 20px';
+  btnFecharModal.style.backgroundColor = '#8b0000';
+  btnFecharModal.style.color = '#fff';
+  btnFecharModal.style.border = 'none';
+  btnFecharModal.style.borderRadius = '5px';
+  btnFecharModal.style.cursor = 'pointer';
+  btnFecharModal.style.display = 'block';
+  btnFecharModal.style.marginLeft = 'auto';
+  btnFecharModal.style.marginRight = 'auto';
+
+  btnFecharModal.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  modal.appendChild(btnFecharModal);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
 }
 
 

@@ -184,3 +184,111 @@ export const receitasSaladas = {
     ]
   }
 };
+
+
+// Função principal para exibir a lista de saladas
+export function mostrarSaladas() {
+  // Remove interface antiga
+  const containerAntigo = document.getElementById('saladas-container');
+  if (containerAntigo) containerAntigo.remove();
+
+  const container = document.createElement('div');
+  container.id = 'saladas-container';
+  container.style.position = 'fixed';
+  container.style.top = '50px';
+  container.style.right = '20px'; 
+  container.style.left = 'auto';
+  container.style.transform = 'none';
+  container.style.width = '500px';
+  container.style.maxHeight = '70vh';
+  container.style.overflowY = 'auto';
+  container.style.backgroundColor = '#fff';
+  container.style.border = '2px solid #ff6b00';
+  container.style.borderRadius = '8px';
+  container.style.padding = '20px';
+  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+  container.style.zIndex = '10000';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = 'Receitas de Saladas';
+  titulo.style.color = '#ff6b00';
+  titulo.style.textAlign = 'center';
+  container.appendChild(titulo);
+
+  for (const chave in receitasSaladas) {
+    if (receitasSaladas.hasOwnProperty(chave)) {
+      const salada = receitasSaladas[chave];
+
+      const saladaDiv = document.createElement('div');
+      saladaDiv.style.marginBottom = '15px';
+      saladaDiv.style.display = 'flex';
+      saladaDiv.style.justifyContent = 'space-between';
+      saladaDiv.style.alignItems = 'center';
+      saladaDiv.style.lineHeight = '1.2';
+      saladaDiv.style.padding = '8px 12px';
+      saladaDiv.style.border = '1.5px solid #ff6b00';
+      saladaDiv.style.borderRadius = '8px';
+      saladaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+      saladaDiv.style.cursor = 'pointer';
+
+      saladaDiv.addEventListener('mouseenter', () => {
+        saladaDiv.style.transform = 'translateY(-5px)';
+        saladaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
+      });
+      saladaDiv.addEventListener('mouseleave', () => {
+        saladaDiv.style.transform = 'translateY(0)';
+        saladaDiv.style.boxShadow = 'none';
+      });
+
+      const nomeSalada = document.createElement('strong');
+      nomeSalada.textContent = salada.titulo;
+      nomeSalada.style.display = 'inline-block';
+      nomeSalada.style.verticalAlign = 'middle';
+      saladaDiv.appendChild(nomeSalada);
+
+      const btnDetalhes = document.createElement('button');
+      btnDetalhes.textContent = 'Receita';
+      btnDetalhes.style.marginLeft = '10px';
+      btnDetalhes.style.cursor = 'pointer';
+      btnDetalhes.style.backgroundColor = '#ff6b00';
+      btnDetalhes.style.color = '#fff';
+      btnDetalhes.style.border = 'none';
+      btnDetalhes.style.borderRadius = '4px';
+      btnDetalhes.style.padding = '6px 12px';
+      btnDetalhes.style.transition = 'background-color 0.3s ease';
+
+      btnDetalhes.addEventListener('mouseenter', () => {
+        btnDetalhes.style.backgroundColor = '#8b0000';
+      });
+      btnDetalhes.addEventListener('mouseleave', () => {
+        btnDetalhes.style.backgroundColor = '#ff6b00';
+      });
+
+      btnDetalhes.addEventListener('click', () => {
+        criarModalDetalhesSaladas(salada);
+      });
+
+      saladaDiv.appendChild(btnDetalhes);
+      container.appendChild(saladaDiv);
+    }
+  }
+
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '15px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '4px';
+  btnFechar.style.fontWeight = 'bold';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
+  document.body.appendChild(container);
+}

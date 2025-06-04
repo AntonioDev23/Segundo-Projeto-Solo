@@ -109,6 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
             saladasModule.mostrarSaladas();
           }
 
+          if (cat.nome === 'Sobremesas') {
+            const sobremesasModule = await import('../js2/sobremesas.js');
+            sobremesasModule.mostrarSobremesas();
+          }
+
+
 
 
 

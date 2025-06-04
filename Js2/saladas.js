@@ -414,3 +414,6 @@ function criarModalDetalhesSaladas(salada) {
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
+
+
+

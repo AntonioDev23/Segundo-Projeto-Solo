@@ -119,6 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
             lanchesModule.mostrarLanches();
           }
 
+          if (cat.nome === 'Bebidas') {
+            const bebidasModule = await import('../js2/bebidas.js');
+            bebidasModule.mostrarBebidas();
+          }
+
+
 
 
 

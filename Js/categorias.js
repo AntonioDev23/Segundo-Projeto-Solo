@@ -104,6 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
             carnesModule.mostrarCarnes();
           }
 
+          if (cat.nome === 'Saladas') {
+            const saladasModule = await import('../js2/saladas.js');
+            saladasModule.mostrarSaladas();
+          }
+
+
 
 
           

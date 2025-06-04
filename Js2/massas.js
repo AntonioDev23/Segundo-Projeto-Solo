@@ -354,7 +354,7 @@ export function mostrarMassas() {
   document.body.appendChild(container);
 }
 
-
+// Detalhes da receita
 function criarModalDetalhesMassas(massa) {
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();

@@ -80,7 +80,6 @@ receitasCarnes.fileMignon = {
     '200ml de vinho Madeira',
     '200ml de caldo de carne',
     'Sal e pimenta-do-reino a gosto',
-    'Salsinha picada para decorar'
   ],
   preparo: [
     'Tempere os medalhões com sal e pimenta.',
@@ -90,7 +89,6 @@ receitasCarnes.fileMignon = {
     'Adicione o vinho Madeira e deixe reduzir pela metade.',
     'Junte o caldo de carne e cozinhe até o molho engrossar.',
     'Volte os medalhões para a frigideira e aqueça no molho por alguns minutos.',
-    'Finalize com salsinha picada e sirva.'
   ]
 };
 

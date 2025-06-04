@@ -155,90 +155,103 @@ export const lanches = [
 ];
 
 
-// Função para mostrar os lanches
-export function mostrarLanches() {
-  // Remove container antigo, se houver
-  const containerAntigo = document.getElementById('lanches-container');
-  if (containerAntigo) containerAntigo.remove();
 
-  const container = document.createElement('div');
-  container.id = 'lanches-container';
-  container.style.position = 'fixed';
-  container.style.top = '50px';
-  container.style.right = '20px';
-  container.style.width = '500px';
-  container.style.maxHeight = '70vh';
-  container.style.overflowY = 'auto';
-  container.style.backgroundColor = '#fff';
-  container.style.border = '2px solid #ff6b00';
-  container.style.borderRadius = '8px';
-  container.style.padding = '20px';
-  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
-  container.style.zIndex = '10000';
 
+// Detalhes da receita de lanche
+function criarModalDetalhesLanches(lanche) {
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
+
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
+
+  // Estrelas (padrão)
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★';
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold';
+  modal.appendChild(estrelas);
+
+  // Título do lanche
   const titulo = document.createElement('h2');
-  titulo.textContent = 'Receitas de Lanches';
-  titulo.style.color = '#ff6b00';
+  titulo.textContent = lanche.titulo;
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
   titulo.style.textAlign = 'center';
-  container.appendChild(titulo);
+  modal.appendChild(titulo);
 
-  for (const chave in receitasLanches) {
-    if (receitasLanches.hasOwnProperty(chave)) {
-      const lanche = receitasLanches[chave];
-
-      const lancheDiv = document.createElement('div');
-      lancheDiv.style.marginBottom = '15px';
-      lancheDiv.style.display = 'flex';
-      lancheDiv.style.justifyContent = 'space-between';
-      lancheDiv.style.alignItems = 'center';
-      lancheDiv.style.lineHeight = '1.2';
-      lancheDiv.style.padding = '8px 12px';
-      lancheDiv.style.border = '1.5px solid #ff6b00';
-      lancheDiv.style.borderRadius = '8px';
-      lancheDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
-      lancheDiv.style.cursor = 'pointer';
-
-      lancheDiv.addEventListener('mouseenter', () => {
-        lancheDiv.style.transform = 'translateY(-5px)';
-        lancheDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
-      });
-      lancheDiv.addEventListener('mouseleave', () => {
-        lancheDiv.style.transform = 'translateY(0)';
-        lancheDiv.style.boxShadow = 'none';
-      });
-
-      const nomeLanche = document.createElement('strong');
-      nomeLanche.textContent = lanche.titulo;
-      lancheDiv.appendChild(nomeLanche);
-
-      const btnDetalhes = document.createElement('button');
-      btnDetalhes.textContent = 'Receita';
-      btnDetalhes.style.marginLeft = '10px';
-      btnDetalhes.style.cursor = 'pointer';
-      btnDetalhes.style.backgroundColor = '#ff6b00';
-      btnDetalhes.style.color = '#fff';
-      btnDetalhes.style.border = 'none';
-      btnDetalhes.style.borderRadius = '4px';
-      btnDetalhes.style.padding = '6px 12px';
-      btnDetalhes.style.transition = 'background-color 0.3s ease';
-
-      btnDetalhes.addEventListener('mouseenter', () => {
-        btnDetalhes.style.backgroundColor = '#8b0000';
-      });
-      btnDetalhes.addEventListener('mouseleave', () => {
-        btnDetalhes.style.backgroundColor = '#ff6b00';
-      });
-
-      btnDetalhes.addEventListener('click', () => {
-        criarModalDetalhesLanches(lanche);
-      });
-
-      lancheDiv.appendChild(btnDetalhes);
-      container.appendChild(lancheDiv);
-    }
+  // Imagem do lanche (se existir)
+  if (lanche.imagem) {
+    const img = document.createElement('img');
+    img.src = lanche.imagem;
+    img.alt = lanche.titulo;
+    img.style.display = 'block';
+    img.style.margin = '0 auto 20px';
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '8px';
+    modal.appendChild(img);
   }
 
-  // Botão para fechar o container de lanches
+  // Título "Receita"
+  const receitaTitulo = document.createElement('h3');
+  receitaTitulo.textContent = 'Receita';
+  receitaTitulo.style.color = '#8b0000';
+  receitaTitulo.style.marginBottom = '10px';
+  receitaTitulo.style.textAlign = 'center';
+  modal.appendChild(receitaTitulo);
+
+  // Lista de ingredientes
+  const ingredientes = document.createElement('ul');
+  ingredientes.style.marginBottom = '20px';
+  ingredientes.style.paddingLeft = '20px';
+  lanche.ingredientes.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ingredientes.appendChild(li);
+  });
+  modal.appendChild(ingredientes);
+
+  // Título "Modo de preparo"
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de preparo';
+  preparoTitulo.style.color = '#8b0000';
+  preparoTitulo.style.marginBottom = '10px';
+  preparoTitulo.style.textAlign = 'center';
+  modal.appendChild(preparoTitulo);
+
+  // Lista de preparo
+  const preparo = document.createElement('ol');
+  preparo.style.paddingLeft = '20px';
+  lanche.preparo.forEach(passo => {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    preparo.appendChild(li);
+  });
+  modal.appendChild(preparo);
+
+  // Botão fechar
   const btnFechar = document.createElement('button');
   btnFechar.textContent = 'Fechar';
   btnFechar.style.marginTop = '20px';
@@ -252,12 +265,10 @@ export function mostrarLanches() {
   btnFechar.style.cursor = 'pointer';
 
   btnFechar.addEventListener('click', () => {
-    container.remove();
+    overlay.remove();
   });
 
-  container.appendChild(btnFechar);
-
-  document.body.appendChild(container);
+  modal.appendChild(btnFechar);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
 }
-
-

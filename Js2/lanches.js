@@ -153,3 +153,111 @@ export const lanches = [
     ]
   }
 ];
+
+
+// Função para mostrar os lanches
+export function mostrarLanches() {
+  // Remove container antigo, se houver
+  const containerAntigo = document.getElementById('lanches-container');
+  if (containerAntigo) containerAntigo.remove();
+
+  const container = document.createElement('div');
+  container.id = 'lanches-container';
+  container.style.position = 'fixed';
+  container.style.top = '50px';
+  container.style.right = '20px';
+  container.style.width = '500px';
+  container.style.maxHeight = '70vh';
+  container.style.overflowY = 'auto';
+  container.style.backgroundColor = '#fff';
+  container.style.border = '2px solid #ff6b00';
+  container.style.borderRadius = '8px';
+  container.style.padding = '20px';
+  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+  container.style.zIndex = '10000';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = 'Receitas de Lanches';
+  titulo.style.color = '#ff6b00';
+  titulo.style.textAlign = 'center';
+  container.appendChild(titulo);
+
+  for (const chave in receitasLanches) {
+    if (receitasLanches.hasOwnProperty(chave)) {
+      const lanche = receitasLanches[chave];
+
+      const lancheDiv = document.createElement('div');
+      lancheDiv.style.marginBottom = '15px';
+      lancheDiv.style.display = 'flex';
+      lancheDiv.style.justifyContent = 'space-between';
+      lancheDiv.style.alignItems = 'center';
+      lancheDiv.style.lineHeight = '1.2';
+      lancheDiv.style.padding = '8px 12px';
+      lancheDiv.style.border = '1.5px solid #ff6b00';
+      lancheDiv.style.borderRadius = '8px';
+      lancheDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+      lancheDiv.style.cursor = 'pointer';
+
+      lancheDiv.addEventListener('mouseenter', () => {
+        lancheDiv.style.transform = 'translateY(-5px)';
+        lancheDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
+      });
+      lancheDiv.addEventListener('mouseleave', () => {
+        lancheDiv.style.transform = 'translateY(0)';
+        lancheDiv.style.boxShadow = 'none';
+      });
+
+      const nomeLanche = document.createElement('strong');
+      nomeLanche.textContent = lanche.titulo;
+      lancheDiv.appendChild(nomeLanche);
+
+      const btnDetalhes = document.createElement('button');
+      btnDetalhes.textContent = 'Receita';
+      btnDetalhes.style.marginLeft = '10px';
+      btnDetalhes.style.cursor = 'pointer';
+      btnDetalhes.style.backgroundColor = '#ff6b00';
+      btnDetalhes.style.color = '#fff';
+      btnDetalhes.style.border = 'none';
+      btnDetalhes.style.borderRadius = '4px';
+      btnDetalhes.style.padding = '6px 12px';
+      btnDetalhes.style.transition = 'background-color 0.3s ease';
+
+      btnDetalhes.addEventListener('mouseenter', () => {
+        btnDetalhes.style.backgroundColor = '#8b0000';
+      });
+      btnDetalhes.addEventListener('mouseleave', () => {
+        btnDetalhes.style.backgroundColor = '#ff6b00';
+      });
+
+      btnDetalhes.addEventListener('click', () => {
+        criarModalDetalhesLanches(lanche);
+      });
+
+      lancheDiv.appendChild(btnDetalhes);
+      container.appendChild(lancheDiv);
+    }
+  }
+
+  // Botão para fechar o container de lanches
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '5px';
+  btnFechar.style.fontWeight = 'bold';
+  btnFechar.style.cursor = 'pointer';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
+
+  document.body.appendChild(container);
+}
+
+

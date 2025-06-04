@@ -170,7 +170,7 @@ const receitasSobremesas = {
   }
 };
 
-// Função para mostrar as sobremesas (mesmo estilo das saladas)
+// Função para mostrar as sobremesas 
 export function mostrarSobremesas() {
   // Remove container antigo, se houver
   const containerAntigo = document.getElementById('sobremesas-container');

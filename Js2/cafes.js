@@ -155,110 +155,166 @@ export const cafeDaManha = [
   }
 ];
 
+// Lista de cafés
+function abrirModalListaCafes(listaCafes) {
+  const modalAntigo = document.getElementById('modal-cafes');
+  if (modalAntigo) modalAntigo.remove();
 
-export function mostrarCafes() {
-  // Remove modal antigo se existir
-  const containerAntigo = document.getElementById('cafes-container');
-  if (containerAntigo) containerAntigo.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-cafes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
 
-  // Cria container principal
-  const container = document.createElement('div');
-  container.id = 'cafes-container';
-  container.style.position = 'fixed';
-  container.style.top = '50px';
-  container.style.right = '20px';
-  container.style.width = '500px';
-  container.style.maxHeight = '70vh';
-  container.style.overflowY = 'auto';
-  container.style.backgroundColor = '#fff';
-  container.style.border = '2px solid #6f4e37';  // borda marrom café
-  container.style.borderRadius = '8px';
-  container.style.padding = '20px';
-  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
-  container.style.zIndex = '10000';
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '400px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
 
-  // Título
   const titulo = document.createElement('h2');
-  titulo.textContent = 'Receitas de Cafés';
-  titulo.style.color = '#6f4e37'; // título marrom café
+  titulo.textContent = 'Cafés da Manhã';
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
   titulo.style.textAlign = 'center';
-  container.appendChild(titulo);
+  modal.appendChild(titulo);
 
-  // Para cada café na lista
-  for (const cafe of cafes) {
-    const cafeDiv = document.createElement('div');
-    cafeDiv.style.marginBottom = '15px';
-    cafeDiv.style.display = 'flex';
-    cafeDiv.style.justifyContent = 'space-between';
-    cafeDiv.style.alignItems = 'center';
-    cafeDiv.style.lineHeight = '1.2';
-    cafeDiv.style.padding = '8px 12px';
-    cafeDiv.style.border = '1.5px solid #6f4e37'; // borda marrom café
-    cafeDiv.style.borderRadius = '8px';
-    cafeDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
-    cafeDiv.style.cursor = 'pointer';
+  const lista = document.createElement('ul');
+  lista.style.listStyle = 'none';
+  lista.style.padding = '0';
 
-    cafeDiv.addEventListener('mouseenter', () => {
-      cafeDiv.style.transform = 'translateY(-5px)';
-      cafeDiv.style.boxShadow = '0 4px 12px rgba(111, 78, 55, 0.4)'; // sombra marrom café
+  listaCafes.forEach(cafe => {
+    const item = document.createElement('li');
+    item.textContent = cafe.titulo;
+    item.style.padding = '10px';
+    item.style.cursor = 'pointer';
+    item.style.borderBottom = '1px solid #ccc';
+    item.addEventListener('click', () => {
+      overlay.remove(); // Fecha o modal de lista
+      criarModalDetalhesCafe(cafe); // Abre o modal com os detalhes
     });
-    cafeDiv.addEventListener('mouseleave', () => {
-      cafeDiv.style.transform = 'translateY(0)';
-      cafeDiv.style.boxShadow = 'none';
-    });
-
-    const nomeCafe = document.createElement('strong');
-    nomeCafe.textContent = cafe.titulo;
-    cafeDiv.appendChild(nomeCafe);
-
-    const btnDetalhes = document.createElement('button');
-    btnDetalhes.textContent = 'Receita';
-    btnDetalhes.style.marginLeft = '10px';
-    btnDetalhes.style.cursor = 'pointer';
-    btnDetalhes.style.backgroundColor = '#6f4e37'; // botão marrom café
-    btnDetalhes.style.color = '#fff';
-    btnDetalhes.style.border = 'none';
-    btnDetalhes.style.borderRadius = '4px';
-    btnDetalhes.style.padding = '6px 12px';
-    btnDetalhes.style.transition = 'background-color 0.3s ease';
-
-    btnDetalhes.addEventListener('mouseenter', () => {
-      btnDetalhes.style.backgroundColor = '#3e2f1c'; // marrom escuro
-    });
-    btnDetalhes.addEventListener('mouseleave', () => {
-      btnDetalhes.style.backgroundColor = '#6f4e37';
-    });
-
-    btnDetalhes.addEventListener('click', () => {
-      criarModalDetalhesCafes(cafe);
-    });
-
-    cafeDiv.appendChild(btnDetalhes);
-    container.appendChild(cafeDiv);
-  }
-
-  // Botão fechar
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '20px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#3e2f1c'; // marrom escuro
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '5px';
-  btnFechar.style.fontWeight = 'bold';
-  btnFechar.style.cursor = 'pointer';
-
-  btnFechar.addEventListener('click', () => {
-    container.remove();
+    lista.appendChild(item);
   });
 
-  container.appendChild(btnFechar);
+  modal.appendChild(lista);
 
-  // Adiciona no body
-  document.body.appendChild(container);
+  const botaoFechar = document.createElement('button');
+  botaoFechar.textContent = 'Fechar';
+  botaoFechar.style.marginTop = '20px';
+  botaoFechar.style.padding = '10px 20px';
+  botaoFechar.style.backgroundColor = '#8b0000';
+  botaoFechar.style.color = '#fff';
+  botaoFechar.style.border = 'none';
+  botaoFechar.style.borderRadius = '5px';
+  botaoFechar.style.cursor = 'pointer';
+  botaoFechar.style.display = 'block';
+  botaoFechar.style.marginLeft = 'auto';
+  botaoFechar.style.marginRight = 'auto';
+  botaoFechar.addEventListener('click', () => overlay.remove());
+
+  modal.appendChild(botaoFechar);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
 }
 
 
+// Detalhes da receita de cafés
+function criarModalDetalhesCafe(cafe) {
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
 
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
+
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = cafe.titulo;
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
+  titulo.style.textAlign = 'center';
+  modal.appendChild(titulo);
+
+  const img = document.createElement('img');
+  img.src = cafe.imagem;
+  img.alt = cafe.titulo;
+  img.style.width = '100%';
+  img.style.borderRadius = '8px';
+  img.style.marginBottom = '20px';
+  modal.appendChild(img);
+
+  const ingredientesTitulo = document.createElement('h3');
+  ingredientesTitulo.textContent = 'Ingredientes:';
+  ingredientesTitulo.style.color = '#ff6b00';
+  modal.appendChild(ingredientesTitulo);
+
+  const listaIngredientes = document.createElement('ul');
+  for (const ingrediente of cafe.ingredientes) {
+    const li = document.createElement('li');
+    li.textContent = ingrediente;
+    listaIngredientes.appendChild(li);
+  }
+  modal.appendChild(listaIngredientes);
+
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de Preparo:';
+  preparoTitulo.style.color = '#ff6b00';
+  preparoTitulo.style.marginTop = '20px';
+  modal.appendChild(preparoTitulo);
+
+  const listaPreparo = document.createElement('ol');
+  for (const passo of cafe.preparo) {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    listaPreparo.appendChild(li);
+  }
+  modal.appendChild(listaPreparo);
+
+  const btnFecharModal = document.createElement('button');
+  btnFecharModal.textContent = 'Fechar';
+  btnFecharModal.style.marginTop = '20px';
+  btnFecharModal.style.padding = '10px 20px';
+  btnFecharModal.style.backgroundColor = '#8b0000';
+  btnFecharModal.style.color = '#fff';
+  btnFecharModal.style.border = 'none';
+  btnFecharModal.style.borderRadius = '5px';
+  btnFecharModal.style.cursor = 'pointer';
+  btnFecharModal.style.display = 'block';
+  btnFecharModal.style.marginLeft = 'auto';
+  btnFecharModal.style.marginRight = 'auto';
+
+  btnFecharModal.addEventListener('click', () => overlay.remove());
+
+  modal.appendChild(btnFecharModal);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}

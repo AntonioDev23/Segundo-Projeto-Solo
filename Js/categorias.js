@@ -114,6 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
             sobremesasModule.mostrarSobremesas();
           }
 
+          if (cat.nome === 'Lanches') {
+            const lanchesModule = await import('../js2/lanches.js');
+            lanchesModule.mostrarLanches();
+          }
+
+
 
 
 

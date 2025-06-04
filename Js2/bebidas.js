@@ -148,3 +148,103 @@ export const bebidas = [
 ];
 
 
+// Função para mostrar as bebidas
+export function mostrarBebidas() {
+  const containerAntigo = document.getElementById('bebidas-container');
+  if (containerAntigo) containerAntigo.remove();
+
+  const container = document.createElement('div');
+  container.id = 'bebidas-container';
+  container.style.position = 'fixed';
+  container.style.top = '50px';
+  container.style.right = '20px';
+  container.style.width = '500px';
+  container.style.maxHeight = '70vh';
+  container.style.overflowY = 'auto';
+  container.style.backgroundColor = '#fff';
+  container.style.border = '2px solid #007bff'; // cor azul para diferenciar
+  container.style.borderRadius = '8px';
+  container.style.padding = '20px';
+  container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+  container.style.zIndex = '10000';
+
+  const titulo = document.createElement('h2');
+  titulo.textContent = 'Receitas de Bebidas';
+  titulo.style.color = '#007bff';
+  titulo.style.textAlign = 'center';
+  container.appendChild(titulo);
+
+  for (const bebida of bebidas) {
+    const bebidaDiv = document.createElement('div');
+    bebidaDiv.style.marginBottom = '15px';
+    bebidaDiv.style.display = 'flex';
+    bebidaDiv.style.justifyContent = 'space-between';
+    bebidaDiv.style.alignItems = 'center';
+    bebidaDiv.style.lineHeight = '1.2';
+    bebidaDiv.style.padding = '8px 12px';
+    bebidaDiv.style.border = '1.5px solid #007bff';
+    bebidaDiv.style.borderRadius = '8px';
+    bebidaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+    bebidaDiv.style.cursor = 'pointer';
+
+    bebidaDiv.addEventListener('mouseenter', () => {
+      bebidaDiv.style.transform = 'translateY(-5px)';
+      bebidaDiv.style.boxShadow = '0 4px 12px rgba(0, 123, 255, 0.4)';
+    });
+    bebidaDiv.addEventListener('mouseleave', () => {
+      bebidaDiv.style.transform = 'translateY(0)';
+      bebidaDiv.style.boxShadow = 'none';
+    });
+
+    const nomeBebida = document.createElement('strong');
+    nomeBebida.textContent = bebida.titulo;
+    bebidaDiv.appendChild(nomeBebida);
+
+    const btnDetalhes = document.createElement('button');
+    btnDetalhes.textContent = 'Receita';
+    btnDetalhes.style.marginLeft = '10px';
+    btnDetalhes.style.cursor = 'pointer';
+    btnDetalhes.style.backgroundColor = '#007bff';
+    btnDetalhes.style.color = '#fff';
+    btnDetalhes.style.border = 'none';
+    btnDetalhes.style.borderRadius = '4px';
+    btnDetalhes.style.padding = '6px 12px';
+    btnDetalhes.style.transition = 'background-color 0.3s ease';
+
+    btnDetalhes.addEventListener('mouseenter', () => {
+      btnDetalhes.style.backgroundColor = '#004085';
+    });
+    btnDetalhes.addEventListener('mouseleave', () => {
+      btnDetalhes.style.backgroundColor = '#007bff';
+    });
+
+    btnDetalhes.addEventListener('click', () => {
+      criarModalDetalhesBebidas(bebida);
+    });
+
+    bebidaDiv.appendChild(btnDetalhes);
+    container.appendChild(bebidaDiv);
+  }
+
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.backgroundColor = '#004085';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '5px';
+  btnFechar.style.fontWeight = 'bold';
+  btnFechar.style.cursor = 'pointer';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
+
+  document.body.appendChild(container);
+}
+
+

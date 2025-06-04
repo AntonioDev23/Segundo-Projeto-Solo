@@ -99,6 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
             massasModule.mostrarMassas();
           }
 
+          if (cat.nome === 'Carnes') {
+            const carnesModule = await import('../js2/carnes.js');
+            carnesModule.mostrarCarnes();
+          }
+
 
 
           

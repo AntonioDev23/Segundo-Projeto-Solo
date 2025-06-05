@@ -124,10 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
             bebidasModule.mostrarBebidas();
           }
 
-          if (cat.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === 'cafes') {
+          if (cat.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === 'cafe da manha') {
             const { mostrarCafes } = await import('../js2/cafes.js');
             mostrarCafes();
           }
+
 
 
           

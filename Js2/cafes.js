@@ -75,7 +75,7 @@ export const cafes = [
   },
   {
     titulo: 'Cuscuz ',
-    imagem: '',
+    imagem: '../imagens/Cuscuz.webp',
     ingredientes: [
       '2 xícaras de flocos de milho para cuscuz',
       '1 cenoura ralada',

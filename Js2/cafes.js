@@ -1,4 +1,4 @@
-export const cafeDaManha = [
+export const cafes = [
   {
     titulo: 'Pão na Chapa',
     imagem: 'https://www.receiteria.com.br/wp-content/uploads/pao-na-chapa-730x548.jpeg',
@@ -182,7 +182,7 @@ export function mostrarCafes() {
   titulo.style.textAlign = 'center';
   container.appendChild(titulo);
 
-  for (const cafe of cafeDaManha) {
+  for (const cafe of cafes) {
     const cafeDiv = document.createElement('div');
     cafeDiv.style.marginBottom = '15px';
     cafeDiv.style.display = 'flex';

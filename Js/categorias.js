@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           if (cat.nome === 'Cafés') {
-            const cafesModule = await import('../js2/cafes.js');
-             cafesModule.mostrarCafes();
+            const { mostrarCafes } = await import('../js2/cafes.js');
+            mostrarCafes(); 
           }
 
           

@@ -182,7 +182,7 @@ export function mostrarCafes() {
   titulo.style.textAlign = 'center';
   container.appendChild(titulo);
 
-  for (const cafe of cafes) {
+  for (const cafe of cafeDaManha) {
     const cafeDiv = document.createElement('div');
     cafeDiv.style.marginBottom = '15px';
     cafeDiv.style.display = 'flex';

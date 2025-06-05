@@ -74,7 +74,7 @@ export const cafes = [
     ]
   },
   {
-    titulo: 'Cuscuz Nordestino',
+    titulo: 'Cuscuz ',
     imagem: '',
     ingredientes: [
       '1 xícara de farinha de milho para cuscuz',

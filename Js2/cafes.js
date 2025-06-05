@@ -1,7 +1,7 @@
 export const cafes = [
   {
     titulo: 'Pão na Chapa',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/pao-na-chapa-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '2 fatias de pão francês',
       'Manteiga a gosto',
@@ -15,7 +15,7 @@ export const cafes = [
   },
   {
     titulo: 'Tapioca com Queijo',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/tapioca-recheada-com-queijo-e-presunto-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '3 colheres de sopa de goma de tapioca',
       '1 fatia de queijo mussarela',
@@ -29,7 +29,7 @@ export const cafes = [
   },
   {
     titulo: 'Ovos Mexidos',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/ovos-mexidos-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '3 ovos',
       'Sal e pimenta a gosto',
@@ -44,7 +44,7 @@ export const cafes = [
   },
   {
     titulo: 'Vitamina de Frutas',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/vitamina-de-frutas-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '1 banana',
       '1/2 mamão',
@@ -58,7 +58,7 @@ export const cafes = [
   },
   {
     titulo: 'Panqueca Simples',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/panqueca-simples-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '1 xícara de farinha de trigo',
       '1 ovo',
@@ -75,7 +75,7 @@ export const cafes = [
   },
   {
     titulo: 'Cuscuz Nordestino',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/cuscuz-nordestino-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '1 xícara de farinha de milho para cuscuz',
       'Sal a gosto',
@@ -89,7 +89,7 @@ export const cafes = [
   },
   {
     titulo: 'Mingau de Aveia',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/mingau-de-aveia-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '1/2 xícara de aveia em flocos',
       '2 xícaras de leite',
@@ -103,7 +103,7 @@ export const cafes = [
   },
   {
     titulo: 'Pão de Queijo',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/pao-de-queijo-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '500g de polvilho doce',
       '200ml de leite',
@@ -121,7 +121,7 @@ export const cafes = [
   },
   {
     titulo: 'Café com Leite',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/cafe-com-leite-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '1 xícara de café forte',
       '1 xícara de leite quente',
@@ -136,7 +136,7 @@ export const cafes = [
   },
   {
     titulo: 'Bolo de Fubá',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/bolo-de-fuba-730x548.jpeg',
+    imagem: '',
     ingredientes: [
       '1 xícara de fubá',
       '1 xícara de farinha de trigo',

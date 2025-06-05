@@ -157,7 +157,7 @@ export const cafeDaManha = [
 
 
 // Lista de cafés da manhã
-export function mostrarCafeDaManha() {
+export function mostrarCafes() {
   const containerAntigo = document.getElementById('cafe-container');
   if (containerAntigo) containerAntigo.remove();
 

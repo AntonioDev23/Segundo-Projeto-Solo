@@ -77,14 +77,21 @@ export const cafes = [
     titulo: 'Cuscuz ',
     imagem: '',
     ingredientes: [
-      '1 xícara de farinha de milho para cuscuz',
-      'Sal a gosto',
-      'Manteiga para servir'
+      '2 xícaras de flocos de milho para cuscuz',
+      '1 cenoura ralada',
+      '1/2 xícara de ervilha',
+      '1/2 xícara de milho verde',
+      '1 tomate picado',
+      '1 cebola picada',
+      'Cheiro-verde a gosto',
+      'Sal e azeite a gosto'
     ],
     preparo: [
-      'Coloque a farinha em uma cuscuzeira.',
-      'Cozinhe no vapor por 15 minutos.',
-      'Sirva quente com manteiga.'
+      'Hidrate os flocos de milho conforme instruções da embalagem.',
+      'Misture os legumes, tomate, cebola e cheiro-verde.',
+      'Tempere com sal e azeite.',
+      'Coloque na cuscuzeira e cozinhe por 20 minutos.',
+      'Sirva quente.'
     ]
   },
   {

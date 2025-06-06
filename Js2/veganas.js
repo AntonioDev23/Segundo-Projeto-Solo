@@ -317,50 +317,51 @@ export function criarModalDetalhesReceita(receita) {
   const titulo = document.createElement('h3');
   titulo.textContent = receita.titulo;
   titulo.style.color = '#ff6b00';
-  titulo.style.marginBottom = '15px';
+  titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
   // Ingredientes
   const ingredientesTitulo = document.createElement('h4');
-  ingredientesTitulo.textContent = 'Ingredientes:';
+  ingredientesTitulo.textContent = 'Ingredientes';
+  ingredientesTitulo.style.marginTop = '20px';
   modal.appendChild(ingredientesTitulo);
 
   const listaIngredientes = document.createElement('ul');
-  receita.ingredientes.forEach(item => {
+  for (const ingrediente of receita.ingredientes) {
     const li = document.createElement('li');
-    li.textContent = item;
+    li.textContent = ingrediente;
     listaIngredientes.appendChild(li);
-  });
+  }
   modal.appendChild(listaIngredientes);
 
   // Preparo
   const preparoTitulo = document.createElement('h4');
-  preparoTitulo.textContent = 'Modo de Preparo:';
+  preparoTitulo.textContent = 'Modo de Preparo';
   preparoTitulo.style.marginTop = '20px';
   modal.appendChild(preparoTitulo);
 
   const listaPreparo = document.createElement('ol');
-  receita.preparo.forEach(passos => {
+  for (const passo of receita.preparo) {
     const li = document.createElement('li');
-    li.textContent = passos;
+    li.textContent = passo;
     listaPreparo.appendChild(li);
-  });
+  }
   modal.appendChild(listaPreparo);
 
-  // Botão fechar modal
+  // Botão fechar
   const btnFecharModal = document.createElement('button');
   btnFecharModal.textContent = 'Fechar';
-  btnFecharModal.style.marginTop = '20px';
+  btnFecharModal.style.marginTop = '25px';
   btnFecharModal.style.padding = '10px 20px';
-  btnFecharModal.style.cursor = 'pointer';
   btnFecharModal.style.backgroundColor = '#8b0000';
   btnFecharModal.style.color = '#fff';
   btnFecharModal.style.border = 'none';
-  btnFecharModal.style.borderRadius = '4px';
+  btnFecharModal.style.borderRadius = '5px';
+  btnFecharModal.style.cursor = 'pointer';
   btnFecharModal.style.fontWeight = 'bold';
-  btnFecharModal.style.position = 'absolute';
-  btnFecharModal.style.bottom = '20px';
-  btnFecharModal.style.right = '20px';
+  btnFecharModal.style.display = 'block';
+  btnFecharModal.style.marginLeft = 'auto';
+  btnFecharModal.style.marginRight = 'auto';
 
   btnFecharModal.addEventListener('click', () => {
     overlay.remove();

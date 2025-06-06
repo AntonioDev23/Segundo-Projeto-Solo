@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarCafes();
           }
 
-          if (cat.nome === 'Veganas') {
+          if (cat.nome === 'Vegano') {
             const veganasModule = await import('../js2/veganas.js');
             veganasModule.mostrarVeganas();
           }
@@ -138,9 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-          
-          
         });
 
         menu.appendChild(item);

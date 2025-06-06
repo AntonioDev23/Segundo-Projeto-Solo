@@ -317,57 +317,67 @@ export function criarModalDetalhesReceita(receita) {
   const titulo = document.createElement('h3');
   titulo.textContent = receita.titulo;
   titulo.style.color = '#ff6b00';
-  titulo.style.textAlign = 'center';
+  titulo.style.marginBottom = '15px';
   modal.appendChild(titulo);
+
+  // Imagem (se houver)
+  if (receita.imagem) {
+    const img = document.createElement('img');
+    img.src = receita.imagem;
+    img.alt = receita.titulo;
+    img.style.width = '100%';
+    img.style.borderRadius = '8px';
+    img.style.marginBottom = '15px';
+    modal.appendChild(img);
+  }
 
   // Ingredientes
   const ingredientesTitulo = document.createElement('h4');
   ingredientesTitulo.textContent = 'Ingredientes';
-  ingredientesTitulo.style.marginTop = '20px';
+  ingredientesTitulo.style.marginBottom = '8px';
   modal.appendChild(ingredientesTitulo);
 
-  const listaIngredientes = document.createElement('ul');
+  const ulIngredientes = document.createElement('ul');
   for (const ingrediente of receita.ingredientes) {
     const li = document.createElement('li');
     li.textContent = ingrediente;
-    listaIngredientes.appendChild(li);
+    ulIngredientes.appendChild(li);
   }
-  modal.appendChild(listaIngredientes);
+  ulIngredientes.style.marginBottom = '20px';
+  modal.appendChild(ulIngredientes);
 
   // Preparo
   const preparoTitulo = document.createElement('h4');
   preparoTitulo.textContent = 'Modo de Preparo';
-  preparoTitulo.style.marginTop = '20px';
+  preparoTitulo.style.marginBottom = '8px';
   modal.appendChild(preparoTitulo);
 
-  const listaPreparo = document.createElement('ol');
+  const olPreparo = document.createElement('ol');
   for (const passo of receita.preparo) {
     const li = document.createElement('li');
     li.textContent = passo;
-    listaPreparo.appendChild(li);
+    olPreparo.appendChild(li);
   }
-  modal.appendChild(listaPreparo);
+  modal.appendChild(olPreparo);
 
-  // Botão fechar
-  const btnFecharModal = document.createElement('button');
-  btnFecharModal.textContent = 'Fechar';
-  btnFecharModal.style.marginTop = '25px';
-  btnFecharModal.style.padding = '10px 20px';
-  btnFecharModal.style.backgroundColor = '#8b0000';
-  btnFecharModal.style.color = '#fff';
-  btnFecharModal.style.border = 'none';
-  btnFecharModal.style.borderRadius = '5px';
-  btnFecharModal.style.cursor = 'pointer';
-  btnFecharModal.style.fontWeight = 'bold';
-  btnFecharModal.style.display = 'block';
-  btnFecharModal.style.marginLeft = 'auto';
-  btnFecharModal.style.marginRight = 'auto';
+  // Botão fechar modal
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '4px';
+  btnFechar.style.fontWeight = 'bold';
 
-  btnFecharModal.addEventListener('click', () => {
+  btnFechar.addEventListener('click', () => {
     overlay.remove();
   });
 
-  modal.appendChild(btnFecharModal);
+  modal.appendChild(btnFechar);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }

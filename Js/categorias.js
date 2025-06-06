@@ -130,6 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarCafes();
           }
 
+          if (cat.nome === 'Veganas') {
+            const veganasModule = await import('../js2/veganas.js');
+            veganasModule.mostrarVeganas();
+          }
+
 
 
 

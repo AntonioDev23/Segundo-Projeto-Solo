@@ -194,7 +194,6 @@ export function mostrarVeganas() {
   container.style.top = '50px';
   container.style.right = '20px'; 
   container.style.left = 'auto';
-  container.style.transform = 'none';
   container.style.width = '500px';
   container.style.maxHeight = '70vh';
   container.style.overflowY = 'auto';
@@ -211,62 +210,58 @@ export function mostrarVeganas() {
   titulo.style.textAlign = 'center';
   container.appendChild(titulo);
 
-  for (const chave in receitasVeganas) {
-    if (receitasVeganas.hasOwnProperty(chave)) {
-      const receita = receitasVeganas[chave];
+  for (const receita of receitasVeganas) {
+    const receitaDiv = document.createElement('div');
+    receitaDiv.style.marginBottom = '15px';
+    receitaDiv.style.display = 'flex';
+    receitaDiv.style.justifyContent = 'space-between';
+    receitaDiv.style.alignItems = 'center';
+    receitaDiv.style.lineHeight = '1.2';
+    receitaDiv.style.padding = '8px 12px';
+    receitaDiv.style.border = '1.5px solid #ff6b00';
+    receitaDiv.style.borderRadius = '8px';
+    receitaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+    receitaDiv.style.cursor = 'pointer';
 
-      const receitaDiv = document.createElement('div');
-      receitaDiv.style.marginBottom = '15px';
-      receitaDiv.style.display = 'flex';
-      receitaDiv.style.justifyContent = 'space-between';
-      receitaDiv.style.alignItems = 'center';
-      receitaDiv.style.lineHeight = '1.2';
-      receitaDiv.style.padding = '8px 12px';
-      receitaDiv.style.border = '1.5px solid #ff6b00';
-      receitaDiv.style.borderRadius = '8px';
-      receitaDiv.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
-      receitaDiv.style.cursor = 'pointer';
+    receitaDiv.addEventListener('mouseenter', () => {
+      receitaDiv.style.transform = 'translateY(-5px)';
+      receitaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
+    });
+    receitaDiv.addEventListener('mouseleave', () => {
+      receitaDiv.style.transform = 'translateY(0)';
+      receitaDiv.style.boxShadow = 'none';
+    });
 
-      receitaDiv.addEventListener('mouseenter', () => {
-        receitaDiv.style.transform = 'translateY(-5px)';
-        receitaDiv.style.boxShadow = '0 4px 12px rgba(255, 107, 0, 0.4)';
-      });
-      receitaDiv.addEventListener('mouseleave', () => {
-        receitaDiv.style.transform = 'translateY(0)';
-        receitaDiv.style.boxShadow = 'none';
-      });
+    const nomeReceita = document.createElement('strong');
+    nomeReceita.textContent = receita.titulo;
+    nomeReceita.style.display = 'inline-block';
+    nomeReceita.style.verticalAlign = 'middle';
+    receitaDiv.appendChild(nomeReceita);
 
-      const nomeReceita = document.createElement('strong');
-      nomeReceita.textContent = receita.titulo;
-      nomeReceita.style.display = 'inline-block';
-      nomeReceita.style.verticalAlign = 'middle';
-      receitaDiv.appendChild(nomeReceita);
+    const btnDetalhes = document.createElement('button');
+    btnDetalhes.textContent = 'Receita';
+    btnDetalhes.style.marginLeft = '10px';
+    btnDetalhes.style.cursor = 'pointer';
+    btnDetalhes.style.backgroundColor = '#ff6b00';
+    btnDetalhes.style.color = '#fff';
+    btnDetalhes.style.border = 'none';
+    btnDetalhes.style.borderRadius = '4px';
+    btnDetalhes.style.padding = '6px 12px';
+    btnDetalhes.style.transition = 'background-color 0.3s ease';
 
-      const btnDetalhes = document.createElement('button');
-      btnDetalhes.textContent = 'Receita';
-      btnDetalhes.style.marginLeft = '10px';
-      btnDetalhes.style.cursor = 'pointer';
+    btnDetalhes.addEventListener('mouseenter', () => {
+      btnDetalhes.style.backgroundColor = '#8b0000';
+    });
+    btnDetalhes.addEventListener('mouseleave', () => {
       btnDetalhes.style.backgroundColor = '#ff6b00';
-      btnDetalhes.style.color = '#fff';
-      btnDetalhes.style.border = 'none';
-      btnDetalhes.style.borderRadius = '4px';
-      btnDetalhes.style.padding = '6px 12px';
-      btnDetalhes.style.transition = 'background-color 0.3s ease';
+    });
 
-      btnDetalhes.addEventListener('mouseenter', () => {
-        btnDetalhes.style.backgroundColor = '#8b0000';
-      });
-      btnDetalhes.addEventListener('mouseleave', () => {
-        btnDetalhes.style.backgroundColor = '#ff6b00';
-      });
+    btnDetalhes.addEventListener('click', () => {
+      criarModalDetalhesReceita(receita);
+    });
 
-      btnDetalhes.addEventListener('click', () => {
-        criarModalDetalhesReceita(receita);
-      });
-
-      receitaDiv.appendChild(btnDetalhes);
-      container.appendChild(receitaDiv);
-    }
+    receitaDiv.appendChild(btnDetalhes);
+    container.appendChild(receitaDiv);
   }
 
   const btnFechar = document.createElement('button');
@@ -290,8 +285,8 @@ export function mostrarVeganas() {
 }
 
 
-// Detalhes da receita vegana
-export function criarModalDetalhesVeganas(vegana) {
+// Função para criar modal com detalhes da receita
+export function criarModalDetalhesReceita(receita) {
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
 
@@ -318,91 +313,60 @@ export function criarModalDetalhesVeganas(vegana) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
-  // Estrelas (você pode ajustar vegana.estrelas depois)
-  const estrelas = document.createElement('div');
-  estrelas.textContent = '★★★★★';
-  estrelas.style.textAlign = 'center';
-  estrelas.style.fontSize = '40px';
-  estrelas.style.marginBottom = '15px';
-  estrelas.style.color = 'gold'; 
-  modal.appendChild(estrelas);
-
-  // Título centralizado
-  const titulo = document.createElement('h2');
-  titulo.textContent = vegana.titulo;
-  titulo.style.color = '#8b0000';
-  titulo.style.marginBottom = '20px';
-  titulo.style.textAlign = 'center';
+  // Título
+  const titulo = document.createElement('h3');
+  titulo.textContent = receita.titulo;
+  titulo.style.color = '#ff6b00';
+  titulo.style.marginBottom = '15px';
   modal.appendChild(titulo);
 
-  // Imagem da receita vegana (se tiver a propriedade 'imagem')
-  if (vegana.imagem) {
-    const img = document.createElement('img');
-    img.src = vegana.imagem;
-    img.alt = vegana.titulo;
-    img.style.display = 'block';
-    img.style.margin = '0 auto 20px';
-    img.style.maxWidth = '100%';
-    img.style.borderRadius = '8px';
-    modal.appendChild(img);
-  }
+  // Ingredientes
+  const ingredientesTitulo = document.createElement('h4');
+  ingredientesTitulo.textContent = 'Ingredientes:';
+  modal.appendChild(ingredientesTitulo);
 
-  // Título "Receita"
-  const receitaTitulo = document.createElement('h3');
-  receitaTitulo.textContent = 'Receita';
-  receitaTitulo.style.color = '#8b0000';
-  receitaTitulo.style.marginBottom = '10px';
-  receitaTitulo.style.textAlign = 'center';
-  modal.appendChild(receitaTitulo);
-
-  // Lista de ingredientes
-  const ingredientes = document.createElement('ul');
-  ingredientes.style.marginBottom = '20px';
-  ingredientes.style.paddingLeft = '20px';
-  vegana.ingredientes.forEach(item => {
+  const listaIngredientes = document.createElement('ul');
+  receita.ingredientes.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item;
-    ingredientes.appendChild(li);
+    listaIngredientes.appendChild(li);
   });
-  modal.appendChild(ingredientes);
+  modal.appendChild(listaIngredientes);
 
-  // Título "Modo de preparo"
-  const preparoTitulo = document.createElement('h3');
-  preparoTitulo.textContent = 'Modo de preparo';
-  preparoTitulo.style.color = '#8b0000';
-  preparoTitulo.style.marginBottom = '10px';
-  preparoTitulo.style.textAlign = 'center';
+  // Preparo
+  const preparoTitulo = document.createElement('h4');
+  preparoTitulo.textContent = 'Modo de Preparo:';
+  preparoTitulo.style.marginTop = '20px';
   modal.appendChild(preparoTitulo);
 
-  // Lista de preparo
-  const preparo = document.createElement('ol');
-  preparo.style.paddingLeft = '20px';
-  vegana.preparo.forEach(passo => {
+  const listaPreparo = document.createElement('ol');
+  receita.preparo.forEach(passos => {
     const li = document.createElement('li');
-    li.textContent = passo;
-    preparo.appendChild(li);
+    li.textContent = passos;
+    listaPreparo.appendChild(li);
   });
-  modal.appendChild(preparo);
+  modal.appendChild(listaPreparo);
 
-  // Botão fechar
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '20px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#8b0000';
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '5px';
-  btnFechar.style.fontWeight = 'bold';
-  btnFechar.style.cursor = 'pointer';
+  // Botão fechar modal
+  const btnFecharModal = document.createElement('button');
+  btnFecharModal.textContent = 'Fechar';
+  btnFecharModal.style.marginTop = '20px';
+  btnFecharModal.style.padding = '10px 20px';
+  btnFecharModal.style.cursor = 'pointer';
+  btnFecharModal.style.backgroundColor = '#8b0000';
+  btnFecharModal.style.color = '#fff';
+  btnFecharModal.style.border = 'none';
+  btnFecharModal.style.borderRadius = '4px';
+  btnFecharModal.style.fontWeight = 'bold';
+  btnFecharModal.style.position = 'absolute';
+  btnFecharModal.style.bottom = '20px';
+  btnFecharModal.style.right = '20px';
 
-  btnFechar.addEventListener('click', () => {
+  btnFecharModal.addEventListener('click', () => {
     overlay.remove();
   });
 
-  modal.appendChild(btnFechar);
+  modal.appendChild(btnFecharModal);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
-

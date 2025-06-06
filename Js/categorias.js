@@ -134,10 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const veganasModule = await import('../js2/veganas.js');
             veganasModule.mostrarVeganas();
           }
-
-
-
-
+          
+          if (cat.nome === 'Fitness') {
+            const fitnessModule = await import('../js2/fitness.js');
+            fitnessModule.mostrarFitness();
+          }
+          
         });
 
         menu.appendChild(item);

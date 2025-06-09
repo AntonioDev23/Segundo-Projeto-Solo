@@ -349,10 +349,12 @@ export function criarModalDetalhesReceita(receita) {
   modal.appendChild(ulIngredientes);
 
   // Preparo
-  const preparoTitulo = document.createElement('h4');
-  preparoTitulo.textContent = 'Modo de Preparo';
-  preparoTitulo.style.marginBottom = '8px';
-  modal.appendChild(preparoTitulo);
+    const preparoTitulo = document.createElement('h4');
+    preparoTitulo.textContent = 'Modo de Preparo';
+    preparoTitulo.style.color = '#8b0000'; // adicionando a cor
+    preparoTitulo.style.marginBottom = '8px';
+    modal.appendChild(preparoTitulo);
+
 
   const olPreparo = document.createElement('ol');
   for (const passo of receita.preparo) {

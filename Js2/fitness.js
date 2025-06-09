@@ -249,13 +249,37 @@ export function mostrarFitness() {
     container.appendChild(itemDiv);
   }
 
+  // Botão Fechar
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = 'Fechar';
+  btnFechar.style.marginTop = '20px';
+  btnFechar.style.width = '100%';
+  btnFechar.style.padding = '10px';
+  btnFechar.style.backgroundColor = '#8b0000';
+  btnFechar.style.color = '#fff';
+  btnFechar.style.border = 'none';
+  btnFechar.style.borderRadius = '5px';
+  btnFechar.style.fontWeight = 'bold';
+  btnFechar.style.cursor = 'pointer';
+
+  btnFechar.addEventListener('click', () => {
+    container.remove();
+  });
+
+  container.appendChild(btnFechar);
+
   document.body.appendChild(container);
 }
 
-// Função para abrir o modal com detalhes da receita
+
 function abrirModal(receita) {
-  // Criar o overlay do modal
+  // Remove modal antigo, se existir
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
+
+  // Overlay do modal
   const modalOverlay = document.createElement('div');
+  modalOverlay.id = 'modal-detalhes';
   modalOverlay.style.position = 'fixed';
   modalOverlay.style.top = '0';
   modalOverlay.style.left = '0';
@@ -267,16 +291,17 @@ function abrirModal(receita) {
   modalOverlay.style.alignItems = 'center';
   modalOverlay.style.zIndex = '11000';
 
-  // Criar o conteúdo do modal
+  // Conteúdo do modal
   const modalContent = document.createElement('div');
   modalContent.style.backgroundColor = '#fff';
-  modalContent.style.padding = '20px';
+  modalContent.style.padding = '30px';
   modalContent.style.borderRadius = '10px';
   modalContent.style.width = '90%';
   modalContent.style.maxWidth = '600px';
   modalContent.style.maxHeight = '80vh';
   modalContent.style.overflowY = 'auto';
   modalContent.style.position = 'relative';
+  modalContent.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
 
   // Botão fechar
   const btnFechar = document.createElement('button');
@@ -293,6 +318,7 @@ function abrirModal(receita) {
     modalOverlay.remove();
   });
 
+  // Fechar clicando fora do modal
   modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) modalOverlay.remove();
   });
@@ -300,32 +326,40 @@ function abrirModal(receita) {
   // Título da receita
   const titulo = document.createElement('h2');
   titulo.textContent = receita.titulo;
-  titulo.style.color = '#ff6b00';
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '15px';
+  titulo.style.textAlign = 'center';
 
   // Descrição
   const descricao = document.createElement('p');
   descricao.textContent = receita.descricao;
   descricao.style.fontStyle = 'italic';
-  descricao.style.marginBottom = '15px';
+  descricao.style.marginBottom = '20px';
+  descricao.style.textAlign = 'center';
 
   // Ingredientes
   const ingredientesTitulo = document.createElement('h3');
-  ingredientesTitulo.textContent = 'Ingredientes:';
-  ingredientesTitulo.style.marginTop = '0';
+  ingredientesTitulo.textContent = 'Ingredientes';
+  ingredientesTitulo.style.color = '#8b0000';
+  ingredientesTitulo.style.marginBottom = '10px';
 
   const ulIngredientes = document.createElement('ul');
+  ulIngredientes.style.paddingLeft = '20px';
+  ulIngredientes.style.marginBottom = '20px';
   for (const ingrediente of receita.ingredientes) {
     const li = document.createElement('li');
     li.textContent = ingrediente;
     ulIngredientes.appendChild(li);
   }
 
-  // Preparo
+  // Modo de preparo
   const preparoTitulo = document.createElement('h3');
-  preparoTitulo.textContent = 'Modo de Preparo:';
-  preparoTitulo.style.marginTop = '15px';
+  preparoTitulo.textContent = 'Modo de Preparo';
+  preparoTitulo.style.color = '#8b0000';
+  preparoTitulo.style.marginBottom = '10px';
 
   const ulPreparo = document.createElement('ol');
+  ulPreparo.style.paddingLeft = '20px';
   if (receita.preparo && receita.preparo.length > 0) {
     for (const passo of receita.preparo) {
       const li = document.createElement('li');
@@ -338,7 +372,7 @@ function abrirModal(receita) {
     ulPreparo.appendChild(li);
   }
 
-  // Montar modal
+  // Monta modal
   modalContent.appendChild(btnFechar);
   modalContent.appendChild(titulo);
   modalContent.appendChild(descricao);

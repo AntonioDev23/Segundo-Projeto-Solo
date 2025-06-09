@@ -313,10 +313,20 @@ export function criarModalDetalhesReceita(receita) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
+  // Estrelas (padrão, ou ajuste depois)
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★';
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold';
+  modal.appendChild(estrelas);
+
   // Título
   const titulo = document.createElement('h3');
   titulo.textContent = receita.titulo;
   titulo.style.color = '#8b0000';
+  titulo.style.textAlign = 'center';
   titulo.style.marginBottom = '15px';
   modal.appendChild(titulo);
 
@@ -334,7 +344,8 @@ export function criarModalDetalhesReceita(receita) {
   // Ingredientes
     const ingredientesTitulo = document.createElement('h4');
     ingredientesTitulo.textContent = 'Ingredientes';
-    ingredientesTitulo.style.color = '#8b0000'; // CORRETO aqui
+    ingredientesTitulo.style.color = '#8b0000'; 
+    ingredientesTitulo.style.textAlign = 'center'; 
     ingredientesTitulo.style.marginBottom = '8px';
     modal.appendChild(ingredientesTitulo);
 
@@ -351,7 +362,8 @@ export function criarModalDetalhesReceita(receita) {
   // Preparo
     const preparoTitulo = document.createElement('h4');
     preparoTitulo.textContent = 'Modo de Preparo';
-    preparoTitulo.style.color = '#8b0000'; // adicionando a cor
+    preparoTitulo.style.color = '#8b0000'; 
+    preparoTitulo.style.textAlign = 'center';
     preparoTitulo.style.marginBottom = '8px';
     modal.appendChild(preparoTitulo);
 

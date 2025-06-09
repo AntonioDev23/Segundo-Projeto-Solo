@@ -316,7 +316,7 @@ export function criarModalDetalhesReceita(receita) {
   // Título
   const titulo = document.createElement('h3');
   titulo.textContent = receita.titulo;
-  titulo.style.color = '#ff6b00';
+  titulo.style.color = '#8b0000';
   titulo.style.marginBottom = '15px';
   modal.appendChild(titulo);
 
@@ -332,10 +332,12 @@ export function criarModalDetalhesReceita(receita) {
   }
 
   // Ingredientes
-  const ingredientesTitulo = document.createElement('h4');
-  ingredientesTitulo.textContent = 'Ingredientes';
-  ingredientesTitulo.style.marginBottom = '8px';
-  modal.appendChild(ingredientesTitulo);
+    const ingredientesTitulo = document.createElement('h4');
+    ingredientesTitulo.textContent = 'Ingredientes';
+    ingredientesTitulo.style.color = '#8b0000'; // CORRETO aqui
+    ingredientesTitulo.style.marginBottom = '8px';
+    modal.appendChild(ingredientesTitulo);
+
 
   const ulIngredientes = document.createElement('ul');
   for (const ingrediente of receita.ingredientes) {

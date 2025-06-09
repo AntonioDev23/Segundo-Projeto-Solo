@@ -1,7 +1,7 @@
 export const fitnessReceitas = [
   {
-    id: 1,
     titulo: "Omelete de Claras com Espinafre",
+    imagem: "",
     ingredientes: [
       "4 claras de ovo",
       "1 punhado de espinafre fresco",
@@ -13,12 +13,11 @@ export const fitnessReceitas = [
       "Aqueça o azeite e refogue o espinafre.",
       "Despeje as claras batidas na frigideira.",
       "Cozinhe até firmar e dobre a omelete ao meio."
-    ],
-    descricao: "Omelete leve e proteica, ideal para café da manhã ou lanche rápido."
+    ]
   },
   {
-    id: 2,
     titulo: "Salada de Quinoa com Legumes",
+    imagem: "",
     ingredientes: [
       "1 xícara de quinoa cozida",
       "Tomate-cereja",
@@ -31,12 +30,11 @@ export const fitnessReceitas = [
       "Misture todos os ingredientes em uma tigela.",
       "Tempere com suco de limão e sal a gosto.",
       "Sirva fresca."
-    ],
-    descricao: "Salada nutritiva, rica em fibras e proteínas vegetais."
+    ]
   },
   {
-    id: 3,
     titulo: "Peito de Frango Grelhado com Brócolis",
+    imagem: "",
     ingredientes: [
       "150g de peito de frango",
       "Brócolis cozido no vapor",
@@ -49,12 +47,11 @@ export const fitnessReceitas = [
       "Grelhe o frango até dourar.",
       "Cozinhe o brócolis no vapor.",
       "Sirva junto."
-    ],
-    descricao: "Refeição simples e rica em proteínas, perfeita para o almoço."
+    ]
   },
   {
-    id: 4,
     titulo: "Smoothie Verde Detox",
+    imagem: "",
     ingredientes: [
       "1 maçã verde",
       "1 punhado de couve",
@@ -65,12 +62,11 @@ export const fitnessReceitas = [
     preparo: [
       "Bata todos os ingredientes no liquidificador.",
       "Sirva gelado."
-    ],
-    descricao: "Bebida refrescante e detox, excelente para dar energia."
+    ]
   },
   {
-    id: 5,
     titulo: "Panqueca de Aveia e Banana",
+    imagem: "",
     ingredientes: [
       "1 banana madura",
       "2 colheres de sopa de aveia",
@@ -81,12 +77,11 @@ export const fitnessReceitas = [
       "Amasse a banana e misture com os outros ingredientes.",
       "Despeje porções na frigideira quente.",
       "Cozinhe até dourar dos dois lados."
-    ],
-    descricao: "Panqueca saudável, rica em fibras e sem farinha refinada."
+    ]
   },
   {
-    id: 6,
     titulo: "Iogurte Natural com Granola e Mel",
+    imagem: "",
     ingredientes: [
       "1 pote de iogurte natural desnatado",
       "2 colheres de sopa de granola",
@@ -96,12 +91,11 @@ export const fitnessReceitas = [
       "Coloque o iogurte em uma tigela.",
       "Adicione granola e mel por cima.",
       "Misture se desejar."
-    ],
-    descricao: "Lanche leve e nutritivo, ideal para o pré-treino."
+    ]
   },
   {
-    id: 7,
     titulo: "Wrap Integral com Atum e Abacate",
+    imagem: "",
     ingredientes: [
       "1 pão wrap integral",
       "100g de atum em água",
@@ -112,12 +106,11 @@ export const fitnessReceitas = [
     preparo: [
       "Recheie o pão wrap com atum, abacate, alface e tomate.",
       "Enrole o wrap e sirva."
-    ],
-    descricao: "Sanduíche saudável e prático para o dia a dia."
+    ]
   },
   {
-    id: 8,
     titulo: "Bolinho de Batata Doce e Aveia",
+    imagem: "",
     ingredientes: [
       "1 xícara de purê de batata doce",
       "3 colheres de sopa de aveia",
@@ -127,12 +120,11 @@ export const fitnessReceitas = [
     preparo: [
       "Misture todos os ingredientes.",
       "Modele bolinhos e asse por 25 minutos a 180°C."
-    ],
-    descricao: "Bolinho assado e nutritivo, ótimo para um lanche saudável."
+    ]
   },
   {
-    id: 9,
     titulo: "Salada de Grão-de-Bico com Atum",
+    imagem: "",
     ingredientes: [
       "1 xícara de grão-de-bico cozido",
       "100g de atum",
@@ -144,12 +136,11 @@ export const fitnessReceitas = [
       "Misture todos os ingredientes em uma tigela.",
       "Tempere com azeite e limão.",
       "Sirva fresca."
-    ],
-    descricao: "Salada rica em proteínas e fibras, ideal para manter a saciedade."
+    ]
   },
   {
-    id: 10,
     titulo: "Sopa de Legumes com Frango Desfiado",
+    imagem: "",
     ingredientes: [
       "Caldo de legumes",
       "Cenoura",
@@ -161,10 +152,10 @@ export const fitnessReceitas = [
       "Cozinhe os legumes no caldo.",
       "Adicione o frango desfiado.",
       "Tempere e sirva quente."
-    ],
-    descricao: "Refeição leve e reconfortante, ótima para o jantar."
+    ]
   }
 ];
+
 
 // Função principal para exibir a lista de comidas fitness
 export function mostrarFitness() {
@@ -189,6 +180,7 @@ export function mostrarFitness() {
   container.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
   container.style.zIndex = '10000';
 
+  
   const titulo = document.createElement('h2');
   titulo.textContent = 'Receitas Fitness';
   titulo.style.color = '#ff6b00';
@@ -272,6 +264,7 @@ export function mostrarFitness() {
 }
 
 
+// Lista de comida fit
 function abrirModal(receita) {
   // Remove modal antigo, se existir
   const modalAntigo = document.getElementById('modal-detalhes');
@@ -330,6 +323,14 @@ function abrirModal(receita) {
   titulo.style.marginBottom = '15px';
   titulo.style.textAlign = 'center';
 
+  // Estrelas
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★';
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold';
+
   // Descrição
   const descricao = document.createElement('p');
   descricao.textContent = receita.descricao;
@@ -341,6 +342,7 @@ function abrirModal(receita) {
   const ingredientesTitulo = document.createElement('h3');
   ingredientesTitulo.textContent = 'Ingredientes';
   ingredientesTitulo.style.color = '#8b0000';
+  ingredientesTitulo.style.textAlign = 'center'; 
   ingredientesTitulo.style.marginBottom = '10px';
 
   const ulIngredientes = document.createElement('ul');
@@ -355,6 +357,7 @@ function abrirModal(receita) {
   // Modo de preparo
   const preparoTitulo = document.createElement('h3');
   preparoTitulo.textContent = 'Modo de Preparo';
+  preparoTitulo.style.textAlign = 'center';
   preparoTitulo.style.color = '#8b0000';
   preparoTitulo.style.marginBottom = '10px';
 
@@ -375,6 +378,7 @@ function abrirModal(receita) {
   // Monta modal
   modalContent.appendChild(btnFechar);
   modalContent.appendChild(titulo);
+  modalContent.appendChild(estrelas);  
   modalContent.appendChild(descricao);
   modalContent.appendChild(ingredientesTitulo);
   modalContent.appendChild(ulIngredientes);

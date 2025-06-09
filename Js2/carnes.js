@@ -71,7 +71,7 @@ const receitasCarnes = {
 receitasCarnes.fileMignon = {
   titulo: 'Filé Mignon ao Molho Madeira',
   descricao: 'Medalhões de filé mignon com molho madeira, suculento e delicioso.',
-  imagem: 'imagens/file-mignon.jpg', 
+  imagem: 'imagens/file-mignon.png', 
   ingredientes: [
     '500g de filé mignon cortado em medalhões',
     '2 colheres de sopa de manteiga',
@@ -96,7 +96,7 @@ receitasCarnes.fileMignon = {
 receitasCarnes.picanhaGrelhada = {
   titulo: 'Picanha Grelhada',
   descricao: 'Picanha suculenta grelhada no ponto perfeito.',
-  imagem: 'imagens/picanha-grelhada.jpg',
+  imagem: 'imagens/picanha.png',
   ingredientes: [
     '1 peça de picanha (aprox. 1kg)',
     'Sal grosso a gosto',
@@ -112,7 +112,7 @@ receitasCarnes.picanhaGrelhada = {
 receitasCarnes.costelaBarbecue = {
   titulo: 'Costela ao Barbecue',
   descricao: 'Costela assada lentamente com molho barbecue caseiro.',
-  imagem: 'imagens/costela-barbecue.jpg',
+  imagem: 'imagens/costela.png',
   ingredientes: [
     '1 kg de costela bovina',
     'Sal e pimenta a gosto',
@@ -128,7 +128,7 @@ receitasCarnes.costelaBarbecue = {
 receitasCarnes.alcatraAcebolada = {
   titulo: 'Alcatra Acebolada',
   descricao: 'Alcatra fatiada com cebolas douradas e temperos simples.',
-  imagem: 'imagens/alcatra-acebolada.jpg',
+  imagem: 'imagens/alcatra.png',
   ingredientes: [
     '500g de alcatra em bifes finos',
     '2 cebolas grandes fatiadas',
@@ -146,7 +146,7 @@ receitasCarnes.alcatraAcebolada = {
 receitasCarnes.maminhaAssada = {
   titulo: 'Maminha Assada',
   descricao: 'Maminha suculenta assada com alho e ervas.',
-  imagem: 'imagens/maminha-assada.jpg',
+  imagem: 'imagens/maminha.png',
   ingredientes: [
     '1 peça de maminha (aprox. 1kg)',
     'Sal, pimenta e alho a gosto',
@@ -163,7 +163,7 @@ receitasCarnes.maminhaAssada = {
 receitasCarnes.cupimNaBrasa = {
   titulo: 'Cupim na Brasa',
   descricao: 'Cupim assado na brasa com tempero simples e sabor intenso.',
-  imagem: 'imagens/cupim-na-brasa.jpg',
+  imagem: 'imagens/cupim.png',
   ingredientes: [
     '1 kg de cupim',
     'Sal grosso a gosto',
@@ -180,7 +180,7 @@ receitasCarnes.cupimNaBrasa = {
 receitasCarnes.bifeAncho = {
   titulo: 'Bife de Ancho',
   descricao: 'Bife ancho grelhado com tempero simples para realçar sabor.',
-  imagem: 'imagens/bife-ancho.jpg',
+  imagem: 'imagens/ancho.png',
   ingredientes: [
     '2 bifes de ancho',
     'Sal grosso e pimenta do reino',
@@ -196,7 +196,7 @@ receitasCarnes.bifeAncho = {
 receitasCarnes.wagyu = {
   titulo: 'Bife Wagyu Grelhado',
   descricao: 'Corte nobre de wagyu grelhado no ponto certo, com sal e pimenta.',
-  imagem: 'imagens/wagyu.jpg', 
+  imagem: 'imagens/wagyu.png', 
   ingredientes: [
     '1 bife de wagyu (300g a 400g)',
     'Sal grosso a gosto',

@@ -2,7 +2,7 @@ export const receitasSaladas = {
   saladaFrutas: {
     titulo: 'Salada de Frutas Tropical',
     descricao: 'Mistura refrescante de frutas tropicais com um toque cítrico.',
-    imagem: 'imagens/salada-frutas.jpg',
+    imagem: 'imagens/Salada de frutas.png',
     ingredientes: [
       '1 manga cortada em cubos',
       '1 abacaxi cortado em cubos',
@@ -23,7 +23,7 @@ export const receitasSaladas = {
   saladaCaesar: {
     titulo: 'Salada Caesar',
     descricao: 'Clássica salada com alface, croutons e molho especial Caesar.',
-    imagem: 'imagens/salada-caesar.jpg',
+    imagem: 'imagens/caesar.png',
     ingredientes: [
       '1 pé de alface romana',
       '100g de croutons',
@@ -41,7 +41,7 @@ export const receitasSaladas = {
   saladaGrega: {
     titulo: 'Salada Grega',
     descricao: 'Salada fresca com tomates, pepino, cebola, azeitonas e queijo feta.',
-    imagem: 'imagens/salada-grega.jpg',
+    imagem: 'imagens/grega.png',
     ingredientes: [
       '2 tomates cortados em cubos',
       '1 pepino fatiado',
@@ -60,7 +60,7 @@ export const receitasSaladas = {
   saladaCaprese: {
     titulo: 'Salada Caprese',
     descricao: 'Salada italiana simples com tomate, mussarela e manjericão.',
-    imagem: 'imagens/salada-caprese.jpg',
+    imagem: 'imagens/caprese.png',
     ingredientes: [
       'Tomates fatiados',
       'Mussarela de búfala fatiada',

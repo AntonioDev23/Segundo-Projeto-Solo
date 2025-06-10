@@ -51,6 +51,7 @@ navLinks.forEach(link => {
       }
 
       carregarNovasReceitas();
+      
 
     } else {
       // Remover overlay blur se existir
@@ -291,4 +292,7 @@ function carregarNovasReceitas() {
     criarEstrelas(divEstrelas, receita.avaliacao, null, false);
   });
 }
+
+
+
 

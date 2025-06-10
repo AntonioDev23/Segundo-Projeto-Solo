@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       if (document.getElementById('login-overlay')) return;
       mostrarFormularioLogin();
-      if (fundo) fundo.classList.add('fundo-escurecido');
+      if (fundo) fundo.classList.add('fundo-escurecido');  // adiciona desfoque no fundo principal
     });
   });
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fechar-login').addEventListener('click', (e) => {
       e.preventDefault();
       overlay.remove();
-      if (fundo) fundo.classList.remove('fundo-escurecido');
+      if (fundo) fundo.classList.remove('fundo-escurecido'); // remove desfoque ao fechar
     });
 
     document.getElementById('cadastro-link').addEventListener('click', (e) => {
@@ -78,12 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fechar-login').addEventListener('click', (e) => {
       e.preventDefault();
       overlay.remove();
-      if (fundo) fundo.classList.remove('fundo-escurecido');
+      if (fundo) fundo.classList.remove('fundo-escurecido'); // remove desfoque ao fechar
     });
 
     document.getElementById('voltar-login').addEventListener('click', (e) => {
       e.preventDefault();
-      overlay.remove();
       mostrarFormularioLogin();
     });
   }

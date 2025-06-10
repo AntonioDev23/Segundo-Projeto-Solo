@@ -187,16 +187,8 @@
             </section>
         </section>
     </main>
-            <!-- Novas receitas vão ser inseridas aqui via JavaScript -->
-    <section id="nossas-receitas" style="display: none;">
-        <div class="container">
-            <h2 id="outras-receitas">Outras Receitas Deliciosas</h2>
-            <div class="recipe-grid" id="novas-receitas-grid">
-            </div>
-        </div>
-    </section>
 
-        <!-- Página de Receita Individual (inicialmente oculta) -->
+    <!-- Página de Receita principal (inicialmente oculta) -->
     <section id="pagina-receita" style="display: none;">
         <div class="container">
             <div id="avaliacao" class="avaliacao-estrelas"></div>
@@ -210,6 +202,27 @@
                 <ol id="preparo-receita"></ol>
         </div>
     </section>
+
+            <!-- Nossas receitas vão ser inseridas aqui via JavaScript -->
+    <section id="nossas-receitas" style="display: none;">
+        <div class="container">
+            <h2 id="outras-receitas">Outras Receitas Deliciosas</h2>
+            <div class="recipe-grid" id="novas-receitas-grid">
+            </div>
+        </div>
+    </section>
+
+    
+            <!-- Receitas individual de nossas receitas -->
+    <div id="modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescricao"></p>
+            <pre id="modalModoPreparo"></pre>
+        </div>
+        </div>
+
 
     <footer id="footer" class="footer">
   <div class="container footer-container">

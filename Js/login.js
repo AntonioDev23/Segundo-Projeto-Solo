@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   const loginBtns = document.querySelectorAll('.login-btn');
+  const fundo = document.querySelector('.fundo');
 
   loginBtns.forEach((loginBtn) => {
     loginBtn.addEventListener('click', (e) => {
       e.preventDefault();
       if (document.getElementById('login-overlay')) return;
       mostrarFormularioLogin();
-      document.body.classList.add('fundo-escurecido');  // adiciona desfoque
+      if (fundo) fundo.classList.add('fundo-escurecido');
     });
   });
 
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fechar-login').addEventListener('click', (e) => {
       e.preventDefault();
       overlay.remove();
-      document.body.classList.remove('fundo-escurecido'); // remove desfoque ao fechar
+      if (fundo) fundo.classList.remove('fundo-escurecido');
     });
 
     document.getElementById('cadastro-link').addEventListener('click', (e) => {
@@ -77,11 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fechar-login').addEventListener('click', (e) => {
       e.preventDefault();
       overlay.remove();
-      document.body.classList.remove('fundo-escurecido'); // remove desfoque ao fechar
+      if (fundo) fundo.classList.remove('fundo-escurecido');
     });
 
     document.getElementById('voltar-login').addEventListener('click', (e) => {
       e.preventDefault();
+      overlay.remove();
       mostrarFormularioLogin();
     });
   }

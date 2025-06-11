@@ -307,4 +307,119 @@ export function mostrarBolos() {
   document.body.appendChild(container);
 }
 
+ //Detalhes da receita e preparo
+function criarModalDetalhes(bolo) {
+  const modalAntigo = document.getElementById('modal-detalhes');
+  if (modalAntigo) modalAntigo.remove();
 
+  const overlay = document.createElement('div');
+  overlay.id = 'modal-detalhes';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100vw';
+  overlay.style.height = '100vh';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '20000';
+
+  const modal = document.createElement('div');
+  modal.style.backgroundColor = '#fff';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '10px';
+  modal.style.width = '500px';
+  modal.style.maxHeight = '80vh';
+  modal.style.overflowY = 'auto';
+  modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
+  modal.style.position = 'relative';
+
+  // Botão "X" para fechar no canto superior direito
+  const btnFechar = document.createElement('button');
+  btnFechar.innerHTML = '&times;';  // símbolo “×”
+  btnFechar.style.position = 'absolute';
+  btnFechar.style.top = '10px';
+  btnFechar.style.right = '10px';
+  btnFechar.style.background = 'transparent';
+  btnFechar.style.border = 'none';
+  btnFechar.style.fontSize = '24px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.color = '#8b0000';
+  btnFechar.style.fontWeight = 'bold';
+
+  btnFechar.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  modal.appendChild(btnFechar);
+
+  // Estrelas de avaliação
+  const estrelas = document.createElement('div');
+  estrelas.textContent = '★★★★★'; // Pode vir de bolo.estrelas futuramente
+  estrelas.style.textAlign = 'center';
+  estrelas.style.fontSize = '40px';
+  estrelas.style.marginBottom = '15px';
+  estrelas.style.color = 'gold'; 
+  modal.appendChild(estrelas);
+
+  // Título centralizado
+  const titulo = document.createElement('h2');
+  titulo.textContent = bolo.titulo;
+  titulo.style.color = '#8b0000';
+  titulo.style.marginBottom = '20px';
+  titulo.style.textAlign = 'center'; // centralizar
+  modal.appendChild(titulo);
+
+  // Imagem do bolo (caso tenha a propriedade 'imagem' no objeto bolo)
+  if (bolo.imagem) {
+    const img = document.createElement('img');
+    img.src = bolo.imagem;
+    img.alt = bolo.titulo;
+    img.style.display = 'block';
+    img.style.margin = '0 auto 20px'; // centralizar + espaçamento embaixo
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '8px';
+    modal.appendChild(img);
+  }
+
+  // Título "Receita" antes da lista de ingredientes
+  const receitaTitulo = document.createElement('h3');
+  receitaTitulo.textContent = 'Receita';
+  receitaTitulo.style.color = '#8b0000';          // cor pedida
+  receitaTitulo.style.marginBottom = '10px';
+  receitaTitulo.style.textAlign = 'center';       // centralizar
+  modal.appendChild(receitaTitulo);
+
+  // Lista de ingredientes
+  const ingredientes = document.createElement('ul');
+  ingredientes.style.marginBottom = '20px';
+  ingredientes.style.paddingLeft = '20px';
+  bolo.ingredientes.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    ingredientes.appendChild(li);
+  });
+  modal.appendChild(ingredientes);
+
+  // Título "Modo de preparo" antes da lista de preparo
+  const preparoTitulo = document.createElement('h3');
+  preparoTitulo.textContent = 'Modo de preparo';
+  preparoTitulo.style.color = '#8b0000';           
+  preparoTitulo.style.marginBottom = '10px';
+  preparoTitulo.style.textAlign = 'center';        
+  modal.appendChild(preparoTitulo);
+
+  // Lista de preparo
+  const preparo = document.createElement('ol');
+  preparo.style.paddingLeft = '20px';
+  bolo.preparo.forEach(passo => {
+    const li = document.createElement('li');
+    li.textContent = passo;
+    preparo.appendChild(li);
+  });
+  modal.appendChild(preparo);
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}

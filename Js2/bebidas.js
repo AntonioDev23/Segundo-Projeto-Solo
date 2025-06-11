@@ -329,30 +329,31 @@ function criarModalDetalhesBebidas(bebida) {
   modal.appendChild(listaPreparo);
 
   // Botão X para fechar no canto superior direito
-  const btnFecharModal = document.createElement('button');
-  btnFecharModal.innerHTML = '&times;';
-  btnFecharModal.style.position = 'absolute';
-  btnFecharModal.style.top = '10px';
-  btnFecharModal.style.right = '10px';
-  btnFecharModal.style.background = 'transparent';
-  btnFecharModal.style.border = 'none';
-  btnFecharModal.style.fontSize = '24px';
-  btnFecharModal.style.color = '#888';
-  btnFecharModal.style.cursor = 'pointer';
-  btnFecharModal.style.padding = '0';
-  btnFecharModal.style.lineHeight = '1';
-  btnFecharModal.style.fontWeight = 'bold';
+const btnFecharModal = document.createElement('button');
+btnFecharModal.innerHTML = '&times;';
+btnFecharModal.style.position = 'absolute';
+btnFecharModal.style.top = '10px';
+btnFecharModal.style.right = '10px';
+btnFecharModal.style.background = 'transparent';
+btnFecharModal.style.border = 'none';
+btnFecharModal.style.fontSize = '24px';
+btnFecharModal.style.color = '#8b0000';  // cor padrão igual nos outros modais
+btnFecharModal.style.cursor = 'pointer';
+btnFecharModal.style.padding = '0';
+btnFecharModal.style.lineHeight = '1';
+btnFecharModal.style.fontWeight = 'bold';
 
-  btnFecharModal.addEventListener('mouseenter', () => {
-    btnFecharModal.style.color = '#8b0000';
-  });
-  btnFecharModal.addEventListener('mouseleave', () => {
-    btnFecharModal.style.color = '#888';
-  });
+btnFecharModal.addEventListener('mouseenter', () => {
+  btnFecharModal.style.color = '#ff4500'; // cor mais viva no hover, por exemplo
+});
+btnFecharModal.addEventListener('mouseleave', () => {
+  btnFecharModal.style.color = '#8b0000';
+});
 
-  btnFecharModal.addEventListener('click', () => {
-    overlay.remove();
-  });
+btnFecharModal.addEventListener('click', () => {
+  overlay.remove();
+});
+
 
   modal.appendChild(btnFecharModal);
 

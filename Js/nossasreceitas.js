@@ -284,6 +284,8 @@ function carregarNovasReceitas() {
     modoPreparo: `1. Tempere o peixe com sal, limão e alho.\n2. Refogue cebola, pimentões e tomate em azeite de dendê.\n3. Coloque o peixe na panela, cubra com leite de coco e coentro.\n4. Cozinhe em fogo baixo até o peixe estar macio.\n5. Sirva com arroz branco e farinha de mandioca.`
   }
 ];
+
+
   
 
   const grid = document.getElementById('novas-receitas-grid');

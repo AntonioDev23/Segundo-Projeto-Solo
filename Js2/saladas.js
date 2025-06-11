@@ -327,9 +327,25 @@ function criarModalDetalhesSaladas(salada) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
-  // Estrelas (se tiver propriedade estrelas na salada, pode ajustar aqui)
+  // Botão "X" para fechar
+  const fecharX = document.createElement('span');
+  fecharX.innerHTML = '&times;';
+  fecharX.style.position = 'absolute';
+  fecharX.style.top = '10px';
+  fecharX.style.right = '15px';
+  fecharX.style.fontSize = '28px';
+  fecharX.style.cursor = 'pointer';
+  fecharX.style.color = '#8b0000';
+  fecharX.style.fontWeight = 'bold';
+
+  fecharX.addEventListener('click', () => {
+    overlay.remove();
+  });
+  modal.appendChild(fecharX);
+
+  // Estrelas
   const estrelas = document.createElement('div');
-  estrelas.textContent = '★★★★★';  // Pode personalizar depois com salada.estrelas
+  estrelas.textContent = '★★★★★';
   estrelas.style.textAlign = 'center';
   estrelas.style.fontSize = '40px';
   estrelas.style.marginBottom = '15px';
@@ -344,7 +360,7 @@ function criarModalDetalhesSaladas(salada) {
   titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
-  // Imagem da salada (se existir)
+  // Imagem da salada
   if (salada.imagem) {
     const img = document.createElement('img');
     img.src = salada.imagem;
@@ -393,27 +409,6 @@ function criarModalDetalhesSaladas(salada) {
   });
   modal.appendChild(preparo);
 
-  // Botão fechar
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '20px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#8b0000';
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '5px';
-  btnFechar.style.fontWeight = 'bold';
-  btnFechar.style.cursor = 'pointer';
-
-  btnFechar.addEventListener('click', () => {
-    overlay.remove();
-  });
-
-  modal.appendChild(btnFechar);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
-
-
-

@@ -384,7 +384,23 @@ function criarModalDetalhesMassas(massa) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
-  // Estrelas (pode ajustar depois para massa.estrelas)
+  // Botão "X" de fechar
+  const fecharX = document.createElement('span');
+  fecharX.innerHTML = '&times;';
+  fecharX.style.position = 'absolute';
+  fecharX.style.top = '10px';
+  fecharX.style.right = '15px';
+  fecharX.style.fontSize = '28px';
+  fecharX.style.cursor = 'pointer';
+  fecharX.style.color = '#8b0000';
+  fecharX.style.fontWeight = 'bold';
+
+  fecharX.addEventListener('click', () => {
+    overlay.remove();
+  });
+  modal.appendChild(fecharX);
+
+  // Estrelas
   const estrelas = document.createElement('div');
   estrelas.textContent = '★★★★★';
   estrelas.style.textAlign = 'center';
@@ -393,7 +409,7 @@ function criarModalDetalhesMassas(massa) {
   estrelas.style.color = 'gold'; 
   modal.appendChild(estrelas);
 
-  // Título centralizado
+  // Título
   const titulo = document.createElement('h2');
   titulo.textContent = massa.titulo;
   titulo.style.color = '#8b0000';
@@ -401,20 +417,19 @@ function criarModalDetalhesMassas(massa) {
   titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
-// Imagem da massa (caso tenha a propriedade 'imagem' no objeto massa)
-if (massa.imagem) {
-  const img = document.createElement('img');
-  img.src = massa.imagem;
-  img.alt = massa.titulo;
-  img.style.display = 'block';
-  img.style.margin = '0 auto 20px'; // centralizar + espaçamento embaixo
-  img.style.maxWidth = '100%';
-  img.style.borderRadius = '8px';
-  modal.appendChild(img);
-}
+  // Imagem
+  if (massa.imagem) {
+    const img = document.createElement('img');
+    img.src = massa.imagem;
+    img.alt = massa.titulo;
+    img.style.display = 'block';
+    img.style.margin = '0 auto 20px';
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '8px';
+    modal.appendChild(img);
+  }
 
-  
-  // Título "Receita"
+  // Receita
   const receitaTitulo = document.createElement('h3');
   receitaTitulo.textContent = 'Receita';
   receitaTitulo.style.color = '#8b0000';
@@ -422,7 +437,6 @@ if (massa.imagem) {
   receitaTitulo.style.textAlign = 'center';
   modal.appendChild(receitaTitulo);
 
-  // Lista de ingredientes
   const ingredientes = document.createElement('ul');
   ingredientes.style.marginBottom = '20px';
   ingredientes.style.paddingLeft = '20px';
@@ -433,7 +447,7 @@ if (massa.imagem) {
   });
   modal.appendChild(ingredientes);
 
-  // Título "Modo de preparo"
+  // Modo de preparo
   const preparoTitulo = document.createElement('h3');
   preparoTitulo.textContent = 'Modo de preparo';
   preparoTitulo.style.color = '#8b0000';
@@ -441,7 +455,6 @@ if (massa.imagem) {
   preparoTitulo.style.textAlign = 'center';
   modal.appendChild(preparoTitulo);
 
-  // Lista de preparo
   const preparo = document.createElement('ol');
   preparo.style.paddingLeft = '20px';
   massa.preparo.forEach(passo => {
@@ -451,29 +464,6 @@ if (massa.imagem) {
   });
   modal.appendChild(preparo);
 
-  // Botão fechar
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '20px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.backgroundColor = '#8b0000';
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '5px';
-  btnFechar.style.fontWeight = 'bold';
-  btnFechar.style.cursor = 'pointer';
-
-  btnFechar.addEventListener('click', () => {
-    overlay.remove();
-  });
-
-  modal.appendChild(btnFechar);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
-
-
-
-
-

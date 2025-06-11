@@ -78,7 +78,7 @@ export const receitasSaladas = {
   saladaRussa: {
     titulo: 'Salada Russa',
     descricao: 'Salada clássica com legumes, maionese e ervilhas.',
-    imagem: 'imagens/salada-russa.jpg',
+    imagem: 'imagens/salada-russa.png',
     ingredientes: [
       '2 batatas cozidas em cubos',
       '2 cenouras cozidas em cubos',
@@ -97,7 +97,7 @@ export const receitasSaladas = {
   saladaQuinoa: {
     titulo: 'Salada de Quinoa com Legumes',
     descricao: 'Salada nutritiva com quinoa, legumes frescos e molho cítrico.',
-    imagem: 'imagens/salada-quinoa.jpg',
+    imagem: 'imagens/salada-quinoa.png',
     ingredientes: [
       '1 xícara de quinoa cozida',
       '1 pepino picado',
@@ -117,7 +117,7 @@ export const receitasSaladas = {
   saladaCobb: {   
     titulo: 'Salada Cobb',
     descricao: 'Salada clássica americana com alface, frango grelhado, bacon, ovos, abacate e queijo azul.',
-    imagem: 'imagens/salada-cobb.jpg',
+    imagem: 'imagens/salada-cobb.png',
     ingredientes: [
       '2 xícaras de alface americana picada',
       '150g de peito de frango grelhado e fatiado',

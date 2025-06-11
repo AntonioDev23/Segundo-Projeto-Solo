@@ -1,5 +1,4 @@
 const navLinks = document.querySelectorAll('.nav-link');
-
 let overlayBlur = null;
 
 navLinks.forEach(link => {
@@ -25,7 +24,6 @@ navLinks.forEach(link => {
     const footer = document.querySelector('footer');
 
     if (targetId === 'nossas-receitas') {
-      // Criar overlay blur se não existir
       if (!overlayBlur) {
         overlayBlur = document.createElement('div');
         overlayBlur.style.position = 'fixed';
@@ -35,11 +33,10 @@ navLinks.forEach(link => {
         overlayBlur.style.height = '100%';
         overlayBlur.style.backdropFilter = 'blur(15px)';
         overlayBlur.style.zIndex = '1';
-        overlayBlur.style.pointerEvents = 'none'; // deixa click passar
+        overlayBlur.style.pointerEvents = 'none';
         document.body.appendChild(overlayBlur);
       }
 
-      // Colocar as receitas e footer acima do overlay
       if (receitas) {
         receitas.style.position = 'relative';
         receitas.style.zIndex = '2';
@@ -52,9 +49,7 @@ navLinks.forEach(link => {
 
       carregarNovasReceitas();
       
-
     } else {
-      // Remover overlay blur se existir
       if (overlayBlur) {
         overlayBlur.remove();
         overlayBlur = null;
@@ -98,8 +93,7 @@ function criarEstrelas(container, nota = 5, callback = null, interativo = false)
 
 function carregarNovasReceitas() {
   const novasReceitas = [
-  {
-    nome: 'Torta de Maçã',
+    { nome: 'Torta de Maçã',
     descricao: 'Uma sobremesa clássica, deliciosa e reconfortante.',
     imagem: 'imagens/Torta de maçã.png',
     link: '#',
@@ -264,11 +258,33 @@ function carregarNovasReceitas() {
 5. Sirva com arroz branco e farinha de mandioca.`
   }
 ];
-
+  
 
   const grid = document.getElementById('novas-receitas-grid');
   grid.innerHTML = '';
 
+  // Criar modal (estilo inline)
+  const modal = document.createElement('div');
+  modal.id = 'receita-modal';
+  modal.style.display = 'none';
+  modal.style.position = 'fixed';
+  modal.style.top = '0';
+  modal.style.left = '0';
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  modal.style.zIndex = '1000';
+  modal.style.overflow = 'auto';
+  document.body.appendChild(modal);
+
+  // Fechar modal ao clicar no "X" ou fora
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('fechar-modal')) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // Renderizar cards de receita
   novasReceitas.forEach(receita => {
     const recipeCard = document.createElement('div');
     recipeCard.classList.add('recipe-card');
@@ -280,21 +296,41 @@ function carregarNovasReceitas() {
       <img src="${receita.imagem}" alt="${receita.nome}">
       <div class="avaliacao-estrelas" id="${idEstrelas}"></div>
       <h3>${receita.nome} <small style="font-size: 0.7em; color: gray; font-weight: normal;">⏱️ ${receita.tempo}</small></h3>
-      <p>${receita.descricao}</p>
-      <a href="${receita.link}" class="btn">Ver Receita</a>
+      <button class="btn ver-receita-btn" data-receita='${JSON.stringify(receita)}'>Ver Receita</button>
     `;
 
     grid.appendChild(recipeCard);
 
+    // Adicionar estrelas
     const divEstrelas = recipeCard.querySelector(`#${idEstrelas}`);
-    divEstrelas.classList.add('stars-visual');
-
     criarEstrelas(divEstrelas, receita.avaliacao, null, false);
   });
+
+  // Evento para abrir modal
+  document.querySelectorAll('.ver-receita-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const receitaData = JSON.parse(btn.getAttribute('data-receita'));
+      
+      // Conteúdo da modal (estilo inline)
+      // Conteúdo da modal (com verificação de ingredientes)
+    modal.innerHTML = `
+      <div style="background: white; max-width: 600px; margin: 50px auto; padding: 20px; border-radius: 8px; position: relative;">
+        <span class="fechar-modal" style="position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;">&times;</span>
+        <h2 style="margin-top: 0;">${receitaData.nome}</h2>
+        <img src="${receitaData.imagem}" alt="${receitaData.nome}" style="width: 100%; border-radius: 5px;">
+        
+        ${receitaData.ingredientes ? `
+          <h3 style="margin-bottom: 5px;">Ingredientes</h3>
+          <ul style="margin-top: 0;">${receitaData.ingredientes.map(ing => `<li>${ing}</li>`).join('')}</ul>
+        ` : ''}
+        
+        <h3 style="margin-bottom: 5px;">Modo de Preparo</h3>
+        <p style="white-space: pre-line; margin-top: 0;">${receitaData.modoPreparo}</p>
+      </div>
+    `;
+
+    modal.style.display = 'block';
+  });
+});
 }
-
-
-
-
-
-

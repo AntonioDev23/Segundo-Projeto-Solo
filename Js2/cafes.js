@@ -264,9 +264,11 @@ export function mostrarCafes() {
 
 // Detalhes da receita de café da manhã
 function criarModalDetalhesCafe(cafe) {
+  // Remove modal antigo se existir
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
 
+  // Cria o overlay que escurece o fundo
   const overlay = document.createElement('div');
   overlay.id = 'modal-detalhes';
   overlay.style.position = 'fixed';
@@ -280,16 +282,18 @@ function criarModalDetalhesCafe(cafe) {
   overlay.style.alignItems = 'center';
   overlay.style.zIndex = '20000';
 
+  // Cria o container principal do modal
   const modal = document.createElement('div');
   modal.style.backgroundColor = '#fff';
   modal.style.padding = '30px';
   modal.style.borderRadius = '10px';
   modal.style.width = '500px';
   modal.style.maxHeight = '80vh';
-  modal.style.overflowY = 'auto';
+  modal.style.overflowY = 'auto'; // Permite scroll vertical se o conteúdo passar da altura máxima
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
-  modal.style.position = 'relative';
+  modal.style.position = 'relative'; // Para posicionar o botão fechar
 
+  // Estrelas de avaliação
   const estrelas = document.createElement('div');
   estrelas.textContent = '★★★★★';
   estrelas.style.textAlign = 'center';
@@ -298,6 +302,7 @@ function criarModalDetalhesCafe(cafe) {
   estrelas.style.color = 'gold';
   modal.appendChild(estrelas);
 
+  // Título da receita
   const titulo = document.createElement('h2');
   titulo.textContent = cafe.titulo;
   titulo.style.color = '#8b0000';
@@ -305,6 +310,7 @@ function criarModalDetalhesCafe(cafe) {
   titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
+  // Imagem da receita
   const img = document.createElement('img');
   img.src = cafe.imagem;
   img.alt = cafe.titulo;
@@ -313,11 +319,13 @@ function criarModalDetalhesCafe(cafe) {
   img.style.marginBottom = '20px';
   modal.appendChild(img);
 
+  // Título "Ingredientes"
   const ingredientesTitulo = document.createElement('h3');
   ingredientesTitulo.textContent = 'Ingredientes:';
-  ingredientesTitulo.style.color = '#ff6b00';
+  ingredientesTitulo.style.color = '#8b0000';
   modal.appendChild(ingredientesTitulo);
 
+  // Lista de ingredientes
   const listaIngredientes = document.createElement('ul');
   for (const ingrediente of cafe.ingredientes) {
     const li = document.createElement('li');
@@ -326,12 +334,14 @@ function criarModalDetalhesCafe(cafe) {
   }
   modal.appendChild(listaIngredientes);
 
+  // Título "Modo de Preparo"
   const preparoTitulo = document.createElement('h3');
   preparoTitulo.textContent = 'Modo de Preparo:';
-  preparoTitulo.style.color = '#ff6b00';
+  preparoTitulo.style.color = '#8b0000';
   preparoTitulo.style.marginTop = '20px';
   modal.appendChild(preparoTitulo);
 
+  // Lista ordenada do modo de preparo
   const listaPreparo = document.createElement('ol');
   for (const passo of cafe.preparo) {
     const li = document.createElement('li');
@@ -340,24 +350,30 @@ function criarModalDetalhesCafe(cafe) {
   }
   modal.appendChild(listaPreparo);
 
+  // Botão "X" para fechar o modal, no canto superior direito
   const btnFecharModal = document.createElement('button');
-  btnFecharModal.textContent = 'Fechar';
-  btnFecharModal.style.marginTop = '20px';
-  btnFecharModal.style.padding = '10px 20px';
-  btnFecharModal.style.backgroundColor = '#8b0000';
-  btnFecharModal.style.color = '#fff';
-  btnFecharModal.style.border = 'none';
-  btnFecharModal.style.borderRadius = '5px';
-  btnFecharModal.style.cursor = 'pointer';
-  btnFecharModal.style.display = 'block';
-  btnFecharModal.style.marginLeft = 'auto';
-  btnFecharModal.style.marginRight = 'auto';
+  btnFecharModal.innerHTML = '&times;'; // Símbolo X
+  btnFecharModal.style.position = 'absolute'; // Posicionamento absoluto dentro do modal
+  btnFecharModal.style.top = '10px';
+  btnFecharModal.style.right = '10px';
+  btnFecharModal.style.background = 'transparent'; // Fundo transparente
+  btnFecharModal.style.border = 'none'; // Sem borda
+  btnFecharModal.style.fontSize = '24px'; // Tamanho da fonte do X
+  btnFecharModal.style.color = '#8b0000'; // Cor fixa do X
+  btnFecharModal.style.cursor = 'pointer'; // Cursor de mãozinha
+  btnFecharModal.style.padding = '0'; 
+  btnFecharModal.style.lineHeight = '1';
+  btnFecharModal.style.fontWeight = 'bold';
 
+  // Fecha o modal ao clicar no X
   btnFecharModal.addEventListener('click', () => {
     overlay.remove();
   });
 
+  // Adiciona o botão fechar no modal
   modal.appendChild(btnFecharModal);
+  // Adiciona o modal no overlay
   overlay.appendChild(modal);
+  // Adiciona o overlay no body da página
   document.body.appendChild(overlay);
 }

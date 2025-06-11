@@ -287,9 +287,11 @@ export function mostrarVeganas() {
 
 // Função para criar modal com detalhes da receita
 export function criarModalDetalhesReceita(receita) {
+  // Remove modal antigo, se existir
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
 
+  // Cria o overlay que escurece o fundo e centraliza o modal
   const overlay = document.createElement('div');
   overlay.id = 'modal-detalhes';
   overlay.style.position = 'fixed';
@@ -303,6 +305,7 @@ export function criarModalDetalhesReceita(receita) {
   overlay.style.alignItems = 'center';
   overlay.style.zIndex = '20000';
 
+  // Cria o container do modal
   const modal = document.createElement('div');
   modal.style.backgroundColor = '#fff';
   modal.style.padding = '30px';
@@ -312,6 +315,22 @@ export function criarModalDetalhesReceita(receita) {
   modal.style.overflowY = 'auto';
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
+
+  // Botão "X" para fechar no canto superior direito
+  const btnFechar = document.createElement('button');
+  btnFechar.textContent = '×'; // Ícone "X"
+  btnFechar.style.position = 'absolute';
+  btnFechar.style.top = '10px';
+  btnFechar.style.right = '15px';
+  btnFechar.style.background = 'transparent';
+  btnFechar.style.border = 'none';
+  btnFechar.style.fontSize = '28px';
+  btnFechar.style.cursor = 'pointer';
+  btnFechar.style.color = '#8b0000';
+  btnFechar.addEventListener('click', () => {
+    overlay.remove();
+  });
+  modal.appendChild(btnFechar);
 
   // Estrelas (padrão, ou ajuste depois)
   const estrelas = document.createElement('div');
@@ -342,13 +361,12 @@ export function criarModalDetalhesReceita(receita) {
   }
 
   // Ingredientes
-    const ingredientesTitulo = document.createElement('h4');
-    ingredientesTitulo.textContent = 'Ingredientes';
-    ingredientesTitulo.style.color = '#8b0000'; 
-    ingredientesTitulo.style.textAlign = 'center'; 
-    ingredientesTitulo.style.marginBottom = '8px';
-    modal.appendChild(ingredientesTitulo);
-
+  const ingredientesTitulo = document.createElement('h4');
+  ingredientesTitulo.textContent = 'Ingredientes';
+  ingredientesTitulo.style.color = '#8b0000'; 
+  ingredientesTitulo.style.textAlign = 'center'; 
+  ingredientesTitulo.style.marginBottom = '8px';
+  modal.appendChild(ingredientesTitulo);
 
   const ulIngredientes = document.createElement('ul');
   for (const ingrediente of receita.ingredientes) {
@@ -360,13 +378,12 @@ export function criarModalDetalhesReceita(receita) {
   modal.appendChild(ulIngredientes);
 
   // Preparo
-    const preparoTitulo = document.createElement('h4');
-    preparoTitulo.textContent = 'Modo de Preparo';
-    preparoTitulo.style.color = '#8b0000'; 
-    preparoTitulo.style.textAlign = 'center';
-    preparoTitulo.style.marginBottom = '8px';
-    modal.appendChild(preparoTitulo);
-
+  const preparoTitulo = document.createElement('h4');
+  preparoTitulo.textContent = 'Modo de Preparo';
+  preparoTitulo.style.color = '#8b0000'; 
+  preparoTitulo.style.textAlign = 'center';
+  preparoTitulo.style.marginBottom = '8px';
+  modal.appendChild(preparoTitulo);
 
   const olPreparo = document.createElement('ol');
   for (const passo of receita.preparo) {
@@ -376,24 +393,7 @@ export function criarModalDetalhesReceita(receita) {
   }
   modal.appendChild(olPreparo);
 
-  // Botão fechar modal
-  const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'Fechar';
-  btnFechar.style.marginTop = '20px';
-  btnFechar.style.width = '100%';
-  btnFechar.style.padding = '10px';
-  btnFechar.style.cursor = 'pointer';
-  btnFechar.style.backgroundColor = '#8b0000';
-  btnFechar.style.color = '#fff';
-  btnFechar.style.border = 'none';
-  btnFechar.style.borderRadius = '4px';
-  btnFechar.style.fontWeight = 'bold';
-
-  btnFechar.addEventListener('click', () => {
-    overlay.remove();
-  });
-
-  modal.appendChild(btnFechar);
+  // Monta modal na página
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }

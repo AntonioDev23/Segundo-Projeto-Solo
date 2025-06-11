@@ -308,7 +308,7 @@ function criarModalDetalhesLanches(lanche) {
 
   const ingredientesTitulo = document.createElement('h3');
   ingredientesTitulo.textContent = 'Ingredientes:';
-  ingredientesTitulo.style.color = '#ff6b00';
+  ingredientesTitulo.style.color = '#8b0000';
   modal.appendChild(ingredientesTitulo);
 
   const listaIngredientes = document.createElement('ul');
@@ -321,7 +321,7 @@ function criarModalDetalhesLanches(lanche) {
 
   const preparoTitulo = document.createElement('h3');
   preparoTitulo.textContent = 'Modo de Preparo:';
-  preparoTitulo.style.color = '#ff6b00';
+  preparoTitulo.style.color = '#8b0000';
   preparoTitulo.style.marginTop = '20px';
   modal.appendChild(preparoTitulo);
 

@@ -254,8 +254,7 @@ export function mostrarLanches() {
 }
 
 
-
-// Detalhes da receita de lanche
+// Detalhes da receita e preparo
 function criarModalDetalhesLanches(lanche) {
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
@@ -283,6 +282,27 @@ function criarModalDetalhesLanches(lanche) {
   modal.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
   modal.style.position = 'relative';
 
+  // Botão fechar (X)
+  const btnFecharX = document.createElement('button');
+  btnFecharX.textContent = '×'; // caractere X estilizado
+  btnFecharX.style.position = 'absolute';
+  btnFecharX.style.top = '15px';
+  btnFecharX.style.right = '15px';
+  btnFecharX.style.background = 'transparent';
+  btnFecharX.style.border = 'none';
+  btnFecharX.style.fontSize = '24px';
+  btnFecharX.style.cursor = 'pointer';
+  btnFecharX.style.color = '#8b0000';
+  btnFecharX.style.fontWeight = 'bold';
+  btnFecharX.style.lineHeight = '1';
+
+  btnFecharX.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  modal.appendChild(btnFecharX);
+
+  // Estrelas
   const estrelas = document.createElement('div');
   estrelas.textContent = '★★★★★';
   estrelas.style.textAlign = 'center';
@@ -291,6 +311,7 @@ function criarModalDetalhesLanches(lanche) {
   estrelas.style.color = 'gold';
   modal.appendChild(estrelas);
 
+  // Título
   const titulo = document.createElement('h2');
   titulo.textContent = lanche.titulo;
   titulo.style.color = '#8b0000';
@@ -298,60 +319,55 @@ function criarModalDetalhesLanches(lanche) {
   titulo.style.textAlign = 'center';
   modal.appendChild(titulo);
 
-  const img = document.createElement('img');
-  img.src = lanche.imagem;
-  img.alt = lanche.titulo;
-  img.style.width = '100%';
-  img.style.borderRadius = '8px';
-  img.style.marginBottom = '20px';
-  modal.appendChild(img);
+  // Imagem (se existir)
+  if (lanche.imagem) {
+    const img = document.createElement('img');
+    img.src = lanche.imagem;
+    img.alt = lanche.titulo;
+    img.style.display = 'block';
+    img.style.margin = '0 auto 20px';
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '8px';
+    modal.appendChild(img);
+  }
 
+  // Título ingredientes
   const ingredientesTitulo = document.createElement('h3');
-  ingredientesTitulo.textContent = 'Ingredientes:';
+  ingredientesTitulo.textContent = 'Ingredientes';
   ingredientesTitulo.style.color = '#8b0000';
+  ingredientesTitulo.style.marginBottom = '10px';
+  ingredientesTitulo.style.textAlign = 'center';
   modal.appendChild(ingredientesTitulo);
 
+  // Lista ingredientes
   const listaIngredientes = document.createElement('ul');
-  for (const ingrediente of lanche.ingredientes) {
+  listaIngredientes.style.marginBottom = '20px';
+  listaIngredientes.style.paddingLeft = '20px';
+  lanche.ingredientes.forEach(ingrediente => {
     const li = document.createElement('li');
     li.textContent = ingrediente;
     listaIngredientes.appendChild(li);
-  }
+  });
   modal.appendChild(listaIngredientes);
 
+  // Título preparo
   const preparoTitulo = document.createElement('h3');
-  preparoTitulo.textContent = 'Modo de Preparo:';
+  preparoTitulo.textContent = 'Modo de preparo';
   preparoTitulo.style.color = '#8b0000';
-  preparoTitulo.style.marginTop = '20px';
+  preparoTitulo.style.marginBottom = '10px';
+  preparoTitulo.style.textAlign = 'center';
   modal.appendChild(preparoTitulo);
 
+  // Lista preparo
   const listaPreparo = document.createElement('ol');
-  for (const passo of lanche.preparo) {
+  listaPreparo.style.paddingLeft = '20px';
+  lanche.preparo.forEach(passo => {
     const li = document.createElement('li');
     li.textContent = passo;
     listaPreparo.appendChild(li);
-  }
+  });
   modal.appendChild(listaPreparo);
 
-  const btnFecharModal = document.createElement('button');
-  btnFecharModal.textContent = 'Fechar';
-  btnFecharModal.style.marginTop = '20px';
-  btnFecharModal.style.padding = '10px 20px';
-  btnFecharModal.style.backgroundColor = '#8b0000';
-  btnFecharModal.style.color = '#fff';
-  btnFecharModal.style.border = 'none';
-  btnFecharModal.style.borderRadius = '5px';
-  btnFecharModal.style.cursor = 'pointer';
-  btnFecharModal.style.display = 'block';
-  btnFecharModal.style.marginLeft = 'auto';
-  btnFecharModal.style.marginRight = 'auto';
-
-  btnFecharModal.addEventListener('click', () => {
-    overlay.remove();
-  });
-
-  modal.appendChild(btnFecharModal);
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
-

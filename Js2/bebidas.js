@@ -250,6 +250,7 @@ export function mostrarBebidas() {
 
 
 // Detalhes da receita de bebida
+// Detalhes da receita de bebida
 function criarModalDetalhesBebidas(bebida) {
   const modalAntigo = document.getElementById('modal-detalhes');
   if (modalAntigo) modalAntigo.remove();
@@ -327,27 +328,34 @@ function criarModalDetalhesBebidas(bebida) {
   }
   modal.appendChild(listaPreparo);
 
+  // Botão X para fechar no canto superior direito
   const btnFecharModal = document.createElement('button');
-  btnFecharModal.textContent = 'Fechar';
-  btnFecharModal.style.marginTop = '20px';
-  btnFecharModal.style.padding = '10px 20px';
-  btnFecharModal.style.backgroundColor = '#8b0000';
-  btnFecharModal.style.color = '#fff';
+  btnFecharModal.innerHTML = '&times;';
+  btnFecharModal.style.position = 'absolute';
+  btnFecharModal.style.top = '10px';
+  btnFecharModal.style.right = '10px';
+  btnFecharModal.style.background = 'transparent';
   btnFecharModal.style.border = 'none';
-  btnFecharModal.style.borderRadius = '5px';
+  btnFecharModal.style.fontSize = '24px';
+  btnFecharModal.style.color = '#888';
   btnFecharModal.style.cursor = 'pointer';
-  btnFecharModal.style.display = 'block';
-  btnFecharModal.style.marginLeft = 'auto';
-  btnFecharModal.style.marginRight = 'auto';
+  btnFecharModal.style.padding = '0';
+  btnFecharModal.style.lineHeight = '1';
+  btnFecharModal.style.fontWeight = 'bold';
+
+  btnFecharModal.addEventListener('mouseenter', () => {
+    btnFecharModal.style.color = '#8b0000';
+  });
+  btnFecharModal.addEventListener('mouseleave', () => {
+    btnFecharModal.style.color = '#888';
+  });
 
   btnFecharModal.addEventListener('click', () => {
     overlay.remove();
   });
 
   modal.appendChild(btnFecharModal);
+
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
-
-
-

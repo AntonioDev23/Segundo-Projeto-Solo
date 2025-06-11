@@ -358,13 +358,13 @@ document.querySelectorAll('.ver-receita-btn').forEach(btn => {
       modal.innerHTML = `
         <div style="background: white; max-width: 600px; margin: 50px auto; padding: 20px; border-radius: 8px; position: relative;">
           <span class="fechar-modal" style="position: absolute; top: 10px; right: 10px; font-size: 24px; cursor: pointer;">&times;</span>
-          <h2 style="margin-top: 0;">${receitaData.nome}</h2>
+          <h2 style="margin-top: 0; color:#8b0000; text-align: center; ">${receitaData.nome}</h2>
           ${receitaData.imagem ? `<img src="${receitaData.imagem}" alt="${receitaData.nome}" style="width: 100%; border-radius: 5px;">` : ''}
           
-          <h3 style="margin-bottom: 5px;">Ingredientes</h3>
+          <h3 style="margin-bottom: 5px; color:#8b0000; text-align: center;">Ingredientes</h3>
           <ul style="margin-top: 0;">${ingredientesHTML}</ul>
           
-          <h3 style="margin-bottom: 5px;">Modo de Preparo</h3>
+          <h3 style="margin-bottom: 5px; color:#8b0000; text-align: center;">Modo de Preparo</h3>
           <p style="white-space: pre-line; margin-top: 0;">${receitaData.modoPreparo}</p>
         </div>
       `;

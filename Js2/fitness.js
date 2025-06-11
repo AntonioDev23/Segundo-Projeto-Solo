@@ -296,15 +296,17 @@ function abrirModal(receita) {
   modalContent.style.position = 'relative';
   modalContent.style.boxShadow = '0 0 15px rgba(0,0,0,0.4)';
 
-  // Botão fechar
+  // Botão fechar com "X" no canto superior direito
   const btnFechar = document.createElement('button');
-  btnFechar.textContent = 'X';
+  btnFechar.textContent = '×';
   btnFechar.style.position = 'absolute';
   btnFechar.style.top = '10px';
   btnFechar.style.right = '10px';
   btnFechar.style.background = 'transparent';
   btnFechar.style.border = 'none';
-  btnFechar.style.fontSize = '20px';
+  btnFechar.style.fontSize = '24px';       // Tamanho da fonte maior
+  btnFechar.style.color = '#8b0000';       // Cor vermelha escura
+  btnFechar.style.fontWeight = 'bold';     // Deixa o X mais destacado
   btnFechar.style.cursor = 'pointer';
 
   btnFechar.addEventListener('click', () => {

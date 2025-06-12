@@ -277,3 +277,34 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('main').style.display = 'block';
   });
 });
+
+
+// === BUSCA POR RECEITAS (página principal) ===
+const searchInput = document.querySelector('.search-input');
+const searchForm = document.querySelector('.search-form');
+
+if (searchForm && searchInput) {
+  searchForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Evita que a página recarregue
+
+    const termo = searchInput.value.toLowerCase();
+
+    const cards = document.querySelectorAll('.card-receita');
+    let encontrou = false;
+
+    cards.forEach(card => {
+      const titulo = card.querySelector('h3')?.textContent.toLowerCase() || '';
+
+      if (titulo.includes(termo)) {
+        card.style.display = 'block';
+        encontrou = true;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (!encontrou) {
+      alert('Nenhuma receita encontrada com esse nome.');
+    }
+  });
+}

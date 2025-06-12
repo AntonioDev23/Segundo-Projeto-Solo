@@ -143,140 +143,71 @@ const receitasPrincipais = {
     }
 };
 
+// Busca de receitas
+function removerAcentos(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
 
+function buscarReceita(valorDigitado) {
+  const termo = removerAcentos(valorDigitado.toLowerCase().trim());
+  let receitaEncontrada = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const corPrimaria = getComputedStyle(document.documentElement).getPropertyValue('--cor-primaria').trim();
+  for (const key in receitasPrincipais) {
+    const receita = receitasPrincipais[key];
+    const titulo = removerAcentos(receita.titulo.toLowerCase());
+    const descricao = removerAcentos(receita.descricao.toLowerCase());
 
-  // Função para criar estrelas de avaliação
-  function criarEstrelas(container, notaAtual, callback) {
-    container.innerHTML = ''; // limpa estrelas antigas
-    const totalEstrelas = 5;
-
-    for (let i = 1; i <= totalEstrelas; i++) {
-      const estrela = document.createElement('span');
-      estrela.classList.add('estrela');
-      estrela.style.fontSize = '55px';
-      estrela.style.cursor = 'pointer';
-      estrela.style.color = i <= notaAtual ? '#FFD700' : '#ccc'; // amarelo para selecionada, cinza para não selecionada
-      estrela.innerHTML = '★'; // caractere estrela
-
-      estrela.addEventListener('click', () => {
-        callback(i);
-        criarEstrelas(container, i, callback); // atualiza estrelas para nova nota
-      });
-
-      container.appendChild(estrela);
+    if (titulo.includes(termo) || descricao.includes(termo)) {
+      receitaEncontrada = key;
+      break;
     }
   }
 
-  // Ao clicar em "Ver Receita"
-  document.querySelectorAll('.ver-receita').forEach(botao => {
-    botao.addEventListener('click', function () {
-      const id = this.getAttribute('data-id');
-      const receita = receitasPrincipais[id];
+  if (receitaEncontrada) {
+    mostrarReceita(receitaEncontrada);
+  } else {
+    alert('Nenhuma receita encontrada.');
+  }
+}
 
-      if (receita) {
-        // Preenche título, descrição e imagem
-        document.getElementById('titulo-receita').textContent = receita.titulo;
-        document.getElementById('descricao-receita').textContent = receita.descricao;
-        document.getElementById('imagem-receita').src = receita.imagem;
-        document.getElementById('imagem-receita').alt = receita.titulo;
+function mostrarReceita(id) {
+  const receita = receitasPrincipais[id];
+  if (!receita) return;
 
-        // Preenche ingredientes
-        const ingredientesEl = document.getElementById('ingredientes-receita');
-        ingredientesEl.innerHTML = receita.ingredientes
-          .map(ingrediente => `<li>${ingrediente}</li>`)
-          .join('');
+  document.getElementById('titulo-receita').textContent = receita.titulo;
+  document.getElementById('descricao-receita').textContent = receita.descricao;
+  document.getElementById('imagem-receita').src = receita.imagem;
+  document.getElementById('imagem-receita').alt = receita.titulo;
 
-        // Preenche modo de preparo
-        const preparoEl = document.getElementById('preparo-receita');
-        preparoEl.innerHTML = receita.preparo
-          .map(passo => `<li>${passo}</li>`)
-          .join('');
+  document.getElementById('ingredientes-receita').innerHTML =
+    receita.ingredientes.map(i => `<li>${i}</li>`).join('');
 
-        // Oculta a página principal
-        document.querySelector('main').style.display = 'none';
+  document.getElementById('preparo-receita').innerHTML =
+    receita.preparo.map(p => `<li>${p}</li>`).join('');
 
-        // Mostra a página da receita
-        const secaoReceita = document.getElementById('pagina-receita');
-        secaoReceita.style.display = 'block';
+  document.querySelector('main').style.display = 'none';
+  document.getElementById('pagina-receita').style.display = 'block';
+}
 
-        // Estilos (você já tem isso, mantive só aqui para contexto)
-        secaoReceita.style.backgroundColor = '#fffbe9';
-        secaoReceita.style.padding = '40px 20px';
-        secaoReceita.style.minHeight = '100vh';
+// Eventos dos formulários de busca (desktop e mobile)
+document.addEventListener('DOMContentLoaded', () => {
+  const searchFormDesktop = document.querySelector('.search-form.desktop');
+  const searchInputDesktop = document.getElementById('searchInputDesktop');
 
-        const container = secaoReceita.querySelector('.container');
-        container.style.maxWidth = '800px';
-        container.style.margin = '0 auto';
-        container.style.padding = '30px';
-        container.style.borderRadius = '10px';
-        container.style.boxShadow = '0 0 15px rgba(0,0,0,0.1)';
-        container.style.backgroundColor = '#ffffff';
-        container.style.textAlign = 'center';
+  const searchFormMobile = document.querySelector('.search-wrapper-mobile .search-form');
+  const searchInputMobile = document.getElementById('searchInputMobile');
 
-        // Botão voltar
-        const voltarBtn = document.getElementById('voltar-btn');
-        voltarBtn.style.backgroundColor = corPrimaria;
-        voltarBtn.style.color = 'white';
-        voltarBtn.style.border = 'none';
-        voltarBtn.style.padding = '10px 20px';
-        voltarBtn.style.marginBottom = '30px';
-        voltarBtn.style.cursor = 'pointer';
-        voltarBtn.style.borderRadius = '6px';
-        voltarBtn.style.fontSize = '16px';
-
-        // Título da receita
-        const titulo = document.getElementById('titulo-receita');
-        titulo.style.fontSize = '2rem';
-        titulo.style.color = '#333';
-        titulo.style.marginBottom = '20px';
-
-        // Imagem da receita
-        const imagem = document.getElementById('imagem-receita');
-        imagem.style.maxWidth = '100%';
-        imagem.style.borderRadius = '10px';
-        imagem.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
-        imagem.style.marginBottom = '20px';
-
-        // Descrição
-        const descricao = document.getElementById('descricao-receita');
-        descricao.style.fontSize = '1.1rem';
-        descricao.style.color = '#666';
-        descricao.style.lineHeight = '1.6';
-
-        // Estilo para listas
-        ingredientesEl.style.textAlign = 'left';
-        ingredientesEl.style.marginBottom = '30px';
-        ingredientesEl.style.fontSize = '1rem';
-        ingredientesEl.style.color = '#000';
-
-        preparoEl.style.textAlign = 'left';
-        preparoEl.style.fontSize = '1rem';
-        preparoEl.style.color = '#000';
-
-        secaoReceita.querySelectorAll('h3').forEach(h3 => {
-          h3.style.color = corPrimaria;
-        });
-
-        // === AQUI INTEGRAMOS AS ESTRELAS ===
-        const divEstrelas = document.getElementById('avaliacao');
-        const notaSalva = localStorage.getItem(`nota-${id}`) || 0;
-
-        criarEstrelas(divEstrelas, Number(notaSalva), (novaNota) => {
-          localStorage.setItem(`nota-${id}`, novaNota);
-        });
-      }
+  if (searchFormDesktop) {
+    searchFormDesktop.addEventListener('submit', e => {
+      e.preventDefault();
+      buscarReceita(searchInputDesktop.value);
     });
-  });
+  }
 
-  // Botão de voltar
-  document.getElementById('voltar-btn').addEventListener('click', function () {
-    document.getElementById('pagina-receita').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
-  });
+  if (searchFormMobile) {
+    searchFormMobile.addEventListener('submit', e => {
+      e.preventDefault();
+      buscarReceita(searchInputMobile.value);
+    });
+  }
 });
-
-
-

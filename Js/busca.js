@@ -145,8 +145,6 @@ const receitasPrincipais = {
 
 // Busca de receitas
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('busca.js carregado!'); // Teste básico
-
   const desktopForm = document.querySelector('.search-form.desktop');
   const mobileForm = document.querySelector('.search-form:not(.desktop)');
 
@@ -158,29 +156,35 @@ document.addEventListener('DOMContentLoaded', () => {
   function buscarReceitas(termo) {
     const termoMinusculo = termo.toLowerCase();
 
+    if (termoMinusculo === '') {
+      // Se o campo de busca estiver vazio, exibe todos
+      todasReceitas.forEach(card => card.style.display = 'block');
+      return;
+    }
+
     todasReceitas.forEach(card => {
       const titulo = card.querySelector('h3').innerText.toLowerCase();
       const descricao = card.querySelector('p').innerText.toLowerCase();
 
-      const corresponde = titulo.includes(termoMinusculo) || descricao.includes(termoMinusculo);
-
-      card.style.display = corresponde ? 'block' : 'none';
+      if (titulo.includes(termoMinusculo) || descricao.includes(termoMinusculo)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
     });
   }
 
   if (desktopForm) {
     desktopForm.addEventListener('submit', e => {
       e.preventDefault();
-      const termo = desktopInput.value.trim();
-      buscarReceitas(termo);
+      buscarReceitas(desktopInput.value.trim());
     });
   }
 
   if (mobileForm) {
     mobileForm.addEventListener('submit', e => {
       e.preventDefault();
-      const termo = mobileInput.value.trim();
-      buscarReceitas(termo);
+      buscarReceitas(mobileInput.value.trim());
     });
   }
 });

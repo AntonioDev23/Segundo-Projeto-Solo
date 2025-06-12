@@ -144,70 +144,43 @@ const receitasPrincipais = {
 };
 
 // Busca de receitas
-function removerAcentos(str) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-}
-
-function buscarReceita(valorDigitado) {
-  const termo = removerAcentos(valorDigitado.toLowerCase().trim());
-  let receitaEncontrada = null;
-
-  for (const key in receitasPrincipais) {
-    const receita = receitasPrincipais[key];
-    const titulo = removerAcentos(receita.titulo.toLowerCase());
-    const descricao = removerAcentos(receita.descricao.toLowerCase());
-
-    if (titulo.includes(termo) || descricao.includes(termo)) {
-      receitaEncontrada = key;
-      break;
-    }
-  }
-
-  if (receitaEncontrada) {
-    mostrarReceita(receitaEncontrada);
-  } else {
-    alert('Nenhuma receita encontrada.');
-  }
-}
-
-function mostrarReceita(id) {
-  const receita = receitasPrincipais[id];
-  if (!receita) return;
-
-  document.getElementById('titulo-receita').textContent = receita.titulo;
-  document.getElementById('descricao-receita').textContent = receita.descricao;
-  document.getElementById('imagem-receita').src = receita.imagem;
-  document.getElementById('imagem-receita').alt = receita.titulo;
-
-  document.getElementById('ingredientes-receita').innerHTML =
-    receita.ingredientes.map(i => `<li>${i}</li>`).join('');
-
-  document.getElementById('preparo-receita').innerHTML =
-    receita.preparo.map(p => `<li>${p}</li>`).join('');
-
-  document.querySelector('main').style.display = 'none';
-  document.getElementById('pagina-receita').style.display = 'block';
-}
-
-// Eventos dos formulários de busca (desktop e mobile)
 document.addEventListener('DOMContentLoaded', () => {
-  const searchFormDesktop = document.querySelector('.search-form.desktop');
-  const searchInputDesktop = document.getElementById('searchInputDesktop');
+  console.log('busca.js carregado!'); // Teste básico
 
-  const searchFormMobile = document.querySelector('.search-wrapper-mobile .search-form');
-  const searchInputMobile = document.getElementById('searchInputMobile');
+  const desktopForm = document.querySelector('.search-form.desktop');
+  const mobileForm = document.querySelector('.search-form:not(.desktop)');
 
-  if (searchFormDesktop) {
-    searchFormDesktop.addEventListener('submit', e => {
-      e.preventDefault();
-      buscarReceita(searchInputDesktop.value);
+  const desktopInput = document.getElementById('searchInputDesktop');
+  const mobileInput = document.getElementById('searchInputMobile');
+
+  const todasReceitas = document.querySelectorAll('.recipe-card');
+
+  function buscarReceitas(termo) {
+    const termoMinusculo = termo.toLowerCase();
+
+    todasReceitas.forEach(card => {
+      const titulo = card.querySelector('h3').innerText.toLowerCase();
+      const descricao = card.querySelector('p').innerText.toLowerCase();
+
+      const corresponde = titulo.includes(termoMinusculo) || descricao.includes(termoMinusculo);
+
+      card.style.display = corresponde ? 'block' : 'none';
     });
   }
 
-  if (searchFormMobile) {
-    searchFormMobile.addEventListener('submit', e => {
+  if (desktopForm) {
+    desktopForm.addEventListener('submit', e => {
       e.preventDefault();
-      buscarReceita(searchInputMobile.value);
+      const termo = desktopInput.value.trim();
+      buscarReceitas(termo);
+    });
+  }
+
+  if (mobileForm) {
+    mobileForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const termo = mobileInput.value.trim();
+      buscarReceitas(termo);
     });
   }
 });

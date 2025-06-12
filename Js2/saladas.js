@@ -139,7 +139,7 @@ export const receitasSaladas = {
   saladaPalmito: {
     titulo: 'Salada de Palmito com Tomate',
     descricao: 'Salada saborosa com palmito, tomate e cebola.',
-    imagem: 'imagens/salada-palmito.jpg',
+    imagem: 'imagens/palmito-tomate.png',
     ingredientes: [
       '1 vidro de palmito picado',
       '2 tomates picados',
@@ -156,7 +156,7 @@ export const receitasSaladas = {
   saladaCenouraBeterraba: {
     titulo: 'Salada de Cenoura e Beterraba',
     descricao: 'Salada colorida e nutritiva com cenoura e beterraba raladas.',
-    imagem: 'imagens/salada-cenoura-beterraba.jpg',
+    imagem: 'imagens/beterraba-cenoura.png',
     ingredientes: [
       '2 cenouras raladas',
       '2 beterrabas raladas',
@@ -173,7 +173,7 @@ export const receitasSaladas = {
   saladaAtum: {
     titulo: 'Salada de Atum',
     descricao: 'Salada rápida com atum, alface e legumes variados.',
-    imagem: 'imagens/salada-atum.jpg',
+    imagem: 'imagens/salada-atum.png',
     ingredientes: [
       '1 lata de atum',
       '1 pé de alface',

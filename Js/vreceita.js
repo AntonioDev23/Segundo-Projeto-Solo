@@ -279,33 +279,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-searchForm.addEventListener('submit', function (e) {
-  e.preventDefault(); // Evita recarregar a página
+// Pega o termo digitado pelo usuário, normalizando
+const termo = removerAcentos(searchInput.value.toLowerCase().trim());
 
-  const termo = removerAcentos(searchInput.value.toLowerCase().trim());
+let receitaEncontrada = null;
 
-  const cards = document.querySelectorAll('.card-receita');
-  let encontrou = false;
+// Procura no objeto receitasPrincipais se o termo está no título ou descrição
+for (const key in receitasPrincipais) {
+  const receita = receitasPrincipais[key];
+  const titulo = removerAcentos(receita.titulo.toLowerCase());
+  const descricao = removerAcentos(receita.descricao.toLowerCase());
 
-  cards.forEach(card => {
-    const tituloCard = card.querySelector('h3')?.textContent || '';
-    const tituloFormatado = removerAcentos(tituloCard.toLowerCase());
-
-    if (tituloFormatado.includes(termo)) {
-      card.style.display = 'block';
-      encontrou = true;
-    } else {
-      card.style.display = 'none';
-    }
-  });
-
-  if (!encontrou) {
-    alert('Nenhuma receita encontrada com esse nome.');
+  if (titulo.includes(termo) || descricao.includes(termo)) {
+    receitaEncontrada = key;
+    break;  // Para na primeira receita que bater
   }
-});
-
-
-function removerAcentos(str) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
+
+if (receitaEncontrada) {
+  // Aqui você mostra a receita correspondente, usando receitasPrincipais[receitaEncontrada]
+  mostrarReceita(receitasPrincipais[receitaEncontrada]);
+} else {
+  // Aqui trata o caso de não encontrar receita, por exemplo:
+  alert("Receita não encontrada!");
+}
+
 

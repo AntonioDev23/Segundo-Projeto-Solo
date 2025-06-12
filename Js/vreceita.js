@@ -279,29 +279,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Pega o termo digitado pelo usuário, normalizando
-const termo = removerAcentos(searchInput.value.toLowerCase().trim());
 
-let receitaEncontrada = null;
+function removerAcentos(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
-// Procura no objeto receitasPrincipais se o termo está no título ou descrição
-for (const key in receitasPrincipais) {
-  const receita = receitasPrincipais[key];
-  const titulo = removerAcentos(receita.titulo.toLowerCase());
-  const descricao = removerAcentos(receita.descricao.toLowerCase());
+function tratarBusca(input) {
+  const termo = removerAcentos(input.value.toLowerCase().trim());
 
-  if (titulo.includes(termo) || descricao.includes(termo)) {
-    receitaEncontrada = key;
-    break;  // Para na primeira receita que bater
+  let receitaEncontrada = null;
+
+  for (const key in receitasPrincipais) {
+    const receita = receitasPrincipais[key];
+    const titulo = removerAcentos(receita.titulo.toLowerCase());
+    const descricao = removerAcentos(receita.descricao.toLowerCase());
+
+    if (titulo.includes(termo) || descricao.includes(termo)) {
+      receitaEncontrada = key;
+      break;
+    }
+  }
+
+  if (receitaEncontrada) {
+    mostrarReceita(receitasPrincipais[receitaEncontrada]);
+  } else {
+    alert("Receita não encontrada!");
   }
 }
 
-if (receitaEncontrada) {
-  // Aqui você mostra a receita correspondente, usando receitasPrincipais[receitaEncontrada]
-  mostrarReceita(receitasPrincipais[receitaEncontrada]);
-} else {
-  // Aqui trata o caso de não encontrar receita, por exemplo:
-  alert("Receita não encontrada!");
-}
+// Formulários (mobile e desktop)
+const formMobile = document.querySelector('.search-form:not(.desktop)');
+const formDesktop = document.querySelector('.search-form.desktop');
 
+// Evento de busca para mobile
+formMobile.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const inputMobile = document.getElementById('searchInputMobile');
+  tratarBusca(inputMobile);
+});
 
+// Evento de busca para desktop
+formDesktop.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const inputDesktop = document.getElementById('searchInputDesktop');
+  tratarBusca(inputDesktop);
+});

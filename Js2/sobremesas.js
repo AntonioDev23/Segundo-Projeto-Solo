@@ -48,7 +48,7 @@ const receitasSobremesas = {
       "Leve ao fogo médio mexendo até desgrudar do fundo.",
       "Coloque em potinhos, decore com granulado e sirva frio."
     ],
-    imagem: "https://example.com/brigadeiro.jpg"
+    imagem: "imagens/brigadeiro-colher.png"
   },
   4: {
     titulo: "Torta de Limão",
@@ -65,7 +65,7 @@ const receitasSobremesas = {
       "Misture leite condensado, suco de limão e creme de leite.",
       "Despeje sobre a base e leve à geladeira por 3 horas."
     ],
-    imagem: "https://example.com/torta-limao.jpg"
+    imagem: "imagens/torta-limao.png"
   },
   5: {
     titulo: "Pudim de Leite",
@@ -81,7 +81,7 @@ const receitasSobremesas = {
       "Despeje na forma caramelizada e asse em banho-maria por 1 hora.",
       "Deixe esfriar, desenforme e sirva."
     ],
-    imagem: "https://example.com/pudim.jpg"
+    imagem: "imagens/pudim-leite.png"
   },
   6: {
     titulo: "Cheesecake de Morango",

@@ -100,7 +100,7 @@ const receitasSobremesas = {
       "Hidrate a gelatina e incorpore na mistura.",
       "Despeje sobre a base, decore com morangos e leve à geladeira."
     ],
-    imagem: "https://example.com/cheesecake-morango.jpg"
+    imagem: "imagens/cheesecake.png"
   },
   7: {
     titulo: "Brownie",

@@ -33,7 +33,7 @@ const receitasSobremesas = {
       "Adicione a gelatina hidratada e bata novamente.",
       "Coloque em taças e leve à geladeira por 4 horas."
     ],
-    imagem: "https://example.com/mousse-maracuja.jpg"
+    imagem: "imagens/mousse-maracuja.png"
   },
   3: {
     titulo: "Brigadeiro de Colher",

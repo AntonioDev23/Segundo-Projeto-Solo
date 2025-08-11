@@ -250,5 +250,112 @@
   pointer-events: auto; /* ✅ Já está dentro do menu ativo */
 }
 
+.mobile-menu {
+  position: fixed;
+  top: 70px; /* Altura do header */
+  left: -100%;
+  width: 85%;
+  max-width: 320px; /* limita largura */
+  background: var(--cor-secundaria);
+  transition: left 0.4s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  padding: 30px 20px;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: var(--borda-arredondada);
+  border-bottom-left-radius: var(--borda-arredondada);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-weight: 600;
+  color: var(--cor-texto-claro);
+}
+
+.mobile-menu.active {
+  left: 0;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu .nav-mobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobile-menu .nav-mobile ul li a {
+  color: var(--cor-texto-claro);
+  text-decoration: none;
+  font-size: 1.15rem;
+  padding: 10px 15px;
+  border-radius: var(--borda-arredondada);
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu .nav-mobile ul li a:hover {
+  background-color: rgba(255, 99, 71, 0.8); /* cor laranja semi-transparente */
+}
+
+.mobile-menu .nav-mobile ul li a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-menu .nav-mobile ul li a:hover {
+  background-color: var(--cor-primaria); /* cor que destaca */
+  color: var(--cor-texto-claro); /* texto claro pra contraste */
+  border-radius: var(--borda-arredondada);
+  transform: translateX(5px); /* efeito leve de deslocamento */
+}
+
+.search-wrapper-mobile {
+  margin-top: 10px;
+}
+
+.search-wrapper-mobile .search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-wrapper-mobile .search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--borda-arredondada);
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-wrapper-mobile .search-button {
+  background-color: var(--cor-primaria);
+  border: none;
+  color: var(--cor-texto-claro);
+  padding: 10px 18px;
+  border-radius: var(--borda-arredondada);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-wrapper-mobile .search-button:hover {
+  background-color: var(--cor-destaque);
+}
+
+.filter-toggle-mobile {
+  margin-top: 20px;
+  padding: 10px 18px;
+  width: 100%;
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-claro);
+  border: none;
+  border-radius: var(--borda-arredondada);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-toggle-mobile:hover {
+  background-color: var(--cor-destaque);
+}
+
 
 

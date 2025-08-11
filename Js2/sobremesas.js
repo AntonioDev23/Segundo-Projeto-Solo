@@ -17,7 +17,7 @@ const receitasSobremesas = {
       "Faça camadas alternadas de biscoito e creme em um refratário.",
       "Finalize com chantilly e leve à geladeira por 3 horas."
     ],
-    imagem: "https://example.com/pave.jpg"
+    imagem: "imagens/pave.png"
   },
   2: {
     titulo: "Mousse de Maracujá",

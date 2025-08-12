@@ -117,7 +117,7 @@ const receitasSobremesas = {
       "Junte a mistura de chocolate e farinha.",
       "Asse em forma untada por 25 minutos."
     ],
-    imagem: "https://example.com/brownie.jpg"
+    imagem: "imagens/brownie.png"
   },
   8: {
     titulo: "Sorvete Caseiro de Banana",
@@ -132,7 +132,7 @@ const receitasSobremesas = {
       "Misture o creme de leite.",
       "Leve ao congelador, mexendo a cada 30 minutos por 3 horas."
     ],
-    imagem: "https://example.com/sorvete-banana.jpg"
+    imagem: "imagens/sorvete-banana.png"
   },
   9: {
     titulo: "Gelatina Colorida",
@@ -149,7 +149,7 @@ const receitasSobremesas = {
       "Misture leite condensado e creme de leite e despeje sobre os cubos.",
       "Leve à geladeira para firmar."
     ],
-    imagem: "https://example.com/gelatina-colorida.jpg"
+    imagem: "imagens/gelatina-colorida.png"
   },
   10: {
     titulo: "Cupcake de Baunilha",
@@ -166,7 +166,7 @@ const receitasSobremesas = {
       "Acrescente farinha, leite e baunilha e misture.",
       "Coloque em forminhas e asse por 20 minutos."
     ],
-    imagem: "https://example.com/cupcake-baunilha.jpg"
+    imagem: "imagens/cupcake-baunilha.png"
   }
 };
 

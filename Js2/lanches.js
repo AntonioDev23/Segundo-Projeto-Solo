@@ -6,7 +6,7 @@ export const lanches = [
       '2 fatias de pão integral',
       '1/2 xícara de frango desfiado',
       '2 colheres de sopa de maionese',
-      '1 colher de sopa de cenoura ralada',
+      '1 tomate',
       'Folhas de alface',
       'Sal a gosto',
     ],

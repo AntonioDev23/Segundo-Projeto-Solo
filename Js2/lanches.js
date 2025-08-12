@@ -1,7 +1,7 @@
 export const lanches = [
   {
     titulo: 'Sanduíche Natural de Frango',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/sanduiche-natural-de-frango-730x548.jpeg',
+    imagem: 'imagens/lanche-frango.png',
     ingredientes: [
       '2 fatias de pão integral',
       '1/2 xícara de frango desfiado',
@@ -18,7 +18,7 @@ export const lanches = [
   },
   {
     titulo: 'Hambúrguer Caseiro',
-    imagem: 'https://static.itdg.com.br/images/1200-675/b4e03e3cf27433d4897d055d93bc9e97/328971-original.jpg',
+    imagem: 'imagens/hamburguer-caseiro.png',
     ingredientes: [
       '1 pão de hambúrguer',
       '1 hambúrguer de carne bovina',
@@ -35,7 +35,7 @@ export const lanches = [
   },
   {
     titulo: 'Cachorro-Quente Simples',
-    imagem: 'https://static.itdg.com.br/images/360-240/27d1e7eb0f64811ae3c303e3bbbdc25f/319823-original.jpg',
+    imagem: 'imagens/cachorro-quente.png',
     ingredientes: [
       '1 pão de hot dog',
       '1 salsicha',
@@ -50,7 +50,7 @@ export const lanches = [
   },
   {
     titulo: 'Tapioca com Queijo e Presunto',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/tapioca-recheada-com-queijo-e-presunto-730x548.jpeg',
+    imagem: 'imagens/tapioca-queijo.png',
     ingredientes: [
       '3 colheres de sopa de goma de tapioca',
       '1 fatia de presunto',
@@ -64,7 +64,7 @@ export const lanches = [
   },
   {
     titulo: 'Pão de Queijo Recheado',
-    imagem: 'https://static.itdg.com.br/images/1200-675/5bb0508f030a544f646166d716fc8a44/325521-original.jpg',
+    imagem: 'imagens/pao-queijo.png',
     ingredientes: [
       '6 pães de queijo prontos',
       '3 colheres de requeijão',
@@ -78,7 +78,7 @@ export const lanches = [
   },
   {
     titulo: 'Beirute Tradicional',
-    imagem: 'https://s2-receitas.glbimg.com/QTCSAj_Ltt-J_vRBhaDxHuvMGgM=/0x0:1920x1080/924x0/smart/filters:strip_icc()/s.glbimg.com/es/ge/f/original/2022/05/12/beirute_sanduiche.jpg',
+    imagem: 'imagens/beirute.png',
     ingredientes: [
       '1 pão sírio',
       '1 filé de frango grelhado',
@@ -93,7 +93,7 @@ export const lanches = [
   },
   {
     titulo: 'Mini Pizza de Pão de Forma',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/mini-pizza-de-pao-de-forma-730x548.jpeg',
+    imagem: 'imagens/mini-pizza.png',
     ingredientes: [
       '2 fatias de pão de forma',
       'Molho de tomate',
@@ -109,7 +109,7 @@ export const lanches = [
   },
   {
     titulo: 'Wrap de Atum',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/wrap-de-atum-730x548.jpeg',
+    imagem: 'imagens/wrap-atum.png',
     ingredientes: [
       '1 tortilha de trigo',
       '1/2 lata de atum',
@@ -125,7 +125,7 @@ export const lanches = [
   },
   {
     titulo: 'Misto Quente Clássico',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/misto-quente-de-forno-730x548.jpeg',
+    imagem: 'imagens/misto-quente.png',
     ingredientes: [
       '2 fatias de pão de forma',
       '1 fatia de presunto',
@@ -140,7 +140,7 @@ export const lanches = [
   },
   {
     titulo: 'Croissant de Presunto e Queijo',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/croissant-de-presunto-e-queijo-730x548.jpeg',
+    imagem: 'imagens/croissant.png',
     ingredientes: [
       '1 croissant grande',
       'Presunto e queijo a gosto',

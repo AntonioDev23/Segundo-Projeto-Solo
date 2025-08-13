@@ -1,7 +1,7 @@
 export const bebidas = [
   {
     titulo: 'Suco de Laranja Natural',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/suco-de-laranja-730x548.jpeg',
+    imagem: 'imagens/suco-laranja.png',
     ingredientes: [
       '4 laranjas',
       'Açúcar a gosto',
@@ -15,7 +15,7 @@ export const bebidas = [
   },
   {
     titulo: 'Limonada com Hortelã',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/limonada-com-hortela-730x548.jpeg',
+    imagem: 'imagens/limao-hortela.png',
     ingredientes: [
       '2 limões',
       '1 litro de água',
@@ -31,7 +31,7 @@ export const bebidas = [
   },
   {
     titulo: 'Vitamina de Banana com Morango',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/vitamina-de-banana-e-morango-730x548.jpeg',
+    imagem: 'imagens/morango-banana.png',
     ingredientes: [
       '1 banana',
       '5 morangos',
@@ -45,7 +45,7 @@ export const bebidas = [
   },
   {
     titulo: 'Água de Coco com Abacaxi',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/agua-de-coco-com-abacaxi-730x548.jpeg',
+    imagem: 'imagens/coco-abacaxi.png',
     ingredientes: [
       '300ml de água de coco',
       '100g de abacaxi em cubos',
@@ -58,7 +58,7 @@ export const bebidas = [
   },
   {
     titulo: 'Chá Gelado de Hibisco',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/cha-gelado-de-hibisco-730x548.jpeg',
+    imagem: 'imagens/cha-hibisco.png',
     ingredientes: [
       '2 colheres de hibisco seco',
       '1 litro de água',
@@ -73,7 +73,7 @@ export const bebidas = [
   },
   {
     titulo: 'Smoothie de Manga e Iogurte',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/smoothie-de-manga-730x548.jpeg',
+    imagem: 'imagens/manga-iogurte.png',
     ingredientes: [
       '1 manga madura',
       '150g de iogurte natural',
@@ -87,7 +87,7 @@ export const bebidas = [
   },
   {
     titulo: 'Suco Verde Detox',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/suco-verde-detox-730x548.jpeg',
+    imagem: 'imagens/suco-detox.png',
     ingredientes: [
       '1 maçã verde',
       '1/2 pepino',
@@ -103,7 +103,7 @@ export const bebidas = [
   },
   {
     titulo: 'Refrigerante Natural de Gengibre',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/refrigerante-natural-de-gengibre-730x548.jpeg',
+    imagem: 'imagens/refri-gengibre.png',
     ingredientes: [
       '100g de gengibre ralado',
       '1 litro de água',
@@ -119,7 +119,7 @@ export const bebidas = [
   },
   {
     titulo: 'Suco de Melancia com Limão',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/suco-de-melancia-com-limao-730x548.jpeg',
+    imagem: 'imagens/melancia-limao.png',
     ingredientes: [
       '3 fatias grandes de melancia',
       'Suco de 1 limão',
@@ -132,7 +132,7 @@ export const bebidas = [
   },
   {
     titulo: 'Água Aromatizada com Frutas',
-    imagem: 'https://www.receiteria.com.br/wp-content/uploads/agua-aromatizada-com-frutas-730x548.jpeg',
+    imagem: 'imagens/agua-aromatizada.png',
     ingredientes: [
       '1 litro de água',
       'Fatias de laranja, limão, morango',

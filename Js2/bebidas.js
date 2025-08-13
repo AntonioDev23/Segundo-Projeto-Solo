@@ -15,7 +15,7 @@ export const bebidas = [
   },
   {
     titulo: 'Limonada com Hortelã',
-    imagem: 'imagens/limao-hortela.png',
+    imagem: 'imagens/limao-hortela.jpg',
     ingredientes: [
       '2 limões',
       '1 litro de água',

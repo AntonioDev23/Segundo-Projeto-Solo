@@ -10,45 +10,39 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileMenu = document.getElementById('mobileMenu');
   const navOverlay = document.querySelector('.nav-overlay');
 
+  // Alterna o menu mobile e o overlay
   navToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
     navOverlay.classList.toggle('active');
     navToggle.classList.toggle('is-active');
   });
 
+  // Fecha o menu ao clicar no overlay
   navOverlay.addEventListener('click', () => {
     mobileMenu.classList.remove('active');
     navOverlay.classList.remove('active');
     navToggle.classList.remove('is-active');
   });
 
-  // Fecha menu mobile ao clicar em qualquer link
+  // Fecha o menu mobile ao clicar em qualquer link
   const mobileMenuLinks = document.querySelectorAll('#mobileMenu a');
   mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      // Fecha o menu
       mobileMenu.classList.remove('active');
       navOverlay.classList.remove('active');
       navToggle.classList.remove('is-active');
+
+      // Se for o link de "Nossas Receitas", simula clique do menu desktop
+      if (link.dataset.id === 'nossas-receitas') {
+        e.preventDefault();
+        setTimeout(() => {
+          const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
+          desktopLink?.click();
+        }, 50);
+      }
     });
   });
-
-  // Menu mobile: Nossas Receitas (JS)
-  const mobileReceitasLink = document.querySelector('.mobile-menu a[data-id="nossas-receitas"]');
-  if (mobileReceitasLink) {
-    mobileReceitasLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Fecha o menu primeiro
-      mobileMenu.classList.remove('active');
-      navOverlay.classList.remove('active');
-      navToggle.classList.remove('is-active');
-
-      // Simula o clique do desktop para abrir nossas receitas
-      setTimeout(() => {
-        const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
-        desktopLink?.click();
-      }, 50);
-    });
-  }
 
   // ===========================
   // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
@@ -111,9 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("apply-filters").addEventListener("click", function() {
     const checkboxes = document.querySelectorAll(".filter-options input[type='checkbox']");
     checkboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        console.log(checkbox.id + " está selecionado");
-      }
+      if (checkbox.checked) console.log(checkbox.id + " está selecionado");
     });
     document.getElementById("filter-options").style.display = "none";
     checkboxes.forEach(checkbox => checkbox.checked = false);

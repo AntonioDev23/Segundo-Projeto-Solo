@@ -45,7 +45,7 @@ export const bebidas = [
   },
   {
     titulo: 'Água de Coco com Abacaxi',
-    imagem: 'imagens/coco-abacaxi.png',
+    imagem: 'imagens/coco-abacaxi.jpg',
     ingredientes: [
       '300ml de água de coco',
       '100g de abacaxi em cubos',
@@ -87,7 +87,7 @@ export const bebidas = [
   },
   {
     titulo: 'Suco Verde Detox',
-    imagem: 'imagens/suco-detox.png',
+    imagem: 'imagens/suco-detox.jpg',
     ingredientes: [
       '1 maçã verde',
       '1/2 pepino',

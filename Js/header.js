@@ -1,48 +1,53 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-  const filterChips = document.querySelectorAll('.filter-chip');
-  const recipeCards = document.querySelectorAll('.recipe-card');
-
-  // ===========================
-  // 1. MENU HAMBÚRGUER (RESPONSIVO)
-  // ===========================
   const navToggle = document.querySelector('.nav-toggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const navOverlay = document.querySelector('.nav-overlay');
 
-  // Alterna o menu mobile e o overlay
+  // Alterna menu e overlay
   navToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
     navOverlay.classList.toggle('active');
     navToggle.classList.toggle('is-active');
   });
 
-  // Fecha o menu ao clicar no overlay
+  // Fecha ao clicar no overlay
   navOverlay.addEventListener('click', () => {
     mobileMenu.classList.remove('active');
     navOverlay.classList.remove('active');
     navToggle.classList.remove('is-active');
   });
 
-  // Fecha o menu mobile ao clicar em qualquer link
-  const mobileMenuLinks = document.querySelectorAll('#mobileMenu a');
+  // Fecha ao clicar em qualquer link
+  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
   mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      // Fecha o menu
+    link.addEventListener('click', () => {
       mobileMenu.classList.remove('active');
       navOverlay.classList.remove('active');
       navToggle.classList.remove('is-active');
-
-      // Se for o link de "Nossas Receitas", simula clique do menu desktop
-      if (link.dataset.id === 'nossas-receitas') {
-        e.preventDefault();
-        setTimeout(() => {
-          const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
-          desktopLink?.click();
-        }, 50);
-      }
     });
   });
+
+  // **Botão X para fechar**
+  const closeMenuBtn = mobileMenu.querySelector('.close-menu');
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      navOverlay.classList.remove('active');
+      navToggle.classList.remove('is-active');
+    });
+  }
+});
+
+  // Botão X para fechar o menu
+  const closeMenuBtn = mobileMenu.querySelector('.close-menu');
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      navOverlay.classList.remove('active');
+      navToggle.classList.remove('is-active');
+    });
+  }
 
   // ===========================
   // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
@@ -97,12 +102,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===========================
   // 5. MENU DE CHECKBOXES (ALTERNATIVO)
   // ===========================
-  document.getElementById("filter-btn").addEventListener("click", function() {
+  const filterBtn = document.getElementById("filter-btn");
+  const applyFiltersCheckboxes = document.getElementById("apply-filters");
+
+  filterBtn?.addEventListener("click", function() {
     const filterOptions = document.getElementById("filter-options");
     filterOptions.style.display = filterOptions.style.display === "block" ? "none" : "block";
   });
 
-  document.getElementById("apply-filters").addEventListener("click", function() {
+  applyFiltersCheckboxes?.addEventListener("click", function() {
     const checkboxes = document.querySelectorAll(".filter-options input[type='checkbox']");
     checkboxes.forEach(checkbox => {
       if (checkbox.checked) console.log(checkbox.id + " está selecionado");
@@ -111,11 +119,4 @@ document.addEventListener('DOMContentLoaded', function () {
     checkboxes.forEach(checkbox => checkbox.checked = false);
   });
 
-  const closeMenuBtn = document.querySelector('.mobile-menu .close-menu');
-closeMenuBtn?.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    navOverlay.classList.remove('active');
-    navToggle.classList.remove('is-active');
-});
 
-});

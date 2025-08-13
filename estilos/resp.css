@@ -358,14 +358,16 @@
 }
 
 .mobile-menu .close-menu {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    align-self: flex-end;
-    margin-bottom: 20px;
-    transition: color 0.3s ease;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 1010;
 }
+
+
 

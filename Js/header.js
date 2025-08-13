@@ -138,14 +138,16 @@ if (mobileReceitasLink) {
   mobileReceitasLink.addEventListener('click', function(e) {
     e.preventDefault();
 
-    // Fecha o menu mobile
-    document.getElementById('mobileMenu').classList.remove('active');
-    document.querySelector('.nav-overlay')?.classList.remove('active');
-    document.querySelector('.nav-toggle')?.classList.remove('is-active');
+    // Fecha o menu mobile primeiro
+    mobileMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    navToggle.classList.remove('is-active');
 
-    // Simula o clique do desktop para abrir nossas receitas
-    const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
-    desktopLink?.click();
+    // Depois, simula o clique do desktop para abrir nossas receitas
+    setTimeout(() => {
+      const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
+      desktopLink?.click();
+    }, 50); // 50ms é suficiente para o menu fechar visualmente
   });
 }
 });

@@ -131,4 +131,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("filter-options").style.display = "none";
     checkboxes.forEach(checkbox => checkbox.checked = false);
   });
+
+  // Menu mobile: Nossas Receitas
+const mobileReceitasLink = document.querySelector('.mobile-menu a[data-id="nossas-receitas"]');
+if (mobileReceitasLink) {
+  mobileReceitasLink.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Fecha o menu mobile
+    document.getElementById('mobileMenu').classList.remove('active');
+    document.querySelector('.nav-overlay')?.classList.remove('active');
+    document.querySelector('.nav-toggle')?.classList.remove('is-active');
+
+    // Simula o clique do desktop para abrir nossas receitas
+    const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
+    desktopLink?.click();
+  });
+}
 });

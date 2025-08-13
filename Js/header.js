@@ -4,27 +4,51 @@ document.addEventListener('DOMContentLoaded', function () {
   const recipeCards = document.querySelectorAll('.recipe-card');
 
   // ===========================
-  // 1. MENU HAMBÚRGUER (RESPONSIVO) - VERSÃO ATUALIZADA
+  // 1. MENU HAMBÚRGUER (RESPONSIVO)
   // ===========================
   const navToggle = document.querySelector('.nav-toggle');
-  const mobileMenu = document.getElementById('mobileMenu'); // Nova div que você vai criar
+  const mobileMenu = document.getElementById('mobileMenu');
   const navOverlay = document.querySelector('.nav-overlay');
 
-  // Alterna o menu mobile e o overlay
   navToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
     navOverlay.classList.toggle('active');
-    
-    // Opcional: Animação do ícone hambúrguer para "X"
     navToggle.classList.toggle('is-active');
   });
 
-  // Fechar o menu ao clicar no overlay
   navOverlay.addEventListener('click', () => {
     mobileMenu.classList.remove('active');
     navOverlay.classList.remove('active');
     navToggle.classList.remove('is-active');
   });
+
+  // Fecha menu mobile ao clicar em qualquer link
+  const mobileMenuLinks = document.querySelectorAll('#mobileMenu a');
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      navOverlay.classList.remove('active');
+      navToggle.classList.remove('is-active');
+    });
+  });
+
+  // Menu mobile: Nossas Receitas (JS)
+  const mobileReceitasLink = document.querySelector('.mobile-menu a[data-id="nossas-receitas"]');
+  if (mobileReceitasLink) {
+    mobileReceitasLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Fecha o menu primeiro
+      mobileMenu.classList.remove('active');
+      navOverlay.classList.remove('active');
+      navToggle.classList.remove('is-active');
+
+      // Simula o clique do desktop para abrir nossas receitas
+      setTimeout(() => {
+        const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
+        desktopLink?.click();
+      }, 50);
+    });
+  }
 
   // ===========================
   // 2. FILTRO: BOTÃO DE ABRIR/FECHAR DROPDOWN
@@ -32,55 +56,30 @@ document.addEventListener('DOMContentLoaded', function () {
   const filterToggle = document.getElementById('filterToggle');
   const filterDropdown = document.getElementById('filterDropdown');
 
-  // Verifica se os elementos estão sendo encontrados corretamente
-  console.log('filterToggle:', filterToggle);
-  console.log('filterDropdown:', filterDropdown);
-
-  // Verifica se o botão de filtro e o dropdown existem
   if (filterToggle && filterDropdown) {
-    // Adiciona o evento de clique no botão de filtro
     filterToggle.addEventListener('click', function (e) {
       e.stopImmediatePropagation();
       e.preventDefault();
-
-      console.log('Botão de filtro clicado!');
-      
-      // Alterna a classe .show para mostrar ou ocultar o dropdown
       filterDropdown.classList.toggle('show');
-      filterToggle.classList.toggle('active'); // Se quiser estilizar o botão
+      filterToggle.classList.toggle('active');
     });
 
-    // Fecha o dropdown se clicar fora dele e do botão de filtro
     document.addEventListener('click', function (e) {
-      // Verifica se o clique foi fora do dropdown e do botão
       if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
-        console.log('Clique fora do filtro, fechando...');
-
         filterDropdown.classList.remove('show');
         filterToggle.classList.remove('active');
       }
     });
-  } else {
-    console.log('Elementos não encontrados!');
   }
 
   // ===========================
-  // 3. FILTRO: APLICAR FILTROS (VISUAL SOMENTE - NÃO ESCONDE RECEITAS)
+  // 3. FILTRO: APLICAR FILTROS VISUAL
   // ===========================
   const applyFiltersBtn = document.getElementById('applyFilters');
-
   if (applyFiltersBtn) {
     applyFiltersBtn.addEventListener('click', () => {
-      console.log('Aplicando filtros...');
-      
-      // Limpa visualmente os chips selecionados
-      const filterChips = document.querySelectorAll('.filter-chip');
       filterChips.forEach(chip => chip.classList.remove('active'));
-
-      // Reseta o tempo para "all"
       document.getElementById('filterTime').value = 'all';
-
-      // Fecha o menu de filtros
       filterDropdown.classList.remove('show');
     });
   }
@@ -89,21 +88,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // 4. FILTRO: BARRA DE BUSCA
   // ===========================
   const searchInput = document.getElementById('searchInput');
-
   if (searchInput) {
     searchInput.addEventListener('input', () => {
-      const searchTerm = searchInput.value.toLowerCase(); // Converte para minúsculas
-      console.log('Buscando por:', searchTerm);
-
-      // Filtra as receitas
-      const recipeCards = document.querySelectorAll('.recipe-card');
+      const searchTerm = searchInput.value.toLowerCase();
       recipeCards.forEach(card => {
         const title = card.querySelector('h3').textContent.toLowerCase();
         const description = card.querySelector('p').textContent.toLowerCase();
-
         const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-
-        // Mostra ou oculta os cards com base na busca
         card.style.display = matchesSearch ? 'block' : 'none';
       });
     });
@@ -117,37 +108,14 @@ document.addEventListener('DOMContentLoaded', function () {
     filterOptions.style.display = filterOptions.style.display === "block" ? "none" : "block";
   });
 
-  // Aplica filtros baseados nos checkboxes (aqui só exibe no console)
   document.getElementById("apply-filters").addEventListener("click", function() {
     const checkboxes = document.querySelectorAll(".filter-options input[type='checkbox']");
-
     checkboxes.forEach(checkbox => {
       if (checkbox.checked) {
         console.log(checkbox.id + " está selecionado");
       }
     });
-
-    // Fecha o menu e limpa os checkboxes
     document.getElementById("filter-options").style.display = "none";
     checkboxes.forEach(checkbox => checkbox.checked = false);
   });
-
-  // Menu mobile: Nossas Receitas
-const mobileReceitasLink = document.querySelector('.mobile-menu a[data-id="nossas-receitas"]');
-if (mobileReceitasLink) {
-  mobileReceitasLink.addEventListener('click', function(e) {
-    e.preventDefault();
-
-    // Fecha o menu mobile primeiro
-    mobileMenu.classList.remove('active');
-    navOverlay.classList.remove('active');
-    navToggle.classList.remove('is-active');
-
-    // Depois, simula o clique do desktop para abrir nossas receitas
-    setTimeout(() => {
-      const desktopLink = document.querySelector('.nav-link[data-id="nossas-receitas"]');
-      desktopLink?.click();
-    }, 50); // 50ms é suficiente para o menu fechar visualmente
-  });
-}
 });

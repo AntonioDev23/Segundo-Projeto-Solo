@@ -110,4 +110,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("filter-options").style.display = "none";
     checkboxes.forEach(checkbox => checkbox.checked = false);
   });
+
+  const closeMenuBtn = document.querySelector('.mobile-menu .close-menu');
+closeMenuBtn?.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    navToggle.classList.remove('is-active');
+});
+
 });

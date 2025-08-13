@@ -357,5 +357,15 @@
   background-color: var(--cor-destaque);
 }
 
-
+.mobile-menu .close-menu {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
 

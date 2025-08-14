@@ -1,7 +1,7 @@
 export const cafes = [
   {
     titulo: 'Pão na Chapa',
-    imagem: '',
+    imagem: 'imagens/pao-chapa.png',
     ingredientes: [
       '2 fatias de pão francês',
       'Manteiga a gosto',
@@ -15,7 +15,7 @@ export const cafes = [
   },
   {
     titulo: 'Tapioca com Queijo',
-    imagem: '',
+    imagem: 'imagens/tapioca-queijo-2',
     ingredientes: [
       '3 colheres de sopa de goma de tapioca',
       '1 fatia de queijo mussarela',
@@ -29,7 +29,7 @@ export const cafes = [
   },
   {
     titulo: 'Ovos Mexidos',
-    imagem: '',
+    imagem: 'imagens/ovos-mexidos.png',
     ingredientes: [
       '3 ovos',
       'Sal e pimenta a gosto',
@@ -44,7 +44,7 @@ export const cafes = [
   },
   {
     titulo: 'Vitamina de Frutas',
-    imagem: '',
+    imagem: 'imagens/vitamina-frutas.png',
     ingredientes: [
       '1 banana',
       '1/2 mamão',
@@ -58,7 +58,7 @@ export const cafes = [
   },
   {
     titulo: 'Panqueca Simples',
-    imagem: '',
+    imagem: 'imagens/panqueca-simples.png',
     ingredientes: [
       '1 xícara de farinha de trigo',
       '1 ovo',
@@ -75,7 +75,7 @@ export const cafes = [
   },
   {
     titulo: 'Cuscuz ',
-    imagem: '../imagens/Cuscuz.webp',
+    imagem: 'imagens/Cuscuz.webp',
     ingredientes: [
       '2 xícaras de flocos de milho para cuscuz',
       '1 cenoura ralada',
@@ -96,7 +96,7 @@ export const cafes = [
   },
   {
     titulo: 'Mingau de Aveia',
-    imagem: '',
+    imagem: 'mingau-aveia.png',
     ingredientes: [
       '1/2 xícara de aveia em flocos',
       '2 xícaras de leite',
@@ -110,7 +110,7 @@ export const cafes = [
   },
   {
     titulo: 'Pão de Queijo',
-    imagem: '',
+    imagem: 'imagens/pao-queijo-simples',
     ingredientes: [
       '500g de polvilho doce',
       '200ml de leite',
@@ -128,7 +128,7 @@ export const cafes = [
   },
   {
     titulo: 'Café com Leite',
-    imagem: '',
+    imagem: 'imagens/cafe-leite.png',
     ingredientes: [
       '1 xícara de café forte',
       '1 xícara de leite quente',
@@ -143,7 +143,7 @@ export const cafes = [
   },
   {
     titulo: 'Bolo de Fubá',
-    imagem: '',
+    imagem: 'imagens/bolo-fuba.png',
     ingredientes: [
       '1 xícara de fubá',
       '1 xícara de farinha de trigo',

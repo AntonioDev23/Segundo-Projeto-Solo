@@ -15,7 +15,7 @@ export const cafes = [
   },
   {
     titulo: 'Tapioca com Queijo',
-    imagem: 'imagens/tapioca-queijo-2',
+    imagem: 'imagens/tapioca-queijo-2.png',
     ingredientes: [
       '3 colheres de sopa de goma de tapioca',
       '1 fatia de queijo mussarela',
@@ -96,7 +96,7 @@ export const cafes = [
   },
   {
     titulo: 'Mingau de Aveia',
-    imagem: 'mingau-aveia.png',
+    imagem: 'imagens/mingau-aveia.png',
     ingredientes: [
       '1/2 xícara de aveia em flocos',
       '2 xícaras de leite',
@@ -110,7 +110,7 @@ export const cafes = [
   },
   {
     titulo: 'Pão de Queijo',
-    imagem: 'imagens/pao-queijo-simples',
+    imagem: 'imagens/pao-queijo-simples.png',
     ingredientes: [
       '500g de polvilho doce',
       '200ml de leite',

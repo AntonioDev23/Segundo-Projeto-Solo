@@ -1,7 +1,7 @@
 export const fitnessReceitas = [
   {
     titulo: "Omelete de Claras com Espinafre",
-    imagem: "",
+    imagem: "imagens/omelete-espinafre.png",
     ingredientes: [
       "4 claras de ovo",
       "1 punhado de espinafre fresco",
@@ -17,7 +17,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Salada de Quinoa com Legumes",
-    imagem: "",
+    imagem: "imagens/salada-quinoa.png",
     ingredientes: [
       "1 xícara de quinoa cozida",
       "Tomate-cereja",
@@ -34,7 +34,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Peito de Frango Grelhado com Brócolis",
-    imagem: "",
+    imagem: "imagens/frango-brocolis.png",
     ingredientes: [
       "150g de peito de frango",
       "Brócolis cozido no vapor",
@@ -51,7 +51,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Smoothie Verde Detox",
-    imagem: "",
+    imagem: "iimagens/smoothie-detox.png",
     ingredientes: [
       "1 maçã verde",
       "1 punhado de couve",
@@ -66,7 +66,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Panqueca de Aveia e Banana",
-    imagem: "",
+    imagem: "imagens/panqueca-aveia-fit.png",
     ingredientes: [
       "1 banana madura",
       "2 colheres de sopa de aveia",
@@ -81,7 +81,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Iogurte Natural com Granola e Mel",
-    imagem: "",
+    imagem: "imagens/iogurte-mel-fit.png",
     ingredientes: [
       "1 pote de iogurte natural desnatado",
       "2 colheres de sopa de granola",
@@ -95,7 +95,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Wrap Integral com Atum e Abacate",
-    imagem: "",
+    imagem: "imagens/wrap-atum-abacate.png",
     ingredientes: [
       "1 pão wrap integral",
       "100g de atum em água",
@@ -110,7 +110,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Bolinho de Batata Doce e Aveia",
-    imagem: "",
+    imagem: "imagens/bolinho-batata-aveia.png",
     ingredientes: [
       "1 xícara de purê de batata doce",
       "3 colheres de sopa de aveia",
@@ -124,7 +124,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Salada de Grão-de-Bico com Atum",
-    imagem: "",
+    imagem: "imagens/salada-grao-atum.png",
     ingredientes: [
       "1 xícara de grão-de-bico cozido",
       "100g de atum",
@@ -140,7 +140,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Sopa de Legumes com Frango Desfiado",
-    imagem: "",
+    imagem: "imagens/sopa-legumes-frango.png",
     ingredientes: [
       "Caldo de legumes",
       "Cenoura",

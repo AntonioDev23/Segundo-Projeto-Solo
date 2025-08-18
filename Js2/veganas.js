@@ -162,7 +162,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Torta de Legumes com Massa de Grão-de-Bico',
-    imagem: 'imagens/torta-legumes/png',
+    imagem: 'imagens/torta-legumes.png',
     ingredientes: [
       '1 xícara de farinha de grão-de-bico',
       '1/2 xícara de água',

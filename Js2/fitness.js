@@ -333,6 +333,18 @@ function abrirModal(receita) {
   estrelas.style.marginBottom = '15px';
   estrelas.style.color = 'gold';
 
+  // Imagem da receita
+if (receita.imagem) {
+  const img = document.createElement('img');
+  img.src = receita.imagem;
+  img.alt = receita.titulo;
+  img.style.display = 'block';
+  img.style.margin = '0 auto 20px';
+  img.style.maxWidth = '100%';
+  img.style.borderRadius = '8px';
+  modalContent.appendChild(img);
+}
+
   // Descrição
   const descricao = document.createElement('p');
   descricao.textContent = receita.descricao;

@@ -51,7 +51,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Smoothie Verde Detox",
-    imagem: "iimagens/smoothie-detox.png",
+    imagem: "imagens/smoothie-detox.png",
     ingredientes: [
       "1 maçã verde",
       "1 punhado de couve",

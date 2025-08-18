@@ -1,7 +1,7 @@
 export const receitasVeganas = [
   {
     titulo: 'Estrogonofe de Grão-de-Bico',
-    imagem: '',
+    imagem: 'imagens/estrogonofe-grao.png',
     ingredientes: [
       '2 xícaras de grão-de-bico cozido',
       '1 cebola picada',
@@ -21,7 +21,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Lasanha de Berinjela',
-    imagem: '',
+    imagem: 'imagens/lasanha-berinjela.png',
     ingredientes: [
       '2 berinjelas cortadas em fatias finas',
       '1 xícara de molho de tomate',
@@ -38,7 +38,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Moqueca Vegana',
-    imagem: '',
+    imagem: 'imagens/moqueca-vegana.png',
     ingredientes: [
       '1 pimentão vermelho fatiado',
       '1 pimentão amarelo fatiado',
@@ -58,7 +58,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Falafel Assado',
-    imagem: '',
+    imagem: 'imagens/falafel.png',
     ingredientes: [
       '2 xícaras de grão-de-bico cru (de molho por 12h)',
       '1/2 cebola picada',
@@ -76,7 +76,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Escondidinho de Lentilha',
-    imagem: '',
+    imagem: 'imagens/escondidinho-lentilha.png',
     ingredientes: [
       '2 xícaras de lentilha cozida',
       '1 cebola picada',
@@ -94,7 +94,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Hambúrguer de Lentilha',
-    imagem: '',
+    imagem: 'imagens/hamburguer-lentilha.png',
     ingredientes: [
       '1 xícara de lentilha cozida',
       '1/2 cebola ralada',
@@ -110,7 +110,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Macarrão com Molho de Castanha',
-    imagem: '',
+    imagem: 'imagens/macarrao-castanha.png',
     ingredientes: [
       '250g de macarrão sem ovos',
       '1/2 xícara de castanhas de caju (de molho por 4h)',
@@ -127,7 +127,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Arroz de Couve-Flor',
-    imagem: '',
+    imagem: 'imagens/arroz-couve-flor.png',
     ingredientes: [
       '1 cabeça de couve-flor',
       '1 dente de alho picado',
@@ -144,7 +144,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Curry de Legumes',
-    imagem: '',
+    imagem: 'imagens/curry-legumes.jpeg',
     ingredientes: [
       '1 batata picada',
       '1 cenoura em rodelas',
@@ -162,7 +162,7 @@ export const receitasVeganas = [
   },
   {
     titulo: 'Torta de Legumes com Massa de Grão-de-Bico',
-    imagem: '',
+    imagem: 'imagens/torta-legumes/png',
     ingredientes: [
       '1 xícara de farinha de grão-de-bico',
       '1/2 xícara de água',

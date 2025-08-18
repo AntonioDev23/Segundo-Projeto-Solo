@@ -1,7 +1,7 @@
 export const fitnessReceitas = [
   {
     titulo: "Omelete de Claras com Espinafre",
-    imagem: "imagens/omelete-espinafre.png",
+    imagem: 'imagens/omelete-espinafre.png',
     ingredientes: [
       "4 claras de ovo",
       "1 punhado de espinafre fresco",
@@ -17,7 +17,7 @@ export const fitnessReceitas = [
   },
   {
     titulo: "Salada de Quinoa com Legumes",
-    imagem: "imagens/salada-quinoa.png",
+    imagem: 'imagens/salada-quinoa.png',
     ingredientes: [
       "1 xícara de quinoa cozida",
       "Tomate-cereja",
